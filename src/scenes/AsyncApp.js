@@ -32,10 +32,9 @@ class AsyncApp extends Component {
         return(
 
             <div id="main-container">
-                <Menu></Menu>
-
                 <Router history={history}>
                     <div>
+                        <Menu></Menu>
                         <Route path="/home" render={() => <Home homedata={this.props.homedata}></Home>}></Route>
                         <Route path="/aboutme" component={AboutMe} aboutme={this.props.aboutme}></Route>
                         <Route path="/gallery" component={Gallery} gallery={this.props.gallery}></Route>

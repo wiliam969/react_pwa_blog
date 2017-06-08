@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export default class Menu extends Component {
 
@@ -21,12 +21,12 @@ export default class Menu extends Component {
                 </span>
 
                 <div className="nav-right nav-menu">
-                    <a href="">Home</a>
-                    <a href="">AboutMe</a>
-                    <a href="">Gallery</a>
-                    {/*<NavLink to="/">Home</NavLink>*/}
-                    {/*<NavLink to="/aboutme">AboutMe</NavLink>*/}
-                    {/*<NavLink to="/gallery">Gallery</NavLink>*/}
+                    {/*<a href="/home">Home</a>*/}
+                    {/*<a href="/about">AboutMe</a>*/}
+                    {/*<a href="/gallery">Gallery</a>*/}
+                    <Link to="/home">Home</Link>
+                    <Link to="/aboutme">AboutMe</Link>
+                    <Link to="/gallery">Gallery</Link>
                 </div>
             </nav>
         );

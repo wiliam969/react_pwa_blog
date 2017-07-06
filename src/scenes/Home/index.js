@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import BlogList from './components/bloglist/index.js'
+import { bindActionCreators } from 'redux'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import {
     // requestBlogPreview,
@@ -49,7 +51,7 @@ class Home extends Component {
 
 
 Home.propTypes = {
-    // blogs: PropTypes.array
+    dispatch: PropTypes.func
 }
 
 function mapStateToProps(state,ownProps) {
@@ -61,5 +63,12 @@ function mapStateToProps(state,ownProps) {
     }
 }
 
-export default connect(mapStateToProps,fetchBlogPreviews)(Home)
+function mapDispatchToProps (dispatch) {
+    return {
+        actions:
+            bindActionCreators({fetchBlogPreviews},dispatch)
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Home)
 

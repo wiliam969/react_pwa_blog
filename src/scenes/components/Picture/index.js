@@ -17,15 +17,16 @@ class Picture extends Component {
     }
 
     onChange (isVisible) {
-        let { dispatch } = this.props
-
-        let wut = fetchPicture(1,'thumbnail')
-        dispatch(wut)
-        // console.log(wut)
-        console.log('Element is now %s', isVisible ? 'visible' : 'hidden')
+        // let { dispatch } = this.props
+        //
+        // let wut = fetchPicture(1,'thumbnail')
+        // dispatch(wut)
+        // // console.log(wut)
+        // console.log('Element is now %s', isVisible ? 'visible' : 'hidden')
     }
 
     render() {
+
         return (
             <VisibilitySensor onChange={this.onChange}>
                 <div>
@@ -45,11 +46,17 @@ Picture.propTypes = {
 var whatedefuck = "4"
 
 const mapStateToProps = (state) => {
-    return state
+    var picturedata = { didInvalidate: '', isFetching: '',}
+
+    picturedata = Object.assign({}, state.Picture)
+    return {
+        picturedata: picturedata,
+    }
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators(fetchPicture,dispatch)
+    return { actions: bindActionCreators(fetchPicture,dispatch)}
+
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(Picture)

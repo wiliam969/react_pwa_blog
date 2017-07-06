@@ -16,9 +16,6 @@ function Picture(state = {/**isFetching: false, didInvalidate: false, items: [] 
                 isFetching: false,
                 didInvalidate:false,
                 items:action.pictures
-                // items: action.blogs,
-                // lastUpdated: action.receivedAt,
-                // isJakob: true,
             })
         default:
             return state

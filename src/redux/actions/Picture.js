@@ -35,7 +35,7 @@ export function fetchPicture (post_id,type) {
 
         dispatch(requestPicture(post_id))
 
-        return axios.get('http://localhost/wp_rest_api/wp-json/wp/v2/media?parent=' + post_id)
+        return axios.get('http://localhost/wp_rest_api/wp-json/wp/v2/media?parent=' + 1)
             .then(response => {
                 return dispatch(receivePicture(response.data))
             }).catch(error => {

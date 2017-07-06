@@ -16,7 +16,7 @@ class Picture extends Component {
     }
 
     onChange (isVisible) {
-        fetchPicture(this.props.blogid,'thumbnail')
+        fetchPicture(1)
         console.log('Element is now %s', isVisible ? 'visible' : 'hidden')
     }
 
@@ -46,6 +46,7 @@ const mapStateToProps = (state) => {
     picturedata = Object.assign({}, state.Picture)
     return {
         picturedata: picturedata,
+        data: state,
     }
 }
 

@@ -29,11 +29,6 @@ export const invalidatePicture = (pictures) => {
     }
 }
 
-export function checkForPicture (pictures) {
-    inView('.picture').on('enter', function() {
-    });
-}
-
 export function fetchPicture (post_id,type) {
 
     return function(dispatch) {

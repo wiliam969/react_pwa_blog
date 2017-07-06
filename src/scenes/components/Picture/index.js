@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import PropTypes from 'prop-types'
 import {
     fetchPicture
 } from '../../../redux/actions/Picture'
@@ -15,7 +17,12 @@ class Picture extends Component {
     }
 
     onChange (isVisible) {
-        console.log('Element is now %s', isVisible ? 'visible' : 'hidden');
+        let { dispatch } = this.props
+
+        let wut = fetchPicture(1,'thumbnail')
+        dispatch(wut)
+        // console.log(wut)
+        console.log('Element is now %s', isVisible ? 'visible' : 'hidden')
     }
 
     render() {
@@ -31,6 +38,9 @@ class Picture extends Component {
     }
 }
 
+Picture.propTypes = {
+    dispatch: PropTypes.func
+}
 
 var whatedefuck = "4"
 
@@ -38,4 +48,8 @@ const mapStateToProps = (state) => {
     return state
 }
 
-export default connect(mapStateToProps,fetchPicture(whatedefuck))(Picture)
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators(fetchPicture,dispatch)
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Picture)

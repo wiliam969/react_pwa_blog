@@ -10,14 +10,11 @@ class Picture extends Component {
 
     constructor(props) {
         super(props)
-
-        whatedefuck = this.props.blogid
-        console.log("whay am i here wtf")
     }
 
-    onChange (isVisible) {
-        fetchPicture(1)
-        console.log('Element is now %s', isVisible ? 'visible' : 'hidden')
+    onChange (isVisible,blogid) {
+        fetchPicture()
+        // console.log('Element is now %s', isVisible ? 'visible' : 'hidden')
     }
 
     render() {
@@ -38,12 +35,11 @@ Picture.propTypes = {
     dispatch: PropTypes.func
 }
 
-var whatedefuck = "4"
-
 const mapStateToProps = (state) => {
     var picturedata = { didInvalidate: '', isFetching: '',}
 
     picturedata = Object.assign({}, state.Picture)
+
     return {
         picturedata: picturedata,
         data: state,

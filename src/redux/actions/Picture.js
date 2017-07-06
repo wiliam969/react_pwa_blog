@@ -31,10 +31,7 @@ export const invalidatePicture = (pictures) => {
 
 export function fetchPicture (post_id = 1) {
     const id = post_id
-    console.log("asdasd" + post_id)
     return function(dispatch,post_id) {
-        console.log("wtf is this shit im out" + id)
-        console.log("ahahaha" + post_id)
         console.log(post_id)
         dispatch(requestPicture(post_id))
 

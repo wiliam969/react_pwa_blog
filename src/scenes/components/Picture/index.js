@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import {
     fetchPicture
 } from '../../../redux/actions/Picture'
@@ -9,16 +10,15 @@ class Picture extends Component {
 
     constructor(props) {
         super(props)
-
-        whatedefuck = this.props.blogid
-        console.log("whay am i here wtf")
     }
 
-    onChange (isVisible) {
-        console.log('Element is now %s', isVisible ? 'visible' : 'hidden');
+    onChange (isVisible,blogid) {
+        fetchPicture()
+        // console.log('Element is now %s', isVisible ? 'visible' : 'hidden')
     }
 
     render() {
+
         return (
             <VisibilitySensor onChange={this.onChange}>
                 <div>
@@ -31,11 +31,19 @@ class Picture extends Component {
     }
 }
 
-
-var whatedefuck = "4"
-
-const mapStateToProps = (state) => {
-    return state
+Picture.propTypes = {
+    dispatch: PropTypes.func
 }
 
-export default connect(mapStateToProps,fetchPicture(whatedefuck))(Picture)
+const mapStateToProps = (state) => {
+    var picturedata = { didInvalidate: '', isFetching: '',}
+
+    picturedata = Object.assign({}, state.Picture)
+
+    return {
+        picturedata: picturedata,
+        data: state,
+    }
+}
+
+export default connect(mapStateToProps,fetchPicture)(Picture)

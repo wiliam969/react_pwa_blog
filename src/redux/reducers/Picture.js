@@ -4,21 +4,20 @@ function Picture(state = {/**isFetching: false, didInvalidate: false, items: [] 
     switch(action.type) {
         case INVALIDATE_PICTURE:
             return Object.assign({}, state, {
-                didInvalidate: true
+                didInvalidate: true,
+                error: action.error
             })
         case REQUEST_PICTURE:
             return Object.assign({}, state, {
                 isFetching: true,
-                didInvalidate: false
+                didInvalidate: false,
+                id: action.id
             })
         case RECEIVE_PICTURE:
             return Object.assign({}, state, {
                 isFetching: false,
                 didInvalidate:false,
-                items:action.pictures
-                // items: action.blogs,
-                // lastUpdated: action.receivedAt,
-                // isJakob: true,
+                picture:action.picture
             })
         default:
             return state

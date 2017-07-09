@@ -35,8 +35,10 @@ export function fetchPicture (post_id = 1) {
         console.log(post_id)
         dispatch(requestPicture(post_id))
 
-        return axios.get('http://localhost/wp_rest_api/wp-json/wp/v2/media?parent=' + post_id.blogid)
+        return axios.get('http://localhost:8000/wp-json/wp/v2/media?parent=' + post_id.blogid)
             .then(response => {
+
+                console.log(response)
                 return dispatch(receivePicture(response.data))
             }).catch(error => {
                 return dispatch(invalidatePicture(error))

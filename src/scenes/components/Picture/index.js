@@ -4,9 +4,16 @@ import PropTypes from 'prop-types'
 import {
     fetchPicture
 } from '../../../redux/actions/Picture'
+
 import VisibilitySensor from 'react-visibility-sensor'
 
 class Picture extends Component {
+
+    thummbnail = this.props.picturedata
+
+    BackgroundStyle = {
+
+    }
 
     constructor(props) {
         super(props)
@@ -23,6 +30,7 @@ class Picture extends Component {
             <VisibilitySensor onChange={this.onChange}>
                 <div>
                     <p>Helo its me</p>
+                    <p>{ this.props.link } </p>
 
                     <p>a Selfie</p>
                 </div>
@@ -36,12 +44,13 @@ Picture.propTypes = {
 }
 
 const mapStateToProps = (state) => {
-    var picturedata = { didInvalidate: '', isFetching: '',}
+    var link = {}
 
-    picturedata = Object.assign({}, state.Picture)
+    link = Object.assign({}, state.Picture)
 
     return {
-        picturedata: picturedata,
+
+        link: link.img_link,
         data: state,
     }
 }

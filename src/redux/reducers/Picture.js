@@ -17,7 +17,10 @@ function Picture(state = {/**isFetching: false, didInvalidate: false, items: [] 
             return Object.assign({}, state, {
                 isFetching: false,
                 didInvalidate:false,
-                picture:action.picture
+                img_link: action.picture[0].link,
+                picture_data:action.picture
+
+
             })
         default:
             return state

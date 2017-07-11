@@ -17,9 +17,18 @@ class Thumbnail extends Component {
 
         console.log(arr_thumbnail)
 
-        return (
-            <p>{ arr_thumbnail[9]}</p>
-        )
+        // return (
+        //     <p>{ arr_thumbnail[9]}</p>
+        // )
+
+        var Style = null
+
+        return Style = {
+            backgroundImage: 'url(' + arr_thumbnail[23] + ')',
+            backgroundPosition: 'center center',
+            width:200 + 'px',
+            height:200+ 'px',
+        }
     }
 
     constructor(props) {
@@ -34,7 +43,7 @@ class Thumbnail extends Component {
 
                     <p>a Selfie</p>
 
-                    <p>{ this.renderLink() }</p>
+                    <div style={this.renderLink()}>{  }</div>
 
                     {/*<p>{ this.thumbnail.link } </p>*/}
 

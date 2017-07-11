@@ -6,20 +6,46 @@ import {
 } from '../../../redux/actions/Picture'
 
 class Thumbnail extends Component {
+
+    renderLink() {
+
+        const thumbnail = this.props.thumbnail
+        const arr_thumbnail = []
+
+        for(var i in thumbnail)
+            arr_thumbnail.push([i, thumbnail[i]])
+
+        // this.thumbnail = {}
+
+        console.log(arr_thumbnail)
+
+        return arr_thumbnail.map(function(post) {
+            return( <p>{post}</p>)
+        })
+    }
+
     constructor(props) {
         super(props)
     }
 
    render() {
-        return (
-            <div>
-                <p>Helo its me</p>
-                {/*<p>{ this.thumbnail.link}</p>*/}
+        if(this.props.thumbnail) {
+            return (
+                <div>
+                    <p>Helo its me</p>
 
-                <p>a Selfie</p>
-                {/*<p>{ this.props.pictures[1].link }</p>*/}
-            </div>
-        )
+                    <p>a Selfie</p>
+
+                    <p>{ this.renderLink() }</p>
+
+                    {/*<p>{ this.thumbnail.link } </p>*/}
+
+                    {/*<p>{ this.props.pictures[1].link }</p>*/}
+                </div>
+            )
+        }
+
+        return <div>Loading...</div>
     }
 }
 

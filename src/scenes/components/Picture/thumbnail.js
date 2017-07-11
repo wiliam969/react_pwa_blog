@@ -13,15 +13,13 @@ class Thumbnail extends Component {
         const arr_thumbnail = []
 
         for(var i in thumbnail)
-            arr_thumbnail.push([i, thumbnail[i]])
-
-        // this.thumbnail = {}
+            arr_thumbnail.push(thumbnail[i])
 
         console.log(arr_thumbnail)
 
-        return arr_thumbnail.map(function(post) {
-            return( <p>{post}</p>)
-        })
+        return (
+            <p>{ arr_thumbnail[9]}</p>
+        )
     }
 
     constructor(props) {

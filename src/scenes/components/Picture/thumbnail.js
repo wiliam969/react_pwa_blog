@@ -15,12 +15,6 @@ class Thumbnail extends Component {
         for(var i in thumbnail)
             arr_thumbnail.push(thumbnail[i])
 
-        console.log(arr_thumbnail)
-
-        // return (
-        //     <p>{ arr_thumbnail[9]}</p>
-        // )
-
         var Style = null
 
         return Style = {
@@ -39,19 +33,10 @@ class Thumbnail extends Component {
         if(this.props.thumbnail) {
             return (
                 <div>
-                    <p>Helo its me</p>
-
-                    <p>a Selfie</p>
-
                     <div style={this.renderLink()}>{  }</div>
-
-                    {/*<p>{ this.thumbnail.link } </p>*/}
-
-                    {/*<p>{ this.props.pictures[1].link }</p>*/}
-                </div>
+               </div>
             )
         }
-
         return <div>Loading...</div>
     }
 }

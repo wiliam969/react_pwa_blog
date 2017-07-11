@@ -17,7 +17,6 @@ class BlogSingle extends Component {
         // const { dispatch, fetchBlogSingle } = this.props
         //
         // dispatch(fetchBlogSingle(blogid))
-
     }
 
     render() {
@@ -28,7 +27,7 @@ class BlogSingle extends Component {
                 }
 
                 {   this.props.Blog.didInvalidate &&
-                <h1 style={this.FetchingStyle}>LOL WUT Something went WRONG i guess .... holy fuck terribly wrong</h1>
+                <h1 style={this.FetchingStyle}> NOOOOOOOOOOOOOOOOOOO LOL WUT Something went WRONG i guess .... holy fuck terribly wrong</h1>
                 }
 
                 {   !this.props.Blog.didInvalidate && !this.props.Blog.isFetching &&
@@ -57,6 +56,8 @@ const mapStateToProps = (state) => {
     let BlogContent = Object.assign({}, state.Blog.blogcontent)
     let BlogHeader = Object.assign({}, state.Blog.blogheader)
 
+    console.log(this.props)
+
     return {
         Blog: Blog,
         blogcontent: BlogContent,
@@ -64,4 +65,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps,fetchBlogSingle("1"))(BlogSingle)
+export default connect(mapStateToProps,fetchBlogSingle(1))(BlogSingle)

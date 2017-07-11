@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Thumbnail from '../../components/Picture/thumbnail'
 
 export default class BlogHeader extends Component {
     render() {

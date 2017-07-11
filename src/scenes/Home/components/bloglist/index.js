@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Picture from '../../../components/Picture/index'
+import Thumbnail from '../../../components/Picture/thumbnail'
 
 export default class BlogList extends Component {
 
@@ -16,7 +16,7 @@ export default class BlogList extends Component {
                     this.props.blogs.map((post,index) =>
                         <div className="box" key={index} data-key={index}>
                             <div className="blog-attachment" style={ this.defaultAttachment }></div>
-                            <Picture blogid={post.id} type="thumbnail"></Picture>
+                            <Thumbnail blogid={post.id} type="thumbnail"></Thumbnail>
                             <div className="blog-title">{post.title.rendered}</div>
                             <div className="blog-preview-text">{post.content.rendered}</div>
                             <div className="readmore"><a href={post.link}>Weiterlesen</a></div>

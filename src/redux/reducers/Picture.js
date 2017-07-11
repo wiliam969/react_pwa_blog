@@ -14,14 +14,25 @@ function Picture(state = {/**isFetching: false, didInvalidate: false, items: [] 
                 id: action.id
             })
         case RECEIVE_PICTURE:
-            return Object.assign({}, state, {
-                isFetching: false,
-                didInvalidate:false,
-                img_link: action.picture[0].link,
-                picture_data:action.picture
-
-
-            })
+            // return Object.assign({}, state, {
+            //     id:action.id,
+            //     isFetching: false,
+            //     didInvalidate:false,
+            //     // img_link: action.picture[0].link,
+            //     picture_data:action.picture,
+            //
+            //     dutu: {
+            //         [action.postid] : {
+            //             data: action.picture
+            //         }
+            //     }
+            // })
+            return {
+                dum: {
+                    ...state.dum,
+                        [action.postid]: action.picture[0].link,
+                }
+            }
         default:
             return state
     }

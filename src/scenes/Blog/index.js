@@ -4,25 +4,10 @@ import PropTypes from 'prop-types'
 import { fetchBlogSingle } from '../../redux/actions/Blog'
 import { bindActionCreators } from 'redux'
 
+import BlogHeader from './components/blogheader'
+import BlogContent from './components/blogcontent'
+
 class BlogSingle extends Component {
-
-    renderLink() {
-
-        const thumbnail = this.props.thumbnail
-        const arr_thumbnail = []
-
-        for(var i in thumbnail)
-            arr_thumbnail.push(thumbnail[i])
-
-        var Style = null
-
-        return Style = {
-            backgroundImage: 'url(' + arr_thumbnail[23] + ')',
-            backgroundPosition: 'center center',
-            width:200 + 'px',
-            height:200+ 'px',
-        }
-    }
 
     constructor(props) {
         super(props)
@@ -38,6 +23,26 @@ class BlogSingle extends Component {
     render() {
         return (
             <div>
+
+                {   this.props.Blog.isFetching &&
+                    <h1 style={this.FetchingStyle}>im Fetching GUYS hold on dont stress me !</h1>
+                }
+
+                {   this.props.Blog.didInvalidate &&
+                    <h1 style={this.FetchingStyle}> NOOOOOOOOOOOOOOOOOOO LOL WUT Something went WRONG i guess .... holy fuck terribly wrong</h1>
+                }
+
+                {   !this.props.Blog.didInvalidate && !this.props.Blog.isFetching &&
+                    <div>
+                    <BlogHeader blogheader={this.props.blogheader}></BlogHeader>
+                    <BlogContent blogcontent={this.props.blogcontent}></BlogContent>
+                    </div>
+                }
+
+                <p>What up Mate dis is the OP Blog Home</p>
+                    {/*<Quotation></Quotation>*/}
+                <p>Helo from se otha saide</p>
+
                 <p>Loading...</p>
             </div>
         )
@@ -49,19 +54,14 @@ BlogSingle.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    var link = {}
-    var blogid = 1
-    var thumbnail = { link: "saqasd", }
-
-    blogid = ownProps.blogid
-    link = Object.assign({}, state.Picture)
-
-    thumbnail = Object.assign({}, state.Picture.picture_obj)
+    var Blog = { didInvalidate: '', isFetching: ''}
+    let BlogContent = Object.assign({}, state.Blog.blogcontent)
+    let BlogHeader = Object.assign({}, state.Blog.blogheader)
 
     return {
-        bid:blogid,
-        thumbnail: thumbnail[blogid],
-        data: state,
+        Blog: Blog,
+        blogcontent: BlogContent,
+        blogheader: BlogHeader,
     }
 }
 

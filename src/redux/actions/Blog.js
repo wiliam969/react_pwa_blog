@@ -18,7 +18,7 @@ export const receiveBlogSingle = (blog) => {
     return {
         type: 'RECEIVE_BLOG_SINGLE',
         blog:blog,
-        // receivedAt: Date.now(),
+        receivedAt: Date.now(),
     }
 }
 

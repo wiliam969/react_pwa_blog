@@ -17,8 +17,6 @@ function Blog(state = {/** isFetching: false, didInvalidate: false, item: null *
             return Object.assign({}, state, {
                 isFetching: false,
                 didInvalidate: false,
-                item: action.blog,
-                blog:action.blog,
                 blogcontent: {
                     title: action.blog.title.rendered,
                     content: action.blog.content.rendered,

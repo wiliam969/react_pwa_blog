@@ -5,7 +5,11 @@ import {
     fetchPicture
 } from '../../../redux/actions/Picture'
 
+import VisibilitySensor from 'react-visibility-sensor'
+
 class Thumbnail extends Component {
+
+    isActive = true
 
     renderLink() {
 
@@ -32,14 +36,27 @@ class Thumbnail extends Component {
     }
 
    render() {
-        if(this.props.thumbnail) {
-            return (
-                <div>
-                    <div style={this.renderLink()}>{  }</div>
-               </div>
-            )
-        }
-        return <div>Loading...</div>
+       const onChange = (isVisible) => {
+           if(isVisible) {
+               console.log("im here")
+               this.props.sendTheAlert(this.props)
+               this.isActive = false
+           } else {
+               console.log("not anymore")
+           }
+           console.log('Element is now %s', isVisible ? 'visible' : 'hidden')
+       }
+
+        return (
+            <VisibilitySensor onChange={onChange} active={this.isActive}>
+                {this.props.thumbnail != 0 &&
+                    <div>
+                        im there guys
+                        {/*<div style={this.renderLink()}>{  }</div>*/}
+                    </div>
+                }
+            </VisibilitySensor>
+        )
     }
 }
 
@@ -64,4 +81,10 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 
-export default connect(mapStateToProps,fetchPicture)(Thumbnail)
+const mapDispatchToProps = (dispatch,ownProps) => {
+    return({
+        sendTheAlert: (e) => { dispatch(fetchPicture(e))}
+    })
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Thumbnail)

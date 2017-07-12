@@ -25,6 +25,8 @@ class Home extends Component {
     }
 
     componentDidMount() {
+        const { dispatch, ownProps } = this.props
+        dispatch(fetchBlogPreviews(this.props))
     }
 
     render () {
@@ -70,5 +72,5 @@ function mapDispatchToProps (dispatch) {
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Home)
+export default connect(mapStateToProps)(Home)
 

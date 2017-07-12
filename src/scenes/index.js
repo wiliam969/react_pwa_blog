@@ -9,7 +9,6 @@ import { fetchcorrectSite} from "../redux/actions/AsyncApp";
 
 const store = configureStore()
 
-store.dispatch(fetchBlogPreviews())
 store.dispatch(fetchcorrectSite())
 
 export default class Root extends Component {

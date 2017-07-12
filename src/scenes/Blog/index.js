@@ -65,11 +65,4 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-        actions: () => {dispatch(fetchBlogSingle(ownProps))}
-    }
-    // return bindActionCreators(fetchBlogSingle(ownProps), dispatch)
-}
-
 export default connect(mapStateToProps)(BlogSingle)

@@ -64,7 +64,10 @@ function mapStateToProps(state,ownProps) {
 }
 
 function mapDispatchToProps (dispatch) {
-    return bindActionCreators(Object.assign({},fetchBlogPreviews), dispatch)
+    return {
+        actions:
+        bindActionCreators({fetchBlogPreviews},dispatch)
+    }
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(Home)

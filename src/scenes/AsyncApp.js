@@ -38,7 +38,8 @@ class AsyncApp extends Component {
                         <Route path="/home" render={() => <Home homedata={this.props.homedata}></Home>}></Route>
                         <Route path="/aboutme" component={AboutMe} aboutme={this.props.aboutme}></Route>
                         <Route path="/gallery" component={Gallery} gallery={this.props.gallery}></Route>
-                        <Route path="/blog/:id" component={BlogSingle} blogsingle={this.props.blog}></Route>
+                        <Route path="/blog/:id" component={BlogSingle}></Route>
+                        {/*<Route path="/blog/:id" render={() => <BlogSingle blogsingle={this.props}></BlogSingle>}></Route>*/}
                     </div>
                 </Router>
 

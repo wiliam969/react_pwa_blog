@@ -8,13 +8,39 @@ class Comments extends Component {
 
     constructor(props) {
         super(props)
-        // this.fucku()
+
+        this.state = {
+            commentname:2,
+            commentemail:2,
+            commentwebsite:2,
+            commentpost:2,
+        }
+
+        this.handleInputChange = this.handleInputChange.bind(this);
     }
 
 
     componentDidMount() {
-        // const { dispatch, ownProps } = this.props
-        // dispatch(fetchBlogSingle(this.props))
+    }
+
+    handleInputChange(event) {
+        const target = event.target
+        console.log(target)
+        const value = target.value
+        console.log(value)
+        const name = target.name
+        console.log(name)
+
+        this.setState({
+            [name]: value
+        })
+
+        console.log(this.state)
+    }
+
+    submitForm() {
+        const { dispatch, ownProps } = this.props
+        // dispatch(fetchBlogSingle(this.state))
     }
 
     render() {
@@ -35,11 +61,11 @@ class Comments extends Component {
                     </div>
                     <div className="comments-form">
                     <form>
-                        <input type="text" id="name" name="name" placeholder="name"/>
-                        <input type="text" id="email" name="email" placeholder="email"/>
-                        <input type="text" id="website" name="website" placeholder="website"/>
-                        <textarea type="text" id="comment" name="comment" placeholder="comment"/>
-                        <input type="submit" name="submit" id="submit"/>
+                        <input type="text" id="name" name="commentname" placeholder="name" value={this.state.commentname} onChange={this.handleInputChange}/>
+                        <input type="text" id="email" name="commentemail" placeholder="email" value={this.state.commentemail} onChange={this.handleInputChange}/>
+                        <input type="text" id="website" name="commentwebsite" placeholder="website" value={this.state.commentwebsite} onChange={this.handleInputChange}/>
+                        <textarea type="text" id="comment" name="commentpost" placeholder="comment" value={this.state.commentpost} onChange={this.handleInputChange}/>
+                        <input type="submit" name="submit" id="submit" onClick={this.submitForm}/>
                     </form>
                     </div>
                 </div>

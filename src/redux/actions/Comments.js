@@ -48,7 +48,7 @@ export function sendComments(comments) {
 
     return function(dispatch,comments) {
 
-        consolge.log(comments)
+        console.log(comments)
 
         console.log(comments_data)
         return axios.post ('http://localhost/wp_rest_api/wp-json/v2/comments', {
@@ -59,7 +59,7 @@ export function sendComments(comments) {
                 return dispatch(sendComment(response.data))
             }).catch(error => {
                 console.log(error)
-                retirm dispatch(failedComment(error))
+                return dispatch(failedComment(error))
             })
     }
 }

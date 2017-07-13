@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux'
 
 import BlogHeader from './components/blogheader'
 import BlogContent from './components/blogcontent'
+// import LazyBlogItemLoad from './components/LazyBlogItemLoad'
 
 class BlogSingle extends Component {
 
@@ -21,6 +22,10 @@ class BlogSingle extends Component {
     }
 
     render() {
+        var checkifworks = {
+            height: 2000 + 'px',
+            width: 100 + '%',
+        }
         return (
             <div>
 
@@ -36,6 +41,7 @@ class BlogSingle extends Component {
                     <div>
                     <BlogHeader blogheader={this.props.blogheader}></BlogHeader>
                     <BlogContent blogcontent={this.props.blogcontent}></BlogContent>
+                        <div style={checkifworks}></div>
                     </div>
                 }
 

@@ -42,3 +42,19 @@ export function fetchBlogSingle(blog = 1) {
             })
     }
 }
+
+export function fetchLazyBlog(date) {
+    const datum = date.blogheader.date
+    console.log(datum)
+    return function (dispatch,date) {
+        dispatch(requestBlogSingle(datum))
+        console.log(datum)
+        return axios.get('http://localhost/wp_rest_api/wp-json/wp/v2/posts?before=' + datum + '&per_page=1')
+            .then(response => {
+                console.log(response)
+                return dispatch(receiveBlogSingle(response.data[0]))
+            }).catch(error => {
+                return dispatch(invalidateBlogSingle(error))
+            })
+    }
+}

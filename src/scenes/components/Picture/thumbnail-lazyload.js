@@ -20,14 +20,19 @@ class Thumbnail extends Component {
             arr_thumbnail.push(thumbnail[i])
 
         console.log(arr_thumbnail)
+        console.log(arr_thumbnail[21])
 
-        var Style = null
+        if(arr_thumbnail[21] == null){
 
-        return Style = {
-            backgroundImage: 'url(' + arr_thumbnail[21]['sizes']['thumbnail']['source_url'] + ')',
-            backgroundPosition: 'center center',
-            width:200 + 'px',
-            height:200+ 'px',
+        } else {
+            var Style = null
+
+            return Style = {
+                backgroundImage: 'url(' + arr_thumbnail[21]['sizes']['thumbnail']['source_url'] + ')',
+                backgroundPosition: 'center center',
+                width:200 + 'px',
+                height:200+ 'px',
+            }
         }
     }
 
@@ -38,7 +43,6 @@ class Thumbnail extends Component {
    render() {
        const onChange = (isVisible) => {
            if(isVisible) {
-               console.log("im here")
                this.props.sendTheAlert(this.props)
                this.isActive = false
            } else {
@@ -52,7 +56,7 @@ class Thumbnail extends Component {
                 {this.props.thumbnail != 0 &&
                     <div>
                         im there guys
-                        {/*<div style={this.renderLink()}>{  }</div>*/}
+                        <div style={this.renderLink()}>{  }</div>
                     </div>
                 }
             </VisibilitySensor>

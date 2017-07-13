@@ -117,14 +117,14 @@ export function fetchPicture (post_id = 1) {
     return function(dispatch,post_id) {
         dispatch(requestPicture(post_id))
 
-        return axios.get('http://localhost/wp_rest_api/wp-json/wp/v2/media?parent=' + post_id.blogid)
+        return axios.get('http://localhost/wp_rest_api/wp-json/wp/v2/media?parent=' + id.blogid)
             .then(response => {
                 if(response.data.length != 0)
-                    return dispatch(receivePicture(response.data[0],post_id.blogid))
+                    return dispatch(receivePicture(response.data[0],id.blogid))
                 else
-                    return dispatch(receivePicture(defaultPicture,post_id.blogid))
+                    return dispatch(receivePicture(defaultPicture,id.blogid))
             }).catch(error => {
-                return dispatch(invalidatePicture(error,post_id.blogid))
+                return dispatch(invalidatePicture(error,id.blogid))
             })
     }
 }

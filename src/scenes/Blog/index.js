@@ -7,6 +7,7 @@ import { bindActionCreators } from 'redux'
 import BlogHeader from './components/blogheader'
 import BlogContent from './components/blogcontent'
 // import LazyBlogItemLoad from './components/LazyBlogItemLoad'
+import Comments from './Comments'
 
 class BlogSingle extends Component {
 
@@ -41,6 +42,7 @@ class BlogSingle extends Component {
                     <div>
                     <BlogHeader blogheader={this.props.blogheader}></BlogHeader>
                     <BlogContent blogcontent={this.props.blogcontent}></BlogContent>
+                        <Comments></Comments>
                         <div style={checkifworks}></div>
                     </div>
                 }

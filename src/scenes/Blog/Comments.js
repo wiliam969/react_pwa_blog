@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-// import { fetchBlogSingle } from '../../redux/actions/Blog'
+import { sendComments } from '../../redux/actions/Comments'
 import { bindActionCreators } from 'redux'
 
 class Comments extends Component {
@@ -39,8 +39,9 @@ class Comments extends Component {
     }
 
     submitForm() {
+        // e.preventDefault()
         const { dispatch, ownProps } = this.props
-        // dispatch(fetchBlogSingle(this.state))
+        dispatch(sendComments(this.state))
     }
 
     render() {
@@ -60,12 +61,15 @@ class Comments extends Component {
                     <div className="comments-wrapper">
                     </div>
                     <div className="comments-form">
-                    <form>
+                    <form onSubmit={e => {
+                        e.preventDefault()
+                        this.submitForm()
+                    }}>
                         <input type="text" id="name" name="commentname" placeholder="name" value={this.state.commentname} onChange={this.handleInputChange}/>
                         <input type="text" id="email" name="commentemail" placeholder="email" value={this.state.commentemail} onChange={this.handleInputChange}/>
                         <input type="text" id="website" name="commentwebsite" placeholder="website" value={this.state.commentwebsite} onChange={this.handleInputChange}/>
                         <textarea type="text" id="comment" name="commentpost" placeholder="comment" value={this.state.commentpost} onChange={this.handleInputChange}/>
-                        <input type="submit" name="submit" id="submit" onClick={this.submitForm}/>
+                        <button type="submit" name="submit" id="submit">Submit</button>
                     </form>
                     </div>
                 </div>

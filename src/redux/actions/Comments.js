@@ -51,8 +51,13 @@ export function sendComments(comments) {
         console.log(comments)
 
         console.log(comments_data)
-        return axios.post ('http://localhost/wp_rest_api/wp-json/v2/comments', {
-
+        console.log("hey")
+        return axios.post('http://localhost/wp_rest_api/wp-json/v2/comments', {
+            author_name: comments_data.commentname,
+            post: 1,
+            content: comments_data.commentpost,
+            author_url:comments_data.commentwebsite,
+            author_email:comments_data.commentemail,
         })
             .then(response => {
                 console.log(response)

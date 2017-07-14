@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchLazyBlog } from '../../../../redux/actions/Blog'
 
-import BlogContent from './blogcontent'
-import BlogHeader from './blogheader'
+import Blog from '../index'
 
 class LazyBlogItemLoad extends Component {
+
+    isEnd = 0
 
     constructor(props) {
         super(props);
@@ -45,11 +46,15 @@ class LazyBlogItemLoad extends Component {
     }
 
     render() {
+        const isEnd = this.isEnd
         return (
-            <div>
-                <BlogHeader blogheader={this.props.blogheader}></BlogHeader>
-                <BlogContent blogcontent={this.props.blogcontent}></BlogContent>
-            </div>
+
+            { isEnd &&
+                <div>
+                    <Blog></Blog>
+                </div>
+            }
+
         );
     }
 }

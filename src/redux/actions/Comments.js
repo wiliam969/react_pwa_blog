@@ -43,6 +43,22 @@ export const failedComment = (comment) => {
     }
 }
 
+export function fetchComments(post) {
+    const post_id = post
+
+    return function (dispatch, comments) {
+        dispatch(requestComment(post_id))
+        return axios.get('http://localhost/wp_rest_api/wp-json/wp/v2/comments?post=' + post_id.blogid)
+            .then(response => {
+                console.log(response)
+                dispatch(receiveComment(response.data))
+            }).catch(error => {
+                console.log(error)
+                dispatch(invalidateComment(error))
+            })
+    }
+}
+
 export function sendComments(comments) {
     const comments_data = comments
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { sendComments } from '../../../../redux/actions/Comments'
+import { sendComments,fetchComments } from '../../../../redux/actions/Comments'
 import { bindActionCreators } from 'redux'
 
 class Comments extends Component {
@@ -21,6 +21,8 @@ class Comments extends Component {
 
 
     componentDidMount() {
+        const { dispatch, ownProps } = this.props
+        dispatch(fetchComments(this.props))
     }
 
     handleInputChange(event) {

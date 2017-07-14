@@ -42,7 +42,7 @@ class BlogSingle extends Component {
                     <div>
                     <BlogHeader blogheader={this.props.blogheader}></BlogHeader>
                     <BlogContent blogcontent={this.props.blogcontent}></BlogContent>
-                        <Comments></Comments>
+                        <Comments blogid={this.props.match.params.id}></Comments>
                         <div style={checkifworks}></div>
                     </div>
                 }

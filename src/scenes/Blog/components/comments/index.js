@@ -95,11 +95,13 @@ const mapStateToProps = (state, ownProps) => {
     var Blog = { didInvalidate: '', isFetching: ''}
     let BlogContent = Object.assign({}, state.Blog.blogcontent)
     let BlogHeader = Object.assign({}, state.Blog.blogheader)
+    let Comments = Object.assign({}, state.Comments)
 
     return {
         Blog: Blog,
         blogcontent: BlogContent,
         blogheader: BlogHeader,
+        comments: Comments,
     }
 }
 

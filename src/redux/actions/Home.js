@@ -29,6 +29,8 @@ export const invalidateBlogPreview = (blogs) => {
     }
 }
 
+// this is it
+
 export function fetchBlogPreviews(blogs) {
     return function(dispatch) {
         dispatch(requestBlogPreview(blogs))

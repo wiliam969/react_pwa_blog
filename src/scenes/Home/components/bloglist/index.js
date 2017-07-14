@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Thumbnail from '../../../components/Picture/thumbnail-lazyload'
+import { Link } from 'react-router-dom'
 
 export default class BlogList extends Component {
 
@@ -20,7 +21,7 @@ export default class BlogList extends Component {
                             <Thumbnail blogid={post.id} type="thumbnail"></Thumbnail>
                             <div className="blog-title">{post.title.rendered}</div>
                             <div className="blog-preview-text">{post.excerpt.rendered}</div>
-                            <div className="readmore"><a href={this.fu + 'blog/' + post.id}>Weiterlesen</a></div>
+                            <div className="readmore"><Link to={{ pathname: '/blog/' + post.id, }}>Weitalesen...</Link></div>
                         </div>
                     )
                 }

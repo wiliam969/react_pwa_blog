@@ -7,6 +7,8 @@ import {
 
 import VisibilitySensor from 'react-visibility-sensor'
 
+
+
 class Picture extends Component {
 
     thummbnail = this.props.picturedata
@@ -15,13 +17,15 @@ class Picture extends Component {
 
     }
 
-    constructor(props) {
-        super(props)
-    }
+    //constructor(props) {
+    //    super(props)
+    //}
+
+
 
     onChange (isVisible,blogid) {
-        fetchPicture()
-        // console.log('Element is now %s', isVisible ? 'visible' : 'hidden')
+        this.props.dispatch.fetchPicture()
+        console.log('Element is now %s', isVisible ? 'visible' : 'hidden')
     }
 
     render() {
@@ -49,10 +53,9 @@ const mapStateToProps = (state) => {
     link = Object.assign({}, state.Picture)
 
     return {
-
         link: link.img_link,
         data: state,
     }
 }
 
-export default connect(mapStateToProps,fetchPicture)(Picture)
+export default connect()(Picture)

@@ -29,7 +29,7 @@ export const invalidateBlogPreview = (blogs) => {
     }
 }
 
-// this is it
+// this is it lul it wörks haha didint expected this :D
 
 export function fetchBlogPreviews(blogs) {
     return function(dispatch) {

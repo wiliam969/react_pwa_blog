@@ -7,7 +7,7 @@ import { bindActionCreators } from 'redux'
 import BlogHeader from './components/blogheader'
 import BlogContent from './components/blogcontent'
 // import LazyBlogItemLoad from './components/LazyBlogItemLoad'
-import Comments from './Comments'
+import Comments from './components/comments/index'
 
 class BlogSingle extends Component {
 

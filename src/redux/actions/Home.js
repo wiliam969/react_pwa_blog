@@ -32,9 +32,11 @@ export const invalidateBlogPreview = (blogs) => {
 export function fetchBlogPreviews(blogs) {
     return function(dispatch) {
         dispatch(requestBlogPreview(blogs))
-        return  BlogApi.getBlogList()
-            .then(response => {
-                return dispatch(receiveBlogpreview(response.data))
+        return  fetch('http://localhost/wp_rest_api/wp-json/wp/v2/posts/',{method: 'GET'})
+            .then((response) => response.json())
+            .then(responseJson => {
+                console.log(responseJson)
+                return dispatch(receiveBlogpreview(responseJson))
             }).catch(error => {
                 return dispatch(invalidateBlogPreview(error))
             })

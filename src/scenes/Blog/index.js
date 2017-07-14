@@ -4,8 +4,8 @@ import PropTypes from 'prop-types'
 import { fetchBlogSingle } from '../../redux/actions/Blog'
 import { bindActionCreators } from 'redux'
 
-import BlogHeader from './components/blogheader'
-import BlogContent from './components/blogcontent'
+import BlogHeader from './components/blog/blogheader'
+import BlogContent from './components/blog/blogcontent'
 // import LazyBlogItemLoad from './components/LazyBlogItemLoad'
 import Comments from './components/comments/index'
 

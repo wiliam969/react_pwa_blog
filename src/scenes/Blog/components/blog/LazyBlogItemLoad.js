@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchLazyBlog } from '../../../redux/actions/Blog'
+import { fetchLazyBlog } from '../../../../redux/actions/Blog'
 
 import BlogContent from './blogcontent'
 import BlogHeader from './blogheader'

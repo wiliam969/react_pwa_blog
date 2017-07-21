@@ -34,7 +34,7 @@ export const invalidateBlogPreview = (blogs) => {
 export function fetchBlogPreviews(blogs) {
     return function(dispatch) {
         dispatch(requestBlogPreview(blogs))
-        return  fetch('http://localhost/wp_rest_api/wp-json/wp/v2/posts/',{method: 'GET'})
+        return  fetch('http://localhost:8000/wp-json/wp/v2/posts/',{method: 'GET'})
             .then((response) => response.json())
             .then(responseJson => {
                 console.log(responseJson)

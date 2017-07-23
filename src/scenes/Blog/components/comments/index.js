@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 import { sendComments,fetchComments } from '../../../../redux/actions/Comments'
 import { bindActionCreators } from 'redux'
 
+import CommentList from './CommentList'
+
 class Comments extends Component {
 
     constructor(props) {
@@ -61,6 +63,7 @@ class Comments extends Component {
                 {   !this.props.Blog.didInvalidate && !this.props.Blog.isFetching &&
                 <div>
                     <div className="comments-wrapper">
+                        <CommentList comments={this.props.comments.comment}></CommentList>
                     </div>
                     <div className="comments-form">
                     <form onSubmit={e => {

@@ -25,7 +25,6 @@ class Picture extends Component {
 
     onChange (isVisible,blogid) {
         this.props.dispatch.fetchPicture()
-        console.log('Element is now %s', isVisible ? 'visible' : 'hidden')
     }
 
     render() {

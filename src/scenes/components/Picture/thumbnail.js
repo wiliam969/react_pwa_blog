@@ -15,8 +15,6 @@ class Thumbnail extends Component {
         for(var i in thumbnail)
             arr_thumbnail.push(thumbnail[i])
 
-        console.log(arr_thumbnail)
-
         var Style = null
 
         return Style = {

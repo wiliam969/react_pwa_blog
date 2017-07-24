@@ -1,7 +1,6 @@
 /**
  * Created by wiliam969 on 28.04.2017.
  */
-import BlogApi from '../../storage/BlogApi'
 import db from '../../storage/index'
 
 export const REQUEST_BLOG_PREVIEW = 'REQUEST_BLOG_PREVIEW'
@@ -40,19 +39,19 @@ export function fetchBlogPreviews(blogs) {
             db.bloglist.put({ id:1, content: "fuck them right in the pussy",title :"donald ... !",readmore: "http://whatdefuckareyoudoink.com"})
         })
 
-        return db.bloglist.each(function (bloglists) {
-            console.log(bloglists)})
-            // .then((bl) => {
-            //     return dispatch(receiveBlogpreview(bl))
-            // }).catch(error => {
-            //     return dispatch(invalidateBlogPreview(error))
-            // }).then( fetch('http://localhost:8080/wp-json/wp/v2/posts/',{method: 'GET'})
-            // .then((response) => response.json())
-            // .then(responseJson => {
-            //     console.log(responseJson)
-            //     return dispatch(receiveBlogpreview(responseJson))
-            // }).catch(error => {
-            //     return dispatch(invalidateBlogPreview(error))
-            // })
+        return db.bloglist.each(bitem => {
+                console.log(bitem)
+                dispatch(receiveBlogpreview(bitem))
+            }).catch(error => {
+                console.log(error)
+                return dispatch(invalidateBlogPreview(error))
+            }).then( fetch('http://localhost:8080/wp-json/wp/v2/posts/',{method: 'GET'})
+            .then((response) => response.json())
+            .then(responseJson => {
+                return dispatch(receiveBlogpreview(responseJson))
+            }).catch(error => {
+                return dispatch(invalidateBlogPreview(error))
+            })
+        )
     }
 }

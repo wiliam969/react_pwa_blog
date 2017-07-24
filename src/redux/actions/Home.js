@@ -45,19 +45,46 @@ export function fetchBlogPreviews(blogs) {
             })
         })
 
-
-
-        return db.table('bloglist').toArray().then(bitems => {
+        return db.table('blog').toArray().then(bitems => {
             return dispatch(receiveBlogpreview(bitems))
         })
-            .then(() => fetch('http://localhost:8080/wp-json/wp/v2/posts/', {method: 'GET'}))
+        .then(() => fetch('http://localhost:8000/wp-json/wp/v2/posts/', {method: 'GET'}))
         .then((response) => response.json())
         .then(responseJson => {
             console.log(responseJson)
 
+            responseJson.map((post,index) => {
+                db.blog.put({
+                    id:post.id,
+                    date:post.date,
+                    date_gmt:post.date_gmt,
+                    guid:post.guid,
+                    modified:post.modified,
+                    modified_gmt:post.modified_gmt,
+                    slug:post.slug,
+                    status:post.status,
+                    type:post.type,
+                    link:post.link,
+                    title:post.title,
+                    content:post.content,
+                    excerpt:post.excerpt,
+                    author:post.author,
+                    featured_media:post.featured_media,
+                    comment_status:post.comment_status,
+                    ping_status:post.ping_status,
+                    sticky:post.sticky,
+                    template:post.template,
+                    format:post.format,
+                    meta:post.meta,
+                    categories:post.categories,
+                    tags:post.tags,
+                    _links:post._links
+                })
+            })
+
             return dispatch(receiveBlogpreview(responseJson))
         }).catch(error => {
-                return dispatch(invalidateBlogPreview(error))
-            })
+            return dispatch(invalidateBlogPreview(error))
+        })
     }
 }

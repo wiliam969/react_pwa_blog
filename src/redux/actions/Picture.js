@@ -117,7 +117,7 @@ export function fetchPicture (post_id = 1) {
     return function(dispatch,post_id) {
         dispatch(requestPicture(post_id))
 
-        return axios.get('http://localhost:8080/wp-json/wp/v2/media?parent=' + id.blogid)
+        return axios.get('http://localhost:8000/wp-json/wp/v2/media?parent=' + id.blogid)
             .then(response => {
                 if(response.data.length != 0)
                     return dispatch(receivePicture(response.data[0],id.blogid))

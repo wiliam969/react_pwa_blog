@@ -34,7 +34,7 @@ export function fetchBlogSingle(blog = 1) {
     console.log(id)
     return function (dispatch,blog) {
         dispatch(requestBlogSingle(id))
-        return axios.get('http://localhost:8080/wp-json/wp/v2/posts/' + id)
+        return axios.get('http://localhost:8000/wp-json/wp/v2/posts/' + id)
             .then(response => {
                 return dispatch(receiveBlogSingle(response.data))
             }).catch(error => {
@@ -49,9 +49,12 @@ export function fetchLazyBlog(date) {
     return function (dispatch,date) {
         dispatch(requestBlogSingle(datum))
         console.log(datum)
-        return axios.get('http://localhost:8080/wp-json/wp/v2/posts?before=' + datum + '&per_page=1')
+        return axios.get('http://localhost:8000/wp-json/wp/v2/posts?before=' + datum + '&per_page=1')
             .then(response => {
                 console.log(response)
+
+
+
                 return dispatch(receiveBlogSingle(response.data[0]))
             }).catch(error => {
                 return dispatch(invalidateBlogSingle(error))

@@ -36,7 +36,7 @@ export function fetchBlogPreviews(blogs) {
         dispatch(requestBlogPreview(blogs))
 
         db.transaction('rw', db.bloglist, function () {
-            db.bloglist.put({ id:1, content: "fuck them right in the pussy",title :"donald ... !",readmore: "http://whatdefuckareyoudoink.com"})
+            db.bloglist.put({ id:1, content: { rendered: "fuck them right in the pussy"},title : { rendered:"donald ... !"},readmore: "http://whatdefuckareyoudoink.com", date:"2017-07-24T08:52:39"})
         })
 
         return db.bloglist.each(bitem => {
@@ -48,6 +48,9 @@ export function fetchBlogPreviews(blogs) {
             }).then( fetch('http://localhost:8080/wp-json/wp/v2/posts/',{method: 'GET'})
             .then((response) => response.json())
             .then(responseJson => {
+                console.log(responseJson)
+
+
                 return dispatch(receiveBlogpreview(responseJson))
             }).catch(error => {
                 return dispatch(invalidateBlogPreview(error))

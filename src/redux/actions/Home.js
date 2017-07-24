@@ -36,25 +36,39 @@ export function fetchBlogPreviews(blogs) {
         dispatch(requestBlogPreview(blogs))
 
         db.transaction('rw', db.bloglist, function () {
-            db.bloglist.put({ id:1, content: { rendered: "fuck them right in the pussy"},title : { rendered:"donald ... !"},readmore: "http://whatdefuckareyoudoink.com", date:"2017-07-24T08:52:39"})
+            db.bloglist.put({
+                id: 1,
+                excerpt: {rendered: "fuck them right in the pussy"},
+                title: {rendered: "donald ... !"},
+                readmore: "http://whatdefuckareyoudoink.com",
+                date: "2017-07-24T08:52:39"
+            })
         })
 
-        return db.bloglist.each(bitem => {
-                console.log(bitem)
-                dispatch(receiveBlogpreview(bitem))
-            }).catch(error => {
-                console.log(error)
-                return dispatch(invalidateBlogPreview(error))
-            }).then( fetch('http://localhost:8080/wp-json/wp/v2/posts/',{method: 'GET'})
+
+        let bloglistwrapper = []
+
+        let husos = db.bloglist.each(fu => {
+            console.log(fu)
+            console.log(husos)
+            bloglistwrapper.push(fu)
+        })
+        console.log(husos)
+
+        console.log(bloglistwrapper)
+
+        // if (bloglistwrapper.length == 2) {
+        //     return dispatch(receiveBlogpreview(bloglistwrapper))
+
+            return fetch('http://localhost:8080/wp-json/wp/v2/posts/', {method: 'GET'})
             .then((response) => response.json())
             .then(responseJson => {
                 console.log(responseJson)
-
 
                 return dispatch(receiveBlogpreview(responseJson))
             }).catch(error => {
                 return dispatch(invalidateBlogPreview(error))
             })
-        )
+        // }
     }
 }

@@ -5,8 +5,9 @@ db.version(1).stores({
     bloglist: "++id,content,title,readmore"
 });
 
-db.bloglist.put({id:22131, content:"who the fuck is gene winter", title:"hey", readmore:"readmore.org"})
+db.bloglist.put({id:22131, excerpt: { rendered : "who the fuck is gene winter"}, title: { rendered: "hey" }, readmore:"readmore.org"})
 
 export default db
+
 
 

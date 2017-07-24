@@ -45,30 +45,17 @@ export function fetchBlogPreviews(blogs) {
             })
         })
 
-
-        let bloglistwrapper = []
-
-        let husos = db.bloglist.each(fu => {
-            console.log(fu)
-            console.log(husos)
-            bloglistwrapper.push(fu)
+        return db.table('bloglist').toArray().then(bitems => {
+            console.log(bitems)
+            dispatch(receiveBlogpreview(bitems))
         })
-        console.log(husos)
-
-        console.log(bloglistwrapper)
-
-        // if (bloglistwrapper.length == 2) {
-        //     return dispatch(receiveBlogpreview(bloglistwrapper))
-
-            return fetch('http://localhost:8080/wp-json/wp/v2/posts/', {method: 'GET'})
-            .then((response) => response.json())
-            .then(responseJson => {
-                console.log(responseJson)
-
-                return dispatch(receiveBlogpreview(responseJson))
-            }).catch(error => {
-                return dispatch(invalidateBlogPreview(error))
-            })
-        // }
+        // .then((response) => response.json())
+        // .then(responseJson => {
+        //     console.log(responseJson)
+        //
+        //     return dispatch(receiveBlogpreview(responseJson))
+        // }).catch(error => {
+        //     return dispatch(invalidateBlogPreview(error))
+        // })
     }
 }

@@ -48,7 +48,7 @@ export function fetchBlogPreviews(blogs) {
 
 
         return db.table('bloglist').toArray().then(bitems => {
-            dispatch(receiveBlogpreview(bitems))
+            return dispatch(receiveBlogpreview(bitems))
         })
             .then(() => fetch('http://localhost:8080/wp-json/wp/v2/posts/', {method: 'GET'}))
         .then((response) => response.json())

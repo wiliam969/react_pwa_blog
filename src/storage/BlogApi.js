@@ -1,5 +1,5 @@
 import axios from 'axios'
-import PictureApi from './PictureApi'
+import dexie from 'dexie'
 
 export default class BlogApi {
 
@@ -7,36 +7,26 @@ export default class BlogApi {
     static suffix = process.env.REACT_APP_SUFFIX
     static api = process.env.REACT_APP_API
     static api_url = BlogApi.suffix + BlogApi.url + BlogApi.api
+    static db = BlogApi.db = new dexie(process.env.REACT_APP_IDB_NAME)
 
     constructor() {
-        console.log(this.api_url)
+        console.log(BlogApi.api_url)
+
     }
 
     static getBlogList() {
-        console.log(process.env)
-        const api = BlogApi.api_url
-
-        return axios.get(api + 'posts')
-    }
-
-    getSingleBlog(id) {
-        console.log(id)
-        const api = BlogApi.api_url
-
-        return axios.get(api + 'posts/' + id)
-    }
-
-    static getBlogAttachments(id) {
-        let checkpic = PictureApi.checkPicture(id)
-
-        if(!checkpic) {
-            let thumbnail
-            let small
-            let fullscreen
-            let large
-            let medium
-        }
-
-        return false
+        BlogApi.db.bloglist.get({}, bl => {
+            return bl
+        }).then (
+            fetch(BlogApi.api_url + 'posts/',{method: 'GET'})
+            .then((response) => response.json())
+            .then(responseJson => {
+                console.log(responseJson)
+                BlogApi.db.bloglist.put(responseJson)
+                return responseJson
+            }).catch(error => {
+                return error
+            })
+        )
     }
 }

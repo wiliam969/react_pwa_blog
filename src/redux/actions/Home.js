@@ -2,7 +2,7 @@
  * Created by wiliam969 on 28.04.2017.
  */
 import BlogApi from '../../storage/BlogApi'
-import Dexie from 'dexie'
+import db from '../../storage/index'
 
 export const REQUEST_BLOG_PREVIEW = 'REQUEST_BLOG_PREVIEW'
 export const RECEIVE_BLOG_PREVIEW = 'RECEIVE_BLOG_PREVIEW'
@@ -36,28 +36,23 @@ export function fetchBlogPreviews(blogs) {
     return function(dispatch) {
         dispatch(requestBlogPreview(blogs))
 
-        const db = new Dexie("pwa_react_blog")
-
         db.transaction('rw', db.bloglist, function () {
-            Dexie.bloglist.put({ id:1, content: "fuck them right in the pussy",title :"donald ... !",readmore: "http://whatdefuckareyoudoink.com"})
+            db.bloglist.put({ id:1, content: "fuck them right in the pussy",title :"donald ... !",readmore: "http://whatdefuckareyoudoink.com"})
         })
 
-        // return
-        // db.bloglist.get({id:1})
-        //     .then((bl) => {
-        //         return dispatch(receiveBlogpreview(bl))
-        //     }).catch(error => {
-        //
-        //     })
-        // .then(
-        return fetch('http://localhost:8080/wp-json/wp/v2/posts/',{method: 'GET'})
-            .then((response) => response.json())
-            .then(responseJson => {
-                console.log(responseJson)
-                return dispatch(receiveBlogpreview(responseJson))
-            }).catch(error => {
-                return dispatch(invalidateBlogPreview(error))
-            })
-        // )
+        return db.bloglist.each(function (bloglists) {
+            console.log(bloglists)})
+            // .then((bl) => {
+            //     return dispatch(receiveBlogpreview(bl))
+            // }).catch(error => {
+            //     return dispatch(invalidateBlogPreview(error))
+            // }).then( fetch('http://localhost:8080/wp-json/wp/v2/posts/',{method: 'GET'})
+            // .then((response) => response.json())
+            // .then(responseJson => {
+            //     console.log(responseJson)
+            //     return dispatch(receiveBlogpreview(responseJson))
+            // }).catch(error => {
+            //     return dispatch(invalidateBlogPreview(error))
+            // })
     }
 }

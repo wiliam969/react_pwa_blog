@@ -1,7 +1,7 @@
 /**
  * Created by wiliam969 on 28.04.2017.
  */
-import BlogApi from '../../api/BlogApi'
+import BlogApi from '../../storage/BlogApi'
 
 export const REQUEST_BLOG_PREVIEW = 'REQUEST_BLOG_PREVIEW'
 export const RECEIVE_BLOG_PREVIEW = 'RECEIVE_BLOG_PREVIEW'
@@ -34,7 +34,7 @@ export const invalidateBlogPreview = (blogs) => {
 export function fetchBlogPreviews(blogs) {
     return function(dispatch) {
         dispatch(requestBlogPreview(blogs))
-        return  fetch('http://localhost:8000/wp-json/wp/v2/posts/',{method: 'GET'})
+        return  fetch('http://localhost:8080/wp-json/wp/v2/posts/',{method: 'GET'})
             .then((response) => response.json())
             .then(responseJson => {
                 console.log(responseJson)

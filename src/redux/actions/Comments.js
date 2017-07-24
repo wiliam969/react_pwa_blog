@@ -48,7 +48,7 @@ export function fetchComments(post) {
 
     return function (dispatch, comments) {
         dispatch(requestComment(post_id))
-        return axios.get('http://localhost:8000/wp-json/wp/v2/comments?post=' + post_id.blogid)
+        return axios.get('http://localhost:8080/wp-json/wp/v2/comments?post=' + post_id.blogid)
             .then(response => {
                 console.log(response)
                 dispatch(receiveComment(response.data))
@@ -68,7 +68,7 @@ export function sendComments(comments) {
 
         console.log(comments_data)
         console.log("hey")
-        return axios.post('http://localhost:8000/wp-json/v2/comments', {
+        return axios.post('http://localhost:8080/wp-json/v2/comments', {
             author_name: comments_data.commentname,
             post: 1,
             content: comments_data.commentpost,

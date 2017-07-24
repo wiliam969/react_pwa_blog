@@ -35,16 +35,6 @@ export function fetchBlogPreviews(blogs) {
     return function(dispatch) {
         dispatch(requestBlogPreview(blogs))
 
-        db.transaction('rw', db.bloglist, function () {
-            db.bloglist.put({
-                id: 1,
-                excerpt: {rendered: "fuck them right in the pussy"},
-                title: {rendered: "donald ... !"},
-                readmore: "http://whatdefuckareyoudoink.com",
-                date: "2017-07-24T08:52:39"
-            })
-        })
-
         return db.table('blog').toArray().then(bitems => {
             return dispatch(receiveBlogpreview(bitems))
         })

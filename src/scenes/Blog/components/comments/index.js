@@ -52,19 +52,21 @@ class Comments extends Component {
         return (
             <div>
 
-                {   this.props.Blog.isFetching &&
+                {   this.props.comments.isFetching &&
                 <h1 style={this.FetchingStyle}>im Fetching GUYS hold on dont stress me !</h1>
                 }
 
-                {   this.props.Blog.didInvalidate &&
+                {   this.props.comments.didInvalidate &&
                 <h1 style={this.FetchingStyle}> NOOOOOOOOOOOOOOOOOOO LOL WUT Something went WRONG i guess .... holy fuck terribly wrong</h1>
                 }
 
-                {   !this.props.Blog.didInvalidate && !this.props.Blog.isFetching &&
+                {   !this.props.comments.didInvalidate && !this.props.comments.isFetching &&
                 <div>
-                    <div className="comments-wrapper">
-                        <CommentList comments={this.props.comments.comment}></CommentList>
-                    </div>
+                    {   !this.props.comments.comment > 0 &&
+                        <div className="comments-wrapper">
+                            <CommentList comments={this.props.comments.comment}></CommentList>
+                        </div>
+                    }
                     <div className="comments-form">
                     <form onSubmit={e => {
                         e.preventDefault()
@@ -95,16 +97,12 @@ Comments.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    var Blog = { didInvalidate: '', isFetching: ''}
-    let BlogContent = Object.assign({}, state.Blog.blogcontent)
-    let BlogHeader = Object.assign({}, state.Blog.blogheader)
-    let Comments = Object.assign({}, state.Comments)
+    var cdata = { didInvalidate: '', isFetching: '', comment: {}}
+
+    cdata = Object.assign({}, state.Comments)
 
     return {
-        Blog: Blog,
-        blogcontent: BlogContent,
-        blogheader: BlogHeader,
-        comments: Comments,
+        comments: cdata,
     }
 }
 

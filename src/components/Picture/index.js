@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import {
     fetchPicture
-} from '../../../redux/actions/Picture'
+} from '../../services/actions/Picture'
 
 import VisibilitySensor from 'react-visibility-sensor'
 

@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { fetchBlogSingle } from '../../redux/actions/Blog'
+import { fetchBlogSingle } from '../../services/actions/Blog'
 import { bindActionCreators } from 'redux'
 
 import BlogHeader from './components/blog/blogheader'
 import BlogContent from './components/blog/blogcontent'
 // import LazyBlogItemLoad from './components/LazyBlogItemLoad'
 import Comments from './components/comments/index'
+import Loading from '../../components/loading'
 
 class BlogSingle extends Component {
 
@@ -42,7 +43,10 @@ class BlogSingle extends Component {
             <div>
 
                 {   this.props.Blog.isFetching &&
-                    <h1 style={this.FetchingStyle}>im Fetching GUYS hold on dont stress me !</h1>
+                    <div>
+                        <Loading></Loading>
+                        <h1 style={this.FetchingStyle}>im Fetching GUYS hold on dont stress me !</h1>
+                    </div>
                 }
 
                 {   this.props.Blog.didInvalidate &&

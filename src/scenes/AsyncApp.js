@@ -5,10 +5,10 @@ import {
     // requestBlogPreview,
     // receiveBlogpreview,
     fetchcorrectSite
-} from '../redux/actions/AsyncApp'
+} from '../services/actions/AsyncApp'
 
-import Menu from './components/Menu/index'
-import Footer from './components/Footer/index'
+import Menu from '../components/Menu/index'
+import Footer from '../components/Footer/index'
 import Home from './Home/index'
 import AboutMe from './AboutMe/index'
 import Gallery from './Gallery/index'

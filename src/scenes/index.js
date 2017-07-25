@@ -4,8 +4,8 @@ import configureStore from './store'
 import AsyncApp from './AsyncApp'
 
 
-import { fetchBlogPreviews } from '../redux/actions/Home'
-import { fetchcorrectSite} from "../redux/actions/AsyncApp";
+import { fetchBlogPreviews } from '../services/actions/Home'
+import { fetchcorrectSite} from "../services/actions/AsyncApp";
 
 const store = configureStore()
 

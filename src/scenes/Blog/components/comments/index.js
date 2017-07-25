@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { sendComments,fetchComments } from '../../../../redux/actions/Comments'
+import { sendComments,fetchComments } from '../../../../services/actions/Comments'
 import { bindActionCreators } from 'redux'
 
 import CommentList from './CommentList'

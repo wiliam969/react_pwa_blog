@@ -7,7 +7,9 @@ import {
     // requestBlogPreview,
     // receiveBlogpreview,
     fetchBlogPreviews
-} from '../../redux/actions/Home'
+} from '../../services/actions/Home'
+
+import Loading from '../../components/loading'
 
 // import inView from 'in-view'
 
@@ -33,7 +35,12 @@ class Home extends Component {
         return (
             <div>
                 {   this.props.homedata.isFetching &&
-                <h1 style={this.FetchingStyle}>im Fetching GUYS hold on dont stress me !</h1>
+                    <div>
+                        <Loading>
+                        <h1 style={this.FetchingStyle}>im Fetching GUYS hold on dont stress me !</h1>
+                        </Loading>
+                    </div>
+
                 }
                 {   this.props.homedata.didInvalidate &&
                     <h1 style={this.FetchingStyle}>LOL WUT Something went WRONG i guess .... holy fuck terribly wrong</h1>

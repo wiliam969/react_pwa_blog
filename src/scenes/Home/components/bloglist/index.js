@@ -1,5 +1,5 @@
     import React, { Component } from 'react'
-import Thumbnail from '../../../components/Picture/thumbnail-lazyload'
+import Thumbnail from '../../../../components/Picture/thumbnail-lazyload'
 import { Link } from 'react-router-dom'
 
 export default class BlogList extends Component {

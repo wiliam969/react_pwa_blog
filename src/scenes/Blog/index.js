@@ -11,9 +11,13 @@ import Comments from './components/comments/index'
 
 class BlogSingle extends Component {
 
+    isComment = false
+
     constructor(props) {
         super(props)
-        // this.fucku()
+        this.state = { isComment: false}
+
+        this.handleClick = this.handleClick.bind(this);
     }
 
 
@@ -21,6 +25,13 @@ class BlogSingle extends Component {
         const { dispatch, ownProps } = this.props
         dispatch(fetchBlogSingle(this.props))
     }
+
+    handleClick() {
+        this.setState(prevState => ({
+            isComment: !prevState.isComment
+        }));
+    }
+
 
     render() {
         var checkifworks = {
@@ -42,8 +53,14 @@ class BlogSingle extends Component {
                     <div>
                     <BlogHeader blogheader={this.props.blogheader}></BlogHeader>
                     <BlogContent blogcontent={this.props.blogcontent}></BlogContent>
-                        <Comments blogid={this.props.match.params.id}></Comments>
-                        <div style={checkifworks}></div>
+                        {this.state.isComment ?
+                            <div>
+                                <Comments blogid={this.props.match.params.id}></Comments>
+                                <div style={checkifworks}></div>
+                            </div>
+                            :
+                            <button onClick={this.handleClick}>Load Comments ...</button>
+                        }
                     </div>
                 }
 

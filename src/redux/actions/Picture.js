@@ -1,8 +1,6 @@
 /**
  * Created by wiliam969 on 28.04.2017.
  */
-import axios from 'axios'
-import inView from 'in-view'
 
 export const REQUEST_PICTURE = 'REQUEST_PICTURE'
 export const RECEIVE_PICTURE = 'RECEIVE_PICTURE'
@@ -117,10 +115,11 @@ export function fetchPicture (post_id = 1) {
     return function(dispatch,post_id) {
         dispatch(requestPicture(post_id))
 
-        return axios.get('http://localhost:8000/wp-json/wp/v2/media?parent=' + id.blogid)
-            .then(response => {
-                if(response.data.length != 0)
-                    return dispatch(receivePicture(response.data[0],id.blogid))
+        return fetch(process.env.REACT_APP_API_URI + 'media?parent=' + id.blogid,{method:'GET'})
+            .then((response) => response.json())
+            .then(responseJson => {
+                if(responseJson.length != 0)
+                    return dispatch(receivePicture(responseJson[0],id.blogid))
                 else
                     return dispatch(receivePicture(defaultPicture,id.blogid))
             }).catch(error => {

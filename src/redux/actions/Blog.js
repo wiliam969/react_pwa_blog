@@ -1,7 +1,6 @@
 /**
  * Created by wiliam969 on 28.04.2017.
  */
-import axios from 'axios'
 
 export const REQUEST_BLOG_SINGLE = 'REQUEST_BLOG_SINGLE'
 export const RECEIVE_BLOG_SINGLE = 'RECEIVE_BLOG_SINGLE'
@@ -34,9 +33,11 @@ export function fetchBlogSingle(blog = 1) {
     console.log(id)
     return function (dispatch,blog) {
         dispatch(requestBlogSingle(id))
-        return axios.get('http://localhost:8000/wp-json/wp/v2/posts/' + id)
-            .then(response => {
-                return dispatch(receiveBlogSingle(response.data))
+        return fetch(process.env.REACT_APP_API_URI + 'posts/' + id, {method: 'GET'})
+            .then((response) => response.json())
+            .then(responseJson => {
+                console.log(responseJson)
+                return dispatch(receiveBlogSingle(responseJson))
             }).catch(error => {
                 return dispatch(invalidateBlogSingle(error))
             })
@@ -49,13 +50,11 @@ export function fetchLazyBlog(date) {
     return function (dispatch,date) {
         dispatch(requestBlogSingle(datum))
         console.log(datum)
-        return axios.get('http://localhost:8000/wp-json/wp/v2/posts?before=' + datum + '&per_page=1')
-            .then(response => {
-                console.log(response)
-
-
-
-                return dispatch(receiveBlogSingle(response.data[0]))
+        return fetch(process.env.REACT_APP_API_URI +'posts?before=' + datum + '&per_page=1', {method: 'GET'})
+            .then((response) => response.json())
+            .then(responseJson => {
+                console.log(responseJson)
+                return dispatch(receiveBlogSingle(responseJson))
             }).catch(error => {
                 return dispatch(invalidateBlogSingle(error))
             })

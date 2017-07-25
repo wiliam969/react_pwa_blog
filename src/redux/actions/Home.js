@@ -38,7 +38,7 @@ export function fetchBlogPreviews(blogs) {
         return db.table('blog').toArray().then(bitems => {
             return dispatch(receiveBlogpreview(bitems))
         })
-        .then(() => fetch('http://localhost:8000/wp-json/wp/v2/posts/', {method: 'GET'}))
+        .then(() => fetch(process.env.REACT_APP_API_URI + 'posts/', {method: 'GET'}))
         .then((response) => response.json())
         .then(responseJson => {
             console.log(responseJson)

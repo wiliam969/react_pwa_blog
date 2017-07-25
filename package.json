@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "axios": "^0.15.3",
     "babel-polyfill": "^6.23.0",
     "babel-register": "^6.24.1",
     "cross-env": "^5.0.0",
@@ -23,7 +22,6 @@
   },
   "devDependencies": {
     "react-scripts": "1.0.7",
-    "axios": "^0.15.3",
     "redux-devtools": "^3.4.0"
   },
   "scripts": {

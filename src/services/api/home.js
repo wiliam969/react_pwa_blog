@@ -7,7 +7,6 @@ export default class HomeApi {
         .then(() => fetch(process.env.REACT_APP_API_URI + 'posts/', {method: 'GET'}))
         .then((response) => response.json())
         .then(responseJson => {
-            console.log(responseJson)
             responseJson.map((post,index) => {
                 db.blog.put({
                     id:post.id,

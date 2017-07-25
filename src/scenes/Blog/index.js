@@ -4,15 +4,11 @@ import PropTypes from 'prop-types'
 import { fetchBlogSingle } from '../../services/session/actions/Blog'
 import { bindActionCreators } from 'redux'
 
-import BlogHeader from './components/blog/blogheader'
-import BlogContent from './components/blog/blogcontent'
-// import LazyBlogItemLoad from './components/LazyBlogItemLoad'
+import Blog from './components/blog/blog'
 import Comments from './components/comments/index'
 import Loading from '../../components/loading'
 
 class BlogSingle extends Component {
-
-    isComment = false
 
     constructor(props) {
         super(props)
@@ -55,8 +51,8 @@ class BlogSingle extends Component {
 
                 {   !this.props.Blog.didInvalidate && !this.props.Blog.isFetching &&
                     <div>
-                    <BlogHeader blogheader={this.props.blogheader}></BlogHeader>
-                    <BlogContent blogcontent={this.props.blogcontent}></BlogContent>
+                        <Blog content={this.props.Blog}></Blog>
+
                         {this.state.isComment ?
                             <div>
                                 <Comments blogid={this.props.match.params.id}></Comments>
@@ -83,14 +79,12 @@ BlogSingle.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    var Blog = { didInvalidate: '', isFetching: ''}
-    let BlogContent = Object.assign({}, state.Blog.blogcontent)
-    let BlogHeader = Object.assign({}, state.Blog.blogheader)
+    var blog = { didInvalidate: '', isFetching: '', bloginformation: {}}
+
+    blog = Object.assign({}, state.Blog)
 
     return {
-        Blog: Blog,
-        blogcontent: BlogContent,
-        blogheader: BlogHeader,
+        Blog: blog,
     }
 }
 

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { sendComments,fetchComments } from '../../../../services/session/actions/Comments'
 import { bindActionCreators } from 'redux'
-
+import Loading from '../../../../components/loading'
 import CommentList from './CommentList'
 
 class Comments extends Component {
@@ -53,7 +53,10 @@ class Comments extends Component {
             <div>
 
                 {   this.props.comments.isFetching &&
-                <h1 style={this.FetchingStyle}>im Fetching GUYS hold on dont stress me !</h1>
+                    <div>
+                        <Loading></Loading>
+                        <h1 style={this.FetchingStyle}>im Fetching GUYS hold on dont stress me !</h1>
+                    </div>
                 }
 
                 {   this.props.comments.didInvalidate &&

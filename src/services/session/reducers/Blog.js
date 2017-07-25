@@ -4,6 +4,7 @@ function Blog(state = {/** isFetching: false, didInvalidate: false, item: null *
     switch(action.type) {
         case INVALIDATE_BLOG_SINGLE:
             return Object.assign({}, state, {
+                isFetching:false,
                 didInvalidate: true,
                 blog:action.blog
             })
@@ -17,15 +18,7 @@ function Blog(state = {/** isFetching: false, didInvalidate: false, item: null *
             return Object.assign({}, state, {
                 isFetching: false,
                 didInvalidate: false,
-                blogcontent: {
-                    title: action.blog.title.rendered,
-                    content: action.blog.content.rendered,
-                },
-                blogheader: {
-                    author: action.blog.author,
-                    category: action.blog.categories,
-                    date:action.blog.date,
-                }
+                bloginformation: action.blog
             })
         default:
             return state

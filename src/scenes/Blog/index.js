@@ -49,26 +49,19 @@ class BlogSingle extends Component {
                     <h1 style={this.FetchingStyle}> NOOOOOOOOOOOOOOOOOOO LOL WUT Something went WRONG i guess .... holy fuck terribly wrong</h1>
                 }
 
-                {   !this.props.Blog.didInvalidate && !this.props.Blog.isFetching &&
+                {   this.props.Blog.receivedBlog &&
                     <div>
                         <Blog content={this.props.Blog}></Blog>
 
                         {this.state.isComment ?
                             <div>
                                 <Comments blogid={this.props.match.params.id}></Comments>
-                                <div style={checkifworks}></div>
                             </div>
                             :
                             <button onClick={this.handleClick}>Load Comments ...</button>
                         }
                     </div>
                 }
-
-                <p>What up Mate dis is the OP Blog Home</p>
-                    {/*<Quotation></Quotation>*/}
-                <p>Helo from se otha saide</p>
-
-                <p>Loading...</p>
             </div>
         )
     }

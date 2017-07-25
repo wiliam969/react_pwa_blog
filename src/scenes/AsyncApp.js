@@ -38,7 +38,7 @@ class AsyncApp extends Component {
                         <Route path="/home" render={() => <Home homedata={this.props.homedata}></Home>}></Route>
                         <Route path="/aboutme" component={AboutMe} aboutme={this.props.aboutme}></Route>
                         <Route path="/gallery" component={Gallery} gallery={this.props.gallery}></Route>
-                        <Route path="/blog/:id" component={BlogSingle}></Route>
+                        <Route path="/blog/:id" component={BlogSingle} blog={this.props.Blog}></Route>
                         {/*<Route path="/blog/:id" render={() => <BlogSingle blogsingle={this.props}></BlogSingle>}></Route>*/}
                     </div>
                 </Router>
@@ -56,12 +56,14 @@ AsyncApp.propTypes = {
 function mapStateToProps(state,ownProps) {
     var homedata = { didInvalidate: '', isFetching: '',}
     var AyncApp = { isHome: '', isGallery: '', isAboutMe:''}
-
+    var Blog = { didInvalidate: '', isFetching: '', bloginformation: {}}
         homedata = Object.assign({}, state.Home)
         AsyncApp = Object.assign({}, state.AsyncApp)
+        Blog = Object.assign({}, state.Blog)
     return {
         homedata: homedata,
         AsyncApp:AyncApp,
+        Blog:Blog
     }
 }
 

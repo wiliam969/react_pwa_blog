@@ -1,4 +1,4 @@
-import axios from 'axios'
+import CommentsApi from '../../api/comments'
 
 export const REQUEST_COMMENT = 'REQUEST_COMMENT'
 export const RECEIVE_COMMENT = 'RECEIVE_COMMENT'
@@ -48,12 +48,11 @@ export function fetchComments(post) {
 
     return function (dispatch, comments) {
         dispatch(requestComment(post_id))
-        return axios.get(process.env.REACT_APP_API_URI + 'comments?post=' + post_id.blogid)
-            .then(response => {
-                console.log(response)
-                dispatch(receiveComment(response.data))
-            }).catch(error => {
-                console.log(error)
+        return CommentsApi.getComments(post_id.blogid)
+            .then(commnets => {
+                dispatch(receiveComment(commnets))
+            })
+            .catch(error => {
                 dispatch(invalidateComment(error))
             })
     }
@@ -61,26 +60,13 @@ export function fetchComments(post) {
 
 export function sendComments(comments) {
     const comments_data = comments
-
     return function(dispatch,comments) {
-
-        console.log(comments)
-
-        console.log(comments_data)
-        console.log("hey")
-        return axios.post(process.env.REACT_APP_API_URI + 'comments', {
-            author_name: comments_data.commentname,
-            post: 1,
-            content: comments_data.commentpost,
-            author_url:comments_data.commentwebsite,
-            author_email:comments_data.commentemail,
-        })
+        return CommentsApi.sendComment(comments_data)
             .then(response => {
-                console.log(response)
-                return dispatch(sendComment(response.data))
-            }).catch(error => {
-                console.log(error)
-                return dispatch(failedComment(error))
+                dispatch(sendComment(response))
+            })
+            .catch(error => {
+                dispatch(failedComment(error))
             })
     }
 }

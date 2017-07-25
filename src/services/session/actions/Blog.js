@@ -2,6 +2,8 @@
  * Created by wiliam969 on 28.04.2017.
  */
 
+import BlogApi from '../../api/blog'
+
 export const REQUEST_BLOG_SINGLE = 'REQUEST_BLOG_SINGLE'
 export const RECEIVE_BLOG_SINGLE = 'RECEIVE_BLOG_SINGLE'
 export const INVALIDATE_BLOG_SINGLE = 'INVALIDATE_BLOG_SINGLE'
@@ -33,13 +35,11 @@ export function fetchBlogSingle(blog = 1) {
     console.log(id)
     return function (dispatch,blog) {
         dispatch(requestBlogSingle(id))
-        return fetch(process.env.REACT_APP_API_URI + 'posts/' + id, {method: 'GET'})
-            .then((response) => response.json())
-            .then(responseJson => {
-                console.log(responseJson)
-                return dispatch(receiveBlogSingle(responseJson))
+        return BlogApi.getBlogSingle(id)
+            .then(post => {
+                dispatch(receiveBlogSingle(post))
             }).catch(error => {
-                return dispatch(invalidateBlogSingle(error))
+                dispatch(invalidateBlogSingle(error))
             })
     }
 }
@@ -50,13 +50,12 @@ export function fetchLazyBlog(date) {
     return function (dispatch,date) {
         dispatch(requestBlogSingle(datum))
         console.log(datum)
-        return fetch(process.env.REACT_APP_API_URI +'posts?before=' + datum + '&per_page=1', {method: 'GET'})
-            .then((response) => response.json())
-            .then(responseJson => {
-                console.log(responseJson)
-                return dispatch(receiveBlogSingle(responseJson))
-            }).catch(error => {
-                return dispatch(invalidateBlogSingle(error))
+        return BlogApi.getLazyBlogSingle(datum)
+            .then(post => {
+                dispatch(receiveBlogSingle(post))
+            })
+            .catch(error => {
+                dispatch(invalidateBlogSingle(error))
             })
     }
 }

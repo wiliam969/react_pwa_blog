@@ -1,7 +1,7 @@
 /**
  * Created by wiliam969 on 28.04.2017.
  */
-import db from '../../../storage/index'
+import HomeApi from '../../api/home'
 
 export const REQUEST_BLOG_PREVIEW = 'REQUEST_BLOG_PREVIEW'
 export const RECEIVE_BLOG_PREVIEW = 'RECEIVE_BLOG_PREVIEW'
@@ -35,46 +35,12 @@ export function fetchBlogPreviews(blogs) {
     return function(dispatch) {
         dispatch(requestBlogPreview(blogs))
 
-        return db.table('blog').toArray().then(bitems => {
-            return dispatch(receiveBlogpreview(bitems))
-        })
-        .then(() => fetch(process.env.REACT_APP_API_URI + 'posts/', {method: 'GET'}))
-        .then((response) => response.json())
-        .then(responseJson => {
-            console.log(responseJson)
-
-            responseJson.map((post,index) => {
-                db.blog.put({
-                    id:post.id,
-                    date:post.date,
-                    date_gmt:post.date_gmt,
-                    guid:post.guid,
-                    modified:post.modified,
-                    modified_gmt:post.modified_gmt,
-                    slug:post.slug,
-                    status:post.status,
-                    type:post.type,
-                    link:post.link,
-                    title:post.title,
-                    content:post.content,
-                    excerpt:post.excerpt,
-                    author:post.author,
-                    featured_media:post.featured_media,
-                    comment_status:post.comment_status,
-                    ping_status:post.ping_status,
-                    sticky:post.sticky,
-                    template:post.template,
-                    format:post.format,
-                    meta:post.meta,
-                    categories:post.categories,
-                    tags:post.tags,
-                    _links:post._links
-                })
+        return HomeApi.getBlogList()
+            .then(posts => {
+                dispatch(receiveBlogpreview(posts))
             })
-
-            return dispatch(receiveBlogpreview(responseJson))
-        }).catch(error => {
-            return dispatch(invalidateBlogPreview(error))
-        })
+            .catch(error => {
+                dispatch(invalidateBlogPreview(error))
+            })
     }
 }

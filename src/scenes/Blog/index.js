@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { fetchBlogSingle } from '../../services/actions/Blog'
+import { fetchBlogSingle } from '../../services/session/actions/Blog'
 import { bindActionCreators } from 'redux'
 
 import BlogHeader from './components/blog/blogheader'

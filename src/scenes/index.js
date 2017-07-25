@@ -4,8 +4,8 @@ import configureStore from './store'
 import AsyncApp from './AsyncApp'
 
 
-import { fetchBlogPreviews } from '../services/actions/Home'
-import { fetchcorrectSite} from "../services/actions/AsyncApp";
+import { fetchBlogPreviews } from '../services/session/actions/Home'
+import { fetchcorrectSite} from "../services/session/actions/AsyncApp";
 
 const store = configureStore()
 

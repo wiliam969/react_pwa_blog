@@ -5,7 +5,7 @@ import {
     // requestBlogPreview,
     // receiveBlogpreview,
     fetchcorrectSite
-} from '../services/actions/AsyncApp'
+} from '../services/session/actions/AsyncApp'
 
 import Menu from '../components/Menu/index'
 import Footer from '../components/Footer/index'

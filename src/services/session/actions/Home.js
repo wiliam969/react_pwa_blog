@@ -1,7 +1,7 @@
 /**
  * Created by wiliam969 on 28.04.2017.
  */
-import db from '../../storage/index'
+import db from '../../../storage/index'
 
 export const REQUEST_BLOG_PREVIEW = 'REQUEST_BLOG_PREVIEW'
 export const RECEIVE_BLOG_PREVIEW = 'RECEIVE_BLOG_PREVIEW'

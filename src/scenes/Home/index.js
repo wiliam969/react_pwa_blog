@@ -7,7 +7,7 @@ import {
     // requestBlogPreview,
     // receiveBlogpreview,
     fetchBlogPreviews
-} from '../../services/actions/Home'
+} from '../../services/session/actions/Home'
 
 import Loading from '../../components/loading'
 

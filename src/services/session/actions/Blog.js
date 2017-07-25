@@ -37,6 +37,8 @@ export function fetchBlogSingle(blog = 1) {
         dispatch(requestBlogSingle(id))
         return BlogApi.getBlogSingle(id)
             .then(post => {
+                post['content'] = post.content.rendered
+                post['title'] = post.title.rendered
                 dispatch(receiveBlogSingle(post))
             }).catch(error => {
                 dispatch(invalidateBlogSingle(error))

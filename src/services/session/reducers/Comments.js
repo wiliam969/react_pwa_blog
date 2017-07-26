@@ -19,7 +19,7 @@ function Comments(state = {}, action) {
             return Object.assign({}, state, {
                 didInvalidate:false,
                 isFetching:false,
-                comment:action.comment,
+                comment:[],
             })
         case SEND_COMMENT:
             return Object.assign({}, state, {

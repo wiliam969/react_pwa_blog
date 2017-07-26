@@ -1,4 +1,4 @@
-import db from '../../storage/index'
+import db from '../storage/index'
 export default class BlogApi {
 
     static getBlogSingle(id) {

@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
+import CommentList from './CommentList'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { sendComments,fetchComments } from '../../../../services/session/actions/Comments'
 import { bindActionCreators } from 'redux'
 import Loading from '../../../../components/loading'
-import CommentList from './CommentList'
 
 class Comments extends Component {
 
@@ -64,25 +64,23 @@ class Comments extends Component {
                 }
 
                 {   !this.props.comments.didInvalidate && !this.props.comments.isFetching &&
-                <div>
-                    {   !this.props.comments.comment > 0 &&
+                    <div>
                         <div className="comments-wrapper">
                             <CommentList comments={this.props.comments.comment}></CommentList>
                         </div>
-                    }
-                    <div className="comments-form">
-                    <form onSubmit={e => {
-                        e.preventDefault()
-                        this.submitForm()
-                    }}>
-                        <input type="text" id="name" name="commentname" placeholder="name" value={this.state.commentname} onChange={this.handleInputChange}/>
-                        <input type="text" id="email" name="commentemail" placeholder="email" value={this.state.commentemail} onChange={this.handleInputChange}/>
-                        <input type="text" id="website" name="commentwebsite" placeholder="website" value={this.state.commentwebsite} onChange={this.handleInputChange}/>
-                        <textarea type="text" id="comment" name="commentpost" placeholder="comment" value={this.state.commentpost} onChange={this.handleInputChange}/>
-                        <button type="submit" name="submit" id="submit">Submit</button>
-                    </form>
+                        <div className="comments-form">
+                        <form onSubmit={e => {
+                            e.preventDefault()
+                            this.submitForm()
+                        }}>
+                            <input type="text" id="name" name="commentname" placeholder="name" value={this.state.commentname} onChange={this.handleInputChange}/>
+                            <input type="text" id="email" name="commentemail" placeholder="email" value={this.state.commentemail} onChange={this.handleInputChange}/>
+                            <input type="text" id="website" name="commentwebsite" placeholder="website" value={this.state.commentwebsite} onChange={this.handleInputChange}/>
+                            <textarea type="text" id="comment" name="commentpost" placeholder="comment" value={this.state.commentpost} onChange={this.handleInputChange}/>
+                            <button type="submit" name="submit" id="submit">Submit</button>
+                        </form>
+                        </div>
                     </div>
-                </div>
                 }
 
                 <p>What up Mate dis is the OP Comments Home</p>
@@ -100,7 +98,7 @@ Comments.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    var cdata = { didInvalidate: '', isFetching: '', comment: {}}
+    var cdata = { didInvalidate: '', isFetching: ''}
 
     cdata = Object.assign({}, state.Comments)
 

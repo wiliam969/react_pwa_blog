@@ -2,6 +2,7 @@ import React , { Component } from 'react'
 
 export default class Loading extends Component {
 
+
     render() {
         const loadingcontainer = "loading-container"
         const loadingwrapper = "loading-wrapper"
@@ -9,10 +10,12 @@ export default class Loading extends Component {
             width: 100 + "px",
             height: 100 + "px"
         }
+
+        const img_path = process.env.REACT_APP_URL + 'Pacman.gif'
         return (
             <div className={loadingcontainer}>
                 <div className={loadingwrapper}>
-                <img src="Pacman.gif" alt="Pacman" style={img_style}/>
+                <img src={img_path} alt="Pacman" style={img_style}/>
                 </div>
             </div>
         )

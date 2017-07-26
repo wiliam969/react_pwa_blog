@@ -49,8 +49,8 @@ export function fetchComments(post) {
     return function (dispatch, comments) {
         dispatch(requestComment(post_id))
         return CommentsApi.getComments(post_id.blogid)
-            .then(commnets => {
-                dispatch(receiveComment(commnets))
+            .then(comments => {
+                dispatch(receiveComment(comments))
             })
             .catch(error => {
                 dispatch(invalidateComment(error))

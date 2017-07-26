@@ -1,13 +1,11 @@
 import db from '../storage/index'
+
 export default class HomeApi {
     static getBlogList() {
-        return db.table('blog').toArray().then(bitems => {
-            return bitems
-        })
-
-        .then(() => fetch(process.env.REACT_APP_API_URI + 'posts/', {method: 'GET'}))
+        return fetch(process.env.REACT_APP_API_URI + 'posts/', {method: 'GET'})
         .then((response) => response.json())
         .then(responseJson => {
+            console.log(responseJson)
             responseJson.map((post,index) => {
                 db.blog.put({
                     id:post.id,

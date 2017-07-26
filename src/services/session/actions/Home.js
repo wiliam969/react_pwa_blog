@@ -2,14 +2,25 @@
  * Created by wiliam969 on 28.04.2017.
  */
 import HomeApi from '../../api/home'
+import HomeStorage from '../../storage/home'
 
 export const REQUEST_BLOG_PREVIEW = 'REQUEST_BLOG_PREVIEW'
+export const REQUEST_LOCAL_BLOG_PREVIEW = 'REQUEST_LOCAL_BLOG_PREVIEW'
 export const RECEIVE_BLOG_PREVIEW = 'RECEIVE_BLOG_PREVIEW'
+export const RECEIVE_LOCAL_BLOG_PREVIEW = 'RECEIVE_LOCAL_BLOG_PREVIEW'
 export const INVALIDATE_BLOG_PREVIEW = 'INVALIDATE_BLOG_PREVIEW'
+export const INVALIDATE_LOCAL_BLOG_PREVIEW = 'INVALIDATE_LOCAL_BLOG_PREVIEW'
 
 export const requestBlogPreview = (blogs) => {
     return {
         type: 'REQUEST_BLOG_PREVIEW',
+        blogs
+    }
+}
+
+export const requestLocalBlogPreview = (blogs) => {
+    return {
+        type: 'REQUEST_LOCAL_BLOG_PREVIEW',
         blogs
     }
 }
@@ -22,9 +33,25 @@ export const receiveBlogpreview = (blogs) => {
     }
 }
 
+export const receiveLocalBlogPreview = (blogs) => {
+    return {
+        type: 'RECEIVE_LOCAL_BLOG_PREVIEW',
+        blogs,
+        receivedAt: Date.now()
+    }
+}
+
+
 export const invalidateBlogPreview = (blogs) => {
     return {
         type:'INVALIDATE_BLOG_PREVIEW',
+        blogs
+    }
+}
+
+export const invalidateLocalBlogPreview = (blogs) => {
+    return {
+        type:'INVALIDATE_LOCAL_BLOG_PREVIEW',
         blogs
     }
 }
@@ -33,14 +60,24 @@ export const invalidateBlogPreview = (blogs) => {
 
 export function fetchBlogPreviews(blogs) {
     return function(dispatch) {
-        dispatch(requestBlogPreview(blogs))
+        dispatch(requestLocalBlogPreview(blogs))
 
-        return HomeApi.getBlogList()
-            .then(posts => {
-                dispatch(receiveBlogpreview(posts))
+        return HomeStorage.getBlogPreview()
+            .then(LocalPost => {
+                dispatch(receiveLocalBlogPreview(LocalPost))
+            }).catch(error => {
+                dispatch(invalidateLocalBlogPreview(error))
+            })
+            .then(() => dispatch(requestBlogPreview(blogs)))
+            .then(() => {
+                HomeApi.getBlogList()
+            .then((posts) => {
+                console.log(posts)
+                return dispatch(receiveBlogpreview(posts))
             })
             .catch(error => {
-                dispatch(invalidateBlogPreview(error))
-            })
+                return dispatch(invalidateBlogPreview(error))
+            })})
+
     }
 }

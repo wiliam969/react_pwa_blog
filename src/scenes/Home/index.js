@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import BlogList from './components/bloglist/index.js'
 import { bindActionCreators } from 'redux'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -10,6 +9,9 @@ import {
 } from '../../services/session/actions/Home'
 
 import Loading from '../../components/loading'
+import BlogList from './components/bloglist/index.js'
+import BlogListLocal from './components/bloglist/local-index'
+import BlogListLazy from './components/bloglist/lazy-index'
 
 // import inView from 'in-view'
 
@@ -66,14 +68,15 @@ class Home extends Component {
                         </div>
                 }
                 {
-                    (this.props.homedata.isFetching || !this.props.homedata.didInvalidate) && !this.props.homedata.isFetchingLocal && !this.props.homedata.didInvalidateLocal &&
+                    (this.props.homedata.isFetching || this.props.homedata.didInvalidate) && !this.props.homedata.isFetchingLocal && !this.props.homedata.didInvalidateLocal &&
                     <div>
                         <p>What up Mate dis is not the OP Home</p>
                         <h1>THIS IS LOCAL DATA Might be depreciated</h1>
                         {/*<Quotation></Quotation>*/}
-                        <BlogList blogs={this.props.homedata.itemsLocal}></BlogList>
+                        <BlogListLocal blogs={this.props.homedata.itemsLocal}></BlogListLocal>
                     </div>
                 }
+                <BlogListLazy></BlogListLazy>
             </div>
         );
     }

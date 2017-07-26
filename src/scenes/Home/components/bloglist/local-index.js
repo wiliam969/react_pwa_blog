@@ -4,6 +4,14 @@ import { Link } from 'react-router-dom'
 
 export default class BlogList extends Component {
 
+    thumbnailhumus = {
+        height:200+ 'px',
+        width:100+'%',
+        postition: 'relative',
+        display:'block',
+        background: 'green'
+    }
+
     componentDidMount() {
     }
     componentDidUpdate() {
@@ -16,7 +24,7 @@ export default class BlogList extends Component {
                 {this.props.blogs.length > 0 &&
                     this.props.blogs.map((post,index) =>
                         <div className="box" key={index} data-key={index}>
-                            <Thumbnail blogid={post.id} type="thumbnail"></Thumbnail>
+                            <div style={this.thumbnailhumus}></div>
                             <div className="blog-title">{post.title.rendered}</div>
                             <div className="blog-preview-text" dangerouslySetInnerHTML={{__html: post.excerpt.rendered}}></div>
                             <div className="readmore"><Link to={{ pathname: '/blog/' + post.id, }}>Weitalesen...</Link></div>

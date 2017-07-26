@@ -6,10 +6,13 @@ import HomeStorage from '../../storage/home'
 
 export const REQUEST_BLOG_PREVIEW = 'REQUEST_BLOG_PREVIEW'
 export const REQUEST_LOCAL_BLOG_PREVIEW = 'REQUEST_LOCAL_BLOG_PREVIEW'
+export const REQUEST_LAZY_BLOG_PREVIEW = 'REQUEST_LAZY_BLOG_PREVIEW'
 export const RECEIVE_BLOG_PREVIEW = 'RECEIVE_BLOG_PREVIEW'
 export const RECEIVE_LOCAL_BLOG_PREVIEW = 'RECEIVE_LOCAL_BLOG_PREVIEW'
+export const RECEIVE_LAZY_BLOG_PREVIEW = 'RECEIVE_LAZY_BLOG_PREVIEW'
 export const INVALIDATE_BLOG_PREVIEW = 'INVALIDATE_BLOG_PREVIEW'
 export const INVALIDATE_LOCAL_BLOG_PREVIEW = 'INVALIDATE_LOCAL_BLOG_PREVIEW'
+export const INVALIDATE_LAZY_BLOG_PREVIEW = 'INVALIDATE_LAZY_BLOG_PREVIEW'
 
 export const requestBlogPreview = (blogs) => {
     return {
@@ -21,6 +24,13 @@ export const requestBlogPreview = (blogs) => {
 export const requestLocalBlogPreview = (blogs) => {
     return {
         type: 'REQUEST_LOCAL_BLOG_PREVIEW',
+        blogs
+    }
+}
+
+export const requestLazyBlogPreview = (blogs) => {
+    return {
+        type:'REQUEST_LAZY_BLOG_PREVIEW',
         blogs
     }
 }
@@ -41,6 +51,12 @@ export const receiveLocalBlogPreview = (blogs) => {
     }
 }
 
+export const receiveLazyBlogPreview = (blogs) => {
+    return {
+        type:'RECEIVE_LAZY_BLOG_PREVIEW',
+        blogs,
+    }
+}
 
 export const invalidateBlogPreview = (blogs) => {
     return {
@@ -56,6 +72,17 @@ export const invalidateLocalBlogPreview = (blogs) => {
     }
 }
 
+
+
+export const invalidateLazyBlogPreview = (blogs) => {
+    return {
+        type:'INVALIDATE_LAZY_BLOG_PREVIEW',
+        blogs
+    }
+}
+
+
+
 // this is it lul it wörks haha didint expected this :D
 
 export function fetchBlogPreviews(blogs) {
@@ -70,7 +97,7 @@ export function fetchBlogPreviews(blogs) {
             })
             .then(() => dispatch(requestBlogPreview(blogs)))
             .then(() => {
-                HomeApi.getBlogList()
+                HomeApi.getLatestBlogList()
             .then((posts) => {
                 console.log(posts)
                 return dispatch(receiveBlogpreview(posts))
@@ -79,5 +106,20 @@ export function fetchBlogPreviews(blogs) {
                 return dispatch(invalidateBlogPreview(error))
             })})
 
+    }
+}
+
+export function fetchNextBlogPreviews(page) {
+    return function (dispatch) {
+        dispatch(requestLazyBlogPreview(page))
+
+        return HomeApi.getPageBlogPreview(page)
+            .then(blogs => {
+                console.log(blogs)
+                return dispatch(receiveLazyBlogPreview(blogs))
+            })
+            .catch(error => {
+                return dispatch(invalidateLazyBlogPreview(error))
+            })
     }
 }

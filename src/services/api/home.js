@@ -1,8 +1,8 @@
 import db from '../storage/index'
 
 export default class HomeApi {
-    static getBlogList() {
-        return fetch(process.env.REACT_APP_API_URI + 'posts/', {method: 'GET'})
+    static getLatestBlogList() {
+        return fetch(process.env.REACT_APP_API_URI + 'posts?per_page=4', {method: 'GET'})
         .then((response) => response.json())
         .then(responseJson => {
             console.log(responseJson)
@@ -39,5 +39,16 @@ export default class HomeApi {
             return error
         })
 
+    }
+    static getPageBlogPreview(page) {
+        console.log(page)
+        return fetch(process.env.REACT_APP_API_URI + 'posts?per_page=4&page=' + page, {method: 'GET'})
+            .then((response) => response.json())
+            .then(responseJson => {
+                console.log(responseJson)
+                return responseJson
+            }).catch(error => {
+                return error
+            })
     }
 }

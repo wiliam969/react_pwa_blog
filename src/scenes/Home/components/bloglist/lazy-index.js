@@ -9,7 +9,7 @@ import VisibilitySensor from 'react-visibility-sensor'
 
 class BlogListLazy extends Component {
 
-    isActive = true
+    isActive = this.props.blogs.stopLazyLoad
     pageNumber = 1
 
     componentDidMount() {

@@ -13,6 +13,7 @@ export const RECEIVE_LAZY_BLOG_PREVIEW = 'RECEIVE_LAZY_BLOG_PREVIEW'
 export const INVALIDATE_BLOG_PREVIEW = 'INVALIDATE_BLOG_PREVIEW'
 export const INVALIDATE_LOCAL_BLOG_PREVIEW = 'INVALIDATE_LOCAL_BLOG_PREVIEW'
 export const INVALIDATE_LAZY_BLOG_PREVIEW = 'INVALIDATE_LAZY_BLOG_PREVIEW'
+export const STOP_LAZY_BLOG_PREVIEW = 'STOP_LAZY_BLOG_PREVIEW'
 
 export const requestBlogPreview = (blogs) => {
     return {
@@ -81,6 +82,12 @@ export const invalidateLazyBlogPreview = (blogs) => {
     }
 }
 
+export const stopLazyBlogPreview = () => {
+    return {
+        type:'STOP_LAZY_BLOG_PREVIEW',
+    }
+}
+
 
 
 // this is it lul it wörks haha didint expected this :D
@@ -116,7 +123,11 @@ export function fetchNextBlogPreviews(page) {
         return HomeApi.getPageBlogPreview(page)
             .then(blogs => {
                 console.log(blogs)
-                return dispatch(receiveLazyBlogPreview(blogs))
+                if(blogs.length != 0) {
+                    return dispatch(receiveLazyBlogPreview(blogs))
+                } else {
+                    return dispatch(stopLazyBlogPreview())
+                }
             })
             .catch(error => {
                 return dispatch(invalidateLazyBlogPreview(error))

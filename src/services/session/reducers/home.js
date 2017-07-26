@@ -1,6 +1,14 @@
-import { REQUEST_BLOG_PREVIEW, RECEIVE_BLOG_PREVIEW, INVALIDATE_BLOG_PREVIEW,REQUEST_LOCAL_BLOG_PREVIEW,RECEIVE_LOCAL_BLOG_PREVIEW,INVALIDATE_LOCAL_BLOG_PREVIEW,RECEIVE_LAZY_BLOG_PREVIEW,INVALIDATE_LAZY_BLOG_PREVIEW,REQUEST_LAZY_BLOG_PREVIEW } from '../actions/Home'
+import { REQUEST_BLOG_PREVIEW, RECEIVE_BLOG_PREVIEW, INVALIDATE_BLOG_PREVIEW,REQUEST_LOCAL_BLOG_PREVIEW,RECEIVE_LOCAL_BLOG_PREVIEW,INVALIDATE_LOCAL_BLOG_PREVIEW,RECEIVE_LAZY_BLOG_PREVIEW,INVALIDATE_LAZY_BLOG_PREVIEW,REQUEST_LAZY_BLOG_PREVIEW,STOP_LAZY_BLOG_PREVIEW } from '../actions/Home'
 
-function Home(state = {isFetching: false, didInvalidate: false, items: [], itemsLocal:[]}, action) {
+function Home(
+    state = {
+        isFetching: false,
+        didInvalidate: false,
+        items: [],
+        itemsLocal:[],
+        isFetchingLocal: false,
+        didInvalidateLocal: false,
+        stopLazyLoad:true,}, action) {
     switch(action.type) {
         case INVALIDATE_LOCAL_BLOG_PREVIEW:
             return Object.assign({}, state, {
@@ -46,6 +54,12 @@ function Home(state = {isFetching: false, didInvalidate: false, items: [], items
                 ...state,
                 items: state.items.concat(action.blogs)
             }
+        case STOP_LAZY_BLOG_PREVIEW:
+            return Object.assign({}, state, {
+                isFetchingLazy: false,
+                didInvalidateLazy: false,
+                stopLazyLoad:false,
+            })
         default:
             return state
     }

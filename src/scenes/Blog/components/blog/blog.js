@@ -8,7 +8,7 @@ export default class Blog extends Component {
                     <p>{this.props.content.bloginformation.author}</p>
                     <p>{this.props.content.bloginformation.date}</p>
                     <div className="blog-title">{this.props.content.bloginformation.title}</div>
-                    <div className="blog-preview-text">{this.props.content.bloginformation.content}</div>
+                    <div className="blog-preview-text" dangerouslySetInnerHTML={{__html: this.props.content.bloginformation.content}}></div>
                 </div>
         )
     }

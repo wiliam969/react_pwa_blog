@@ -52,7 +52,6 @@ class Thumbnail extends Component {
             <VisibilitySensor onChange={onChange} active={this.isActive}>
                 {this.props.thumbnail != 0 &&
                     <div>
-                        im there guys
                         <div style={this.renderLink()}>{  }</div>
                     </div>
                 }

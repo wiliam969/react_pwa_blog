@@ -1,6 +1,6 @@
 import { REQUEST_BLOG_PREVIEW, RECEIVE_BLOG_PREVIEW, INVALIDATE_BLOG_PREVIEW,REQUEST_LOCAL_BLOG_PREVIEW,RECEIVE_LOCAL_BLOG_PREVIEW,INVALIDATE_LOCAL_BLOG_PREVIEW } from '../actions/Home'
 
-function Home(state = {isFetching: false, didInvalidate: false, items: []}, action) {
+function Home(state = {isFetching: false, didInvalidate: false, items: [], itemsLocal:[]}, action) {
     switch(action.type) {
         case INVALIDATE_LOCAL_BLOG_PREVIEW:
             return Object.assign({}, state, {

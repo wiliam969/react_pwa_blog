@@ -10,7 +10,7 @@ export default class CommentsList extends Component {
                             <div className="box" key={index} data-key={index}>
                                 <p>{post.id}</p>
                                 <p>{post.author_name}</p>
-                                <p>{post.content.rendered}</p>
+                                <p dangerouslySetInnerHTML={{__html: post.content.rendered}}></p>
                             </div>
                         )
                     }

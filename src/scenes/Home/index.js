@@ -68,6 +68,10 @@ class Home extends Component {
                         </div>
                 }
                 {
+                    this.props.homedata.didInvalidateLazy &&
+                        <h1>WHAT THE LAZY LOAD IS BROKEN GG WP</h1>
+                }
+                {
                     (this.props.homedata.isFetching || this.props.homedata.didInvalidate) && !this.props.homedata.isFetchingLocal && !this.props.homedata.didInvalidateLocal &&
                     <div>
                         <p>What up Mate dis is not the OP Home</p>
@@ -102,6 +106,8 @@ function mapDispatchToProps (dispatch) {
         bindActionCreators({fetchBlogPreviews},dispatch)
     }
 }
+
+
 
 export default connect(mapStateToProps)(Home)
 

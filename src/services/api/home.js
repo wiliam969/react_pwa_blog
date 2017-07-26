@@ -43,12 +43,16 @@ export default class HomeApi {
     static getPageBlogPreview(page) {
         console.log(page)
         return fetch(process.env.REACT_APP_API_URI + 'posts?per_page=4&page=' + page, {method: 'GET'})
-            .then((response) => response.json())
+            .then((response) => {
+            if(response.status == 400) {
+                throw new Error("BOOM")
+            }
+                console.log(response)
+                return response.json()
+            })
             .then(responseJson => {
                 console.log(responseJson)
                 return responseJson
-            }).catch(error => {
-                return error
             })
     }
 }

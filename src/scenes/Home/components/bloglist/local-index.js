@@ -20,7 +20,6 @@ export default class BlogList extends Component {
         console.log(this.props.blogs)
         return (
             <div className="container">
-
                 {this.props.blogs.length > 0 &&
                     this.props.blogs.map((post,index) =>
                         <div className="box" key={index} data-key={index}>

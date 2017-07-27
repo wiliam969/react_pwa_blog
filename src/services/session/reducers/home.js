@@ -72,7 +72,10 @@ function Home(
         case RECEIVE_AFTER_BLOG_PREVIEW:
             return {
                 ...state,
-                items:state.items.unshift(action.blogs)
+                items: [
+                    ...action.blogs,
+                    ...state.items,
+                ]
             }
         case STOP_LAZY_BLOG_PREVIEW:
             return Object.assign({}, state, {

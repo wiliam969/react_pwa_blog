@@ -102,6 +102,11 @@ export default class HomeApi {
                             })
                         })
 
+                        db.timestamp.update(1, {date: Date.now()}).then(()=>{
+                            return true
+                        }).catch(error => {
+                            return error
+                        })
                         console.log(responseJson)
                         return responseJson
                     })

@@ -35,8 +35,11 @@ export default class HomeApi {
                 })
             })
 
+            const oldestdate = responseJson[3].date
+
             db.timestamp.put({
-                date:Date.now()
+                latestDate:Date.now(),
+                oldestDate:oldestdate
             })
             return responseJson
         }).catch(error => {
@@ -46,24 +49,29 @@ export default class HomeApi {
     }
     static getPageBlogPreview(page) {
         console.log(page)
-        return fetch(process.env.REACT_APP_API_URI + 'posts?per_page=4&page=' + page, {method: 'GET'})
-            .then((response) => {
-            if(response.status == 400) {
-                throw new Error("BOOM")
-            }
-                console.log(response)
-                return response.json()
-            })
-            .then(responseJson => {
-                console.log(responseJson)
-                return responseJson
+        return db.timestamp.get({id:1})
+            .then(response => {
+                const oldestDate = response.oldestDate
+
+                return fetch(process.env.REACT_APP_API_URI + 'posts?before=' + oldestDate + '&per_page=4&page=' + page, {method: 'GET'})
+                    .then((response) => {
+                        if(response.status == 400) {
+                            throw new Error("BOOM")
+                        }
+                        console.log(response)
+                        return response.json()
+                    })
+                    .then(responseJson => {
+                        console.log(responseJson)
+                        return responseJson
+                    })
             })
     }
 
     static getAfterBlogPreview() {
         return db.timestamp.get({id: 1})
             .then(response => {
-                let timestamp = response.date
+                let timestamp = response.latestDate
                 timestamp = new Date(timestamp)
                 let latest = timestamp.toISOString()
 
@@ -99,7 +107,7 @@ export default class HomeApi {
                             })
                         })
 
-                        db.timestamp.update(1, {date: Date.now()}).then(()=>{
+                        db.timestamp.update(1, {latestDate: Date.now()}).then(()=>{
                             return true
                         }).catch(error => {
                             return error

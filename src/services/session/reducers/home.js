@@ -17,7 +17,7 @@ function Home(
         stopLazyLoad:true,
         receivedAt: "",
         oldestPost: "",
-        LazyPage:2,
+        LazyPage:1,
         NewPage:1,
     }, action) {
     switch(action.type) {

@@ -3,7 +3,6 @@
  */
 import HomeApi from '../../api/home'
 import HomeStorage from '../../storage/home'
-import db from '../../storage/index'
 
 export const REQUEST_BLOG_PREVIEW = 'REQUEST_BLOG_PREVIEW'
 export const REQUEST_LOCAL_BLOG_PREVIEW = 'REQUEST_LOCAL_BLOG_PREVIEW'
@@ -15,6 +14,7 @@ export const INVALIDATE_BLOG_PREVIEW = 'INVALIDATE_BLOG_PREVIEW'
 export const INVALIDATE_LOCAL_BLOG_PREVIEW = 'INVALIDATE_LOCAL_BLOG_PREVIEW'
 export const INVALIDATE_LAZY_BLOG_PREVIEW = 'INVALIDATE_LAZY_BLOG_PREVIEW'
 export const STOP_LAZY_BLOG_PREVIEW = 'STOP_LAZY_BLOG_PREVIEW'
+export const RECEIVE_AFTER_BLOG_PREVIEW = 'RECEIVE_AFTER_BLOG_PREVIEW'
 
 export const requestBlogPreview = (blogs) => {
     return {
@@ -89,6 +89,14 @@ export const stopLazyBlogPreview = () => {
     }
 }
 
+export const receiveAfterBlogPreview = (blogs) => {
+    return {
+        type:'RECEIVE_AFTER_BLOG_PREVIEW',
+        blogs,
+        receivedAt: Date.now()
+    }
+}
+
 
 
 // this is it lul it wörks haha didint expected this :D
@@ -134,6 +142,22 @@ export function fetchNextBlogPreviews(page) {
             })
             .catch(error => {
                 return dispatch(invalidateLazyBlogPreview(error))
+            })
+    }
+}
+
+export function fetchAfterBlogPreview(date) {
+    console.log("fetchnextblogpreview triggered")
+    return function (dispatch) {
+        // dispatch(requestBlogPreview(date))
+
+        return HomeApi.getAfterBlogPreview(date)
+            .then(blogs => {
+                console.log(blogs)
+                return dispatch(receiveAfterBlogPreview(blogs))
+            })
+            .catch(error => {
+                return dispatch(invalidateBlogPreview(error))
             })
     }
 }

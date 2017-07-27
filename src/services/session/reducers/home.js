@@ -1,4 +1,16 @@
-import { REQUEST_BLOG_PREVIEW, RECEIVE_BLOG_PREVIEW, INVALIDATE_BLOG_PREVIEW,REQUEST_LOCAL_BLOG_PREVIEW,RECEIVE_LOCAL_BLOG_PREVIEW,INVALIDATE_LOCAL_BLOG_PREVIEW,RECEIVE_LAZY_BLOG_PREVIEW,INVALIDATE_LAZY_BLOG_PREVIEW,REQUEST_LAZY_BLOG_PREVIEW,STOP_LAZY_BLOG_PREVIEW } from '../actions/Home'
+import {
+    REQUEST_BLOG_PREVIEW,
+    RECEIVE_BLOG_PREVIEW,
+    INVALIDATE_BLOG_PREVIEW,
+    REQUEST_LOCAL_BLOG_PREVIEW,
+    RECEIVE_LOCAL_BLOG_PREVIEW,
+    INVALIDATE_LOCAL_BLOG_PREVIEW,
+    RECEIVE_LAZY_BLOG_PREVIEW,
+    INVALIDATE_LAZY_BLOG_PREVIEW,
+    REQUEST_LAZY_BLOG_PREVIEW,
+    STOP_LAZY_BLOG_PREVIEW,
+    RECEIVE_AFTER_BLOG_PREVIEW
+} from '../actions/Home'
 
 function Home(
     state = {
@@ -8,7 +20,8 @@ function Home(
         itemsLocal:[],
         isFetchingLocal: false,
         didInvalidateLocal: false,
-        stopLazyLoad:true,}, action) {
+        stopLazyLoad:true,
+        receivedAt: ""}, action) {
     switch(action.type) {
         case INVALIDATE_LOCAL_BLOG_PREVIEW:
             return Object.assign({}, state, {
@@ -42,7 +55,8 @@ function Home(
                 ...state,
                 isFetching: false,
                 didInvalidate: false,
-                items: state.items.concat(action.blogs)
+                items: state.items.concat(action.blogs),
+                receivedAt:action.receivedAt
             }
         case RECEIVE_LOCAL_BLOG_PREVIEW:
             return Object.assign({}, state, {
@@ -54,6 +68,11 @@ function Home(
             return {
                 ...state,
                 items: state.items.concat(action.blogs)
+            }
+        case RECEIVE_AFTER_BLOG_PREVIEW:
+            return {
+                ...state,
+                items:state.items.unshift(action.blogs)
             }
         case STOP_LAZY_BLOG_PREVIEW:
             return Object.assign({}, state, {

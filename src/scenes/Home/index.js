@@ -3,8 +3,7 @@ import { bindActionCreators } from 'redux'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import {
-    // requestBlogPreview,
-    // receiveBlogpreview,
+    fetchAfterBlogPreview,
     fetchBlogPreviews
 } from '../../services/session/actions/Home'
 
@@ -13,9 +12,9 @@ import BlogList from './components/bloglist/index.js'
 import BlogListLocal from './components/bloglist/local-index'
 import BlogListLazy from './components/bloglist/lazy-index'
 
-// import inView from 'in-view'
-
 class Home extends Component {
+
+    isFetchingNewPosts = true
 
     FetchingStyle = {
         color:"red",
@@ -26,6 +25,8 @@ class Home extends Component {
     constructor(props) {
         super(props)
         console.log("im Home")
+        this.fetchnewPosts = this.fetchnewPosts.bind(this);
+
     }
 
     componentDidMount() {
@@ -33,9 +34,18 @@ class Home extends Component {
         dispatch(fetchBlogPreviews(this.props))
     }
 
+    fetchnewPosts() {
+        // if(this.isFetchingnewPosts) {
+            const { dispatch, ownProps } = this.props
+            dispatch(fetchAfterBlogPreview(this.props))
+        //     this.isFetchingNewPosts = false
+        // }
+    }
+
     render () {
         return (
             <div>
+                <button onClick={this.fetchnewPosts}>CLICK ME SENPAI</button>
                 {   this.props.homedata.isFetchingLocal &&
                     <div>
                         <Loading></Loading>

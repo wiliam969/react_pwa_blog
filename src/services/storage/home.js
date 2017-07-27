@@ -6,15 +6,4 @@ export default class HomeStorage {
             return bitems
         })
     }
-
-    static hasItems() {
-        return db.table('blog').count()
-            .then(response => {
-                console.log(response)
-                return response
-            })
-            .catch(error => {
-                return error
-            })
-    }
- }
+}

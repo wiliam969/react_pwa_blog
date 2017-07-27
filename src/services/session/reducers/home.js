@@ -38,16 +38,17 @@ function Home(
                 didInvalidateLazy: false
             })
         case RECEIVE_BLOG_PREVIEW:
-            return Object.assign({}, state, {
+            return {
+                ...state,
                 isFetching: false,
                 didInvalidate: false,
-                items: action.blogs,
-            })
+                items: state.items.concat(action.blogs)
+            }
         case RECEIVE_LOCAL_BLOG_PREVIEW:
             return Object.assign({}, state, {
                 isFetchingLocal: false,
                 didInvalidateLocal: false,
-                itemsLocal: action.blogs,
+                items: action.blogs,
             })
         case RECEIVE_LAZY_BLOG_PREVIEW:
             return {

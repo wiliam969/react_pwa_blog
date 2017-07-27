@@ -3,6 +3,7 @@
  */
 import HomeApi from '../../api/home'
 import HomeStorage from '../../storage/home'
+import db from '../../storage/index'
 
 export const REQUEST_BLOG_PREVIEW = 'REQUEST_BLOG_PREVIEW'
 export const REQUEST_LOCAL_BLOG_PREVIEW = 'REQUEST_LOCAL_BLOG_PREVIEW'
@@ -98,21 +99,23 @@ export function fetchBlogPreviews(blogs) {
 
         return HomeStorage.getBlogPreview()
             .then(LocalPost => {
-                dispatch(receiveLocalBlogPreview(LocalPost))
+                if(LocalPost.length > 0) {
+                    dispatch(receiveLocalBlogPreview(LocalPost))
+                } else {
+                    dispatch(requestBlogPreview(blogs))
+
+                    HomeApi.getLatestBlogList()
+                        .then((posts) => {
+                            console.log(posts)
+                            return dispatch(receiveBlogpreview(posts))
+                        })
+                        .catch(error => {
+                            return dispatch(invalidateBlogPreview(error))
+                        })
+                }
             }).catch(error => {
                 dispatch(invalidateLocalBlogPreview(error))
             })
-            .then(() => dispatch(requestBlogPreview(blogs)))
-            .then(() => {
-                HomeApi.getLatestBlogList()
-            .then((posts) => {
-                console.log(posts)
-                return dispatch(receiveBlogpreview(posts))
-            })
-            .catch(error => {
-                return dispatch(invalidateBlogPreview(error))
-            })})
-
     }
 }
 

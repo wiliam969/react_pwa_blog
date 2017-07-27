@@ -9,12 +9,9 @@ import {
 
 import Loading from '../../components/loading'
 import BlogList from './components/bloglist/index.js'
-import BlogListLocal from './components/bloglist/local-index'
 import BlogListLazy from './components/bloglist/lazy-index'
 
 class Home extends Component {
-
-    isFetchingNewPosts = true
 
     FetchingStyle = {
         color:"red",
@@ -35,23 +32,14 @@ class Home extends Component {
     }
 
     fetchnewPosts() {
-        // if(this.isFetchingnewPosts) {
             const { dispatch, ownProps } = this.props
             dispatch(fetchAfterBlogPreview(this.props))
-        //     this.isFetchingNewPosts = false
-        // }
     }
 
     render () {
         return (
             <div>
                 <button onClick={this.fetchnewPosts}>CLICK ME SENPAI</button>
-                {   this.props.homedata.isFetchingLocal &&
-                    <div>
-                        <Loading></Loading>
-                        <h1>FETCHING LOCAL DATA</h1>
-                    </div>
-                }
                 {   this.props.homedata.isFetching &&
                     <div>
                         <Loading>
@@ -64,31 +52,12 @@ class Home extends Component {
                     <h1 style={this.FetchingStyle}>LOL WUT Something went WRONG i guess .... holy fuck terribly wrong</h1>
                 }
                 {
-                    this.props.homedata.didInvalidateLocal &&
-                    <div>
-                        <h1>YOUR FIRST VISIT? JUST RELOAD PAGE PLZ GG WP</h1>
-                    </div>
-                }
-                {
-                    !this.props.homedata.isFetching && !this.props.homedata.didInvalidate &&
+                    !this.props.homedata.didInvalidate &&
                         <div>
                             <p>What up Mate dis is not the OP Home</p>
                             {/*<Quotation></Quotation>*/}
                             <BlogList blogs={this.props.homedata.items}></BlogList>
                         </div>
-                }
-                {
-                    this.props.homedata.didInvalidateLazy &&
-                        <h1>WHAT THE LAZY LOAD IS BROKEN GG WP</h1>
-                }
-                {
-                    (this.props.homedata.isFetching || this.props.homedata.didInvalidate) && !this.props.homedata.isFetchingLocal && !this.props.homedata.didInvalidateLocal &&
-                    <div>
-                        <p>What up Mate dis is not the OP Home</p>
-                        <h1>THIS IS LOCAL DATA Might be depreciated</h1>
-                        {/*<Quotation></Quotation>*/}
-                        <BlogListLocal blogs={this.props.homedata.itemsLocal}></BlogListLocal>
-                    </div>
                 }
                 <BlogListLazy></BlogListLazy>
             </div>

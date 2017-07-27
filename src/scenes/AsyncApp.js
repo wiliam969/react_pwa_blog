@@ -21,6 +21,10 @@ import createBrowserHistory from 'history/createBrowserHistory'
 
 class AsyncApp extends Component {
 
+    main = {
+        height: 100+ 'vh'
+    }
+
     componentDidMount() {
     }
 
@@ -31,7 +35,7 @@ class AsyncApp extends Component {
         const history = createBrowserHistory()
         return(
 
-            <div id="main-container">
+            <div id="main-container" style={this.main}>
                 <Router history={history}>
                     <div>
                         <Menu></Menu>

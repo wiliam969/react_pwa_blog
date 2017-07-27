@@ -10,7 +10,6 @@ import VisibilitySensor from 'react-visibility-sensor'
 class BlogListLazy extends Component {
 
     isActive = this.props.blogs.stopLazyLoad
-    pageNumber = 1
 
     componentDidMount() {
     }
@@ -20,9 +19,7 @@ class BlogListLazy extends Component {
         const onChange = (isVisible) => {
             if(isVisible) {
                 console.log(isVisible)
-                this.props.sendTheAlert(this.pageNumber)
-                this.pageNumber++
-                console.log(this.pageNumber)
+                this.props.sendTheAlert(this.props.blogs.LazyPage)
                 // this.isActive = false
             } else {
                 console.log("not anymore")

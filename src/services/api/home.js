@@ -61,14 +61,11 @@ export default class HomeApi {
     }
 
     static getAfterBlogPreview() {
-        console.log("trying to fetch latest date")
         return db.timestamp.get({id: 1})
             .then(response => {
                 let timestamp = response.date
                 timestamp = new Date(timestamp)
                 let latest = timestamp.toISOString()
-
-                console.log(latest)
 
                 return fetch(process.env.REACT_APP_API_URI + 'posts?after=' + latest, {method: 'GET'})
                     .then((response) => response.json())

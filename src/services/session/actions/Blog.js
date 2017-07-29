@@ -46,8 +46,8 @@ export function fetchBlogSingle(blog = 1) {
                     console.log("Api Response")
                     return BlogApi.getBlogSingle(id)
                         .then(ApiResponse => {
-                            ApiResponse['content'] = ApiResponse.content.rendered
-                            ApiResponse['title'] = ApiResponse.title.rendered
+                            console.log(ApiResponse)
+                            BlogStorage.saveBlogSingle(ApiResponse)
                             dispatch(receiveBlogSingle(ApiResponse))
                         }).catch(error => {
                             dispatch(invalidateBlogSingle(error))

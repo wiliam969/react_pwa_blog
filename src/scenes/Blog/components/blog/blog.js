@@ -3,13 +3,17 @@ import React, { Component } from 'react'
 export default class Blog extends Component {
     render() {
         return (
-                <div className="box" key={this.props.content.id} data-key={this.props.content.id} style={ this.humus }>
-                    <p>{this.props.content.bloginformation.id}</p>
-                    <p>{this.props.content.bloginformation.author}</p>
-                    <p>{this.props.content.bloginformation.date}</p>
-                    <div className="blog-title">{this.props.content.bloginformation.title}</div>
-                    <div className="blog-preview-text" dangerouslySetInnerHTML={{__html: this.props.content.bloginformation.content}}></div>
-                </div>
+            <div>
+                {Object.keys(this.props.content).length > 0 &&
+                    <div className="box">
+                        <p>{this.props.content.id}</p>
+                        <p>{this.props.content.author}</p>
+                        <p>{this.props.content.date}</p>
+                        <div className="blog-title">{this.props.content.title}</div>
+                        <div className="blog-preview-text" dangerouslySetInnerHTML={{__html: this.props.content.content}}></div>
+                    </div>
+                }
+            </div>
         )
     }
 }

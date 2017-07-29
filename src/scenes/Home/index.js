@@ -51,14 +51,14 @@ class Home extends Component {
                 {   this.props.homedata.didInvalidate &&
                     <h1 style={this.FetchingStyle}>LOL WUT Something went WRONG i guess .... holy fuck terribly wrong</h1>
                 }
-                {
-                    !this.props.homedata.didInvalidate &&
+                {/*{*/}
+                    {/*!this.props.homedata.didInvalidate &&*/}
                         <div>
                             <p>What up Mate dis is not the OP Home</p>
                             {/*<Quotation></Quotation>*/}
                             <BlogList blogs={this.props.homedata.items}></BlogList>
                         </div>
-                }
+                // }
                 <BlogListLazy></BlogListLazy>
             </div>
         );

@@ -3,6 +3,7 @@
  */
 
 import BlogApi from '../../api/blog'
+import BlogStorage from '../../storage/blog'
 
 export const REQUEST_BLOG_SINGLE = 'REQUEST_BLOG_SINGLE'
 export const RECEIVE_BLOG_SINGLE = 'RECEIVE_BLOG_SINGLE'
@@ -32,16 +33,26 @@ export const invalidateBlogSingle = (blog) => {
 
 export function fetchBlogSingle(blog = 1) {
     const id = blog.match.params.id
-    console.log(id)
-    return function (dispatch,blog) {
+
+    return function (dispatch) {
         dispatch(requestBlogSingle(id))
-        return BlogApi.getBlogSingle(id)
-            .then(post => {
-                post['content'] = post.content.rendered
-                post['title'] = post.title.rendered
-                dispatch(receiveBlogSingle(post))
-            }).catch(error => {
-                dispatch(invalidateBlogSingle(error))
+
+        return BlogStorage.getBlogSingle(id)
+            .then(StorageResponse => {
+                if(StorageResponse != null) {
+                    console.log("Storage Response")
+                    dispatch(receiveBlogSingle(StorageResponse))
+                } else {
+                    console.log("Api Response")
+                    return BlogApi.getBlogSingle(id)
+                        .then(ApiResponse => {
+                            ApiResponse['content'] = ApiResponse.content.rendered
+                            ApiResponse['title'] = ApiResponse.title.rendered
+                            dispatch(receiveBlogSingle(ApiResponse))
+                        }).catch(error => {
+                            dispatch(invalidateBlogSingle(error))
+                        })
+                }
             })
     }
 }

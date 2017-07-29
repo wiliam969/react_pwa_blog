@@ -48,10 +48,10 @@ class BlogSingle extends Component {
                 {   this.props.Blog.didInvalidate &&
                     <h1 style={this.FetchingStyle}> NOOOOOOOOOOOOOOOOOOO LOL WUT Something went WRONG i guess .... holy fuck terribly wrong</h1>
                 }
-
-                {   this.props.Blog.receivedBlog &&
+                {
+                    !this.props.Blog.isFetching && !this.props.Blog.didInvalidate &&
                     <div>
-                        <Blog content={this.props.Blog}></Blog>
+                        <Blog content={this.props.Blog.item}></Blog>
 
                         {this.state.isComment ?
                             <div>
@@ -72,7 +72,7 @@ BlogSingle.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    var blog = { didInvalidate: '', isFetching: '', bloginformation: {}}
+    var blog = { didInvalidate: '', isFetching: '', item: { id: "", author: "", date: "", content:"LOREI", title: "dasd"}}
 
     blog = Object.assign({}, state.Blog)
 

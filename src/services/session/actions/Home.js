@@ -97,6 +97,13 @@ export function fetchNextBlogPreviews(page) {
     return function (dispatch) {
         dispatch(requestBlogPreview(page))
 
+        return HomeStorage.getLazyBlogPreview()
+    }
+
+
+    return function (dispatch) {
+        dispatch(requestBlogPreview(page))
+
         return HomeApi.getPageBlogPreview(page)
             .then(blogs => {
                 console.log(blogs)

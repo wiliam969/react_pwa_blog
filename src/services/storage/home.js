@@ -17,6 +17,7 @@ export default class HomeStorage {
                 return db.table('blog').where('date').below(lazyitems.oldestDate).limit(4).toArray()
                     .then(bitems => {
                         console.log(bitems)
+                        console.log(bitems)
                         return bitems
                     })
                     .catch(error => {

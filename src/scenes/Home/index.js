@@ -8,8 +8,6 @@ import {
 } from '../../services/session/actions/Home'
 
 import Loading from '../../components/loading'
-import LoadingLazy from '../../components/loading-lazy'
-import LoadingNew from '../../components/loading-new'
 import BlogList from './components/bloglist/index.js'
 import BlogListLazy from './components/bloglist/lazy-index'
 
@@ -41,16 +39,16 @@ class Home extends Component {
 
         return (
             <div>
-                <button onClick={this.fetchNewPosts}>CLICK ME SENPAI</button>
+                <button onClick={this.fetchNewPosts}>Search for new Blogs</button>
                 {
                     this.props.homedata.isFetchingNew &&
                         <div>
-                            <LoadingNew></LoadingNew>
+                            <Loading type="reload"></Loading>
                         </div>
                 }
                 {   this.props.homedata.isFetching &&
                     <div>
-                        <Loading>
+                        <Loading type="Pacman">
                         </Loading>
                     </div>
 
@@ -64,7 +62,7 @@ class Home extends Component {
                     </div>
                 {
                     this.props.homedata.isFetchingLazy &&
-                    <LoadingLazy></LoadingLazy>
+                    <Loading type="Spin"></Loading>
                 }
                 <BlogListLazy></BlogListLazy>
             </div>

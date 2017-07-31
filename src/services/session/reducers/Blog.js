@@ -32,7 +32,7 @@ function Blog(state = {
                 didInvalidate: false,
                 item: {
                     content: action.blog.content.rendered,
-                    title: action.blog.content.rendered,
+                    title: action.blog.title.rendered,
                     date: action.blog.date,
                     author: action.blog.author,
                     id:action.blog.id,

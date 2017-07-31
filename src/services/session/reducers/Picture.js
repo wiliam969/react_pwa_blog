@@ -1,6 +1,9 @@
 import { REQUEST_PICTURE, RECEIVE_PICTURE, INVALIDATE_PICTURE } from '../actions/Picture'
 
-function Picture(state = {/**isFetching: false, didInvalidate: false, items: [] **/}, action) {
+function Picture(state = {
+    isFetching: false,
+    didInvalidate: false,
+    picture_obj: {}}, action) {
     switch(action.type) {
         case INVALIDATE_PICTURE:
             return {
@@ -11,13 +14,12 @@ function Picture(state = {/**isFetching: false, didInvalidate: false, items: [] 
             return Object.assign({}, state, {
                 isFetching: true,
                 didInvalidate: false,
-                id: action.id
             })
         case RECEIVE_PICTURE:
             return {
                 picture_obj: {
                     ...state.picture_obj,
-                        [action.id]: action.picture,
+                        [action.id]: action.picture.media_details.sizes,
                 }
             }
         default:

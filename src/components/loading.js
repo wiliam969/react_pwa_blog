@@ -4,18 +4,19 @@ export default class Loading extends Component {
 
 
     render() {
-        const loadingcontainer = "loading-container"
-        const loadingwrapper = "loading-wrapper"
+        const loadingContainer = "loading-container"
+        const loadingWrapper = "loading-wrapper"
         const img_style = {
             width: 100 + "px",
             height: 100 + "px"
         }
+        const loadingType = this.props.type
 
-        const img_path = process.env.REACT_APP_URL + 'Pacman.gif'
+        const img_path = process.env.REACT_APP_URL + loadingType + '.gif'
         return (
-            <div className={loadingcontainer}>
-                <div className={loadingwrapper}>
-                <img src={img_path} alt="Pacman" style={img_style}/>
+            <div className={loadingContainer}>
+                <div className={loadingWrapper}>
+                    <img src={img_path} alt={loadingType} style={img_style}/>
                 </div>
             </div>
         )

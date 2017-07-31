@@ -7,31 +7,29 @@ import {
 
 import VisibilitySensor from 'react-visibility-sensor'
 
-class Thumbnail extends Component {
+class Picture extends Component {
 
     isActive = true
 
-    renderLink() {
+    renderPicture() {
 
-        const thumbnail = this.props.thumbnail
-        const arr_thumbnail = []
+        if(this.props.thumbnail != null) {
+            const thumbnail = this.props.thumbnail
+            const type = this.props.type
 
-        for(var i in thumbnail)
-            arr_thumbnail.push(thumbnail[i])
+            const picture_url = thumbnail[type].source_url
+            console.log(picture_url)
 
-        if(arr_thumbnail[21] == null){
-
-        } else {
-            var Style = null
-
-            return Style = {
-                backgroundImage: 'url(' + arr_thumbnail[21]['sizes']['thumbnail']['source_url'] + ')',
+            var Style = {
+                backgroundImage: 'url(' + picture_url + ')',
                 backgroundPosition: 'center center',
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
                 width:100 + '%',
                 height:200+ 'px',
             }
+
+            return Style
         }
     }
 
@@ -50,6 +48,7 @@ class Thumbnail extends Component {
     }
 
    render() {
+        console.log(this.props.thumbnail)
        const onChange = (isVisible) => {
            if(isVisible) {
                this.props.sendTheAlert(this.props)
@@ -65,7 +64,7 @@ class Thumbnail extends Component {
                 <div>
                     {this.props.thumbnail != 0 &&
                     <div>
-                        <div style={this.renderLink()}>{  }</div>
+                        <div style={this.renderPicture()}>{  }</div>
                     </div>
                     }
                     {this.props.thumbnail == null &&
@@ -80,24 +79,25 @@ class Thumbnail extends Component {
     }
 }
 
-Thumbnail.propTypes = {
+Picture.propTypes = {
     dispatch: PropTypes.func
 }
 
 const mapStateToProps = (state, ownProps) => {
-    var link = {}
     var blogid = 1
-    var thumbnail = { link: "saqasd", }
+    var thumbnail = {}
+    var type = "thumbnail"
+
+    const thumbnailExample = thumbnail
 
     blogid = ownProps.blogid
-    link = Object.assign({}, state.Picture)
-
     thumbnail = Object.assign({}, state.Picture.picture_obj)
+    type = ownProps.type
 
     return {
         bid:blogid,
         thumbnail: thumbnail[blogid],
-        data: state,
+        type:type
     }
 }
 
@@ -107,4 +107,4 @@ const mapDispatchToProps = (dispatch,ownProps) => {
     })
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Thumbnail)
+export default connect(mapStateToProps,mapDispatchToProps)(Picture)

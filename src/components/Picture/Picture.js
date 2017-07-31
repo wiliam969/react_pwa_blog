@@ -11,14 +11,16 @@ class Picture extends Component {
 
     isActive = true
 
+    constructor(props) {
+        super(props)
+    }
+
     renderPicture() {
 
         if(this.props.thumbnail != null) {
             const thumbnail = this.props.thumbnail
             const type = this.props.type
-
             const picture_url = thumbnail[type].source_url
-            console.log(picture_url)
 
             var Style = {
                 backgroundImage: 'url(' + picture_url + ')',
@@ -28,7 +30,6 @@ class Picture extends Component {
                 width:100 + '%',
                 height:200+ 'px',
             }
-
             return Style
         }
     }
@@ -43,12 +44,7 @@ class Picture extends Component {
         }
     }
 
-    constructor(props) {
-        super(props)
-    }
-
    render() {
-        console.log(this.props.thumbnail)
        const onChange = (isVisible) => {
            if(isVisible) {
                this.props.sendTheAlert(this.props)

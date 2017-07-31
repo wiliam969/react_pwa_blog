@@ -20,11 +20,9 @@ class BlogWrapper extends Component {
             <div>
                 <Blog content={this.props.Blogs}></Blog>
 
-                {/*{this.state.isComment ?*/}
-                    <div>
-                        <Comments blogid={this.props.Blogs.id}></Comments>
-                    </div>
-                // }
+                <div>
+                    <Comments blogid={this.props.Blogs.id}></Comments>
+                </div>
             </div>
         )
     }

@@ -71,7 +71,7 @@ class Comments extends Component {
                             <CommentForm onSubmit={e => {
                                 e.preventDefault()
                                 this.submitForm()
-                            }} data={this.state}></CommentForm>
+                            }} onValueChange={this.handleInputChange} data={this.state}></CommentForm>
                         </div>
                     </div>
                 }

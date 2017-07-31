@@ -1,20 +1,24 @@
 import {
     REQUEST_BLOG_PREVIEW,
+    REQUEST_LAZY_BLOG_PREVIEW,
+    REQUEST_NEW_BLOG_PREVIEW,
     INVALIDATE_BLOG_PREVIEW,
     RECEIVE_BLOG_PREVIEW,
     RECEIVE_LOCAL_BLOG_PREVIEW,
     RECEIVE_LAZY_BLOG_PREVIEW,
-    RECEIVE_AFTER_BLOG_PREVIEW,
+    RECEIVE_NEW_BLOG_PREVIEW,
     STOP_LAZY_BLOG_PREVIEW,
 } from '../actions/Home'
 
 function Home(
     state = {
         isFetching: false,
+        isFetchingLazy: false,
+        isFetchingNew: false,
         didInvalidate: false,
-        items: [],
         didInvalidateLocal: false,
         stopLazyLoad:true,
+        items: [],
         receivedAt: "",
         oldestPost: "",
         LazyPage:1,
@@ -28,7 +32,14 @@ function Home(
         case REQUEST_BLOG_PREVIEW:
             return Object.assign({}, state, {
                 isFetching: true,
-                didInvalidate: false
+            })
+        case REQUEST_LAZY_BLOG_PREVIEW:
+            return Object.assign({}, state, {
+                isFetchingLazy: true,
+            })
+        case REQUEST_NEW_BLOG_PREVIEW:
+            return Object.assign({}, state, {
+                isFetchingNew: true
             })
         case RECEIVE_BLOG_PREVIEW:
             return {
@@ -48,10 +59,10 @@ function Home(
             return {
                 ...state,
                 LazyPage: state.LazyPage +1,
-                isFetching:false,
+                isFetchingLazy:false,
                 items: state.items.concat(action.blogs),
             }
-        case RECEIVE_AFTER_BLOG_PREVIEW:
+        case RECEIVE_NEW_BLOG_PREVIEW:
             return {
                 ...state,
                 items: [
@@ -59,7 +70,7 @@ function Home(
                     ...state.items,
                 ],
                 NewPage: state.NewPage +1,
-                isFetching:false,
+                isFetchingNew:false,
             }
         case STOP_LAZY_BLOG_PREVIEW:
             return Object.assign({}, state, {

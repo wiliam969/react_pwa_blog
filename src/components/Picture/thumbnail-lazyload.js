@@ -25,10 +25,11 @@ class Thumbnail extends Component {
             var Style = null
 
             return Style = {
-                backgroundColor:"grey",
                 backgroundImage: 'url(' + arr_thumbnail[21]['sizes']['thumbnail']['source_url'] + ')',
                 backgroundPosition: 'center center',
-                width:200 + 'px',
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover',
+                width:100 + '%',
                 height:200+ 'px',
             }
         }

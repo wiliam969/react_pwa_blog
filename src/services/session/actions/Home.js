@@ -5,17 +5,32 @@ import HomeApi from '../../api/home'
 import HomeStorage from '../../storage/home'
 
 export const REQUEST_BLOG_PREVIEW = 'REQUEST_BLOG_PREVIEW'
+export const REQUEST_LAZY_BLOG_PREVIEW = 'REQUEST_LAZY_BLOG_PREVIEW'
+export const REQUEST_NEW_BLOG_PREVIEW = 'REQUEST_NEW_BLOG_PREVIEW'
 export const RECEIVE_BLOG_PREVIEW = 'RECEIVE_BLOG_PREVIEW'
 export const RECEIVE_LOCAL_BLOG_PREVIEW = 'RECEIVE_LOCAL_BLOG_PREVIEW'
 export const RECEIVE_LAZY_BLOG_PREVIEW = 'RECEIVE_LAZY_BLOG_PREVIEW'
 export const INVALIDATE_BLOG_PREVIEW = 'INVALIDATE_BLOG_PREVIEW'
 export const STOP_LAZY_BLOG_PREVIEW = 'STOP_LAZY_BLOG_PREVIEW'
-export const RECEIVE_AFTER_BLOG_PREVIEW = 'RECEIVE_AFTER_BLOG_PREVIEW'
+export const RECEIVE_NEW_BLOG_PREVIEW = 'RECEIVE_NEW_BLOG_PREVIEW'
+
 
 export const requestBlogPreview = (blogs) => {
     return {
         type: 'REQUEST_BLOG_PREVIEW',
         blogs
+    }
+}
+
+export const requestLazyBlogPreview = () => {
+    return {
+        type:'REQUEST_LAZY_BLOG_PREVIEW',
+    }
+}
+
+export const requestNewBlogPreview = () => {
+    return {
+        type:'REQUEST_NEW_BLOG_PREVIEW'
     }
 }
 
@@ -57,18 +72,18 @@ export const stopLazyBlogPreview = () => {
 
 export const receiveAfterBlogPreview = (blogs) => {
     return {
-        type:'RECEIVE_AFTER_BLOG_PREVIEW',
+        type:'RECEIVE_NEW_BLOG_PREVIEW',
         blogs,
         receivedAt: Date.now()
     }
 }
 
-
-
 // this is it lul it wörks haha didint expected this :D
 
 export function fetchBlogPreviews(blogs) {
+
     return function(dispatch) {
+
         dispatch(requestBlogPreview(blogs))
 
         return HomeStorage.getBlogPreview()
@@ -92,8 +107,10 @@ export function fetchBlogPreviews(blogs) {
 }
 
 export function fetchLazyBlogPreview(page) {
+
     return function (dispatch) {
-        dispatch(requestBlogPreview(page))
+
+        dispatch(requestLazyBlogPreview())
 
         return HomeStorage.getLazyBlogPreview()
             .then(StorageItems => {
@@ -138,11 +155,11 @@ export function fetchLazyBlogPreview(page) {
     }
 }
 
-export function fetchAfterBlogPreview() {
+export function fetchNewBlogPreview() {
     return function (dispatch) {
-        dispatch(requestBlogPreview())
+        dispatch(requestNewBlogPreview())
 
-        return HomeApi.getAfterBlogPreview()
+        return HomeApi.getnewBlogPreviews()
             .then(blogs => {
                 console.log(blogs)
                 return dispatch(receiveAfterBlogPreview(blogs))

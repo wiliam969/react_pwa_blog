@@ -3,11 +3,13 @@ import { bindActionCreators } from 'redux'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import {
-    fetchAfterBlogPreview,
+    fetchNewBlogPreview,
     fetchBlogPreviews
 } from '../../services/session/actions/Home'
 
 import Loading from '../../components/loading'
+import LoadingLazy from '../../components/loading-lazy'
+import LoadingNew from '../../components/loading-new'
 import BlogList from './components/bloglist/index.js'
 import BlogListLazy from './components/bloglist/lazy-index'
 
@@ -33,34 +35,39 @@ class Home extends Component {
 
     fetchnewPosts() {
             const { dispatch, ownProps } = this.props
-            dispatch(fetchAfterBlogPreview(this.props))
+            dispatch(fetchNewBlogPreview(this.props))
     }
 
     render () {
 
-        var huhu = {
-            height: 2000 + "px"
-        }
-
         return (
             <div>
                 <button onClick={this.fetchnewPosts}>CLICK ME SENPAI</button>
+                {
+                    this.props.homedata.isFetchingNew &&
+                        <div>
+                            <LoadingNew></LoadingNew>
+                        </div>
+                }
                 {   this.props.homedata.isFetching &&
                     <div>
                         <Loading>
-                        <h1 style={this.FetchingStyle}>im Fetching GUYS hold on dont stress me !</h1>
                         </Loading>
                     </div>
 
                 }
                 {   this.props.homedata.didInvalidate &&
-                    <h1 style={this.FetchingStyle}>LOL WUT Something went WRONG i guess .... holy fuck terribly wrong</h1>
+                    <h1 style={this.FetchingStyle}>Something went Wrong</h1>
                 }
-                    <div style={ huhu}>
+                    <div>
                         <p>What up Mate dis is not the OP Home</p>
                         {/*<Quotation></Quotation>*/}
                         <BlogList blogs={this.props.homedata.items}></BlogList>
                     </div>
+                {
+                    this.props.homedata.isFetchingLazy &&
+                    <LoadingLazy></LoadingLazy>
+                }
                 <BlogListLazy></BlogListLazy>
             </div>
         );

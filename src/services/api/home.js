@@ -89,9 +89,10 @@ export default class HomeApi {
             })
     }
 
-    static getAfterBlogPreview() {
+    static getnewBlogPreviews() {
         return db.timestamp.get({id: 1})
             .then(response => {
+                console.log(response)
                 let timestamp = response.latestDate
                 timestamp = new Date(timestamp)
                 let latest = timestamp.toISOString()

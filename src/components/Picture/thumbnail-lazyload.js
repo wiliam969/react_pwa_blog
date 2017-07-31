@@ -25,11 +25,22 @@ class Thumbnail extends Component {
             var Style = null
 
             return Style = {
+                backgroundColor:"grey",
                 backgroundImage: 'url(' + arr_thumbnail[21]['sizes']['thumbnail']['source_url'] + ')',
                 backgroundPosition: 'center center',
                 width:200 + 'px',
                 height:200+ 'px',
             }
+        }
+    }
+
+    renderDefaultThumbnail() {
+        var Style = null
+
+        return Style = {
+            backgroundColor:"grey",
+            width: 100 + "%",
+            height: 200 + "px",
         }
     }
 
@@ -50,13 +61,21 @@ class Thumbnail extends Component {
 
         return (
             <VisibilitySensor onChange={onChange} active={this.isActive}>
-                {this.props.thumbnail != 0 &&
+                <div>
+                    {this.props.thumbnail != 0 &&
                     <div>
                         <div style={this.renderLink()}>{  }</div>
                     </div>
-                }
+                    }
+                    {this.props.thumbnail == null &&
+                    <div>
+                        <div style={this.renderDefaultThumbnail()}></div>
+                    </div>
+                    }
+                </div>
             </VisibilitySensor>
         )
+
     }
 }
 

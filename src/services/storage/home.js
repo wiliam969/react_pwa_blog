@@ -2,8 +2,9 @@ import db from '../storage/index'
 
 export default class HomeStorage {
     static getBlogPreview() {
-        return db.table('blog').reverse().limit(4).sortBy('date')
+        return db.blog.orderBy('date').reverse().limit(4).toArray()
             .then(bitems => {
+                console.log(bitems)
                 return bitems
             })
             .catch(error => {

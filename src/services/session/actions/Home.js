@@ -3,6 +3,7 @@
  */
 import HomeApi from '../../api/home'
 import HomeStorage from '../../storage/home'
+import Home from "../reducers/home";
 
 export const REQUEST_BLOG_PREVIEW = 'REQUEST_BLOG_PREVIEW'
 export const REQUEST_LAZY_BLOG_PREVIEW = 'REQUEST_LAZY_BLOG_PREVIEW'
@@ -94,7 +95,11 @@ export function fetchBlogPreviews(blogs) {
                 } else {
                     HomeApi.getLatestBlogList()
                         .then((posts) => {
-                            return dispatch(receiveBlogpreview(posts))
+                            dispatch(receiveBlogpreview(posts))
+
+                            HomeStorage.updateOldestDate(posts)
+
+                            return HomeStorage.saveBlogPreviews(posts)
                         })
                         .catch(error => {
                             return dispatch(invalidateBlogPreview(error))
@@ -112,9 +117,8 @@ export function fetchLazyBlogPreview(page) {
 
         dispatch(requestLazyBlogPreview())
 
-        return HomeStorage.getLazyBlogPreview()
+        return HomeStorage.getLazyBlogPreview(page)
             .then(StorageItems => {
-                console.log(StorageItems)
 
                 if(StorageItems.length > 0) {
                     console.log("Storage Response")
@@ -124,6 +128,8 @@ export function fetchLazyBlogPreview(page) {
                     HomeApi.getLazyBlogPreview(page)
                         .then(ApiResponse => {
                             dispatch(receiveLazyBlogPreview(ApiResponse))
+
+                            return HomeStorage.saveBlogPreviews(ApiResponse)
                         })
                         .catch(error => {
                             dispatch(invalidateBlogPreview(error))
@@ -135,24 +141,6 @@ export function fetchLazyBlogPreview(page) {
             })
 
     }
-
-
-    return function (dispatch) {
-        dispatch(requestBlogPreview(page))
-
-        return HomeApi.getPageBlogPreview(page)
-            .then(blogs => {
-                console.log(blogs)
-                if(blogs.length != 0) {
-                    return dispatch(receiveLazyBlogPreview(blogs))
-                } else {
-                    return dispatch(stopLazyBlogPreview())
-                }
-            })
-            .catch(error => {
-                return dispatch(invalidateBlogPreview(error))
-            })
-    }
 }
 
 export function fetchNewBlogPreview() {
@@ -161,8 +149,11 @@ export function fetchNewBlogPreview() {
 
         return HomeApi.getnewBlogPreviews()
             .then(blogs => {
-                console.log(blogs)
-                return dispatch(receiveAfterBlogPreview(blogs))
+                dispatch(receiveAfterBlogPreview(blogs))
+
+                HomeStorage.updateLatestDate()
+
+                return HomeStorage.saveBlogPreviews(blogs)
             })
             .catch(error => {
                 return dispatch(invalidateBlogPreview(error))

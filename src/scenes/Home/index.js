@@ -23,7 +23,6 @@ class Home extends Component {
 
     constructor(props) {
         super(props)
-        console.log("im Home")
         this.fetchnewPosts = this.fetchnewPosts.bind(this);
 
     }
@@ -60,7 +59,6 @@ class Home extends Component {
                     <h1 style={this.FetchingStyle}>Something went Wrong</h1>
                 }
                     <div>
-                        <p>What up Mate dis is not the OP Home</p>
                         {/*<Quotation></Quotation>*/}
                         <BlogList blogs={this.props.homedata.items}></BlogList>
                     </div>

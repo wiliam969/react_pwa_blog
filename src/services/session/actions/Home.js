@@ -121,10 +121,8 @@ export function fetchLazyBlogPreview(page) {
             .then(StorageItems => {
 
                 if(StorageItems.length > 0) {
-                    console.log("Storage Response")
                     dispatch(receiveLazyBlogPreview(StorageItems))
                 } else {
-                    console.log("Api Response")
                     HomeApi.getLazyBlogPreview(page)
                         .then(ApiResponse => {
                             dispatch(receiveLazyBlogPreview(ApiResponse))

@@ -9,7 +9,7 @@ export default class Menu extends Component {
                 <div className="container">
                     <div className="nav-left">
                         <a href="" className="nav-item">
-                            <img src="http://bulma.io/images/bulma-type.png" alt=""/>
+                            {/*<img src="http://bulma.io/images/bulma-type.png" alt=""/>*/}
                         </a>
                     </div>
                 </div>

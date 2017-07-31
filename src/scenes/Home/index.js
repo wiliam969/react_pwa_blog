@@ -23,7 +23,7 @@ class Home extends Component {
 
     constructor(props) {
         super(props)
-        this.fetchnewPosts = this.fetchnewPosts.bind(this);
+        this.fetchNewPosts = this.fetchNewPosts.bind(this);
 
     }
 
@@ -32,16 +32,16 @@ class Home extends Component {
         dispatch(fetchBlogPreviews(this.props))
     }
 
-    fetchnewPosts() {
-            const { dispatch, ownProps } = this.props
-            dispatch(fetchNewBlogPreview(this.props))
+    fetchNewPosts() {
+        const { dispatch, ownProps } = this.props
+        dispatch(fetchNewBlogPreview(this.props))
     }
 
     render () {
 
         return (
             <div>
-                <button onClick={this.fetchnewPosts}>CLICK ME SENPAI</button>
+                <button onClick={this.fetchNewPosts}>CLICK ME SENPAI</button>
                 {
                     this.props.homedata.isFetchingNew &&
                         <div>

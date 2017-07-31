@@ -3,13 +3,7 @@ import { Provider } from 'react-redux'
 import configureStore from './store'
 import AsyncApp from './AsyncApp'
 
-
-import { fetchBlogPreviews } from '../services/session/actions/Home'
-import { fetchcorrectSite} from "../services/session/actions/AsyncApp";
-
 const store = configureStore()
-
-store.dispatch(fetchcorrectSite())
 
 export default class Root extends Component {
     render() {

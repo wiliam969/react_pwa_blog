@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+
 import {
-    // requestBlogPreview,
-    // receiveBlogpreview,
-    fetchcorrectSite
-} from '../services/session/actions/AsyncApp'
+    FetchingData,
+} from '../services/session/actions/App'
 
 import Menu from '../components/Menu/index'
 import Footer from '../components/Footer/index'
@@ -16,6 +15,7 @@ import BlogSingle from './Blog/index'
 
 import { BrowserRouter as Router,Route } from 'react-router-dom'
 import createBrowserHistory from 'history/createBrowserHistory'
+import Loading from "../components/loading-lazy";
 
 
 
@@ -26,6 +26,8 @@ class AsyncApp extends Component {
     }
 
     componentDidMount() {
+        const { dispatch, ownProps } = this.props
+        dispatch(FetchingData(this.props))
     }
 
     componentDidUpdate(prevProps) {
@@ -34,42 +36,47 @@ class AsyncApp extends Component {
     render() {
         const history = createBrowserHistory()
         return(
-
             <div id="main-container" style={this.main}>
-                <Router history={history}>
+                {this.props.App.isLoading &&
+                    <Loading></Loading>
+                }
+                {!this.props.App.isLoading &&
                     <div>
-                        <Menu></Menu>
-                        <Route path="/home" render={() => <Home homedata={this.props.homedata}></Home>}></Route>
-                        <Route path="/aboutme" component={AboutMe} aboutme={this.props.aboutme}></Route>
-                        <Route path="/gallery" component={Gallery} gallery={this.props.gallery}></Route>
-                        <Route path="/blog/:id" component={BlogSingle} blog={this.props.Blog}></Route>
-                        {/*<Route path="/blog/:id" render={() => <BlogSingle blogsingle={this.props}></BlogSingle>}></Route>*/}
-                    </div>
-                </Router>
+                        <Router history={history}>
+                            <div>
+                                <Menu></Menu>
+                                <Route path="/home" render={() => <Home homedata={this.props.homedata}></Home>}></Route>
+                                <Route path="/aboutme" component={AboutMe} aboutme={this.props.aboutme}></Route>
+                                <Route path="/gallery" component={Gallery} gallery={this.props.gallery}></Route>
+                                <Route path="/blog/:id" component={BlogSingle} blog={this.props.Blog}></Route>
+                            </div>
+                        </Router>
 
-                <Footer></Footer>
+                        <Footer> </Footer>
+                    </div>
+                }
             </div>
         )
     }
 }
 
 AsyncApp.propTypes = {
-    // blogs: PropTypes.array
+    dispatch: PropTypes.func
 }
 
 function mapStateToProps(state,ownProps) {
     var homedata = { didInvalidate: '', isFetching: '',}
-    var AyncApp = { isHome: '', isGallery: '', isAboutMe:''}
+    var App = { isLoading:true}
     var Blog = { didInvalidate: '', isFetching: '', bloginformation: {}}
         homedata = Object.assign({}, state.Home)
-        AsyncApp = Object.assign({}, state.AsyncApp)
+        App = Object.assign({}, state.App)
         Blog = Object.assign({}, state.Blog)
     return {
         homedata: homedata,
-        AsyncApp:AyncApp,
+        App:App,
         Blog:Blog
     }
 }
 
-export default connect(mapStateToProps,fetchcorrectSite())(AsyncApp)
+export default connect(mapStateToProps)(AsyncApp)
 

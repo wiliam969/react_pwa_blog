@@ -3,7 +3,7 @@
  */
 import { combineReducers } from 'redux'
 import Home from './home'
-import AsyncApp from './AsyncApp'
+import AsyncApp from './App'
 import Picture from './Picture'
 import Blog from './Blog'
 import Comments from './Comments'

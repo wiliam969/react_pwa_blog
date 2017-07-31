@@ -17,31 +17,33 @@ class Picture extends Component {
 
     renderPicture() {
 
+        var Style = {
+            backgroundPosition: 'center center',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            width:100 + '%',
+            height:200+ 'px',
+        }
+
         if(this.props.thumbnail != null) {
             const thumbnail = this.props.thumbnail
             const type = this.props.type
+            const height = this.props.height
+            const width = this.props.width
             const picture_url = thumbnail[type].source_url
 
-            var Style = {
-                backgroundImage: 'url(' + picture_url + ')',
-                backgroundPosition: 'center center',
-                backgroundRepeat: 'no-repeat',
-                backgroundSize: 'cover',
-                width:100 + '%',
-                height:200+ 'px',
+            if(picture_url) {
+                Style['backgroundImage'] =  'url(' + picture_url + ')'
+                Style['width'] = width
+                Style['height'] = height
+            } else {
+                Style['backgroundColor'] = 'grey'
             }
-            return Style
+        } else {
+            Style['backgroundColor'] = 'grey'
         }
-    }
 
-    renderDefaultThumbnail() {
-        var Style = null
-
-        return Style = {
-            backgroundColor:"grey",
-            width: 100 + "%",
-            height: 200 + "px",
-        }
+        return Style
     }
 
    render() {
@@ -57,18 +59,7 @@ class Picture extends Component {
 
         return (
             <VisibilitySensor onChange={onChange} active={this.isActive}>
-                <div>
-                    {this.props.thumbnail != 0 &&
-                    <div>
-                        <div style={this.renderPicture()}>{  }</div>
-                    </div>
-                    }
-                    {this.props.thumbnail == null &&
-                    <div>
-                        <div style={this.renderDefaultThumbnail()}></div>
-                    </div>
-                    }
-                </div>
+                <div style={this.renderPicture()}></div>
             </VisibilitySensor>
         )
 

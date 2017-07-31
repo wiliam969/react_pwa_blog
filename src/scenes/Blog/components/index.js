@@ -1,16 +1,12 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
-
 import Blog from './blog/blog'
 import Comments from './comments/index'
 
-class BlogWrapper extends Component {
+export default class BlogWrapper extends Component {
 
     constructor(props) {
         super(props)
     }
-
 
     componentDidMount() {
     }
@@ -18,31 +14,15 @@ class BlogWrapper extends Component {
     render() {
         return (
             <div>
-                <Blog content={this.props.Blogs}></Blog>
+                <Blog content={this.props.blogs}></Blog>
 
-                <div>
-                    <Comments blogid={this.props.Blogs.id}></Comments>
-                </div>
+                {this.props.comment.isComment
+                ?
+                    <Comments blogid={this.props.blogs.id}></Comments>
+                :
+                    <button onClick={this.props.loadCommentWrapper}>Load Comments...</button>
+                }
             </div>
         )
     }
 }
-
-BlogWrapper.propTypes = {
-    dispatch: PropTypes.func
-}
-
-const mapStateToProps = (state, ownProps) => {
-    var blogs = { didInvalidate: '', isFetching: '', item: { id: "", author: "", date: "", content:"LOREI", title: "dasd"}}
-    var comments = { }
-
-    blogs = ownProps.blogs
-    comments = Object.assign({}, state.Comments)
-
-    return {
-        Blogs: blogs,
-        Comments:comments
-    }
-}
-
-export default connect(mapStateToProps)(BlogWrapper)

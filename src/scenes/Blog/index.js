@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { fetchBlogSingle } from '../../services/session/actions/Blog'
-import { bindActionCreators } from 'redux'
+import { showComments } from "../../services/session/actions/Comments"
 
 import BlogWrapper from './components/index'
 import Loading from '../../components/loading'
@@ -11,6 +11,8 @@ class BlogSingle extends Component {
 
     constructor(props) {
         super(props)
+
+        this.loadComments = this.loadComments.bind(this);
     }
 
 
@@ -18,6 +20,13 @@ class BlogSingle extends Component {
         const { dispatch, ownProps } = this.props
         dispatch(fetchBlogSingle(this.props))
     }
+
+    loadComments() {
+        const { dispatch, ownProps } = this.props
+        dispatch(showComments(this.props))
+    }
+
+
 
     render() {
         return (
@@ -31,7 +40,7 @@ class BlogSingle extends Component {
                 }
                 {
                     !this.props.Blog.isFetching && !this.props.Blog.didInvalidate &&
-                    <BlogWrapper blogs={this.props.Blog.item}></BlogWrapper>
+                    <BlogWrapper blogs={this.props.Blog.item} comment={this.props.Comment} loadCommentWrapper={this.loadComments}></BlogWrapper>
                 }
             </div>
         )
@@ -44,11 +53,14 @@ BlogSingle.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
     var blog = { didInvalidate: '', isFetching: '', item: { id: "", author: "", date: "", content:"LOREI", title: "dasd"}}
+    var comment = { isComments: false }
 
     blog = Object.assign({}, state.Blog)
+    comment = Object.assign({}, state.Comments)
 
     return {
         Blog: blog,
+        Comment: comment
     }
 }
 

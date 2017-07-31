@@ -48,13 +48,7 @@ class LazyBlogItemLoad extends Component {
     render() {
         const isEnd = this.isEnd
         return (
-
-            { isEnd &&
-                <div>
-                    <Blog></Blog>
-                </div>
-            }
-
+            <div></div>
         );
     }
 }

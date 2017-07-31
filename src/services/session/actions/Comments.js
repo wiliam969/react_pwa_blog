@@ -6,6 +6,7 @@ export const INVALIDATE_COMMENT = 'INVALIDATE_COMMENT'
 
 export const SEND_COMMENT = 'SEND_COMMENT'
 export const FAILED_COMMENT = 'FAILED_COMMENT'
+export const IS_COMMENT = 'IS_COMMENT'
 
 export const requestComment = (comment) => {
     return {
@@ -43,6 +44,12 @@ export const failedComment = (comment) => {
     }
 }
 
+export const isComment = () => {
+    return {
+        type:'IS_COMMENT'
+    }
+}
+
 export function fetchComments(post) {
     const post_id = post
 
@@ -68,5 +75,11 @@ export function sendComments(comments) {
             .catch(error => {
                 dispatch(failedComment(error))
             })
+    }
+}
+
+export function showComments() {
+    return function dispatch(dispatch) {
+        dispatch(isComment())
     }
 }

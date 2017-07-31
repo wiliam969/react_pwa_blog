@@ -7,7 +7,7 @@ export default class Blog extends Component {
             <div>
                 {Object.keys(this.props.content).length > 0 &&
                     <div className="box">
-                        <Picture blogid={this.props.content.id} type="full"></Picture>
+                        <Picture blogid={this.props.content.id} type="full" height="50vh" width="100%"></Picture>
                         <p>{this.props.content.id}</p>
                         <p>{this.props.content.author}</p>
                         <p>{this.props.content.date}</p>

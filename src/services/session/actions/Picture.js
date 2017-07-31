@@ -38,10 +38,12 @@ export function fetchPicture (post_id = 1) {
 
         return PictureApi.getPicture(id.blogid)
             .then(picture => {
-                dispatch(receivePicture(picture,id.blogid))
+                console.log(picture)
+                return dispatch(receivePicture(picture,id.blogid))
             })
             .catch(error => {
-                dispatch(invalidatePicture(error,id.blogid))
+                console.log(error)
+                return dispatch(invalidatePicture(error,id.blogid))
             })
     }
 }

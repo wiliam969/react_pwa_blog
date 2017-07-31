@@ -30,11 +30,8 @@ class Comments extends Component {
 
     handleInputChange(event) {
         const target = event.target
-        console.log(target)
         const value = target.value
-        console.log(value)
         const name = target.name
-        console.log(name)
 
         this.setState({
             [name]: value
@@ -52,7 +49,6 @@ class Comments extends Component {
     render() {
         return (
             <div>
-
                 {   this.props.comments.isFetching &&
                     <div>
                         <Loading></Loading>

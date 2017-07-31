@@ -19,7 +19,8 @@ class App extends Component {
           <Root></Root>
         </p>
       </div>
-    );
+
+    )
   }
 }
 

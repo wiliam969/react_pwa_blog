@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import {
-    fetchNextBlogPreviews
+    fetchLazyBlogPreview
 } from '../../../../services/session/actions/Home'
 
 import VisibilitySensor from 'react-visibility-sensor'
@@ -52,7 +52,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch,ownProps) => {
     return({
-        sendTheAlert: (e) => { dispatch(fetchNextBlogPreviews(e))}
+        sendTheAlert: (e) => { dispatch(fetchLazyBlogPreview(e))}
     })
 }
 

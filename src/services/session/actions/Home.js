@@ -74,13 +74,11 @@ export function fetchBlogPreviews(blogs) {
         return HomeStorage.getBlogPreview()
             .then(LocalPost => {
                 if(LocalPost.length > 0) {
+                    console.log("Storage Response")
                     dispatch(receiveLocalBlogPreview(LocalPost))
                 } else {
-                    dispatch(requestBlogPreview(blogs))
-
                     HomeApi.getLatestBlogList()
                         .then((posts) => {
-                            console.log(posts)
                             return dispatch(receiveBlogpreview(posts))
                         })
                         .catch(error => {
@@ -93,14 +91,32 @@ export function fetchBlogPreviews(blogs) {
     }
 }
 
-export function fetchNextBlogPreviews(page) {
+export function fetchLazyBlogPreview(page) {
     return function (dispatch) {
         dispatch(requestBlogPreview(page))
 
         return HomeStorage.getLazyBlogPreview()
             .then(StorageItems => {
-                dispatch(receive)
+                console.log(StorageItems)
+
+                if(StorageItems.length > 0) {
+                    console.log("Storage Response")
+                    dispatch(receiveLazyBlogPreview(StorageItems))
+                } else {
+                    console.log("Api Response")
+                    HomeApi.getLazyBlogPreview(page)
+                        .then(ApiResponse => {
+                            dispatch(receiveLazyBlogPreview(ApiResponse))
+                        })
+                        .catch(error => {
+                            dispatch(invalidateBlogPreview(error))
+                        })
+                }
             })
+            .catch(error => {
+                dispatch(invalidateBlogPreview(error))
+            })
+
     }
 
 

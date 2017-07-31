@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import CommentList from './CommentList'
+import CommentForm from './CommentForm'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { sendComments,fetchComments } from '../../../../services/session/actions/Comments'
@@ -67,27 +68,13 @@ class Comments extends Component {
                     <div>
                         <div className="comments-wrapper">
                             <CommentList comments={this.props.comments.comment}></CommentList>
-                        </div>
-                        <div className="comments-form">
-                        <form onSubmit={e => {
-                            e.preventDefault()
-                            this.submitForm()
-                        }}>
-                            <input type="text" id="name" name="commentname" placeholder="name" value={this.state.commentname} onChange={this.handleInputChange}/>
-                            <input type="text" id="email" name="commentemail" placeholder="email" value={this.state.commentemail} onChange={this.handleInputChange}/>
-                            <input type="text" id="website" name="commentwebsite" placeholder="website" value={this.state.commentwebsite} onChange={this.handleInputChange}/>
-                            <textarea type="text" id="comment" name="commentpost" placeholder="comment" value={this.state.commentpost} onChange={this.handleInputChange}/>
-                            <button type="submit" name="submit" id="submit">Submit</button>
-                        </form>
+                            <CommentForm onSubmit={e => {
+                                e.preventDefault()
+                                this.submitForm()
+                            }} data={this.state}></CommentForm>
                         </div>
                     </div>
                 }
-
-                <p>What up Mate dis is the OP Comments Home</p>
-                {/*<Quotation></Quotation>*/}
-                <p>Helo from se otha saide</p>
-
-                <p>Loading...</p>
             </div>
         )
     }

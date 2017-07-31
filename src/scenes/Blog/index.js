@@ -4,17 +4,13 @@ import PropTypes from 'prop-types'
 import { fetchBlogSingle } from '../../services/session/actions/Blog'
 import { bindActionCreators } from 'redux'
 
-import Blog from './components/blog/blog'
-import Comments from './components/comments/index'
+import BlogWrapper from './components/index'
 import Loading from '../../components/loading'
 
 class BlogSingle extends Component {
 
     constructor(props) {
         super(props)
-        this.state = { isComment: false}
-
-        this.handleClick = this.handleClick.bind(this);
     }
 
 
@@ -23,26 +19,11 @@ class BlogSingle extends Component {
         dispatch(fetchBlogSingle(this.props))
     }
 
-    handleClick() {
-        this.setState(prevState => ({
-            isComment: !prevState.isComment
-        }));
-    }
-
-
     render() {
-        var checkifworks = {
-            height: 2000 + 'px',
-            width: 100 + '%',
-        }
         return (
             <div>
-
                 {   this.props.Blog.isFetching &&
-                    <div>
-                        <Loading></Loading>
-                        <h1 style={this.FetchingStyle}>im Fetching GUYS hold on dont stress me !</h1>
-                    </div>
+                        <Loading type="Spin"></Loading>
                 }
 
                 {   this.props.Blog.didInvalidate &&
@@ -50,17 +31,7 @@ class BlogSingle extends Component {
                 }
                 {
                     !this.props.Blog.isFetching && !this.props.Blog.didInvalidate &&
-                    <div>
-                        <Blog content={this.props.Blog.item}></Blog>
-
-                        {this.state.isComment ?
-                            <div>
-                                <Comments blogid={this.props.match.params.id}></Comments>
-                            </div>
-                            :
-                            <button onClick={this.handleClick}>Load Comments ...</button>
-                        }
-                    </div>
+                    <BlogWrapper blogs={this.props.Blog.item}></BlogWrapper>
                 }
             </div>
         )

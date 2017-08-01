@@ -48,7 +48,7 @@ class Picture extends Component {
 
    render() {
        const onChange = (isVisible) => {
-           if(isVisible) {
+           if(isVisible && this.props.thumbnail == null) {
                this.props.sendTheAlert(this.props)
                this.isActive = false
            } else {

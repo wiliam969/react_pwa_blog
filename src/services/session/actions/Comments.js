@@ -1,8 +1,12 @@
 import CommentsApi from '../../api/comments'
 
 export const REQUEST_COMMENT = 'REQUEST_COMMENT'
+export const REQUEST_LAZY_COMMENT = 'REQUEST_LAZY_COMMENT'
 export const RECEIVE_COMMENT = 'RECEIVE_COMMENT'
+export const RECEIVE_LAZY_COMMENT = 'RECEIVE_LAZY_COMMENT'
 export const INVALIDATE_COMMENT = 'INVALIDATE_COMMENT'
+export const STOP_COMMENT = 'STOP_COMMENT'
+export const NEXT_COMMENT = 'NEXT_COMMENT'
 
 export const SEND_COMMENT = 'SEND_COMMENT'
 export const FAILED_COMMENT = 'FAILED_COMMENT'
@@ -15,6 +19,12 @@ export const requestComment = (comment) => {
     }
 }
 
+export const requestLazyComment = () => {
+    return {
+        type: 'REQUEST_LAZY_COMMENT',
+    }
+}
+
 export const receiveComment = (comment) => {
     return {
         type: 'RECEIVE_COMMENT',
@@ -23,10 +33,23 @@ export const receiveComment = (comment) => {
 
 }
 
+export const receiveLazyComment = (comment) => {
+    return {
+        type: 'RECEIVE_LAZY_COMMENT',
+        comment:comment
+    }
+}
+
 export const invalidateComment = (comment) => {
     return {
         type: 'INVALIDATE_COMMENT',
         comment: comment
+    }
+}
+
+export const stopComment = () => {
+    return {
+        type: 'STOP_COMMENT',
     }
 }
 
@@ -50,14 +73,37 @@ export const isComment = () => {
     }
 }
 
-export function fetchComments(post) {
+export function fetchComments(post,page) {
     const post_id = post
 
     return function (dispatch, comments) {
         dispatch(requestComment(post_id))
-        return CommentsApi.getComments(post_id.blogid)
+        return CommentsApi.getComments(post_id.blogid,page)
             .then(comments => {
-                dispatch(receiveComment(comments))
+                console.log(comments)
+                if(comments.length  == 0) {
+                    return dispatch(stopComment())
+                }
+                return dispatch(receiveComment(comments))
+            })
+            .catch(error => {
+                dispatch(invalidateComment(error))
+            })
+    }
+}
+
+export function fetchLazyComments(post,page) {
+    const post_id = post
+
+    return function (dispatch, comments) {
+        dispatch(requestLazyComment())
+        return CommentsApi.getComments(post_id.blogid,page)
+            .then(comments => {
+                console.log(comments)
+                if(comments.length  == 0) {
+                    return dispatch(stopComment())
+                }
+                return dispatch(receiveLazyComment(comments))
             })
             .catch(error => {
                 dispatch(invalidateComment(error))

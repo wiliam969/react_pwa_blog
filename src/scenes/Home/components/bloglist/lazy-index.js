@@ -11,10 +11,10 @@ class BlogListLazy extends Component {
 
     isActive = this.props.blogs.stopLazyLoad
 
-    componentDidMount() {
-    }
-    componentDidUpdate() {
-    }
+    // componentDidMount() {
+    // }
+    // componentDidUpdate() {
+    // }
     render() {
         const onChange = (isVisible) => {
             if(isVisible) {

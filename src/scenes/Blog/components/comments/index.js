@@ -3,11 +3,13 @@ import CommentList from './CommentList'
 import CommentForm from './CommentForm'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { sendComments,fetchComments } from '../../../../services/session/actions/Comments'
+import { sendComments,fetchComments,fetchLazyComments } from '../../../../services/session/actions/Comments'
 import { bindActionCreators } from 'redux'
 import Loading from '../../../../components/loading'
 
 class Comments extends Component {
+
+    CommentsPage = 1
 
     constructor(props) {
         super(props)
@@ -20,12 +22,14 @@ class Comments extends Component {
         }
 
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.loadMoreComments = this.loadMoreComments.bind(this);
     }
 
 
     componentDidMount() {
         const { dispatch, ownProps } = this.props
-        dispatch(fetchComments(this.props))
+        dispatch(fetchComments(this.props,this.CommentsPage))
+        this.CommentsPage++
     }
 
     handleInputChange(event) {
@@ -46,12 +50,19 @@ class Comments extends Component {
         dispatch(sendComments(this.state))
     }
 
+    loadMoreComments() {
+        const { dispatch, ownProps } = this.props
+        dispatch(fetchLazyComments(this.props,this.CommentsPage))
+        this.CommentsPage++
+    }
+
     render() {
+        console.log(this.props.comments)
         return (
             <div>
                 {   this.props.comments.isFetching &&
                     <div>
-                        <Loading></Loading>
+                        <Loading type="Spin"></Loading>
                         <h1 style={this.FetchingStyle}>im Fetching GUYS hold on dont stress me !</h1>
                     </div>
                 }
@@ -64,6 +75,17 @@ class Comments extends Component {
                     <div>
                         <div className="comments-wrapper">
                             <CommentList comments={this.props.comments.comment}></CommentList>
+
+                            {this.props.comments.isFetchingLazy &&
+                                <Loading type="Spin"></Loading>
+                            }
+
+                            {this.props.comments.stopComment ?
+                                <p>No more Comments found</p>
+                                :
+                                <button onClick={this.loadMoreComments}>Load More Comments</button>
+                            }
+
                             <CommentForm onSubmit={e => {
                                 e.preventDefault()
                                 this.submitForm()
@@ -81,7 +103,7 @@ Comments.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    var cdata = { didInvalidate: '', isFetching: ''}
+    var cdata = { didInvalidate: '', isFetching: '', comment: {}}
 
     cdata = Object.assign({}, state.Comments)
 

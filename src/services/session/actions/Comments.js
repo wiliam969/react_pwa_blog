@@ -131,6 +131,7 @@ export function sendComments(comments) {
 }
 
 export function showComments(post) {
+    console.log(post)
     const post_id = post
 
     return function dispatch(dispatch) {

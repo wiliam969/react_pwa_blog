@@ -11,9 +11,12 @@ export default class BlogApi {
     }
 
     static getLazyBlogSingle(date) {
+        console.log(date)
         return fetch(process.env.REACT_APP_API_URI +'posts?before=' + date + '&per_page=1', {method: 'GET'})
-            .then((response) => {
-                return response.json()
+            .then((response) => response.json())
+            .then(responseJson => {
+                console.log(responseJson)
+                return responseJson[0]
             })
             .catch(error => {
                 return error

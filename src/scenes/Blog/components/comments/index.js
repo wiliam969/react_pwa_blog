@@ -3,8 +3,7 @@ import CommentList from './CommentList'
 import CommentForm from './CommentForm'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { sendComments,fetchComments,fetchLazyComments } from '../../../../services/session/actions/Comments'
-import { bindActionCreators } from 'redux'
+import { sendComments,fetchComments,fetchLazyComments,showComments } from '../../../../services/session/actions/Comments'
 import Loading from '../../../../components/loading'
 
 class Comments extends Component {
@@ -23,6 +22,7 @@ class Comments extends Component {
 
         this.handleInputChange = this.handleInputChange.bind(this);
         this.loadMoreComments = this.loadMoreComments.bind(this);
+        this.loadComments = this.loadComments.bind(this);
     }
 
 
@@ -40,8 +40,6 @@ class Comments extends Component {
         this.setState({
             [name]: value
         })
-
-        console.log(this.state)
     }
 
     submitForm() {
@@ -56,43 +54,54 @@ class Comments extends Component {
         this.CommentsPage++
     }
 
+    loadComments() {
+        const { dispatch, ownProps } = this.props
+        dispatch(showComments(this.props))
+    }
+
     render() {
-        console.log(this.props.comments)
         if(typeof this.props.comments !== 'undefined' && typeof Object.keys(this.props.comments) !== 'undefined' && Object.keys(this.props.comments).length > 0) {
             return (
                 <div>
-                    {   this.props.comments.isFetching &&
-                    <div>
-                    <Loading type="Spin"></Loading>
-                    <h1 style={this.FetchingStyle}>im Fetching GUYS hold on dont stress me !</h1>
-                    </div>
-                    }
+                    {this.props.comments.isComment
+                        ?
+                        <div>
+                            {   this.props.comments.isFetching &&
+                            <div>
+                                <Loading type="Spin"></Loading>
+                                <h1 style={this.FetchingStyle}>im Fetching GUYS hold on dont stress me !</h1>
+                            </div>
+                            }
 
-                    {   this.props.comments.didInvalidate &&
-                    <h1 style={this.FetchingStyle}> NOOOOOOOOOOOOOOOOOOO LOL WUT Something went WRONG i guess .... holy fuck terribly wrong</h1>
-                    }
+                            {   this.props.comments.didInvalidate &&
+                            <h1 style={this.FetchingStyle}> NOOOOOOOOOOOOOOOOOOO LOL WUT Something went WRONG i guess .... holy fuck terribly wrong</h1>
+                            }
 
-                    {   !this.props.comments.didInvalidate && !this.props.comments.isFetching &&
-                    <div>
-                    <div className="comments-wrapper">
-                    <CommentList comments={this.props.comments.item}></CommentList>
+                            {   !this.props.comments.didInvalidate && !this.props.comments.isFetching &&
+                            <div>
+                                <div className="comments-wrapper">
+                                    <CommentList comments={this.props.comments.item}></CommentList>
 
-                    {this.props.comments.isFetchingLazy &&
-                    <Loading type="Spin"></Loading>
-                    }
+                                    {this.props.comments.isFetchingLazy &&
+                                    <Loading type="Spin"></Loading>
+                                    }
 
-                    {this.props.comments.stopComment ?
-                    <p>No more Comments found</p>
+                                    {this.props.comments.stopComment ?
+                                        <p>No more Comments found</p>
+                                        :
+                                        <button onClick={this.loadMoreComments}>Load More Comments</button>
+                                    }
+
+                                    <CommentForm onSubmit={e => {
+                                        e.preventDefault()
+                                        this.submitForm()
+                                    }} onValueChange={this.handleInputChange} data={this.state}></CommentForm>
+                                </div>
+                            </div>
+                            }
+                        </div>
                     :
-                    <button onClick={this.loadMoreComments}>Load More Comments</button>
-                    }
-
-                    <CommentForm onSubmit={e => {
-                    e.preventDefault()
-                    this.submitForm()
-                    }} onValueChange={this.handleInputChange} data={this.state}></CommentForm>
-                    </div>
-                    </div>
+                        <button onClick={this.loadComments}>Load Comments...</button>
                     }
                 </div>
             )

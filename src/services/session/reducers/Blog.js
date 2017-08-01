@@ -1,9 +1,10 @@
-import { REQUEST_BLOG_SINGLE, RECEIVE_BLOG_SINGLE, INVALIDATE_BLOG_SINGLE } from '../actions/Blog'
+import { REQUEST_BLOG_SINGLE,REQUEST_LAZY_BLOG_SINGLE, RECEIVE_BLOG_SINGLE,RECEIVE_LAZY_BLOG_SINGLE, INVALIDATE_BLOG_SINGLE } from '../actions/Blog'
 
 function Blog(state = {
         isFetching: false,
+        isFetchingLazy:false,
         didInvalidate: false,
-        items: {},
+        items: [],
     }, action) {
     switch(action.type) {
         case INVALIDATE_BLOG_SINGLE:
@@ -17,15 +18,24 @@ function Blog(state = {
                 didInvalidate: false,
                 receivedBlog:false,
             })
+        case REQUEST_LAZY_BLOG_SINGLE:
+            return {
+                ...state,
+                isFetchingLazy:true,
+            }
         case RECEIVE_BLOG_SINGLE:
             return {
                 ...state,
                 isFetching: false,
                 didInvalidate: false,
-                items: {
-                    ...state.items,
-                    [action.blog.id]: action.blog,
-                },
+                items: state.items.concat(action.blog),
+            }
+        case RECEIVE_LAZY_BLOG_SINGLE:
+            return {
+                ...state,
+                items: state.items.concat(action.blog),
+                isFetchingLazy: false,
+                didInvalidate: false,
             }
         default:
             return state

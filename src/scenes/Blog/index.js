@@ -5,26 +5,18 @@ import { fetchBlogSingle } from '../../services/session/actions/Blog'
 import { showComments } from "../../services/session/actions/Comments"
 
 import BlogWrapper from './components/index'
-import LazyBlog from './components/blog/blog-lazy'
 import Loading from '../../components/loading'
 
 class BlogSingle extends Component {
 
     constructor(props) {
         super(props)
-
-        this.loadComments = this.loadComments.bind(this);
     }
 
 
     componentDidMount() {
         const { dispatch, ownProps } = this.props
         dispatch(fetchBlogSingle(this.props))
-    }
-
-    loadComments(id) {
-        const { dispatch, ownProps } = this.props
-        dispatch(showComments(id))
     }
 
     render() {
@@ -39,11 +31,8 @@ class BlogSingle extends Component {
                 }
                 {
                     !this.props.Blog.isFetching && !this.props.Blog.didInvalidate &&
-                    <BlogWrapper blogs={this.props.Blog.items} comment={this.props.Comment} loadCommentWrapper={this.loadComments}></BlogWrapper>
+                    <BlogWrapper blogs={this.props.Blog.items} comment={this.props.Comment} id={this.props.match.params.id}></BlogWrapper>
                 }
-
-                {/*<LazyBlog></LazyBlog>*/}
-
             </div>
         )
     }

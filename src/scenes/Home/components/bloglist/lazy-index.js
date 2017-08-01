@@ -29,7 +29,7 @@ class BlogListLazy extends Component {
         console.log(this.props.blogs)
         return (
 
-            <VisibilitySensor onChange={onChange} active={this.isActive}>
+            <VisibilitySensor onChange={onChange} active={this.isActive} delayedCall={true}>
 
             </VisibilitySensor>
         )

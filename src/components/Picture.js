@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import {
     fetchPicture
-} from '../../services/session/actions/Picture'
+} from '../services/session/actions/Picture'
 
 import VisibilitySensor from 'react-visibility-sensor'
 
@@ -58,7 +58,7 @@ class Picture extends Component {
        }
 
         return (
-            <VisibilitySensor onChange={onChange} active={this.isActive}>
+            <VisibilitySensor onChange={onChange} active={this.isActive} partialVisibility={true}>
                 <div style={this.renderPicture()}></div>
             </VisibilitySensor>
         )

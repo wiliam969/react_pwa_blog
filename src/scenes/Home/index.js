@@ -26,8 +26,10 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        const { dispatch, ownProps } = this.props
-        dispatch(fetchBlogPreviews(this.props))
+        if(this.props.homedata.items.length == 0) {
+            const { dispatch, ownProps } = this.props
+            dispatch(fetchBlogPreviews(this.props))
+        }
     }
 
     fetchNewPosts() {

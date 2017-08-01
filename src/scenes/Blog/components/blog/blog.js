@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Picture from '../../../../components/Picture/Picture'
+import Picture from '../../../../components/Picture'
 
 export default class Blog extends Component {
     render() {

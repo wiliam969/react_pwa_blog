@@ -53,7 +53,7 @@ function Home(
             return Object.assign({}, state, {
                 isFetching: false,
                 didInvalidate: false,
-                items: action.blogs,
+                items: state.items.concat(action.blogs),
             })
         case RECEIVE_LAZY_BLOG_PREVIEW:
             return {

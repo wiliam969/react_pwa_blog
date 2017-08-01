@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Picture from '../../../../components/Picture/Picture'
+import Picture from '../../../../components/Picture'
 import { Link } from 'react-router-dom'
 
 export default class BlogList extends Component {

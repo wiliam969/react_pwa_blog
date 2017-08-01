@@ -14,9 +14,12 @@ export default class HomeStorage {
     }
     static getLazyBlogPreview(page) {
         console.log(page)
+        if(page == 1){
+            page = 0
+        }
         return db.table('timestamp').get(1)
             .then(lazyitems => {
-                return db.table('blog').where('date').below(lazyitems.oldestDate).offset(page * 4).limit(4).toArray()
+                return db.table('blog').where('date').below(lazyitems.oldestDate).reverse().offset(page * 4).limit(4).toArray()
                     .then(bitems => {
                         return bitems
                     })

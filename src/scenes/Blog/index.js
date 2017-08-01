@@ -22,9 +22,9 @@ class BlogSingle extends Component {
         dispatch(fetchBlogSingle(this.props))
     }
 
-    loadComments() {
+    loadComments(id) {
         const { dispatch, ownProps } = this.props
-        dispatch(showComments(this.props))
+        dispatch(showComments(id))
     }
 
     render() {

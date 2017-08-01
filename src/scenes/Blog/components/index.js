@@ -14,22 +14,16 @@ export default class BlogWrapper extends Component {
     }
 
     render() {
-        console.log(this.props.blogs)
-        console.log(this.props.blogs.length)
         return (
             <div>
                 {Object.keys(this.props.blogs).length > 0 &&
                 Object.keys(this.props.blogs).map((key) =>
                         <div>
                             <Blog key={key} data-key={key} content={this.props.blogs[key]}></Blog>
+
+                            <Comments blogid={this.props.blogs[key].id}></Comments>
                         </div>
                     )
-                }
-                {this.props.comment.isComment
-                    ?
-                    <Comments blogid={this.props.blogs.id}></Comments>
-                    :
-                    <button onClick={this.props.loadCommentWrapper}>Load Comments...</button>
                 }
             </div>
         )

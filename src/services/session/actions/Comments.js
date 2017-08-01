@@ -12,44 +12,48 @@ export const SEND_COMMENT = 'SEND_COMMENT'
 export const FAILED_COMMENT = 'FAILED_COMMENT'
 export const IS_COMMENT = 'IS_COMMENT'
 
-export const requestComment = (comment) => {
+export const requestComment = (id) => {
     return {
         type: 'REQUEST_COMMENT',
-        comment:comment
+        id:id
     }
 }
 
-export const requestLazyComment = () => {
+export const requestLazyComment = (id) => {
     return {
         type: 'REQUEST_LAZY_COMMENT',
+        id:id
     }
 }
 
-export const receiveComment = (comment) => {
+export const receiveComment = (id,comment) => {
     return {
         type: 'RECEIVE_COMMENT',
-        comment:comment
+        id:id,
+        comment:comment,
     }
 
 }
 
-export const receiveLazyComment = (comment) => {
+export const receiveLazyComment = (id,comment) => {
     return {
         type: 'RECEIVE_LAZY_COMMENT',
-        comment:comment
+        id:id,
+        comment:comment,
     }
 }
 
-export const invalidateComment = (comment) => {
+export const invalidateComment = (id) => {
     return {
         type: 'INVALIDATE_COMMENT',
-        comment: comment
+        id: id
     }
 }
 
-export const stopComment = () => {
+export const stopComment = (id) => {
     return {
         type: 'STOP_COMMENT',
+        id:id,
     }
 }
 
@@ -67,27 +71,29 @@ export const failedComment = (comment) => {
     }
 }
 
-export const isComment = () => {
+export const isComment = (id) => {
     return {
-        type:'IS_COMMENT'
+        type:'IS_COMMENT',
+        id:id
     }
 }
 
 export function fetchComments(post,page) {
     const post_id = post
+    console.log(post_id)
 
     return function (dispatch, comments) {
-        dispatch(requestComment(post_id))
+        dispatch(requestComment(post_id.blogid))
         return CommentsApi.getComments(post_id.blogid,page)
             .then(comments => {
                 console.log(comments)
                 if(comments.length  == 0) {
-                    return dispatch(stopComment())
+                    return dispatch(stopComment(post_id.blogid))
                 }
-                return dispatch(receiveComment(comments))
+                return dispatch(receiveComment(post_id.blogid,comments))
             })
             .catch(error => {
-                dispatch(invalidateComment(error))
+                dispatch(invalidateComment(post_id.blogid))
             })
     }
 }
@@ -96,17 +102,17 @@ export function fetchLazyComments(post,page) {
     const post_id = post
 
     return function (dispatch, comments) {
-        dispatch(requestLazyComment())
+        dispatch(requestLazyComment(post_id.blogid))
         return CommentsApi.getComments(post_id.blogid,page)
             .then(comments => {
                 console.log(comments)
                 if(comments.length  == 0) {
-                    return dispatch(stopComment())
+                    return dispatch(stopComment(post_id.blogid))
                 }
-                return dispatch(receiveLazyComment(comments))
+                return dispatch(receiveLazyComment(post_id.blogid,comments))
             })
             .catch(error => {
-                dispatch(invalidateComment(error))
+                dispatch(invalidateComment(post_id.blogid))
             })
     }
 }
@@ -124,8 +130,10 @@ export function sendComments(comments) {
     }
 }
 
-export function showComments() {
+export function showComments(post) {
+    const post_id = post
+
     return function dispatch(dispatch) {
-        dispatch(isComment())
+        dispatch(isComment(post_id.blogid))
     }
 }

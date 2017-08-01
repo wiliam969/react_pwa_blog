@@ -6,50 +6,100 @@ function Comments(state = {
     isFetchingLazy: false,
     isComment: false,
     stopComment:false,
-    comment: [],
+    comments: {},
     }, action) {
     switch(action.type) {
         case INVALIDATE_COMMENT:
-            return Object.assign({}, state, {
-                didInvalidate: true,
-            })
+            return  {
+                ...state,
+                comments: {
+                    ...state.comments,
+                    [action.id]: {
+                        ...state.comments[action.id],
+                        didInvalidate: true,
+                    },
+                }
+            }
         case FAILED_COMMENT:
             return Object.assign({}, state, {
                 didInvalidate:true,
             })
         case REQUEST_COMMENT:
-            return Object.assign({}, state, {
-                isFetching:true,
-            })
+            return  {
+                ...state,
+                comments: {
+                    ...state.comments,
+                    [action.id]: {
+                        ...state.comments[action.id],
+                        isFetching: true,
+                    },
+                }
+            }
         case REQUEST_LAZY_COMMENT:
-            return Object.assign({}, state, {
-                isFetchingLazy:true,
-            })
+            return  {
+                ...state,
+                comments: {
+                    ...state.comments,
+                    [action.id]: {
+                        ...state.comments[action.id],
+                        isFetchingLazy: true,
+                    },
+                }
+            }
         case SEND_COMMENT:
             return Object.assign({}, state, {
                 comment:action.comment
             })
         case RECEIVE_COMMENT:
-            return Object.assign({}, state, {
-                comment:state.comment.concat(action.comment),
-                isFetching: false,
-            })
-        case RECEIVE_LAZY_COMMENT:
-            return {
+            return  {
                 ...state,
-                isFetchingLazy:false,
-                comment: state.comment.concat(action.comment),
+                comments: {
+                    ...state.comments,
+                    [action.id]: {
+                        ...state.comments[action.id],
+                        item: action.comment,
+                        isFetching: false,
+                        didInvalidate:false,
+                    },
+                }
+            }
+        case RECEIVE_LAZY_COMMENT:
+            return  {
+                ...state,
+                comments: {
+                    ...state.comments,
+                    [action.id]: {
+                        ...state.comments[action.id],
+                        item: action.comment,
+                        isFetchingLazy: false,
+                        didInvalidate:false,
+                    },
+                }
             }
         case IS_COMMENT:
-            return Object.assign({}, state, {
-                isComment:true,
-            })
+            return  {
+                ...state,
+                comments: {
+                    ...state.comments,
+                    [action.id]: {
+                        ...state.comments[action.id],
+                        isComment:true,
+                    },
+                }
+            }
         case STOP_COMMENT:
-            return Object.assign({}, state, {
-                stopComment: true,
-                isFetching:false,
-                isFetchingLazy:false,
-            })
+            return  {
+                ...state,
+                comments: {
+                    ...state.comments,
+                    [action.id]: {
+                        ...state.comments[action.id],
+                        stopComment:true,
+                        isFetchingLazy: false,
+                        isFetching:false,
+                    },
+                }
+            }
         default:
             return state
     }

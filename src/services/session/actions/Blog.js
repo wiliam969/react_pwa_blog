@@ -40,13 +40,10 @@ export function fetchBlogSingle(blog = 1) {
         return BlogStorage.getBlogSingle(id)
             .then(StorageResponse => {
                 if(StorageResponse != null) {
-                    console.log("Storage Response")
                     dispatch(receiveBlogSingle(StorageResponse))
                 } else {
-                    console.log("Api Response")
                     return BlogApi.getBlogSingle(id)
                         .then(ApiResponse => {
-                            console.log(ApiResponse)
                             BlogStorage.saveBlogSingle(ApiResponse)
                             dispatch(receiveBlogSingle(ApiResponse))
                         }).catch(error => {
@@ -59,10 +56,8 @@ export function fetchBlogSingle(blog = 1) {
 
 export function fetchLazyBlog(date) {
     const datum = date.blogheader.date
-    console.log(datum)
     return function (dispatch,date) {
         dispatch(requestBlogSingle(datum))
-        console.log(datum)
         return BlogApi.getLazyBlogSingle(datum)
             .then(post => {
                 dispatch(receiveBlogSingle(post))

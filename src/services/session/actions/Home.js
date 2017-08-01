@@ -90,7 +90,6 @@ export function fetchBlogPreviews(blogs) {
         return HomeStorage.getBlogPreview()
             .then(LocalPost => {
                 if(LocalPost.length > 0) {
-                    console.log("Storage Response")
                     dispatch(receiveLocalBlogPreview(LocalPost))
                 } else {
                     HomeApi.getLatestBlogList()
@@ -121,10 +120,18 @@ export function fetchLazyBlogPreview(page) {
             .then(StorageItems => {
 
                 if(StorageItems.length > 0) {
+                    console.log("Store")
+                    console.log(StorageItems)
                     dispatch(receiveLazyBlogPreview(StorageItems))
                 } else {
                     HomeApi.getLazyBlogPreview(page)
                         .then(ApiResponse => {
+                            console.log("Api")
+                            console.log(ApiResponse)
+                            if(ApiResponse.length == 0){
+                                return dispatch(stopLazyBlogPreview())
+                            }
+
                             dispatch(receiveLazyBlogPreview(ApiResponse))
 
                             return HomeStorage.saveBlogPreviews(ApiResponse)

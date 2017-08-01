@@ -66,7 +66,14 @@ class Home extends Component {
                     this.props.homedata.isFetchingLazy &&
                     <Loading type="Spin"></Loading>
                 }
-                <BlogListLazy></BlogListLazy>
+
+                {
+                    this.props.homedata.stopLazyLoad ?
+                        <BlogListLazy></BlogListLazy>
+                        :
+                        <h1>THIS IS THE END MA FRIEND</h1>
+                }
+
             </div>
         );
     }

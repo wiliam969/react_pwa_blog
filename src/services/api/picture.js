@@ -8,7 +8,6 @@ export default class PictureApi {
                 if(responseJson.length > 0) {
                     return responseJson[0]
                 } else {
-                    console.log("hey2")
                     return defaultPicture
                 }
             }).catch(error => {

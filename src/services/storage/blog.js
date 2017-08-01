@@ -5,7 +5,6 @@ export default class BlogStorage {
         const post_id = parseInt(id)
         return db.table('blog').get(post_id)
             .then(items => {
-                console.log(items)
                 return items
             })
             .catch(error => {
@@ -40,11 +39,9 @@ export default class BlogStorage {
             _links:post._links
         })
         .then(response => {
-            console.log(response)
             return response
         })
         .catch(error => {
-            console.log(error)
             return error
         })
     }

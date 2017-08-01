@@ -68,9 +68,11 @@ function mapStateToProps(state,ownProps) {
     var homedata = { didInvalidate: '', isFetching: '',}
     var App = { isLoading:true}
     var Blog = { didInvalidate: '', isFetching: '', bloginformation: {}}
+
         homedata = Object.assign({}, state.Home)
         App = Object.assign({}, state.App)
         Blog = Object.assign({}, state.Blog)
+
     return {
         homedata: homedata,
         App:App,

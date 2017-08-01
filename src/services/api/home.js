@@ -12,7 +12,6 @@ export default class HomeApi {
 
     }
     static getLazyBlogPreview(page) {
-        console.log(page)
         return db.timestamp.get({id:1})
             .then(response => {
                 const oldestDate = response.oldestDate

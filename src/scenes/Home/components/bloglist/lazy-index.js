@@ -18,20 +18,11 @@ class BlogListLazy extends Component {
     render() {
         const onChange = (isVisible) => {
             if(isVisible) {
-                console.log(isVisible)
                 this.props.sendTheAlert(this.props.blogs.LazyPage)
-                // this.isActive = false
-            } else {
-                console.log("not anymore")
             }
-            console.log('Element is now %s', isVisible ? 'visible' : 'hidden')
         }
-        console.log(this.props.blogs)
         return (
-
-            <VisibilitySensor onChange={onChange} active={this.isActive} delayedCall={true}>
-
-            </VisibilitySensor>
+            <VisibilitySensor onChange={onChange} active={this.isActive} delayedCall={true}></VisibilitySensor>
         )
     }
 }

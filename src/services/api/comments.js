@@ -5,7 +5,6 @@ export default class CommentsApi {
         return fetch(process.env.REACT_APP_API_URI + 'comments?post=' + id + '&per_page=10&page=' + page, {method: 'GET'})
         .then((response) => response.json())
         .then(responseJson => {
-            console.log(responseJson)
             return responseJson
         }).catch(error => {
             return error

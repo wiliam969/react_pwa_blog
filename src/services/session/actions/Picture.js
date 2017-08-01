@@ -38,11 +38,9 @@ export function fetchPicture (post_id = 1) {
 
         return PictureApi.getPicture(id.blogid)
             .then(picture => {
-                console.log(picture)
                 return dispatch(receivePicture(picture,id.blogid))
             })
             .catch(error => {
-                console.log(error)
                 return dispatch(invalidatePicture(error,id.blogid))
             })
     }

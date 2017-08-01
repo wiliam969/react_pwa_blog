@@ -4,7 +4,6 @@ export default class HomeStorage {
     static getBlogPreview() {
         return db.blog.orderBy('date').reverse().limit(4).toArray()
             .then(bitems => {
-                console.log(bitems)
                 return bitems
             })
             .catch(error => {
@@ -13,7 +12,6 @@ export default class HomeStorage {
 
     }
     static getLazyBlogPreview(page) {
-        console.log(page)
         if(page == 1){
             page = 0
         }

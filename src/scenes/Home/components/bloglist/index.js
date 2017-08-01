@@ -13,7 +13,6 @@ export default class BlogList extends Component {
     componentDidUpdate() {
     }
     render() {
-        console.log(this.props.blogs)
         return (
             <div className="container">
 

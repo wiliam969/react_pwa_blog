@@ -51,10 +51,7 @@ class Picture extends Component {
            if(isVisible && this.props.thumbnail == null) {
                this.props.sendTheAlert(this.props)
                this.isActive = false
-           } else {
-               console.log("not anymore")
            }
-           console.log('Element is now %s', isVisible ? 'visible' : 'hidden')
        }
 
         return (

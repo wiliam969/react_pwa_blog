@@ -1,13 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
-import {
-    fetchPicture
-} from '../services/session/actions/Picture'
+import { fetchLazyBlog } from '../../../../services/session/actions/Blog'
 
 import VisibilitySensor from 'react-visibility-sensor'
 
-class Picture extends Component {
+class LazyBlogItemLoad extends Component {
 
     isActive = true
 
@@ -46,49 +43,36 @@ class Picture extends Component {
         return Style
     }
 
-   render() {
-       const onChange = (isVisible) => {
-           if(isVisible && this.props.thumbnail == null) {
-               this.props.sendTheAlert(this.props)
-               this.isActive = false
-           }
-       }
-
+    render() {
+        const onChange = (isVisible) => {
+            if(isVisible && this.props.thumbnail == null) {
+                this.props.sendTheAlert(this.props)
+                this.isActive = false
+            }
+        }
         return (
-            <VisibilitySensor onChange={onChange} active={this.isActive} partialVisibility={true} delayedCall={true}>
-                <div style={this.renderPicture()}></div>
+            <VisibilitySensor onChange={onChange} active={this.isActive} partialVisibility={true}>
             </VisibilitySensor>
-        )
-
+        );
     }
 }
 
-Picture.propTypes = {
-    dispatch: PropTypes.func
+LazyBlogItemLoad.propTypes = {
+}
+
+LazyBlogItemLoad.defaultProps = {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    var blogid = 1
-    var thumbnail = {}
-    var type = "thumbnail"
-
-    const thumbnailExample = thumbnail
-
-    blogid = ownProps.blogid
-    thumbnail = Object.assign({}, state.Picture.picture_obj)
-    type = ownProps.type
+    var Blog = { didInvalidate: '', isFetching: ''}
+    let BlogContent = Object.assign({}, state.Blog.blogcontent)
+    let BlogHeader = Object.assign({}, state.Blog.blogheader)
 
     return {
-        bid:blogid,
-        thumbnail: thumbnail[blogid],
-        type:type
+        Blog: Blog,
+        blogcontent: BlogContent,
+        blogheader: BlogHeader,
     }
 }
 
-const mapDispatchToProps = (dispatch,ownProps) => {
-    return({
-        sendTheAlert: (e) => { dispatch(fetchPicture(e))}
-    })
-}
-
-export default connect(mapStateToProps,mapDispatchToProps)(Picture)
+export default connect(mapStateToProps)(LazyBlogItemLoad)

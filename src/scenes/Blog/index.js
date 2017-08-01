@@ -5,6 +5,7 @@ import { fetchBlogSingle } from '../../services/session/actions/Blog'
 import { showComments } from "../../services/session/actions/Comments"
 
 import BlogWrapper from './components/index'
+import LazyBlog from './components/blog/blog-lazy'
 import Loading from '../../components/loading'
 
 class BlogSingle extends Component {
@@ -26,8 +27,6 @@ class BlogSingle extends Component {
         dispatch(showComments(this.props))
     }
 
-
-
     render() {
         return (
             <div>
@@ -40,8 +39,11 @@ class BlogSingle extends Component {
                 }
                 {
                     !this.props.Blog.isFetching && !this.props.Blog.didInvalidate &&
-                    <BlogWrapper blogs={this.props.Blog.item} comment={this.props.Comment} loadCommentWrapper={this.loadComments}></BlogWrapper>
+                    <BlogWrapper blogs={this.props.Blog.items} comment={this.props.Comment} loadCommentWrapper={this.loadComments}></BlogWrapper>
                 }
+
+                {/*<LazyBlog></LazyBlog>*/}
+
             </div>
         )
     }
@@ -52,7 +54,7 @@ BlogSingle.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    var blog = { didInvalidate: '', isFetching: '', item: { id: "", author: "", date: "", content:"LOREI", title: "dasd"}}
+    var blog = { didInvalidate: '', isFetching: '', items: {}}
     var comment = { isComments: false }
 
     blog = Object.assign({}, state.Blog)

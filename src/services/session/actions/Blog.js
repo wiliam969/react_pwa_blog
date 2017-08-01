@@ -11,24 +11,25 @@ export const RECEIVE_BLOG_SINGLE = 'RECEIVE_BLOG_SINGLE'
 export const RECEIVE_LAZY_BLOG_SINGLE = 'RECEIVE_LAZY_BLOG_SINGLE'
 export const INVALIDATE_BLOG_SINGLE = 'INVALIDATE_BLOG_SINGLE'
 
-export const requestBlogSingle = (blog) => {
+export const requestBlogSingle = (id) => {
     return {
         type: 'REQUEST_BLOG_SINGLE',
-        blog:blog
+        id
     }
 }
 
 export const requestLazyBlogSingle = (id) => {
     return {
         type: 'REQUEST_LAZY_BLOG_SINGLE',
-        id:id
+        id
     }
 }
 
-export const receiveBlogSingle = (blog) => {
+export const receiveBlogSingle = (blog,id) => {
     return {
         type: 'RECEIVE_BLOG_SINGLE',
         blog:blog,
+        id,
         receivedAt: Date.now(),
     }
 }
@@ -37,15 +38,15 @@ export const receiveLazyBlogSingle = (blog,id) => {
     return {
         type:'RECEIVE_LAZY_BLOG_SINGLE',
         blog:blog,
+        id,
         receivedAt: Date.now(),
-        id:id
     }
 }
 
-export const invalidateBlogSingle = (blog) => {
+export const invalidateBlogSingle = (blog,id) => {
     return {
         type:'INVALIDATE_BLOG_SINGLE',
-        blog:blog
+        id
     }
 }
 
@@ -58,14 +59,14 @@ export function fetchBlogSingle(blog = 1) {
         return BlogStorage.getBlogSingle(id)
             .then(StorageResponse => {
                 if(StorageResponse != null) {
-                    dispatch(receiveBlogSingle(StorageResponse))
+                    dispatch(receiveBlogSingle(StorageResponse,id))
                 } else {
                     return BlogApi.getBlogSingle(id)
                         .then(ApiResponse => {
                             BlogStorage.saveBlogSingle(ApiResponse)
-                            dispatch(receiveBlogSingle(ApiResponse))
+                            dispatch(receiveBlogSingle(ApiResponse,id))
                         }).catch(error => {
-                            dispatch(invalidateBlogSingle(error))
+                            dispatch(invalidateBlogSingle(id))
                         })
                 }
             })

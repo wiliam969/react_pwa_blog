@@ -4,7 +4,10 @@ import PropTypes from 'prop-types'
 import { fetchBlogSingle } from '../../services/session/actions/Blog'
 import { showComments } from "../../services/session/actions/Comments"
 
-import BlogWrapper from './components/index'
+import Blog from './components/blog/index'
+import Comments from './components/comments/index'
+
+import LazyBlog from './components/blog/blog-lazy'
 import Loading from '../../components/loading'
 
 class BlogSingle extends Component {
@@ -20,6 +23,7 @@ class BlogSingle extends Component {
     }
 
     render() {
+        console.log(this.props.Blog)
         return (
             <div>
                 {   this.props.Blog.isFetching &&
@@ -29,9 +33,17 @@ class BlogSingle extends Component {
                 {   this.props.Blog.didInvalidate &&
                     <h1 style={this.FetchingStyle}> NOOOOOOOOOOOOOOOOOOO LOL WUT Something went WRONG i guess .... holy fuck terribly wrong</h1>
                 }
-                {
-                    !this.props.Blog.isFetching && !this.props.Blog.didInvalidate &&
-                    <BlogWrapper blogs={this.props.Blog.items} comment={this.props.Comment} id={this.props.match.params.id}></BlogWrapper>
+                { Object.keys(this.props.Blog.items).length > 0 &&
+                        <div>
+                            {Object.keys(this.props.Blog.items).map((key) =>
+                                <div>
+                                    <Blog key={key} data-key={key} item={this.props.Blog.items[key]} ></Blog>
+
+                                    <Comments blogid={this.props.Blog.items[key].id}></Comments>
+                                </div>
+                            )}
+                            <LazyBlog date={this.props.Blog.items[this.props.match.params.id].date} id={this.props.match.params.id}></LazyBlog>
+                        </div>
                 }
             </div>
         )

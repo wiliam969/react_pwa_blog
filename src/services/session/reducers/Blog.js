@@ -8,34 +8,64 @@ function Blog(state = {
     }, action) {
     switch(action.type) {
         case INVALIDATE_BLOG_SINGLE:
-            return Object.assign({}, state, {
-                isFetching:false,
-                didInvalidate: false,
-            })
-        case REQUEST_BLOG_SINGLE:
-            return Object.assign({}, state, {
-                isFetching: true,
-                didInvalidate: false,
-                receivedBlog:false,
-            })
-        case REQUEST_LAZY_BLOG_SINGLE:
-            return {
+            return  {
                 ...state,
-                isFetchingLazy:true,
+                items: {
+                    ...state.items,
+                    [action.id]: {
+                        ...state.items[action.id],
+                        didInvalidate: true,
+                    },
+                }
+            }
+        case REQUEST_BLOG_SINGLE:
+            return  {
+                ...state,
+                items: {
+                    ...state.items,
+                    [action.id]: {
+                        ...state.items[action.id],
+                        isFetching: true,
+                        didInvalidate: false,
+                        receivedBlog:false,
+                    },
+                }
+            }
+        case REQUEST_LAZY_BLOG_SINGLE:
+            return  {
+                ...state,
+                items: {
+                    ...state.items,
+                    [action.id]: {
+                        ...state.items[action.id],
+                        isFetchingLazy: true,
+                    },
+                }
             }
         case RECEIVE_BLOG_SINGLE:
-            return {
+            return  {
                 ...state,
-                isFetching: false,
-                didInvalidate: false,
-                items: state.items.concat(action.blog),
+                items: {
+                    ...state.items,
+                    [action.id]: {
+                        ...state.items[action.id],
+                        isFetching: false,
+                        didInvalidate: false,
+                        item:action.blog,
+                    },
+                }
             }
         case RECEIVE_LAZY_BLOG_SINGLE:
-            return {
+            return  {
                 ...state,
-                items: state.items.concat(action.blog),
-                isFetchingLazy: false,
-                didInvalidate: false,
+                items: {
+                    ...state.items,
+                    [action.id]: {
+                        ...state.items[action.id],
+                        isFetchingLazy: false,
+                        item:action.blog,
+                    },
+                }
             }
         default:
             return state

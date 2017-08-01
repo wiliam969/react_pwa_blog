@@ -18,18 +18,6 @@ export default class BlogWrapper extends Component {
     render() {
         return (
             <div>
-                {this.props.blogs.length > 0 &&
-                    <div>
-                        {this.props.blogs.map((post,index) =>
-                            <div>
-                                <Blog key={index} data-key={index} content={post} ></Blog>
-
-                                <Comments blogid={this.props.blogs[index].id}></Comments>
-                            </div>
-                        )}
-                        <LazyBlog date={this.props.blogs[0].date} id={this.props.id}></LazyBlog>
-                    </div>
-                }
             </div>
         )
     }

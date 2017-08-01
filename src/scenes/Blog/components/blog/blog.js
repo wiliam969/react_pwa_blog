@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Picture from '../../../../components/Picture'
 
-export default class Blog extends Component {
+export default class BlogContent extends Component {
 
     componentDidMount() {
     }

@@ -1,6 +1,12 @@
-import { REQUEST_BLOG_SINGLE,REQUEST_LAZY_BLOG_SINGLE, RECEIVE_BLOG_SINGLE,RECEIVE_LAZY_BLOG_SINGLE, INVALIDATE_BLOG_SINGLE,STOP_LAZY_BLOG_SINGLE } from '../actions/Blog'
+import {
+    REQUEST_CATEGORY,
+    RECEIVE_CATEGORY,
+    INVALIDATE_CATEGORY,
+    REQUEST_LAZY_CATEGORY,
+    RECEIVE_LAZY_CATEGORY,
+} from '../actions/Category'
 
-function Blog(state = {
+function Category(state = {
     isFetching: false,
     isFetchingLazy:false,
     didInvalidate: false,
@@ -8,42 +14,36 @@ function Blog(state = {
     items: [],
 }, action) {
     switch(action.type) {
-        case INVALIDATE_BLOG_SINGLE:
+        case INVALIDATE_CATEGORY:
             return {
                 ...state,
                 didInvalidate:true,
             }
-        case REQUEST_BLOG_SINGLE:
+        case REQUEST_CATEGORY:
             return {
                 ...state,
-                items: [],
                 isFetching:true,
             }
-        case REQUEST_LAZY_BLOG_SINGLE:
+        case REQUEST_LAZY_CATEGORY:
             return {
                 ...state,
                 isFetchingLazy:true,
             }
-        case RECEIVE_BLOG_SINGLE:
+        case RECEIVE_CATEGORY:
             return {
                 ...state,
-                items: state.items.concat(action.blog),
-                isFetching: false,
+                isFetching:false,
+                items: state.items.concat(action.items),
             }
-        case RECEIVE_LAZY_BLOG_SINGLE:
+        case RECEIVE_LAZY_CATEGORY:
             return {
                 ...state,
-                items: state.items.concat(action.blog),
-                isFetchingLazy:false,
-            }
-        case STOP_LAZY_BLOG_SINGLE:
-            return {
-                ...state,
-                stopLazyLoad: true,
+                isFetchingLazy: false,
+                items: state.items.concat(action.items),
             }
         default:
             return state
     }
 }
 
-export default Blog
+export default Category

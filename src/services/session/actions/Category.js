@@ -1,3 +1,6 @@
+import CategoryApi from '../../api/Category'
+import CategoryStorage from '../../storage/Categorys'
+
 export const REQUEST_CATEGORY = 'REQUEST_CATEGORY'
 export const RECEIVE_CATEGORY = 'RECEIVE_CATEGORY'
 export const INVALIDATE_CATEGORY = 'INVALIDATE_CATEGORY'
@@ -11,9 +14,10 @@ export const requestCategory = () => {
     }
 }
 
-export const receiveCATEGORY = () => {
+export const receiveCategory = (items) => {
     return {
-        type:'RECEIVE_CATEGORY'
+        type:'RECEIVE_CATEGORY',
+        items
     }
 }
 
@@ -23,9 +27,10 @@ export const invalidateCategory = () => {
     }
 }
 
-export const requestLazyCategory = () => {
+export const requestLazyCategory = (items) => {
     return {
-        type:'REQUEST_LAZY_CATEGORY'
+        type:'REQUEST_LAZY_CATEGORY',
+        items
     }
 }
 
@@ -35,9 +40,28 @@ export const receiveLazyCategory = () => {
     }
 }
 
-function fetchCategorieItems(category_name) {
+export function fetchCategoryItems(category_name) {
     console.log(category_name)
-    return function (dispatch) {
-        dispatch(requestCategory(id))
+    const name = category_name.match.params.name
+
+    return function(dispatch) {
+        dispatch(requestCategory())
+        return CategoryStorage.getCategories(name)
+            .then(StorageItems => {
+                if(StorageItems.length > 0) {
+                    return dispatch(receiveCategory(StorageItems))
+                }
+                return CategoryApi.getCategoryItems(StorageItems)
+                    .then(ApiResponse => {
+                        return dispatch(receiveCategory(ApiResponse))
+                    })
+                    .catch(error => {
+                        return error
+                    })
+            })
+            .catch(error => {
+                return error
+            })
+
     }
 }

@@ -11,7 +11,8 @@ import Footer from '../components/Footer/index'
 import Home from './Home/index'
 import AboutMe from './AboutMe/index'
 import Gallery from './Gallery/index'
-import BlogSingle from './Blog/index'
+import Blog from './Blog/index'
+import Category from './Category/index'
 
 import { BrowserRouter as Router,Route } from 'react-router-dom'
 import createBrowserHistory from 'history/createBrowserHistory'
@@ -45,10 +46,11 @@ class AsyncApp extends Component {
                         <Router history={history}>
                             <div>
                                 <Menu></Menu>
-                                <Route path="/home" render={() => <Home homedata={this.props.homedata}></Home>}></Route>
+                                <Route path="/home" component={Home}></Route>
                                 <Route path="/aboutme" component={AboutMe} aboutme={this.props.aboutme}></Route>
                                 <Route path="/gallery" component={Gallery} gallery={this.props.gallery}></Route>
-                                <Route path="/blog/:id" component={BlogSingle} blog={this.props.Blog}></Route>
+                                <Route path="/blog/:id" component={Blog}></Route>
+                                <Route path="/category/:name" component={Category}></Route>
                             </div>
                         </Router>
 

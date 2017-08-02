@@ -8,6 +8,7 @@ export default class BlogContent extends Component {
     componentDidUpdate() {
     }
     render() {
+        console.log(this.props.content)
         return (
             <div>
                 {Object.keys(this.props.content).length > 0 &&

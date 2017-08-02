@@ -27,7 +27,7 @@ class Comments extends Component {
 
 
     componentDidMount() {
-        const { dispatch, ownProps } = this.props
+        const { dispatch } = this.props
         dispatch(fetchComments(this.props,this.CommentsPage))
         this.CommentsPage++
     }
@@ -43,19 +43,18 @@ class Comments extends Component {
     }
 
     submitForm() {
-        // e.preventDefault()
-        const { dispatch, ownProps } = this.props
+        const { dispatch } = this.props
         dispatch(sendComments(this.state))
     }
 
     loadMoreComments() {
-        const { dispatch, ownProps } = this.props
+        const { dispatch } = this.props
         dispatch(fetchLazyComments(this.props,this.CommentsPage))
         this.CommentsPage++
     }
 
     loadComments() {
-        const { dispatch, ownProps } = this.props
+        const { dispatch } = this.props
         dispatch(showComments(this.props))
     }
 

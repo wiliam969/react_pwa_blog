@@ -82,12 +82,12 @@ export function fetchComments(post,page) {
     const post_id = post
     console.log(post_id)
 
-    return function (dispatch, comments) {
+    return function (dispatch) {
         dispatch(requestComment(post_id.blogid))
         return CommentsApi.getComments(post_id.blogid,page)
             .then(comments => {
                 console.log(comments)
-                if(comments.length  == 0) {
+                if(comments.length  === 0) {
                     return dispatch(stopComment(post_id.blogid))
                 }
                 return dispatch(receiveComment(post_id.blogid,comments))
@@ -101,12 +101,12 @@ export function fetchComments(post,page) {
 export function fetchLazyComments(post,page) {
     const post_id = post
 
-    return function (dispatch, comments) {
+    return function (dispatch) {
         dispatch(requestLazyComment(post_id.blogid))
         return CommentsApi.getComments(post_id.blogid,page)
             .then(comments => {
                 console.log(comments)
-                if(comments.length  == 0) {
+                if(comments.length  === 0) {
                     return dispatch(stopComment(post_id.blogid))
                 }
                 return dispatch(receiveLazyComment(post_id.blogid,comments))

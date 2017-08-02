@@ -11,10 +11,6 @@ class Picture extends Component {
 
     isActive = true
 
-    constructor(props) {
-        super(props)
-    }
-
     renderPicture() {
 
         var Style = {

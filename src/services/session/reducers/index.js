@@ -7,13 +7,15 @@ import AsyncApp from './App'
 import Picture from './Picture'
 import Blog from './Blog'
 import Comments from './Comments'
+import Category from './Category'
 
 const Reducer = combineReducers({
     AsyncApp,
     Home,
     Picture,
     Blog,
-    Comments
+    Comments,
+    Category
 })
 
 export default Reducer;

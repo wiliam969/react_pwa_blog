@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import logo from './logo.svg';
-import './App.css';
-import { render } from 'react-dom'
+import logo from './logo.svg'
+import './App.css'
 import Root from './scenes/index'
 import dotenv from 'dotenv'
 

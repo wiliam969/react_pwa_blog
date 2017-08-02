@@ -3,7 +3,6 @@
  */
 import HomeApi from '../../api/home'
 import HomeStorage from '../../storage/home'
-import Home from "../reducers/home";
 
 export const REQUEST_BLOG_PREVIEW = 'REQUEST_BLOG_PREVIEW'
 export const REQUEST_LAZY_BLOG_PREVIEW = 'REQUEST_LAZY_BLOG_PREVIEW'
@@ -128,7 +127,7 @@ export function fetchLazyBlogPreview(page) {
                         .then(ApiResponse => {
                             console.log("Api")
                             console.log(ApiResponse)
-                            if(ApiResponse.length == 0){
+                            if(ApiResponse.length === 0){
                                 return dispatch(stopLazyBlogPreview())
                             }
 

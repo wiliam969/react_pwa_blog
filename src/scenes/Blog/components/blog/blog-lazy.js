@@ -8,15 +8,12 @@ class LazyBlogItemLoad extends Component {
 
     isActive = true
 
-    constructor(props) {
-        super(props)
-    }
-
     render() {
         const onChange = (isVisible) => {
-            if(isVisible) {
+            if(isVisible && this.isActive === true) {
                 this.props.sendTheAlert(this.props)
                 this.isActive = false
+                console.log(this.isActive)
             }
         }
         return (

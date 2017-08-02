@@ -1,5 +1,3 @@
-import db from '../storage/index'
-
 export default class CommentsApi {
     static getComments(id,page) {
         return fetch(process.env.REACT_APP_API_URI + 'comments?post=' + id + '&per_page=10&page=' + page, {method: 'GET'})

@@ -25,8 +25,14 @@ export default class Menu extends Component {
                     {/*<a href="/about">AboutMe</a>*/}
                     {/*<a href="/gallery">Gallery</a>*/}
                     <Link to="/home">Home</Link>
-                    <Link to="/aboutme">AboutMe</Link>
-                    <Link to="/gallery">Gallery</Link>
+                    <Link to="/category/allgemein">Allgemein</Link>
+                    <Link to="/category/analyse">Analyse</Link>
+                    <Link to="/category/interview">Interview</Link>
+                    <Link to="/category/meinung">Meinung</Link>
+                    <Link to="/category/news">News</Link>
+                    <Link to="/category/studien">Studien</Link>
+                    {/*<Link to="/aboutme">AboutMe</Link>*/}
+                    {/*<Link to="/gallery">Gallery</Link>*/}
                 </div>
             </nav>
         );

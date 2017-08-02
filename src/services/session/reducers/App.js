@@ -1,10 +1,14 @@
-import { IS_LOADING} from '../actions/App'
+import { IS_LOADING, FETCH_CATEGORY} from '../actions/App'
 
-function AsyncApp(state = {isLoading:true}, action) {
+function AsyncApp(state = {isLoading:true, categories: {}}, action) {
     switch(action.type) {
         case IS_LOADING:
             return Object.assign({}, state, {
                 isLoading:false,
+            })
+        case FETCH_CATEGORY:
+            return Object.assign({}, state, {
+                categories: action.categories,
             })
         default:
             return state

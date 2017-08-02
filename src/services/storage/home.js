@@ -12,7 +12,7 @@ export default class HomeStorage {
 
     }
     static getLazyBlogPreview(page) {
-        if(page == 1){
+        if(page === 1){
             page = 0
         }
         return db.table('timestamp').get(1)

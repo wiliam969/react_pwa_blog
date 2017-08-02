@@ -54,7 +54,7 @@ class Comments extends Component {
     }
 
     loadComments() {
-        const { dispatch, ownProps } = this.props
+        const { dispatch } = this.props
         dispatch(showComments(this.props))
     }
 

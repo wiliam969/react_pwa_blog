@@ -5,10 +5,6 @@ import Loading from '../../../../components/loading'
 
 export default class Blog extends Component {
 
-    constructor(props) {
-        super(props)
-    }
-
     componentDidMount() {
     }
 

@@ -27,7 +27,7 @@ class AsyncApp extends Component {
     }
 
     componentDidMount() {
-        const { dispatch, ownProps } = this.props
+        const { dispatch } = this.props
         dispatch(FetchingData(this.props))
     }
 

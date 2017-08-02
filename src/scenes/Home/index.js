@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { bindActionCreators } from 'redux'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import {
@@ -26,14 +25,14 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        if(this.props.homedata.items.length == 0) {
-            const { dispatch, ownProps } = this.props
+        if(this.props.homedata.items.length === 0) {
+            const { dispatch } = this.props
             dispatch(fetchBlogPreviews(this.props))
         }
     }
 
     fetchNewPosts() {
-        const { dispatch, ownProps } = this.props
+        const { dispatch } = this.props
         dispatch(fetchNewBlogPreview(this.props))
     }
 
@@ -90,13 +89,6 @@ function mapStateToProps(state,ownProps) {
     homedata = Object.assign({}, state.Home)
     return {
         homedata: homedata,
-    }
-}
-
-function mapDispatchToProps (dispatch) {
-    return {
-        actions:
-        bindActionCreators({fetchBlogPreviews},dispatch)
     }
 }
 

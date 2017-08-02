@@ -2,7 +2,7 @@ import db from './index'
 
 export default class AppStorage {
     static saveCategories(categories) {
-        return categories.map((post,index) => {
+        return categories.map((post) => {
             db.categories.put({
                 id:post.id,
                 count:post.count,
@@ -14,6 +14,13 @@ export default class AppStorage {
                 meta:post.meta,
                 _links:post._links
             })
+        })
+        .then(response => {
+            console.log(response)
+            return response
+        })
+        .catch(error => {
+            return error
         })
     }
 

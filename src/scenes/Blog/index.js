@@ -2,23 +2,16 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { fetchBlogSingle } from '../../services/session/actions/Blog'
-import { showComments } from "../../services/session/actions/Comments"
 
 import Blog from './components/blog/index'
 import Comments from './components/comments/index'
 
 import LazyBlog from './components/blog/blog-lazy'
-import Loading from '../../components/loading'
 
 class BlogSingle extends Component {
 
-    constructor(props) {
-        super(props)
-    }
-
-
     componentDidMount() {
-        const { dispatch, ownProps } = this.props
+        const { dispatch } = this.props
         dispatch(fetchBlogSingle(this.props))
     }
 

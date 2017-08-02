@@ -88,7 +88,7 @@ export function fetchLazyBlog(date) {
         dispatch(requestLazyBlogSingle(id))
         return BlogApi.getLazyBlogSingle(datum)
             .then(post => {
-                if(typeof post == 'undefined' && post == null) {
+                if(typeof post === 'undefined' && post === null) {
                     return dispatch(stopLazyBlogSingle())
                 }
                 dispatch(receiveLazyBlogSingle(post,post.id))

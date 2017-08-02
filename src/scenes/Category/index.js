@@ -5,7 +5,10 @@ import {
     fetchCategoryItems
 } from '../../services/session/actions/Category'
 
-// import Loading from '../../components/loading'
+import BlogList from './components/index'
+import BlogListLazy from './components/index'
+
+import Loading from '../../components/loading'
 
 
 class Category extends Component {
@@ -18,7 +21,37 @@ class Category extends Component {
     render () {
         return (
             <div>
-                hey this is category
+                {
+                    this.props.category.isFetchingNew &&
+                    <div>
+                        <Loading type="reload"></Loading>
+                    </div>
+                }
+                {   this.props.category.isFetching &&
+                <div>
+                    <Loading type="Pacman">
+                    </Loading>
+                </div>
+
+                }
+                {   this.props.category.didInvalidate &&
+                <h1 style={this.FetchingStyle}>Something went Wrong</h1>
+                }
+                <div>
+                    {/*<Quotation></Quotation>*/}
+                    <BlogList blogs={this.props.category.items}></BlogList>
+                </div>
+                {
+                    this.props.category.isFetchingLazy &&
+                    <Loading type="Spin"></Loading>
+                }
+
+                {
+                    this.props.category.stopLazyLoad ?
+                        <BlogListLazy></BlogListLazy>
+                        :
+                        <h1>THIS IS THE END MA FRIEND</h1>
+                }
             </div>
         );
     }

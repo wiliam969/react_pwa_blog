@@ -65,3 +65,27 @@ export function fetchCategoryItems(category_name) {
 
     }
 }
+
+export function fetchLazyCategoryItems(category_name) {
+    console.log(category_name)
+    const name = category_name.match.params.name
+    return function (dispatch) {
+        return CategoryStorage.getLazyCategories(name)
+            .then(StorageItems => {
+                if(StorageItems.length > 0) {
+                    return dispatch(receiveLazyCategory(StorageItems))
+                }
+
+                return CategoryApi.getLazyCategoryItems(StorageItems)
+                    .then(ApiResponse => {
+                        return dispatch(receiveLazyCategory(ApiResponse))
+                    })
+                    .catch(error => {
+                        return dispatch(invalidateCategory())
+                    })
+            })
+            .catch(error => {
+                return dispatch(invalidateCategory())
+            })
+    }
+}

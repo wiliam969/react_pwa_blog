@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Picture from '../../shared/Picture/index'
+import Picture from '../../shared/picture/index'
 import { Link } from 'react-router-dom'
 
 export default class BlogList extends Component {
@@ -22,7 +22,7 @@ export default class BlogList extends Component {
                             <Picture blogid={post.id} type="thumbnail" height="200px" width="100%"></Picture>
                             <div className="blog-title">{post.title.rendered}</div>
                             <div className="blog-preview-text" dangerouslySetInnerHTML={{__html: post.excerpt.rendered}}></div>
-                            <div className="readmore"><Link to={{ pathname: '/blog/' + post.id, }}>Weitalesen...</Link></div>
+                            <div className="readmore"><Link to={{ pathname: '/blog/' + post.id, }}>Weiterlesen...</Link></div>
                         </div>
                     )
                 }

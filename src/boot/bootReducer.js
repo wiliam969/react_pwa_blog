@@ -4,7 +4,7 @@
 import { combineReducers } from 'redux'
 import Home from '../home/homeRedurcer'
 import AsyncApp from '../app/appReducer'
-import Picture from '../shared/Picture/pictureReducer'
+import Picture from '../shared/picture/pictureReducer'
 import Blog from '../blog/blogReducer'
 import Comments from '../blog/comments/commentsRedurcer'
 import Category from '../category/categoryReducer'

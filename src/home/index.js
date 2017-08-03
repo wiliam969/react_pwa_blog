@@ -7,8 +7,9 @@ import {
 } from './homeActions'
 
 import Loading from '../shared/loading'
-import BlogList from './components/bloglist/index.js'
-import BlogListLazy from './components/bloglist/lazy-index'
+import BlogList from '../shared/blog/bloglist'
+import BlogListLazy from './components/blogListLazy'
+import BlogGrid from '../shared/blog/bloggrid'
 
 class Home extends Component {
 
@@ -59,7 +60,8 @@ class Home extends Component {
                 }
                     <div>
                         {/*<Quotation></Quotation>*/}
-                        <BlogList blogs={this.props.homedata.items}></BlogList>
+                        <BlogGrid blogs={this.props.homedata.items}></BlogGrid>
+                        {/*<BlogList blogs={this.props.homedata.items}></BlogList>*/}
                     </div>
                 {
                     this.props.homedata.isFetchingLazy &&

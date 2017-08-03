@@ -5,8 +5,8 @@ import {
     fetchCategoryItems
 } from './categoryActions'
 
-import BlogList from './components/index'
-import BlogListLazy from './components/index'
+import BlogList from '../shared/blog/bloglist'
+import BlogListLazy from './components/blogListLazy'
 
 import Loading from '../shared/loading'
 

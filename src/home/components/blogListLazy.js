@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import {
     fetchLazyBlogPreview
-} from '../../homeActions'
+} from '../homeActions'
 
 import VisibilitySensor from 'react-visibility-sensor'
 

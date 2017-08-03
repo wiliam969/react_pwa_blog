@@ -79,6 +79,17 @@ export function fetchLazyCategoryItems(category_name) {
     const name = category_name.category.match.params.name
     const page = 1
     return function (dispatch) {
+        dispatch(requestLazyCategory())
+
+        return CategoryStorage.getLazyCategories(name,page)
+            .then(response => {
+                console.log(response)
+                return response
+            })
+            .catch(error => {
+                console.log(error)
+                return error
+            })
         return CategoryApi.getLazyCategoriesItems(name,33,page)
             .then(response => {
                 console.log(response)

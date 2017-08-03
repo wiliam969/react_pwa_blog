@@ -58,5 +58,27 @@ export default class CategoryStorage {
             })
     }
 
+    static getLazyCategories(name,page) {
+        return db.table('timestamp').get(1)
+            .then(lazyitems => {
+                console.log(lazyitems.oldestDateCategory[name])
+                return db.table('blog').where({categories:[33]}).below(lazyitems.oldestDateCategory[name]).reverse().offset(page * 4).limit(4).toArray()
+
+                    // .where('date').below(lazyitems.oldestDateCategory[name]).reverse().offset(page * 4).limit(4).toArray()
+                    .then(bitems => {
+                        console.log(bitems)
+                        return bitems
+                    })
+                    .catch(error => {
+                        console.log(error)
+                        return error
+                    })
+            })
+            .catch(error => {
+                console.log(error)
+                return error
+            })
+    }
+
 }
 

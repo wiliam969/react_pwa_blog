@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import logo from './logo.svg'
 import './App.css'
-import Root from './scenes/index'
+import Root from './root'
 import dotenv from 'dotenv'
 
 dotenv.config({})

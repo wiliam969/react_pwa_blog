@@ -1,4 +1,4 @@
-import db from '../boot/bootStorage'
+import db from '../boot/bootIndexeddb'
 
 export default class AppStorage {
     static saveCategories(categories) {

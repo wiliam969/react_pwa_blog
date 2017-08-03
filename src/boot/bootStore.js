@@ -2,7 +2,7 @@ import { createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import { createLogger } from 'redux-logger'
 
-import Reducer from './boot/bootReducer'
+import Reducer from './bootReducer'
 
 const loggerMiddleware = createLogger()
 

@@ -1,4 +1,4 @@
-import db from '../boot/bootStorage'
+import db from '../boot/bootIndexeddb'
 
 export default class CategoryStorage {
     static getCategories(name) {

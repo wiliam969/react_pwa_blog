@@ -16,7 +16,7 @@ import Category from '../category/index'
 
 import { BrowserRouter as Router,Route } from 'react-router-dom'
 import createBrowserHistory from 'history/createBrowserHistory'
-import Loading from "../shared/loading";
+import Loading from "../shared/loading/loading";
 
 
 

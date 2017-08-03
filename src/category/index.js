@@ -6,9 +6,10 @@ import {
 } from './categoryActions'
 
 import BlogList from '../shared/blog/bloglist'
+import BlogGrid from '../shared/blog/bloggrid'
 import BlogListLazy from './components/blogListLazy'
 
-import Loading from '../shared/loading'
+import Loading from '../shared/loading/loading'
 
 
 class Category extends Component {
@@ -39,7 +40,7 @@ class Category extends Component {
                 }
                 <div>
                     {/*<Quotation></Quotation>*/}
-                    <BlogList blogs={this.props.category.items}></BlogList>
+                    <BlogGrid blogs={this.props.category.items}></BlogGrid>
                 </div>
                 {
                     this.props.category.isFetchingLazy &&
@@ -47,8 +48,8 @@ class Category extends Component {
                 }
 
                 {
-                    this.props.category.stopLazyLoad ?
-                        <BlogListLazy></BlogListLazy>
+                    !this.props.category.stopLazyLoad ?
+                        <BlogListLazy category={this.props}></BlogListLazy>
                         :
                         <h1>THIS IS THE END MA FRIEND</h1>
                 }

@@ -1,6 +1,20 @@
 import React , { Component } from 'react'
 
+import Pacman from './Pacman.gif'
+import Reload from './Reload.gif'
+import Spin from './Spin.gif'
+
 export default class Loading extends Component {
+
+    loadCorrectType(type) {
+        if(type == "Pacman") {
+            return Pacman
+        } else if (type == "Reload") {
+            return Reload
+        } else {
+            return Spin
+        }
+    }
 
 
     render() {
@@ -12,7 +26,7 @@ export default class Loading extends Component {
         }
         const loadingType = this.props.type
 
-        const img_path = process.env.REACT_APP_URL + loadingType + '.gif'
+        const img_path = this.loadCorrectType(loadingType)
         return (
             <div className={loadingContainer}>
                 <div className={loadingWrapper}>

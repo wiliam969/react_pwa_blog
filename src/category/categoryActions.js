@@ -41,8 +41,13 @@ export const receiveLazyCategory = () => {
     }
 }
 
+/**
+ * TODO: Here we dont track the difference of the Storage Items in the current state everytime the storage iteam is full, we just dispatch it.
+ * TODO: But at first load this DOES NOT work cause the storage is not ready yet
+ * @param category_name
+ * @returns {Function}
+ */
 export function fetchCategoryItems(category_name) {
-    console.log(category_name)
     const name = category_name.match.params.name
 
     return function(dispatch) {
@@ -54,6 +59,8 @@ export function fetchCategoryItems(category_name) {
                 }
                 return CategoryApi.getCategoryItems(StorageItems)
                     .then(ApiResponse => {
+                        CategoryStorage.updateOldestDate(ApiResponse,StorageItems)
+
                         return dispatch(receiveCategory(ApiResponse))
                     })
                     .catch(error => {
@@ -69,24 +76,35 @@ export function fetchCategoryItems(category_name) {
 
 export function fetchLazyCategoryItems(category_name) {
     console.log(category_name)
-    const name = category_name.match.params.name
+    const name = category_name.category.match.params.name
+    const page = 1
     return function (dispatch) {
-        return CategoryStorage.getLazyCategories(name)
-            .then(StorageItems => {
-                if(StorageItems.length > 0) {
-                    return dispatch(receiveLazyCategory(StorageItems))
-                }
-
-                return CategoryApi.getLazyCategoryItems(StorageItems)
-                    .then(ApiResponse => {
-                        return dispatch(receiveLazyCategory(ApiResponse))
-                    })
-                    .catch(error => {
-                        return dispatch(invalidateCategory())
-                    })
+        return CategoryApi.getLazyCategoriesItems(name,33,page)
+            .then(response => {
+                console.log(response)
+                return response
             })
             .catch(error => {
-                return dispatch(invalidateCategory())
+                console.log(error)
+                return error
             })
+        //
+        // return CategoryStorage.getLazyCategories(name)
+        //     .then(StorageItems => {
+        //         if(StorageItems.length > 0) {
+        //             return dispatch(receiveLazyCategory(StorageItems))
+        //         }
+        //
+        //         return CategoryApi.getLazyCategoryItems(StorageItems)
+        //             .then(ApiResponse => {
+        //                 return dispatch(receiveLazyCategory(ApiResponse))
+        //             })
+        //             .catch(error => {
+        //                 return dispatch(invalidateCategory())
+        //             })
+        //     })
+        //     .catch(error => {
+        //         return dispatch(invalidateCategory())
+        //     })
     }
 }

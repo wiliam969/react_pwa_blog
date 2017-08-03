@@ -6,7 +6,7 @@ import {
     fetchBlogPreviews
 } from './homeActions'
 
-import Loading from '../shared/loading'
+import Loading from '../shared/loading/loading'
 import BlogList from '../shared/blog/bloglist'
 import BlogListLazy from './components/blogListLazy'
 import BlogGrid from '../shared/blog/bloggrid'

@@ -22,6 +22,7 @@ function Category(state = {
         case REQUEST_CATEGORY:
             return {
                 ...state,
+                items:[],
                 isFetching:true,
             }
         case REQUEST_LAZY_CATEGORY:

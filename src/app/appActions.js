@@ -29,13 +29,11 @@ export function FetchingData() {
 export function getCategories() {
     return function (dispatch) {
         return AppStorage.getCategories().then(StorageItems => {
-            console.log(StorageItems)
             if(StorageItems.length > 0 ) {
                 return dispatch(fetchCategory(StorageItems))
             } else {
                 return AppApi.getCategories()
                     .then(ApiResponse => {
-                        console.log(ApiResponse)
 
                         if(ApiResponse.length > 0) {
                             return AppStorage.saveCategories(ApiResponse)

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import BlogContent from './blog'
-import Loading from '../../shared/loading'
+import Loading from '../../shared/loading/loading'
 
 export default class Blog extends Component {
 

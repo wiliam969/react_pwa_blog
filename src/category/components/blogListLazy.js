@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import {
-    fetchLazyBlogPreview
-} from '../../home/homeActions'
+    fetchLazyCategoryItems
+} from '../categoryActions'
 
 import VisibilitySensor from 'react-visibility-sensor'
 
@@ -18,7 +18,7 @@ class BlogListLazy extends Component {
     render() {
         const onChange = (isVisible) => {
             if(isVisible) {
-                this.props.sendTheAlert(this.props.blogs.LazyPage)
+                this.props.sendTheAlert(this.props)
             }
         }
         return (
@@ -43,7 +43,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch,ownProps) => {
     return({
-        sendTheAlert: (e) => { dispatch(fetchLazyBlogPreview(e))}
+        sendTheAlert: (e) => { dispatch(fetchLazyCategoryItems(e))}
     })
 }
 

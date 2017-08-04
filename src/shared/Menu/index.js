@@ -31,6 +31,7 @@ export default class Menu extends Component {
                     <Link to="/category/meinung">Meinung</Link>
                     <Link to="/category/news">News</Link>
                     <Link to="/category/studien">Studien</Link>
+                    <Link to="/gallery">Gallery</Link>
                     {/*<Link to="/aboutme">AboutMe</Link>*/}
                     {/*<Link to="/gallery">Gallery</Link>*/}
                 </div>

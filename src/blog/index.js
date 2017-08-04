@@ -6,7 +6,7 @@ import { fetchBlogSingle } from './blogActions'
 import Blog from './single/index'
 import Comments from './comments/index'
 
-import LazyBlog from './single/blog-lazy'
+import LazyLoader from '../shared/lazyloader/lazyloader'
 
 class BlogSingle extends Component {
 
@@ -25,7 +25,7 @@ class BlogSingle extends Component {
                                     <Blog key={index} data-key={index} blog={post} isFetching={this.props.Blog.isFetching} didInvalidate={this.props.Blog.didInvalidate}></Blog>
 
                                     { !this.props.Blog.stopLazyLoad &&
-                                    <LazyBlog date={post.date} id={post.id}></LazyBlog>
+                                    <LazyLoader type="Blog" date={post.date} id={post.id}></LazyLoader>
                                     }
 
                                     <Comments blogid={post.id}></Comments>

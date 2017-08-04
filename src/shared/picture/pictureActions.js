@@ -31,12 +31,15 @@ export const invalidatePicture = (pictures,postid) => {
     }
 }
 
-export function fetchPicture (post_id = 1) {
-    const id = post_id
+export function fetchPicture (props = 1) {
+    console.log(props)
+    const id = props
+
+    const PostType = props.posttype
     return function(dispatch,post_id) {
         dispatch(requestPicture(post_id))
 
-        return PictureApi.getPicture(id.blogid)
+        return PictureApi.getPicture(id.blogid,PostType)
             .then(picture => {
                 return dispatch(receivePicture(picture,id.blogid))
             })

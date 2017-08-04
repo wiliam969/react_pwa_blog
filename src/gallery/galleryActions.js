@@ -5,6 +5,7 @@ export const RECEIVE_GALLERY_ITEMS = 'RECEIVE_GALLERY_ITEMS'
 export const INVALIDATE_GALLERY_ITEMS = 'INVALIDATE_GALLERY_ITEMS'
 export const REQUEST_LAZY_GALLERY_ITEMS = 'REQUEST_LAZY_GALLERY_ITEMS'
 export const RECEIVE_LAZY_GALLERY_ITEMS = 'RECEIVE_LAZY_GALLERY_ITEMS'
+export const STOP_LAZY_GALLERY_ITEMS = 'STOP_LAZY_GALLERY_ITEMS'
 
 export const requestGalleryItems = () => {
     return {
@@ -38,6 +39,12 @@ export const invalidateGalleryItems = () => {
     }
 }
 
+export const stopLazyGalleryItems = () => {
+    return {
+        type:'STOP_LAZY_GALLERY_ITEMS'
+    }
+}
+
 export function fetchGalleryItems () {
     return function (dispatch) {
         dispatch(requestGalleryItems())
@@ -45,9 +52,11 @@ export function fetchGalleryItems () {
         return GalleryApi.getGalleryItems()
             .then(ApiResponse => {
                 console.log(ApiResponse)
-                return ApiResponse
+
+                return dispatch(receiveGalleryItems(ApiResponse))
             })
             .catch(error => {
+                dispatch(invalidateGalleryItems())
                 console.log(error)
                 return error
             })
@@ -56,5 +65,22 @@ export function fetchGalleryItems () {
 }
 
 export function fetchLazyGalleryItems (page) {
+    return function (dispatch) {
+        dispatch(requestLazyGalleryItems())
 
+        return GalleryApi.getLazyGalleryItems(page)
+            .then(ApiResponse => {
+                console.log(ApiResponse)
+                if(ApiResponse.length === 0) {
+                    return dispatch(stopLazyGalleryItems())
+                } else{
+                    return dispatch(receiveLazyGalleryItems(ApiResponse))
+                }
+            })
+            .catch(error => {
+                dispatch(invalidateGalleryItems())
+                console.log(error)
+                return error
+            })
+    }
 }

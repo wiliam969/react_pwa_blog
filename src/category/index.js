@@ -5,8 +5,8 @@ import {
     fetchCategoryItems
 } from './categoryActions'
 
-import BlogList from '../shared/blog/bloglist'
 import BlogGrid from '../shared/blog/bloggrid'
+import LazyLoader from '../shared/lazyloader/lazyloader'
 import BlogListLazy from './components/blogListLazy'
 
 import Loading from '../shared/loading/loading'
@@ -49,7 +49,7 @@ class Category extends Component {
 
                 {
                     !this.props.category.stopLazyLoad ?
-                        <BlogListLazy category={this.props}></BlogListLazy>
+                        <LazyLoader type="Category" category={this.props}></LazyLoader>
                         :
                         <h1>THIS IS THE END MA FRIEND</h1>
                 }

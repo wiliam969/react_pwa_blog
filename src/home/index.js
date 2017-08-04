@@ -7,8 +7,7 @@ import {
 } from './homeActions'
 
 import Loading from '../shared/loading/loading'
-import BlogList from '../shared/blog/bloglist'
-import BlogListLazy from './components/blogListLazy'
+import LazyLoader from '../shared/lazyloader/lazyloader'
 import BlogGrid from '../shared/blog/bloggrid'
 
 class Home extends Component {
@@ -70,7 +69,7 @@ class Home extends Component {
 
                 {
                     this.props.homedata.stopLazyLoad ?
-                        <BlogListLazy></BlogListLazy>
+                        <LazyLoader type="Home"></LazyLoader>
                         :
                         <h1>THIS IS THE END MA FRIEND</h1>
                 }

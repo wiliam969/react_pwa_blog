@@ -11,7 +11,7 @@ function Gallery(state = {
     isFetchingLazy:false,
     didInvalidate: false,
     stopLazyLoad:false,
-    items: [],
+    Items: [],
 }, action) {
     switch(action.type) {
         case INVALIDATE_GALLERY_ITEMS:
@@ -23,6 +23,7 @@ function Gallery(state = {
             return {
                 ...state,
                 isFetching:true,
+                Items: [],
             }
         case REQUEST_LAZY_GALLERY_ITEMS:
             return {
@@ -33,13 +34,13 @@ function Gallery(state = {
             return {
                 ...state,
                 isFetching:false,
-                items: state.items.concat(action.items),
+                Items: state.Items.concat(action.Items),
             }
         case RECEIVE_LAZY_GALLERY_ITEMS:
             return {
                 ...state,
                 isFetchingLazy: false,
-                items: state.items.concat(action.items),
+                Items: state.Items.concat(action.Items),
             }
         default:
             return state

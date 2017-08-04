@@ -1,7 +1,7 @@
 import React,{ Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import {fetchGalleryItems} from "./galleryActions";
+import {fetchGalleryItems, fetchFullscreenGalleryItem} from "./galleryActions";
 
 import Loading from '../shared/loading/loading'
 import GalleryGrid from "./components/galleryGrid";
@@ -15,10 +15,12 @@ class Gallery extends Component {
         dispatch(fetchGalleryItems(this.props))
     }
 
-    loadFullScreenPicture(event) {
-        console.log(event)
-
+    loadFullScreenPicture(id) {
+        console.log(id)
         console.log("got clicked hehe")
+
+        const { dispatch } = this.props
+        dispatch(fetchFullscreenGalleryItem(id))
     }
 
     render() {

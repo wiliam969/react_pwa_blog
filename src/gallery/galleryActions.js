@@ -84,3 +84,9 @@ export function fetchLazyGalleryItems (page) {
             })
     }
 }
+
+export function fetchFullscreenGalleryItem (id) {
+    return function (dispatch) {
+        dispatch()
+    }
+}

@@ -8,20 +8,21 @@ import GalleryGrid from "./components/galleryGrid";
 import GalleryFullscreen from './components/galleryFullscreen'
 import LazyLoader from '../shared/lazyloader/lazyloader'
 
-
 class Gallery extends Component {
 
+    constructor(props) {
+        super(props)
+    }
     componentDidMount() {
+        console.log("component props")
+        console.log(this.props)
         const { dispatch } = this.props
         dispatch(fetchGalleryItems(this.props))
     }
 
-    loadFullScreenPicture(id) {
+    loadFullScreenPicture(props,id) {
         console.log(id)
-        console.log("got clicked hehe")
-
-        const { dispatch } = this.props
-        dispatch(fetchFullscreenGalleryItem(id))
+        props.dispatch(fetchFullscreenGalleryItem(id))
     }
 
     render() {
@@ -38,7 +39,7 @@ class Gallery extends Component {
                 {!this.props.gallery.isFetching && !this.props.gallery.didInvalidate &&
                     <div>
                         <GalleryFullscreen></GalleryFullscreen>
-                        <GalleryGrid items={this.props.gallery.Items} ClickedPicture={this.loadFullScreenPicture}></GalleryGrid>
+                        <GalleryGrid items={this.props.gallery.Items} dispatch={this.props.dispatch} onClickedPicture={this.loadFullScreenPicture}></GalleryGrid>
                     </div>
                 }
 

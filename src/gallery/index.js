@@ -5,6 +5,7 @@ import {fetchGalleryItems, fetchFullscreenGalleryItem} from "./galleryActions";
 
 import Loading from '../shared/loading/loading'
 import GalleryGrid from "./components/galleryGrid";
+import GalleryFullscreen from './components/galleryFullscreen'
 import LazyLoader from '../shared/lazyloader/lazyloader'
 
 
@@ -35,7 +36,10 @@ class Gallery extends Component {
                 }
 
                 {!this.props.gallery.isFetching && !this.props.gallery.didInvalidate &&
-                    <GalleryGrid items={this.props.gallery.Items} ClickedPicture={this.loadFullScreenPicture}></GalleryGrid>
+                    <div>
+                        <GalleryFullscreen></GalleryFullscreen>
+                        <GalleryGrid items={this.props.gallery.Items} ClickedPicture={this.loadFullScreenPicture}></GalleryGrid>
+                    </div>
                 }
 
                 {this.props.gallery.isFetchingLazy &&

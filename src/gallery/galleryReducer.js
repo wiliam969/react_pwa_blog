@@ -3,7 +3,8 @@ import {
     RECEIVE_GALLERY_ITEMS,
     INVALIDATE_GALLERY_ITEMS,
     REQUEST_LAZY_GALLERY_ITEMS,
-    RECEIVE_LAZY_GALLERY_ITEMS
+    RECEIVE_LAZY_GALLERY_ITEMS,
+    RECEIVE_FULLSCREEN_GALLERY_ITEMS,
 } from './galleryActions'
 
 function Gallery(state = {
@@ -11,6 +12,7 @@ function Gallery(state = {
     isFetchingLazy:false,
     didInvalidate: false,
     stopLazyLoad:false,
+    isFullscreen:false,
     Items: [],
 }, action) {
     switch(action.type) {
@@ -41,6 +43,12 @@ function Gallery(state = {
                 ...state,
                 isFetchingLazy: false,
                 Items: state.Items.concat(action.Items),
+            }
+        case RECEIVE_FULLSCREEN_GALLERY_ITEMS:
+            return {
+                ...state,
+                isFullscreen:true,
+                current_item: action.Items
             }
         default:
             return state

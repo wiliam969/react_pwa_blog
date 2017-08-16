@@ -111,11 +111,11 @@ export function fetchFullscreenGalleryItem (id) {
         return GalleryApi.getGallerySingleItem(gal_id)
             .then(ApiResponse => {
                 console.log(ApiResponse)
-                return ApiResponse
+                return dispatch(receiveFullscreenGalleryItems(ApiResponse))
             })
             .catch(error => {
                 console.log(error)
-                return error
+                return dispatch(invalidateGalleryItems())
             })
 
     }

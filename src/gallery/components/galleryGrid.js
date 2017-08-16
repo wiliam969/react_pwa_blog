@@ -37,7 +37,7 @@ export default class GalleryGrid extends Component{
                 <ResponsiveReactGridLayout className="layout" layouts={layouts} breakpoints={{lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0}}
                                            cols={{lg: 12, md: 6, sm: 6, xs: 6, xxs: 6}} useCSSTransforms={true} rowHeight={200} >
                     {this.props.items.map((post,index) =>
-                        <div className="box" key={index} onClick={ () => this.props.onClickedPicture(this.props,post.id)}>
+                        <div className="box" key={index} onClick={ () => this.props.onClickedPicture(this.props,index)}>
                             <Picture blogid={post.id} type="thumbnail" posttype="gallery" height="200px" width="100%"></Picture>
                         </div>
                     )}

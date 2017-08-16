@@ -1,7 +1,7 @@
 import React,{ Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import {fetchGalleryItems, fetchFullscreenGalleryItem} from "./galleryActions";
+import {fetchGalleryItems, fetchFullscreenGalleryItem, nextFullScreenGalleryitem, prevFullScreenGalleryItem} from "./galleryActions";
 
 import Loading from '../shared/loading/loading'
 import GalleryGrid from "./components/galleryGrid";
@@ -20,9 +20,17 @@ class Gallery extends Component {
         dispatch(fetchGalleryItems(this.props))
     }
 
-    loadFullScreenPicture(props,id) {
-        console.log(id)
-        props.dispatch(fetchFullscreenGalleryItem(id))
+    loadFullScreenPicture(props,index) {
+        console.log(index)
+        props.dispatch(fetchFullscreenGalleryItem(index))
+    }
+
+    prevFullScreenPicture(props,index) {
+        props.dispatch(prevFullScreenGalleryItem(index))
+    }
+
+    nextFullScreenPicture(props,index) {
+        props.dispatch(nextFullScreenGalleryitem(index))
     }
 
     render() {
@@ -38,7 +46,7 @@ class Gallery extends Component {
 
                 {!this.props.gallery.isFetching && !this.props.gallery.didInvalidate &&
                     <div>
-                        <GalleryFullscreen></GalleryFullscreen>
+                        <GalleryFullscreen item={this.props.gallery.current_item} id={this.props.gallery.current_id} dispatch={this.props.dispatch} prevPicture={this.prevFullScreenPicture} nextPicture={this.nextFullScreenPicture}></GalleryFullscreen>
                         <GalleryGrid items={this.props.gallery.Items} dispatch={this.props.dispatch} onClickedPicture={this.loadFullScreenPicture}></GalleryGrid>
                     </div>
                 }

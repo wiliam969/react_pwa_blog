@@ -11,6 +11,9 @@ export const STOP_LAZY_GALLERY_ITEMS = 'STOP_LAZY_GALLERY_ITEMS'
 export const REQUEST_FULLSCREEN_GALLERY_ITEMS = 'REQUEST_FULLSCREEN_GALLERY_ITEMS'
 export const RECEIVE_FULLSCREEN_GALLERY_ITEMS = 'RECEIVE_FULLSCREEN_GALLERY_ITEMS'
 
+export const FETCH_PREV_FULLSCREEN_GALLERY_ITEM = 'FETCH_PREV_FULLSCREEN_GALLERY_ITEM'
+export const FETCH_NEXT_FULLSCREEN_GALLERY_ITEM = 'FETCH_NEXT_FULLSCREEN_GALLERY_ITEM'
+
 export const requestGalleryItems = () => {
     return {
         type: 'REQUEST_GALLERY_ITEMS'
@@ -62,6 +65,19 @@ export const stopLazyGalleryItems = () => {
     }
 }
 
+export const fetchPrevFullscreenGalleryItem = (Items) => {
+    return {
+        type:'FETCH_PREV_FULLSCREEN_GALLERY_ITEM',
+        Items
+    }
+}
+
+export const fetchNextFullscreenGalleryItem = (Items) => {
+    return {
+        type:'FETCH_NEXT_FULLSCREEN_GALLERY_ITEM',
+        Items
+    }
+}
 export function fetchGalleryItems () {
     return function (dispatch) {
         dispatch(requestGalleryItems())
@@ -108,15 +124,21 @@ export function fetchFullscreenGalleryItem (id) {
     return function (dispatch) {
         dispatch(requestFullscreenGalleryItems())
 
-        return GalleryApi.getGallerySingleItem(gal_id)
-            .then(ApiResponse => {
-                console.log(ApiResponse)
-                return dispatch(receiveFullscreenGalleryItems(ApiResponse))
-            })
-            .catch(error => {
-                console.log(error)
-                return dispatch(invalidateGalleryItems())
-            })
+        return dispatch(receiveFullscreenGalleryItems(id))
+    }
+}
 
+export function prevFullScreenGalleryItem (index) {
+
+    return function (dispatch) {
+        return dispatch(fetchPrevFullscreenGalleryItem(index))
+    }
+}
+
+export function nextFullScreenGalleryitem (index) {
+    console.log(index)
+
+    return function (dispatch) {
+        return dispatch(fetchNextFullscreenGalleryItem(index))
     }
 }

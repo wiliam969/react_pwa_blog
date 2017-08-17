@@ -17,6 +17,8 @@ export const FETCH_NEXT_FULLSCREEN_GALLERY_ITEM = 'FETCH_NEXT_FULLSCREEN_GALLERY
 export const STOP_FETCH_PREV_FULLSCREEN_GALLERY_ITEM = 'STOP_FETCH_PREV_FULLSCREEN_GALLERY_ITEM'
 export const STOP_FETCH_NEXT_FULLSCREEN_GALLERY_ITEM = 'STOP_FETCH_NEXT_FULLSCREEN_GALLERY_ITEM'
 
+export const CLOSE_FULLSCREEN_GALLERY_ITEM = 'CLOSE_FULLSCREEN_GALLERY_ITEM'
+
 export const requestGalleryItems = () => {
     return {
         type: 'REQUEST_GALLERY_ITEMS'
@@ -93,6 +95,13 @@ export const stopFetchNextFullscreenGalleryItem = () => {
         type:'STOP_FETCH_NEXT_FULLSCREEN_GALLERY_ITEM'
     }
 }
+
+export const closeFullscreenGalleryItem = () => {
+    return {
+        type:'CLOSE_FULLSCREEN_GALLERY_ITEM'
+    }
+}
+
 export function fetchGalleryItems () {
     return function (dispatch) {
         dispatch(requestGalleryItems())
@@ -162,5 +171,11 @@ export function nextFullScreenGalleryitem (index,props) {
         } else {
             return dispatch(stopFetchNextFullscreenGalleryItem())
         }
+    }
+}
+
+export function closeFullscreenGallery () {
+    return function (dispatch) {
+        return dispatch(closeFullscreenGalleryItem())
     }
 }

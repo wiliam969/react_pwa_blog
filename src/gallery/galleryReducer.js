@@ -10,6 +10,7 @@ import {
     FETCH_NEXT_FULLSCREEN_GALLERY_ITEM,
     STOP_FETCH_PREV_FULLSCREEN_GALLERY_ITEM,
     STOP_FETCH_NEXT_FULLSCREEN_GALLERY_ITEM,
+    CLOSE_FULLSCREEN_GALLERY_ITEM,
 } from './galleryActions'
 
 function Gallery(state = {
@@ -101,6 +102,11 @@ function Gallery(state = {
                 ...state,
                 isPrev:false,
                 isNext:true,
+            }
+        case CLOSE_FULLSCREEN_GALLERY_ITEM:
+            return {
+                ...state,
+                isFullscreen:false,
             }
         default:
             return state

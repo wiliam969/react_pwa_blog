@@ -5,7 +5,8 @@ import {
     fetchGalleryItems,
     fetchFullscreenGalleryItem,
     nextFullScreenGalleryitem,
-    prevFullScreenGalleryItem
+    prevFullScreenGalleryItem,
+    closeFullscreenGallery
 } from "./galleryActions"
 
 import Loading from '../shared/loading/loading'
@@ -39,7 +40,8 @@ class Gallery extends Component {
     }
 
     closeFullscreen(props) {
-        console.log("click closefull")
+        console.log(props)
+        props.dispatch(closeFullscreenGallery())
     }
 
     render() {
@@ -64,9 +66,14 @@ class Gallery extends Component {
                             nextPicture={this.nextFullScreenPicture}
                             closeFull={this.closeFullscreen}
                             isPrev={this.props.gallery.isPrev}
-                            isNext={this.props.gallery.isNext}>
+                            isNext={this.props.gallery.isNext}
+                            isFullscreen={this.props.gallery.isFullscreen}>
                         </GalleryFullscreen>
-                        <GalleryGrid items={this.props.gallery.Items} dispatch={this.props.dispatch} onClickedPicture={this.loadFullScreenPicture}></GalleryGrid>
+                        <GalleryGrid
+                            items={this.props.gallery.Items}
+                            dispatch={this.props.dispatch}
+                            onClickedPicture={this.loadFullScreenPicture}>
+                        </GalleryGrid>
                     </div>
                 }
 

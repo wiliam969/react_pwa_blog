@@ -1,10 +1,15 @@
 import React,{ Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import {fetchGalleryItems, fetchFullscreenGalleryItem, nextFullScreenGalleryitem, prevFullScreenGalleryItem} from "./galleryActions";
+import {
+    fetchGalleryItems,
+    fetchFullscreenGalleryItem,
+    nextFullScreenGalleryitem,
+    prevFullScreenGalleryItem
+} from "./galleryActions"
 
 import Loading from '../shared/loading/loading'
-import GalleryGrid from "./components/galleryGrid";
+import GalleryGrid from "./components/galleryGrid"
 import GalleryFullscreen from './components/galleryFullscreen'
 import LazyLoader from '../shared/lazyloader/lazyloader'
 
@@ -26,11 +31,11 @@ class Gallery extends Component {
     }
 
     prevFullScreenPicture(props,index) {
-        props.dispatch(prevFullScreenGalleryItem(index))
+        props.dispatch(prevFullScreenGalleryItem(index,props))
     }
 
     nextFullScreenPicture(props,index) {
-        props.dispatch(nextFullScreenGalleryitem(index))
+        props.dispatch(nextFullScreenGalleryitem(index,props))
     }
 
     render() {
@@ -46,7 +51,7 @@ class Gallery extends Component {
 
                 {!this.props.gallery.isFetching && !this.props.gallery.didInvalidate &&
                     <div>
-                        <GalleryFullscreen item={this.props.gallery.current_item} id={this.props.gallery.current_id} dispatch={this.props.dispatch} prevPicture={this.prevFullScreenPicture} nextPicture={this.nextFullScreenPicture}></GalleryFullscreen>
+                        <GalleryFullscreen last_item={this.props.gallery.Items.length} item={this.props.gallery.current_item} id={this.props.gallery.current_id} dispatch={this.props.dispatch} prevPicture={this.prevFullScreenPicture} nextPicture={this.nextFullScreenPicture}></GalleryFullscreen>
                         <GalleryGrid items={this.props.gallery.Items} dispatch={this.props.dispatch} onClickedPicture={this.loadFullScreenPicture}></GalleryGrid>
                     </div>
                 }

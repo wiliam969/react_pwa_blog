@@ -4,9 +4,12 @@ import {
     INVALIDATE_GALLERY_ITEMS,
     REQUEST_LAZY_GALLERY_ITEMS,
     RECEIVE_LAZY_GALLERY_ITEMS,
+    REQUEST_FULLSCREEN_GALLERY_ITEMS,
     RECEIVE_FULLSCREEN_GALLERY_ITEMS,
     FETCH_PREV_FULLSCREEN_GALLERY_ITEM,
     FETCH_NEXT_FULLSCREEN_GALLERY_ITEM,
+    STOP_FETCH_PREV_FULLSCREEN_GALLERY_ITEM,
+    STOP_FETCH_NEXT_FULLSCREEN_GALLERY_ITEM,
 } from './galleryActions'
 
 function Gallery(state = {
@@ -19,7 +22,9 @@ function Gallery(state = {
     current_item:[],
     current_id: false,
     prev_state:false,
-    next_state:false
+    next_state:false,
+    isPrev:true,
+    isNext:true,
 }, action) {
     switch(action.type) {
         case INVALIDATE_GALLERY_ITEMS:
@@ -37,6 +42,11 @@ function Gallery(state = {
             return {
                 ...state,
                 isFetchingLazy:true,
+            }
+        case REQUEST_FULLSCREEN_GALLERY_ITEMS:
+            return {
+                ...state,
+                current_item:[]
             }
         case RECEIVE_GALLERY_ITEMS:
             return {
@@ -58,14 +68,31 @@ function Gallery(state = {
                 current_id: action.Items
             }
         case FETCH_PREV_FULLSCREEN_GALLERY_ITEM:
+            state.current_item = [];
             return {
                 ...state,
-                prev_state: action.Items
+                current_item: state.current_item.concat(state.Items[action.Items - 1]),
+                current_id:action.Items - 1,
+                prev_state: action.Items - 1
             }
         case FETCH_NEXT_FULLSCREEN_GALLERY_ITEM:
+            state.current_item = [];
+
             return {
                 ...state,
-                next_state: action.Items
+                current_item: state.current_item.concat(state.Items[action.Items + 1]),
+                current_id:action.Items + 1,
+                next_state: action.Items + 1
+            }
+        case STOP_FETCH_PREV_FULLSCREEN_GALLERY_ITEM:
+            return {
+                ...state,
+                isPrev:false,
+            }
+        case STOP_FETCH_NEXT_FULLSCREEN_GALLERY_ITEM:
+            return {
+                ...state,
+                isNext:false,
             }
         default:
             return state

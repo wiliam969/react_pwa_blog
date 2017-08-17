@@ -11,12 +11,13 @@ export default class GalleryGrid extends Component{
     generateDesktopLayout() {
         return this.props.items.map((post,index) => {
             let height = 1
-            let cols = 4
-            return { x: index * cols % 12, y: Math.floor(index / cols) * height, w: cols, h: height, i: index.toString(), "static":true,}
+            return { x: index * 2 % 12, y: Math.floor(index / 6) * height, w: 2, h: height, i: index.toString(), "static":true,}
         })
     }
 
     generateMobileLayout() {
+
+
         return this.props.items.map((post,index) => {
             let height = 3
             return { x: index * 6 % 12, y: index * height, w: 6, h: height, i: index.toString(), "static":true,}

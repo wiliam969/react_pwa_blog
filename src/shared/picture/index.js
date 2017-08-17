@@ -16,27 +16,36 @@ class Picture extends Component {
         var Style = {
             backgroundPosition: 'center center',
             backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover',
             width:100 + '%',
             height:200+ 'px',
+            transition:'opacity 2s',
         }
+
+        const backgroundSize = this.props.backgroundSize
+
+        Style['backgroundSize'] = backgroundSize
 
         if(this.props.thumbnail != null) {
             const thumbnail = this.props.thumbnail
             const type = this.props.type
-            const height = this.props.height
-            const width = this.props.width
             const picture_url = thumbnail[type].source_url
+
+            const width = this.props.picture_width === true ? thumbnail[type].width : this.props.width
+            const height = this.props.picture_height === true ? thumbnail[type].height : this.props.height
+
 
             if(picture_url) {
                 Style['backgroundImage'] =  'url(' + picture_url + ')'
                 Style['width'] = width
                 Style['height'] = height
+                Style['opacity'] = 1
             } else {
                 Style['backgroundColor'] = 'grey'
+                Style['opacity'] = 0.1
             }
         } else {
             Style['backgroundColor'] = 'grey'
+            Style['opacity'] = 0.1
         }
 
         return Style

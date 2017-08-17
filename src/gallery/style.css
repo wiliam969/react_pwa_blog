@@ -1,0 +1,57 @@
+.gal_fullscreen_container {
+  height:100vh;
+  width:100%;
+  top:0px; left:0px; right:0px; bottom: 0px;
+  position: fixed; display: block;
+  z-index:2;
+}
+
+.gal_fullscreen_close {
+  background:rgba(0, 0, 0, 0.5);
+  height:100%;
+  width:100%;
+  z-index:5;
+  cursor: pointer;
+}
+
+.gal_fullscreen_picture {
+  box-shadow: 5px 5px 10px black;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.gal_fullscreen_middle_fix {
+  margin:0;
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-right:-50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.gal_fullscreen_btn_prev {
+  height:auto;
+  width:auto;
+  margin:0;
+  position:absolute;
+  top:50%;
+  left:5%;
+  margin-right:-50%;
+  transform: translate(-50%, -50%);
+  z-index:10;
+  cursor:pointer;
+}
+
+.gal_fullscreen_btn_next {
+  height:auto;
+  width:auto;
+  margin:0;
+  position:absolute;
+  top:50%;
+  left:95%;
+  margin-right:-50%;
+  transform: translate(-50%, -50%);
+  z-index:10;
+  cursor:pointer;
+}

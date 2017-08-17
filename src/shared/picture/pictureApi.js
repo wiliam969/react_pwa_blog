@@ -22,7 +22,7 @@ export default class PictureApi {
                                         return error
                                     })
                             } else {
-                                return responseJson
+                                return defaultPicture
                             }
                         })
                         .catch(error => {

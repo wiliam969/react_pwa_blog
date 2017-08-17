@@ -27,7 +27,8 @@ class Picture extends Component {
 
         if(this.props.thumbnail != null) {
             const thumbnail = this.props.thumbnail
-            const type = this.props.type
+            const type = thumbnail.hasOwnProperty(type) ? this.props.type : 'full'
+
             const picture_url = thumbnail[type].source_url
 
             const width = this.props.picture_width === true ? thumbnail[type].width : this.props.width

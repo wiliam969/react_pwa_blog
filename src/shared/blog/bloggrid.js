@@ -26,8 +26,8 @@ export default class BlogGrid extends Component {
         var layouts = {
             "lg":
                 this.generateDesktopLayout(),
-            "md": this.generateMobileLayout,
-            "sm": this.generateMobileLayout,
+            "md": this.generateMobileLayout(),
+            "sm": this.generateMobileLayout(),
             "xs": this.generateMobileLayout(),
             "xxs": this.generateMobileLayout()
         }

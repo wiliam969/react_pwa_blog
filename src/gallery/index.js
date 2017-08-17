@@ -51,7 +51,7 @@ class Gallery extends Component {
 
                 {!this.props.gallery.isFetching && !this.props.gallery.didInvalidate &&
                     <div>
-                        <GalleryFullscreen last_item={this.props.gallery.Items.length} item={this.props.gallery.current_item} id={this.props.gallery.current_id} dispatch={this.props.dispatch} prevPicture={this.prevFullScreenPicture} nextPicture={this.nextFullScreenPicture}></GalleryFullscreen>
+                        <GalleryFullscreen last_item={this.props.gallery.Items.length} item={this.props.gallery.current_item} id={this.props.gallery.current_id} dispatch={this.props.dispatch} prevPicture={this.prevFullScreenPicture} nextPicture={this.nextFullScreenPicture} isPrev={this.props.gallery.isPrev} isNext={this.props.gallery.isNext}></GalleryFullscreen>
                         <GalleryGrid items={this.props.gallery.Items} dispatch={this.props.dispatch} onClickedPicture={this.loadFullScreenPicture}></GalleryGrid>
                     </div>
                 }

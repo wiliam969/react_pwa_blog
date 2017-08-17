@@ -146,7 +146,7 @@ export function fetchFullscreenGalleryItem (id) {
 export function prevFullScreenGalleryItem (index,props) {
     console.log(props)
     return function (dispatch) {
-        if(index >= 0 ) {
+        if(index > 0 ) {
             return dispatch(fetchPrevFullscreenGalleryItem(index))
         } else {
             return dispatch(stopFetchPrevFullscreenGalleryItem())

@@ -23,8 +23,8 @@ function Gallery(state = {
     current_id: false,
     prev_state:false,
     next_state:false,
-    isPrev:true,
-    isNext:true,
+    isPrev:false,
+    isNext:false,
 }, action) {
     switch(action.type) {
         case INVALIDATE_GALLERY_ITEMS:
@@ -65,7 +65,9 @@ function Gallery(state = {
                 ...state,
                 isFullscreen:true,
                 current_item: state.current_item.concat(state.Items[action.Items]),
-                current_id: action.Items
+                current_id: action.Items,
+                isPrev:false,
+                isNext:false,
             }
         case FETCH_PREV_FULLSCREEN_GALLERY_ITEM:
             state.current_item = [];
@@ -73,7 +75,9 @@ function Gallery(state = {
                 ...state,
                 current_item: state.current_item.concat(state.Items[action.Items - 1]),
                 current_id:action.Items - 1,
-                prev_state: action.Items - 1
+                prev_state: action.Items - 1,
+                isPrev:false,
+                isNext:false,
             }
         case FETCH_NEXT_FULLSCREEN_GALLERY_ITEM:
             state.current_item = [];
@@ -82,17 +86,21 @@ function Gallery(state = {
                 ...state,
                 current_item: state.current_item.concat(state.Items[action.Items + 1]),
                 current_id:action.Items + 1,
-                next_state: action.Items + 1
+                next_state: action.Items + 1,
+                isPrev:false,
+                isNext:false,
             }
         case STOP_FETCH_PREV_FULLSCREEN_GALLERY_ITEM:
             return {
                 ...state,
-                isPrev:false,
+                isPrev:true,
+                isNext:false,
             }
         case STOP_FETCH_NEXT_FULLSCREEN_GALLERY_ITEM:
             return {
                 ...state,
-                isNext:false,
+                isPrev:false,
+                isNext:true,
             }
         default:
             return state

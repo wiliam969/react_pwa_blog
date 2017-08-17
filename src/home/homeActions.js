@@ -110,7 +110,7 @@ export function fetchBlogPreviews(blogs) {
 }
 
 export function fetchLazyBlogPreview(page) {
-
+    console.log(page)
     return function (dispatch) {
 
         dispatch(requestLazyBlogPreview())

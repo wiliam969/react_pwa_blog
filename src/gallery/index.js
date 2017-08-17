@@ -20,14 +20,11 @@ class Gallery extends Component {
         super(props)
     }
     componentDidMount() {
-        console.log("component props")
-        console.log(this.props)
         const { dispatch } = this.props
         dispatch(fetchGalleryItems(this.props))
     }
 
     loadFullScreenPicture(props,index) {
-        console.log(index)
         props.dispatch(fetchFullscreenGalleryItem(index))
     }
 
@@ -40,7 +37,6 @@ class Gallery extends Component {
     }
 
     closeFullscreen(props) {
-        console.log(props)
         props.dispatch(closeFullscreenGallery())
     }
 

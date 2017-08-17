@@ -122,6 +122,7 @@ export function fetchGalleryItems () {
 }
 
 export function fetchLazyGalleryItems (page) {
+    console.log(page)
     return function (dispatch) {
         dispatch(requestLazyGalleryItems())
 
@@ -129,6 +130,7 @@ export function fetchLazyGalleryItems (page) {
             .then(ApiResponse => {
                 console.log(ApiResponse)
                 if(ApiResponse.length === 0) {
+                    console.log(ApiResponse)
                     return dispatch(stopLazyGalleryItems())
                 } else{
                     return dispatch(receiveLazyGalleryItems(ApiResponse))

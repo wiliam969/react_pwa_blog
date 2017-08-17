@@ -22,13 +22,15 @@ class LazyLoader extends Component {
             if(isVisible && this.isActive === true) {
                 switch(this.props.type) {
                     case 'Home':
-                        this.props.sendHome(this.props.blogs.stopLazyLoad)
+                        this.isActive = this.props.blogs.stopLazyLoad
+                        this.props.sendHome(this.props.blogs.LazyPage)
                         break;
                     case 'Blog':
                         this.props.sendBlog(this.props)
                         break;
                     case 'Gallery':
-                        this.props.sendGallery(this.props)
+                        this.isActive = this.props.gallery.stopLazyLoad
+                        this.props.sendGallery(this.props.gallery.stopLazyLoad)
                         break;
                     case 'Category':
                         this.props.sendCategory(this.props)
@@ -51,11 +53,14 @@ LazyLoader.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
     var blogs = {}
+    var gallery = {}
 
     blogs = Object.assign({}, state.Home)
+    gallery = Object.assign({}, state.Gallery)
 
     return {
         blogs:blogs,
+        gallery:gallery,
     }
 }
 

@@ -1,7 +1,7 @@
 import React , { Component } from 'react'
 import Picture from '../../shared/picture/index'
 import Arrow from '../../shared/arrow/arrow'
-import '../style.css'
+import './fullscreen.css'
 
 export default class GalleryFullscreen extends Component {
 
@@ -13,13 +13,11 @@ export default class GalleryFullscreen extends Component {
     prevButton (e) {
         e.stopPropagation()
         this.props.prevPicture(this.props,this.props.id)
-        console.log("child")
     }
 
     nextButton (e) {
         e.stopPropagation()
         this.props.nextPicture(this.props,this.props.id)
-        console.log("child")
     }
 
     render() {
@@ -33,7 +31,17 @@ export default class GalleryFullscreen extends Component {
                             { !this.props.isPrev && !this.props.isNext && this.props.item.length > 0 &&
                             this.props.item.map((post,index) =>
                                 <div className='gal_fullscreen_picture gal_fullscreen_middle_fix'>
-                                    <Picture key={index} blogid={post.id} type="large" posttype="gallery" height="100vh" width="100%" picture_width={true} picture_height={true} backgroundSize="contain"></Picture>
+                                    <Picture
+                                        key={index}
+                                        blogid={post.id}
+                                        type="large"
+                                        posttype="gallery"
+                                        height="100vh"
+                                        width="100%"
+                                        picture_width={true}
+                                        picture_height={true}
+                                        backgroundSize="contain">
+                                    </Picture>
                                 </div>
                             )
                             }

@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
 import ReactGridLayout from 'react-grid-layout'
 import Picture from '../../shared/picture/index'
+import './grid.css'
 
 import {Responsive, WidthProvider} from 'react-grid-layout';
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
@@ -16,8 +17,6 @@ export default class GalleryGrid extends Component{
     }
 
     generateMobileLayout() {
-
-
         return this.props.items.map((post,index) => {
             let height = 3
             return { x: index * 6 % 12, y: index * height, w: 6, h: height, i: index.toString(), "static":true,}
@@ -39,7 +38,14 @@ export default class GalleryGrid extends Component{
                                            cols={{lg: 12, md: 6, sm: 6, xs: 6, xxs: 6}} useCSSTransforms={true} rowHeight={200} >
                     {this.props.items.map((post,index) =>
                         <div className="box" key={index} onClick={ () => this.props.onClickedPicture(this.props,index)}>
-                            <Picture blogid={post.id} type="thumbnail" posttype="gallery" height="200px" width="100%"></Picture>
+                            <Picture
+                                blogid={post.id}
+                                type="thumbnail"
+                                posttype="gallery"
+                                height="200px"
+                                width="100%"
+                                backgroundSize="cover">
+                            </Picture>
                         </div>
                     )}
                 </ResponsiveReactGridLayout>

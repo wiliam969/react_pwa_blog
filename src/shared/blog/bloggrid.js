@@ -11,7 +11,7 @@ export default class BlogGrid extends Component {
     generateDesktopLayout() {
         return this.props.blogs.map((post,index) => {
             let height = 3
-            return { x: index * 6 % 12, y: Math.floor(index / 2) * height, w: 6, h: height, i: index.toString(), "static":true,}
+            return { x: index * 3 % 12, y: Math.floor(index / 4) * height, w: 3, h: height, i: index.toString(), "static":true,}
         })
     }
 
@@ -38,7 +38,13 @@ export default class BlogGrid extends Component {
                                        cols={{lg: 12, md: 6, sm: 6, xs: 6, xxs: 6}} useCSSTransforms={true} >
                 {this.props.blogs.map((post,index) =>
                         <div className="box" key={index}>
-                            <Picture blogid={post.id} type="thumbnail" height="200px" width="100%"></Picture>
+                            <Picture
+                                blogid={post.id}
+                                type="thumbnail"
+                                height="200px"
+                                width="100%"
+                                backgroundSize="cover">
+                            </Picture>
                             <div className="blog-title">{post.title.rendered}</div>
                             <div className="blog-preview-text" dangerouslySetInnerHTML={{__html: post.excerpt.rendered}}></div>
                             <div className="readmore"><Link to={{ pathname: '/blog/' + post.id, }}>Weiterlesen...</Link></div>

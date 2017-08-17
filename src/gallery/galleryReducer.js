@@ -18,6 +18,7 @@ function Gallery(state = {
     isFetchingLazy:false,
     didInvalidate: false,
     stopLazyLoad:false,
+    LazyPage:1,
     isFullscreen:false,
     Items: [],
     current_item:[],
@@ -58,6 +59,7 @@ function Gallery(state = {
         case RECEIVE_LAZY_GALLERY_ITEMS:
             return {
                 ...state,
+                LazyPage: state.LazyPage +1,
                 isFetchingLazy: false,
                 Items: state.Items.concat(action.Items),
             }

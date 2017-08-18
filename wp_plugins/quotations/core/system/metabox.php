@@ -1,5 +1,5 @@
 <?php
-namespace rbs\RBS_Gallery;
+namespace rbs\RBS_QUOTATIONS;
 
 if( ! defined( 'ABSPATH' ) ) exit;
 
@@ -12,7 +12,7 @@ class MetaBox {
       */
       public function __construct(){
             add_action('init', [$this, 'box']);
-            add_action('init', [$this, 'register_api']);
+	        add_action('rest_api_init', [$this, 'register_api']);
             add_filter('manage_'. Config::$post_type . '_posts_columns', [$this, 'posts_columns'], 5);
             add_action('manage_'. Config::$post_type . '_posts_custom_column', [$this, 'posts_custom_columns'], 5, 2);
       }
@@ -24,39 +24,48 @@ class MetaBox {
       public function box(){
 	      register_cuztom_meta_box(
 		      'meta_box_id',
-		      'rbs_gallery',
+		      'rbs_quotations',
 		      array(
 			      'title'     => 'Fuck info',
 			      'fields'    => array(
 			      	[
-				      'id'           => 'fick_die_hader',
+				      'id'           => 'quotations_author',
 				      'label'        => 'Author',
-				      'description'  => 'Just a little description',
+				      'description'  => 'Author',
 				      'type'         => 'text'
                     ],
+	                [
+				      "type" => "text",
+				      "label" => 'Spruch',
+				      "description" => "KUHLA Spruch (Zitat)",
+				      'id'          => 'quotation',
+			        ],
+			      [
+				      "type" => "text",
+				      "label" => 'Beschreibung',
+				      "description" => "GGF. Beschreibung",
+				      'id'          => 'quotation_description',
+			      ]
 			      )
 		      )
+
 	      );
       }
 
-      public function register_api() {
-	      register_rest_field(
-		      'rbs_gallery',
-		      'meta_data',
-		      [
-			      'get_callback' =>
-				      function( $object, $field_name, $request ) {
-					      $meta = get_post_meta( $object['id']);
-
-					      return $meta;
-				      },
-			      'update_callback' => null,
-			      'schema' => null,
-		      ]
-	      );
-      }
-
-
+	public function register_api() {
+		register_rest_field(
+			'rbs_quotations',
+			'meta_data',
+			[
+				'get_callback' =>
+					function( $object, $field_name, $request ) {
+						return get_post_meta( $object['id']);
+					},
+				'update_callback' => null,
+				'schema' => null,
+			]
+		);
+	}
 
       /*
           Adds Thumbs to the Admin

@@ -1,5 +1,5 @@
 <?php
-namespace rbs\RBS_Gallery;
+namespace rbs\RBS_ABOUTME;
 
 if( ! defined( 'ABSPATH' ) ) exit;
 
@@ -11,24 +11,24 @@ class Config {
     /*
         Basic Configurations
     */
-    public static $plugin_name    = "RBS_Gallery";
+    public static $plugin_name    = "RBS_ABOUTME";
     public static $cpt            = null;
     public static $cuztom         = true;
 
     // VC Settings
     public static $vc             = "RBS Allgemein";
-    public static $vc_name        = "Gallery";
-    public static $vc_description = "Darstellung für Gallerien";
+    public static $vc_name        = "aboutme";
+    public static $vc_description = "Darstellung für aboutme";
 
     // Param Name for the VC Tax Dropdown
-    public static $vc_tax_dropdown= "rbs_gallery_cat";
+    public static $vc_tax_dropdown= "rbs_aboutme_cat";
 
     // Here we Define the Shortcode Name of the Plugin
     public static $multi_short    = false;
-    public static $shortcode      = "rbs_gallery";
+    public static $shortcode      = "rbs_aboutme";
     public static $short_array    = [ '' , '' ];
 
-    public static $meta           = "_rbs_gallery_";
+    public static $meta           = "_rbs_aboutme_";
 
     // Here we define if we want to use a Post Type or a Taxonomy
     public static $is_post_type   = true;
@@ -47,7 +47,7 @@ class Config {
     /*
         Post Type Configurations
     */
-    public static $post_type      = "rbs_gallery";
+    public static $post_type      = "rbs_aboutme";
     public static $post_type_args = [
                                         'public'              => true,
                                         'has_archive'         => true,
@@ -59,13 +59,13 @@ class Config {
                                         'menu_icon'           => 'dashicons-format-gallery',
                                         'supports'            => array( 'title', 'thumbnail','custom-fields' ),
 	                                    'show_in_rest'        => true,
-	                                    'rest_base'           => 'gallery'
+	                                    'rest_base'           => 'aboutme'
                                     ];
 
     public static $post_type_labels= [
                                         'name'            => 'Item',
                                         'singular_name'   => 'Items',
-                                        'menu_name'       => 'Gallery'
+                                        'menu_name'       => 'aboutme'
                                     ];
 
 
@@ -73,7 +73,7 @@ class Config {
     /*
         Taxonomy Configurations
     */
-    public static $tax            = "rbs_gallery_category";
+    public static $tax            = "rbs_aboutme_category";
     public static $tax_args       = [
                                         'public'                => true,
                                         'show_in_quick_edit'    => true,
@@ -86,8 +86,8 @@ class Config {
                                         'show_in_rest' => true,
                                     ];
     public static $tax_labels     = [
-                                    'name'                          => 'Kategorien / Bereiche',
-                                        'singular_name'             => 'Kategorie / Bereich',
+                                        'name'                       => 'Kategorien / Bereiche',
+                                        'singular_name'              => 'Kategorie / Bereich',
                                         'search_items'               => 'Suche ',
                                         'popular_items'              => 'Popular ',
                                         'all_items'                  => 'Alle ',

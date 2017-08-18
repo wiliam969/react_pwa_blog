@@ -1,5 +1,5 @@
 <?php
-namespace rbs\RBS_Gallery;
+namespace rbs\RBS_ABOUTME;
 
 if( ! defined( 'ABSPATH' ) ) exit;
 

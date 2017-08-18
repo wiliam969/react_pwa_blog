@@ -1,8 +1,14 @@
-const defaultPicture = https://docs.wordfence.com/en/Wordfence_options
-https://www.wp-hide.com/documentation/
-    https://www.wpsecurityauditlog.com/support-documentation/?utm_source=plugin&utm_medium=helppage&utm_campaign=support
-
-        },
+const defaultPicture = {
+    id:1,
+    media_details: {
+        sizes: {
+            thumbnail: {
+                file:"",
+                height:"",
+                mime_type:"",
+                source_url:"",
+                width:"",
+            },
             medium: {
                 file:"",
                 height:"",

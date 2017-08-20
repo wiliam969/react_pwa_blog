@@ -2,7 +2,7 @@ import db from '../boot/bootIndexeddb'
 
 export default class HomeApi {
     static getLatestBlogList() {
-        return fetch(process.env.REACT_APP_API_URI + 'posts?per_page=4', {method: 'GET'})
+        return fetch('https://www.business-cloud.de/wp-json/wp/v2/' + 'posts?per_page=4', {method: 'GET'})
         .then((response) => response.json())
         .then(responseJson => {
             return responseJson
@@ -16,7 +16,7 @@ export default class HomeApi {
             .then(response => {
                 const oldestDate = response.oldestDate
 
-                return fetch(process.env.REACT_APP_API_URI + 'posts?before=' + oldestDate + '&per_page=4&page=' + page, {method: 'GET'})
+                return fetch('https://www.business-cloud.de/wp-json/wp/v2/' + 'posts?before=' + oldestDate + '&per_page=4&page=' + page, {method: 'GET'})
                     .then((response) => response.json())
                     .then(responseJson => {
                         return responseJson
@@ -31,7 +31,7 @@ export default class HomeApi {
                 timestamp = new Date(timestamp)
                 let latest = timestamp.toISOString()
 
-                return fetch(process.env.REACT_APP_API_URI + 'posts?after=' + latest, {method: 'GET'})
+                return fetch('https://www.business-cloud.de/wp-json/wp/v2/' + 'posts?after=' + latest, {method: 'GET'})
                     .then((response) => response.json())
                     .then(responseJson => {
                         return responseJson

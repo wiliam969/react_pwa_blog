@@ -10,6 +10,10 @@ import Loading from '../shared/loading/loading'
 import LazyLoader from '../shared/lazyloader/lazyloader'
 import BlogGrid from '../shared/blog/bloggrid'
 
+import Quotation from './quotation/index'
+
+import './home.css'
+
 class Home extends Component {
 
     FetchingStyle = {
@@ -20,8 +24,8 @@ class Home extends Component {
 
     constructor(props) {
         super(props)
-        this.fetchNewPosts = this.fetchNewPosts.bind(this);
 
+        this.fetchNewPosts = this.fetchNewPosts.bind(this);
     }
 
     componentDidMount() {
@@ -29,6 +33,16 @@ class Home extends Component {
             const { dispatch } = this.props
             dispatch(fetchBlogPreviews(this.props))
         }
+
+        setInterval(function() {
+            var letters = '0123456789ABCDEF'.split('');
+            var color = '#';
+            for (var i = 0; i < 6; i++ ) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+
+            document.body.style.backgroundColor = color //() to execute the function!
+        }, 3000);
     }
 
     fetchNewPosts() {
@@ -38,17 +52,21 @@ class Home extends Component {
 
     render () {
 
+
+
+
+
         return (
-            <div>
-                <button onClick={this.fetchNewPosts}>Search for new Blogs</button>
+            <div classname="home-container">
+                <button className="load-blogs-btn" onClick={this.fetchNewPosts}>Search for new Blogs</button>
                 {
                     this.props.homedata.isFetchingNew &&
-                        <div>
+                        <div className="loading-container">
                             <Loading type="reload"></Loading>
                         </div>
                 }
                 {   this.props.homedata.isFetching &&
-                    <div>
+                    <div className="loading-container">
                         <Loading type="Pacman">
                         </Loading>
                     </div>
@@ -57,8 +75,9 @@ class Home extends Component {
                 {   this.props.homedata.didInvalidate &&
                     <h1 style={this.FetchingStyle}>Something went Wrong</h1>
                 }
-                    <div>
-                        {/*<Quotation></Quotation>*/}
+                    <div className="data-container">
+                        <Quotation></Quotation>
+                        <div className="home-smoke"></div>
                         <BlogGrid blogs={this.props.homedata.items}></BlogGrid>
                         {/*<BlogList blogs={this.props.homedata.items}></BlogList>*/}
                     </div>
@@ -73,7 +92,6 @@ class Home extends Component {
                         :
                         <h1>THIS IS THE END MA FRIEND</h1>
                 }
-
             </div>
         );
     }

@@ -1,54 +1,38 @@
 import defaultPicture from './defaultPicture'
-import axios from 'axios'
 
 export default class PictureApi {
     static getPicture(id,postType = 'posts') {
-        return axios.get(process.env.REACT_APP_API_URI + 'media?parent=' + id,{
-            // 'method'    : 'get',
-            // 'url'       :  process.env.REACT_APP_API_URI + 'media?parent=' + id,
-            'onDownloadProgress' : function (progressEvent) {
-                console.log(progressEvent)
-            }
-        })
-            // .then((response) => response.json())
+        return fetch('https://www.business-cloud.de/wp-json/wp/v2/' + 'media?parent=' + id,{method:'GET'})
+            .then((response) => response.json())
             .then(responseJson => {
                 console.log(responseJson)
-                return responseJson
-            })
-            .catch(error => {
+                if(responseJson.length > 0) {
+                    return responseJson[0]
+                } else if (responseJson.length === 0) {
+                    return fetch('https://www.business-cloud.de/wp-json/wp/v2/' + postType + '/' + id, {method:'GET'})
+                        .then(response => response.json())
+                        .then(responseJson => {
+                            if(responseJson.featured_media != 0) {
+                                return fetch('https://www.business-cloud.de/wp-json/wp/v2/' + 'media/' + responseJson.featured_media, {method:'GET'})
+                                    .then(response => response.json())
+                                    .then(responseJson => {
+                                        return responseJson
+                                    })
+                                    .catch(error => {
+                                        return error
+                                    })
+                            } else {
+                                return defaultPicture
+                            }
+                        })
+                        .catch(error => {
+                            return error
+                        })
+                } else {
+                    return defaultPicture
+                }
+            }).catch(error => {
                 return error
             })
-        // return fetch(process.env.REACT_APP_API_URI + 'media?parent=' + id,{method:'GET'})
-        //     .then((response) => response.json())
-        //     .then(responseJson => {
-        //         console.log(responseJson)
-        //         if(responseJson.length > 0) {
-        //             return responseJson[0]
-        //         } else if (responseJson.length === 0) {
-        //             return fetch(process.env.REACT_APP_API_URI + postType + '/' + id, {method:'GET'})
-        //                 .then(response => response.json())
-        //                 .then(responseJson => {
-        //                     if(responseJson.featured_media != 0) {
-        //                         return fetch(process.env.REACT_APP_API_URI + 'media/' + responseJson.featured_media, {method:'GET'})
-        //                             .then(response => response.json())
-        //                             .then(responseJson => {
-        //                                 return responseJson
-        //                             })
-        //                             .catch(error => {
-        //                                 return error
-        //                             })
-        //                     } else {
-        //                         return defaultPicture
-        //                     }
-        //                 })
-        //                 .catch(error => {
-        //                     return error
-        //                 })
-        //         } else {
-        //             return defaultPicture
-        //         }
-        //     }).catch(error => {
-        //         return error
-        //     })
     }
 }

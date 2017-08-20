@@ -1,0 +1,12 @@
+.loading-container {
+    margin:50px;
+}
+
+.load-blogs-btn{
+    margin:50px;
+    border-radius:25px;
+    background:#1EAEDB;
+    color:white;
+    border:0px;
+    font-family: 'Comfortaa', cursive;
+}

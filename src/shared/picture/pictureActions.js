@@ -41,12 +41,10 @@ export function fetchPicture (props = 1) {
 
         return PictureApi.getPicture(id.blogid,PostType)
             .then(picture => {
-                console.log(picture)
-                // return dispatch(receivePicture(picture,id.blogid))
+                return dispatch(receivePicture(picture,id.blogid))
             })
             .catch(error => {
-                console.log(error)
-                // return dispatch(invalidatePicture(error,id.blogid))
+                return dispatch(invalidatePicture(error,id.blogid))
             })
     }
 }

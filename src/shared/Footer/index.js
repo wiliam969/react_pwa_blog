@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
+import './footer.css'
 
 export default class Footer extends Component {
     render() {
         return (
-            <nav className="nav">
+            <div className="footer">
                 {/*<div className="container">*/}
                     {/*<div className="nav-left">*/}
                         {/*<a href="" className="nav-item">*/}
@@ -19,8 +20,10 @@ export default class Footer extends Component {
                 {/*</span>*/}
 
                 <div className="nav-right nav-menu">
+                    <a className="nav-items">Impressum</a>
+                    <a className="nav-items">Datenschutzerklärung</a>
                 </div>
-            </nav>
+            </div>
         );
     }
 }

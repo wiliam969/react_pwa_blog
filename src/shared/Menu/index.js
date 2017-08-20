@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import './menu.css'
 
 export default class Menu extends Component {
 
@@ -20,20 +21,16 @@ export default class Menu extends Component {
                     <span></span>
                 </span>
 
-                <div className="nav-right nav-menu">
-                    {/*<a href="/home">Home</a>*/}
-                    {/*<a href="/about">AboutMe</a>*/}
-                    {/*<a href="/gallery">Gallery</a>*/}
-                    <Link to="/home">Home</Link>
-                    <Link to="/category/allgemein">Allgemein</Link>
-                    <Link to="/category/analyse">Analyse</Link>
-                    <Link to="/category/interview">Interview</Link>
-                    <Link to="/category/meinung">Meinung</Link>
-                    <Link to="/category/news">News</Link>
-                    <Link to="/category/studien">Studien</Link>
-                    <Link to="/gallery">Gallery</Link>
-                    {/*<Link to="/aboutme">AboutMe</Link>*/}
-                    {/*<Link to="/gallery">Gallery</Link>*/}
+                <div className="nav-menu">
+                    <Link className="nav-items" to="/home">Home</Link>
+                    {/*<Link to="/category/allgemein">Allgemein</Link>*/}
+                    {/*<Link to="/category/analyse">Analyse</Link>*/}
+                    {/*<Link to="/category/interview">Interview</Link>*/}
+                    {/*<Link to="/category/meinung">Meinung</Link>*/}
+                    {/*<Link to="/category/news">News</Link>*/}
+                    {/*<Link to="/category/studien">Studien</Link>*/}
+                    <Link className="nav-items" to="/gallery">Gallery</Link>
+                    <Link className="nav-items" to="/aboutme">AboutMe</Link>
                 </div>
             </nav>
         );

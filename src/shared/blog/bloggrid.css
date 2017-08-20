@@ -1,0 +1,38 @@
+.bloggrid-container {
+    width:100%;
+    position: relative;
+    display: block;
+    background:white;
+    z-index:1;
+}
+.grid-item{
+    box-shadow:1px 1px 1px 1px black;
+}
+
+.blog-title{
+    margin:5px 0px;
+    font-size:1.7rem;
+    font-weight:600;
+    text-transform:uppercase;
+}
+
+.blog-preview-text{
+}
+
+.readmore{
+    position: relative;
+    display:block;
+    border:0px;
+    float:right;
+    background:#1EAEDB;
+    margin:0px 15px;
+    border-radius:20px;
+    bottom:5px;
+}
+
+.readmore > a {
+    color:white;
+    text-transform: uppercase;
+    text-decoration-line: none;
+    font-family: 'Comfortaa', cursive;
+}

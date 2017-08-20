@@ -3,6 +3,7 @@
  */
 import { combineReducers } from 'redux'
 import Home from '../home/homeRedurcer'
+import Quotations from '../home/quotation/quotationsReducer'
 import AsyncApp from '../app/appReducer'
 import Picture from '../shared/picture/pictureReducer'
 import Blog from '../blog/blogReducer'
@@ -12,12 +13,13 @@ import Gallery from '../gallery/galleryReducer'
 
 const Reducer = combineReducers({
     AsyncApp,
+    Quotations,
     Home,
     Picture,
     Blog,
     Comments,
     Category,
-    Gallery
+    Gallery,
 })
 
 export default Reducer;

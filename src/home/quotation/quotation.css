@@ -1,0 +1,11 @@
+.quotation-container{
+    min-height:400px;
+}
+
+.quotation{
+    font-family: 'Pacifico', cursive;
+}
+
+.quotation-author{
+    font-family: 'Dancing Script', cursive;
+}

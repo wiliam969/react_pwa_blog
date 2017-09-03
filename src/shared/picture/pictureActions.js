@@ -3,6 +3,7 @@
  */
 
 import PictureApi from './pictureApi'
+import PictureStorage from './pictureStorage'
 
 export const REQUEST_PICTURE = 'REQUEST_PICTURE'
 export const RECEIVE_PICTURE = 'RECEIVE_PICTURE'
@@ -36,15 +37,30 @@ export function fetchPicture (props = 1) {
     const id = props
 
     const PostType = props.posttype
+
     return function(dispatch,post_id) {
+
         dispatch(requestPicture(post_id))
 
-        return PictureApi.getPicture(id.blogid,PostType)
-            .then(picture => {
-                return dispatch(receivePicture(picture,id.blogid))
+        return PictureStorage.getPicture(id.blogid)
+            .then(PictureResponse => {
+                if(PictureResponse != null) {
+                    console.log("Storage Response")
+                    console.log(PictureResponse)
+                    dispatch(receivePicture(PictureResponse.post,id.blogid))
+                } else {
+                    return PictureApi.getPicture(id.blogid,PostType)
+                        .then(picture => {
+                            PictureStorage.savePicture(picture,id.blogid)
+                            dispatch(receivePicture(picture,id.blogid))
+                        })
+                        .catch(error => {
+                            return dispatch(invalidatePicture(error,id.blogid))
+                        })
+                }
             })
             .catch(error => {
-                return dispatch(invalidatePicture(error,id.blogid))
+                dispatch(invalidatePicture(error, id.blogid))
             })
     }
 }

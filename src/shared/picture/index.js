@@ -27,8 +27,7 @@ class Picture extends Component {
 
         if(this.props.thumbnail != null) {
             const thumbnail = this.props.thumbnail
-            const type = thumbnail.hasOwnProperty(type) ? this.props.type : 'full'
-
+            const type = thumbnail.hasOwnProperty(this.props.type) === true ? this.props.type : 'full'
             const picture_url = thumbnail[type].source_url
 
             const width = this.props.picture_width === true ? thumbnail[type].width : this.props.width
@@ -48,7 +47,7 @@ class Picture extends Component {
             Style['backgroundColor'] = 'grey'
             Style['opacity'] = 0.1
         }
-
+        console.log(Style)
         return Style
     }
 
@@ -74,11 +73,11 @@ Picture.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    var blogid = 1
-    var thumbnail = {}
-    var type = "thumbnail"
+    let blogid = 1
+    let thumbnail = {}
+    let type = "thumbnail"
 
-    const thumbnailExample = thumbnail
+    console.log(type)
 
     blogid = ownProps.blogid
     thumbnail = Object.assign({}, state.Picture.picture_obj)

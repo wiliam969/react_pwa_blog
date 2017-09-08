@@ -17,6 +17,8 @@ function Picture(state = {
             })
         case RECEIVE_PICTURE:
             return {
+                isFetching:false,
+                didInvalidate:false,
                 picture_obj: {
                     ...state.picture_obj,
                         [action.id]: action.picture.media_details.sizes,

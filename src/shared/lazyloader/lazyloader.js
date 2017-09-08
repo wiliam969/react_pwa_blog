@@ -11,7 +11,12 @@ import VisibilitySensor from 'react-visibility-sensor'
 
 class LazyLoader extends Component {
 
-    isActive = true
+    isActive() {
+
+        const Active = !(this.props.gallery.isFetchingLazy === true || this.props.blogs.isFetchingLazy === true)
+        console.log(Active)
+        return Active
+    }
 
     // componentDidMount() {
     // }
@@ -19,17 +24,17 @@ class LazyLoader extends Component {
     // }
     render() {
         const onChange = (isVisible) => {
-            if(isVisible && this.isActive === true) {
+            if(isVisible && this.isActive() === true) {
                 switch(this.props.type) {
                     case 'Home':
-                        this.isActive = this.props.blogs.stopLazyLoad
+                        // this.isActive = this.props.blogs.stopLazyLoad
                         this.props.sendHome(this.props.blogs.LazyPage)
                         break;
                     case 'Blog':
                         this.props.sendBlog(this.props)
                         break;
                     case 'Gallery':
-                        this.isActive = this.props.gallery.stopLazyLoad
+                        // this.isActive = this.props.gallery.stopLazyLoad
                         this.props.sendGallery(this.props.gallery.stopLazyLoad)
                         break;
                     case 'Category':
@@ -59,6 +64,7 @@ const mapStateToProps = (state, ownProps) => {
     gallery = Object.assign({}, state.Gallery)
 
     return {
+        blog: this.state,
         blogs:blogs,
         gallery:gallery,
     }

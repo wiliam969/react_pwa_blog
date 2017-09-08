@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 export default class BlogList extends Component {
 
     humus = {
-        height: 500 + 'px'
+        height: 1000 + 'px'
     }
 
     componentDidMount() {

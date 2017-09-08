@@ -12,7 +12,7 @@ import VisibilitySensor from 'react-visibility-sensor'
 class LazyLoader extends Component {
 
     isActive() {
-        const Active = !(this.props.gallery.isFetchingLazy === true || this.props.home.isFetchingLazy === true || this.props.blog.isFetchingLazy)
+        const Active = !(this.props.gallery.isFetchingLazy === true && this.props.home.isFetchingLazy === true && (this.props.blog.isFetchingLazy === true && this.props.blog.isFetching === true))
         return Active
     }
 
@@ -21,7 +21,7 @@ class LazyLoader extends Component {
             if(isVisible && this.isActive() === true) {
                 switch(this.props.type) {
                     case 'Home':
-                        this.props.sendHome(this.props.blogs.LazyPage)
+                        this.props.sendHome(this.props.home.LazyPage)
                         break;
                     case 'Blog':
                         this.props.sendBlog(this.props)
@@ -39,7 +39,7 @@ class LazyLoader extends Component {
             }
         }
         return (
-            <VisibilitySensor onChange={onChange} active={this.isActive} delayedCall={true}></VisibilitySensor>
+            <VisibilitySensor onChange={onChange} active={this.isActive} ></VisibilitySensor>
         )
     }
 }

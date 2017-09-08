@@ -21,10 +21,6 @@ class Picture extends Component {
             transition:'opacity 2s',
         }
 
-        const backgroundSize = this.props.backgroundSize
-
-        Style['backgroundSize'] = backgroundSize
-
         if(this.props.thumbnail != null) {
             const thumbnail = this.props.thumbnail
             const type = thumbnail.hasOwnProperty(this.props.type) === true ? this.props.type : 'full'
@@ -32,13 +28,14 @@ class Picture extends Component {
 
             const width = this.props.picture_width === true ? thumbnail[type].width : this.props.width
             const height = this.props.picture_height === true ? thumbnail[type].height : this.props.height
-
+            const backgroundSize = this.props.backgroundsize ? this.props.backgroundsize : "contain"
 
             if(picture_url) {
                 Style['backgroundImage'] =  'url(' + picture_url + ')'
                 Style['width'] = width
                 Style['height'] = height
                 Style['opacity'] = 1
+                Style['backgroundSize'] = backgroundSize
             } else {
                 Style['backgroundColor'] = 'grey'
                 Style['opacity'] = 0.1
@@ -47,7 +44,6 @@ class Picture extends Component {
             Style['backgroundColor'] = 'grey'
             Style['opacity'] = 0.1
         }
-        console.log(Style)
         return Style
     }
 
@@ -76,17 +72,18 @@ const mapStateToProps = (state, ownProps) => {
     let blogid = 1
     let thumbnail = {}
     let type = "thumbnail"
-
-    console.log(type)
+    let backgroundsize = "contain"
 
     blogid = ownProps.blogid
     thumbnail = Object.assign({}, state.Picture.picture_obj)
     type = ownProps.type
+    backgroundsize = ownProps.backgroundsize
 
     return {
         bid:blogid,
         thumbnail: thumbnail[blogid],
-        type:type
+        type:type,
+        backgroundsize:backgroundsize,
     }
 }
 

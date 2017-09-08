@@ -9,7 +9,6 @@ export default class Blog extends Component {
     }
 
     render() {
-        console.log(this.props.blog)
         return (
             <div>
                 {   this.props.isFetching &&

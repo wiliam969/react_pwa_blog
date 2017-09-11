@@ -40,25 +40,6 @@ function Blog(state = {
             }
         case STOP_LAZY_BLOG_SINGLE:
             return state.items.map(post => lazy(post,action))
-            // state.items.map((post,action) => {
-            //
-            // }
-            // return Object.assign({}, state, {
-            //     items[action.index][action.prev_id]:
-            // })
-            return {
-                ...state,
-                items: {
-                    ...state.items,
-                    [action.index]: {
-                        ...state.items[action.index],
-                        [action.prev_id]: {
-                            ...state.items[action.index][action.prev_id],
-                            stopLazyLoad: true,
-                        }
-                    }
-                }
-            }
         default:
             return state
     }

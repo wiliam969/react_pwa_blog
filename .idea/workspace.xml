@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8d86231f-a2d3-463a-a042-6f35d11ec80a" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blog/blogActions.js" afterPath="$PROJECT_DIR$/src/blog/blogActions.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blog/blogReducer.js" afterPath="$PROJECT_DIR$/src/blog/blogReducer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blog/index.js" afterPath="$PROJECT_DIR$/src/blog/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/shared/lazyloader/lazyloader.js" afterPath="$PROJECT_DIR$/src/shared/lazyloader/lazyloader.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/shared/picture/index.js" afterPath="$PROJECT_DIR$/src/shared/picture/index.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -38,8 +34,8 @@
       <file leaf-file-name="blogReducer.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/blog/blogReducer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="358">
-              <caret line="54" column="43" lean-forward="true" selection-start-line="54" selection-start-column="43" selection-end-line="54" selection-end-column="43" />
+            <state relative-caret-position="273">
+              <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -288,7 +284,7 @@
       <workItem from="1504421817359" duration="3971000" />
       <workItem from="1504856069327" duration="13663000" />
       <workItem from="1504872570230" duration="696000" />
-      <workItem from="1505106530841" duration="21796000" />
+      <workItem from="1505106530841" duration="21823000" />
     </task>
     <task id="LOCAL-00001" summary="asdasd">
       <created>1504374392149</created>
@@ -353,11 +349,18 @@
       <option name="project" value="LOCAL" />
       <updated>1505124050452</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="it destroys the lazy load but i dont know it works kinda">
+      <created>1505130683539</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1505130683539</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43881000" />
+    <option name="totallyTimeSpent" value="43908000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -432,7 +435,8 @@
     <MESSAGE value="So what did i do? &#10;&#10;we have proxy nova now as font unfortunately without Webfontloader &#10;&#10;alos i checked all fonts so they look atleast at home good" />
     <MESSAGE value="css declaration of bloggrid was a bit vague" />
     <MESSAGE value="some css for the blog single stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="some css for the blog single stuff" />
+    <MESSAGE value="it destroys the lazy load but i dont know it works kinda" />
+    <option name="LAST_COMMIT_MESSAGE" value="it destroys the lazy load but i dont know it works kinda" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -859,8 +863,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/blog/blogReducer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="54" column="43" lean-forward="true" selection-start-line="54" selection-start-column="43" selection-end-line="54" selection-end-column="43" />
+        <state relative-caret-position="273">
+          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
           <folding />
         </state>
       </provider>

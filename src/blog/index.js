@@ -24,8 +24,8 @@ class BlogSingle extends Component {
                                 <div>
                                     <Blog key={index} data-key={index} blog={post} isFetching={this.props.Blog.isFetching} didInvalidate={this.props.Blog.didInvalidate}></Blog>
 
-                                    { !this.props.Blog.stopLazyLoad &&
-                                    <LazyLoader type="Blog" date={post.date} id={post.id}></LazyLoader>
+                                    { !post.stopLazyLoad &&
+                                    <LazyLoader type="Blog" date={post.date} id={post.id} index={index}></LazyLoader>
                                     }
 
                                     <Comments blogid={post.id}></Comments>

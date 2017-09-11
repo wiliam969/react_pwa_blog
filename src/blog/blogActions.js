@@ -51,9 +51,11 @@ export const invalidateBlogSingle = (blog,id) => {
     }
 }
 
-export const stopLazyBlogSingle = () => {
+export const stopLazyBlogSingle = (id,index) => {
     return {
         type: 'STOP_LAZY_BLOG_SINGLE',
+        prev_id:id,
+        index,
     }
 }
 
@@ -80,18 +82,21 @@ export function fetchBlogSingle(blog = 1) {
     }
 }
 
-export function fetchLazyBlog(date) {
-    console.log(date)
-    const datum = date.date
-    const id = date.id
-    return function (dispatch,date) {
+export function fetchLazyBlog(props) {
+    console.log(props)
+    const datum = props.date
+    const id = props.id
+    const index = props.index
+    console.log(id)
+    return function (dispatch,props) {
         dispatch(requestLazyBlogSingle(id))
         return BlogApi.getLazyBlogSingle(datum)
             .then(post => {
                 if(typeof post === 'undefined' && post === null) {
-                    return dispatch(stopLazyBlogSingle())
+                    return dispatch(stopLazyBlogSingle(id,index))
                 }
-                dispatch(receiveLazyBlogSingle(post,post.id))
+                dispatch(receiveLazyBlogSingle(post,post.id,id))
+                dispatch(stopLazyBlogSingle(id,index))
             })
             .catch(error => {
                 dispatch(invalidateBlogSingle(error))

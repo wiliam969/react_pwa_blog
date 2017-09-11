@@ -39,7 +39,7 @@ class LazyLoader extends Component {
             }
         }
         return (
-            <VisibilitySensor onChange={onChange} active={this.isActive} ></VisibilitySensor>
+            <VisibilitySensor onChange={onChange} active={this.isActive} delayedCall={true} resizeCheck={true}></VisibilitySensor>
         )
     }
 }

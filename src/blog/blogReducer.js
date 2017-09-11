@@ -25,25 +25,51 @@ function Blog(state = {
                 isFetchingLazy:true,
             }
         case RECEIVE_BLOG_SINGLE:
+            action.blog.stopLazyLoad = false
             return {
                 ...state,
                 items: state.items.concat(action.blog),
                 isFetching: false,
             }
         case RECEIVE_LAZY_BLOG_SINGLE:
+
             return {
                 ...state,
                 items: state.items.concat(action.blog),
                 isFetchingLazy:false,
             }
         case STOP_LAZY_BLOG_SINGLE:
+            return state.items.map(post => lazy(post,action))
+            // state.items.map((post,action) => {
+            //
+            // }
+            // return Object.assign({}, state, {
+            //     items[action.index][action.prev_id]:
+            // })
             return {
                 ...state,
-                stopLazyLoad: true,
+                items: {
+                    ...state.items,
+                    [action.index]: {
+                        ...state.items[action.index],
+                        [action.prev_id]: {
+                            ...state.items[action.index][action.prev_id],
+                            stopLazyLoad: true,
+                        }
+                    }
+                }
             }
         default:
             return state
     }
+}
+
+function lazy(post,action) {
+    if(post.id !== action.prev_id) return post;
+
+    return Object.assign({}, post, {
+        stopLazyLoad:true,
+    })
 }
 
 export default Blog

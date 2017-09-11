@@ -27,8 +27,6 @@ class Picture extends Component {
             const width = this.props.picture_width === true ? thumbnail[type].width : this.props.width
             const height = this.props.picture_height === true ? thumbnail[type].height : this.props.height
             const backgroundSize = this.props.backgroundsize ? this.props.backgroundsize : "contain"
-            console.log(this.props.backgroundsize)
-            console.log(backgroundSize)
             const is169 = this.props.is169
 
             if(is169 === true) {

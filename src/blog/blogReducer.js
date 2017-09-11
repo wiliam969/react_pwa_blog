@@ -39,7 +39,7 @@ function Blog(state = {
                 isFetchingLazy:false,
             }
         case STOP_LAZY_BLOG_SINGLE:
-            return state.items.map(post => lazy(post,action))
+            // return state.items.map(post => lazy(post,action))
         default:
             return state
     }

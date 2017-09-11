@@ -17,3 +17,11 @@
     margin-right: -50%;
     transform: translate(-50%,-50%);
 }
+
+.lazyloadcontainer {
+    min-height:150px;
+    position:relative;
+    display:block;
+    background:white;
+    margin:20px 0px 50px 0px;
+}

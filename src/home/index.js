@@ -33,6 +33,15 @@ class Home extends Component {
             const { dispatch } = this.props
             dispatch(fetchBlogPreviews(this.props))
         }
+
+        setInterval(function() {
+            var letters = '0123456789ABCDEF'.split('');
+            var color = '#';
+            for (var i = 0; i < 6; i++ ) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+                document.body.style.backgroundColor = color //() to execute the function!
+        }, 3000);
     }
 
     fetchNewPosts() {
@@ -43,13 +52,13 @@ class Home extends Component {
     render () {
         return (
             <div classname="home-container">
-                <button className="load-blogs-btn" onClick={this.fetchNewPosts}>Search for new Blogs</button>
-                {
-                    this.props.homedata.isFetchingNew &&
-                        <div className="loading-container">
-                            <Loading type="reload"></Loading>
-                        </div>
-                }
+
+                <div className="home-loading-container">
+                    <button className="load-blogs-btn" onClick={this.fetchNewPosts}>Search for new Blogs</button>
+                    {this.props.homedata.isFetchingNew &&
+                        <Loading type="reload"></Loading>
+                    }
+                </div>
                 {   this.props.homedata.isFetching &&
                     <div className="loading-container">
                         <Loading type="Pacman">

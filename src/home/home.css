@@ -1,5 +1,7 @@
-.loading-container {
-    margin:50px;
+.home-loading-container {
+    margin:50px auto;
+    display:block;
+    position:relative;
 }
 
 .load-blogs-btn{

@@ -16,8 +16,6 @@ class Picture extends Component {
         var Style = {
             backgroundPosition: 'center center',
             backgroundRepeat: 'no-repeat',
-            width:100 + '%',
-            height:200+ 'px',
             transition:'opacity 2s',
         }
 
@@ -29,8 +27,17 @@ class Picture extends Component {
             const width = this.props.picture_width === true ? thumbnail[type].width : this.props.width
             const height = this.props.picture_height === true ? thumbnail[type].height : this.props.height
             const backgroundSize = this.props.backgroundsize ? this.props.backgroundsize : "contain"
+            console.log(this.props.backgroundsize)
+            console.log(backgroundSize)
+            const is169 = this.props.is169
 
-            if(picture_url) {
+            if(is169 === true) {
+                Style['backgroundImage'] =  'url(' + picture_url + ')'
+                Style['padding'] = 100 + "% 0 0"
+                Style['opacity'] = 1
+                Style['backgroundSize'] = backgroundSize
+            }
+            if (picture_url) {
                 Style['backgroundImage'] =  'url(' + picture_url + ')'
                 Style['width'] = width
                 Style['height'] = height
@@ -41,6 +48,8 @@ class Picture extends Component {
                 Style['opacity'] = 0.1
             }
         } else {
+            Style['padding'] = 100 + "% 0 0"
+            Style['margin'] = 0 + "px -35px"
             Style['backgroundColor'] = 'grey'
             Style['opacity'] = 0.1
         }
@@ -73,17 +82,20 @@ const mapStateToProps = (state, ownProps) => {
     let thumbnail = {}
     let type = "thumbnail"
     let backgroundsize = "contain"
+    let is169 = false
 
     blogid = ownProps.blogid
     thumbnail = Object.assign({}, state.Picture.picture_obj)
     type = ownProps.type
     backgroundsize = ownProps.backgroundsize
+    is169 = ownProps.is169
 
     return {
         bid:blogid,
         thumbnail: thumbnail[blogid],
         type:type,
         backgroundsize:backgroundsize,
+        is169:is169,
     }
 }
 

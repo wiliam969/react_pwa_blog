@@ -18,18 +18,33 @@ export default class BlogGrid extends Component {
         })
     }
 
-    generateMobileLayout() {
+    generateLaptopLayout() {
         return this.props.blogs.map((post,index) => {
-            let height = 1
-            return { x: index * 6 % 12, y: index * height, w: 6, h: height, i: index.toString(), "static":true,}
+            let height = 2
+            return { x: index * 4 % 12, y: Math.floor(index / 4) * height, w: 4, h: height, i: index.toString(), "static":true,}
         })
     }
+
+    generateTabletLayout() {
+        return this.props.blogs.map((post,index) => {
+            let height = 2
+            return { x: index * 6 % 12, y: Math.floor(index / 4) * height, w: 6, h: height, i: index.toString(), "static":true,}
+        })
+    }
+
+    generateMobileLayout() {
+        return this.props.blogs.map((post,index) => {
+            let height = 2
+            return { x: index * 12 % 12, y: Math.floor(index / 4) * height, w: 12, h: height, i: index.toString(), "static":true,}
+        })
+    }
+
 
     render() {
         var layouts = {
             "lg":  this.generateDesktopLayout(),
-            "md":  this.generateMobileLayout(),
-            "sm":  this.generateMobileLayout(),
+            "md":  this.generateLaptopLayout(),
+            "sm":  this.generateTabletLayout(),
             "xs":  this.generateMobileLayout(),
             "xxs": this.generateMobileLayout()
         }
@@ -37,7 +52,7 @@ export default class BlogGrid extends Component {
             <div className="blog-grid-preview-container">
             {this.props.blogs.length > 0 &&
             <ResponsiveReactGridLayout className="layout" layouts={layouts} breakpoints={{lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0}}
-                                       cols={{lg: 12, md: 6, sm: 6, xs: 6, xxs: 6}} useCSSTransforms={true} rowHeight={490} >
+                                       cols={{lg: 12, md: 12, sm: 12, xs: 12, xxs: 12}} useCSSTransforms={true} rowHeight={490} >
                 {this.props.blogs.map((post,index) =>
                         <div className="blog-grid-preview-item" key={index}>
                             <div className="blog-grid-preview-fix">

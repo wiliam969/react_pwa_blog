@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8d86231f-a2d3-463a-a042-6f35d11ec80a" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blog/blogReducer.js" afterPath="$PROJECT_DIR$/src/blog/blogReducer.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/shared/blog/bloggrid.js" afterPath="$PROJECT_DIR$/src/shared/blog/bloggrid.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -23,7 +23,7 @@
         <entry file="file://$PROJECT_DIR$/src/blog/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="374">
-              <caret line="22" column="70" lean-forward="true" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="70" />
+              <caret line="22" column="70" lean-forward="false" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="70" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -34,8 +34,8 @@
       <file leaf-file-name="blogReducer.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/blog/blogReducer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+            <state relative-caret-position="238">
+              <caret line="14" column="13" lean-forward="true" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -44,8 +44,8 @@
       <file leaf-file-name="bloggrid.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/shared/blog/bloggrid.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="731">
-              <caret line="50" column="50" lean-forward="false" selection-start-line="50" selection-start-column="50" selection-end-line="50" selection-end-column="50" />
+            <state relative-caret-position="493">
+              <caret line="36" column="26" lean-forward="false" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -109,7 +109,6 @@
         <option value="$PROJECT_DIR$/src/home/home.css" />
         <option value="$PROJECT_DIR$/src/App.css" />
         <option value="$PROJECT_DIR$/src/shared/Menu/index.js" />
-        <option value="$PROJECT_DIR$/src/shared/blog/bloggrid.js" />
         <option value="$PROJECT_DIR$/src/shared/blog/bloggrid.css" />
         <option value="$PROJECT_DIR$/src/blog/single/blog.js" />
         <option value="$PROJECT_DIR$/src/blog/single/blog.css" />
@@ -118,6 +117,7 @@
         <option value="$PROJECT_DIR$/src/blog/index.js" />
         <option value="$PROJECT_DIR$/src/blog/blogActions.js" />
         <option value="$PROJECT_DIR$/src/blog/blogReducer.js" />
+        <option value="$PROJECT_DIR$/src/shared/blog/bloggrid.js" />
       </list>
     </option>
   </component>
@@ -178,13 +178,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="blog" type="462c0819:PsiDirectoryNode" />
               <item name="comments" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projectreactest2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projectreactest2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="blog" type="462c0819:PsiDirectoryNode" />
-              <item name="single" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="projectreactest2" type="b2602c69:ProjectViewProjectNode" />
@@ -284,7 +277,7 @@
       <workItem from="1504421817359" duration="3971000" />
       <workItem from="1504856069327" duration="13663000" />
       <workItem from="1504872570230" duration="696000" />
-      <workItem from="1505106530841" duration="21823000" />
+      <workItem from="1505106530841" duration="22506000" />
     </task>
     <task id="LOCAL-00001" summary="asdasd">
       <created>1504374392149</created>
@@ -356,11 +349,18 @@
       <option name="project" value="LOCAL" />
       <updated>1505130683539</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="it destroys the lazy load but i dont know it works kinda">
+      <created>1505130692671</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1505130692671</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43908000" />
+    <option name="totallyTimeSpent" value="44591000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -799,14 +799,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/shared/blog/bloggrid.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="50" column="50" lean-forward="false" selection-start-line="50" selection-start-column="50" selection-end-line="50" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/blog/single/blog.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
@@ -820,7 +812,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="7" lean-forward="false" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
           <folding>
-            <element signature="e#0#40#0" expanded="true" />
+            <element signature="e#0#40#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -830,7 +822,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="7" lean-forward="false" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
           <folding>
-            <element signature="e#0#40#0" expanded="true" />
+            <element signature="e#0#40#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -838,7 +830,7 @@
     <entry file="file://$PROJECT_DIR$/src/blog/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
-          <caret line="22" column="70" lean-forward="true" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="70" />
+          <caret line="22" column="70" lean-forward="false" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="70" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>
@@ -861,10 +853,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/shared/blog/bloggrid.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="36" column="26" lean-forward="false" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/blog/blogReducer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+        <state relative-caret-position="238">
+          <caret line="14" column="13" lean-forward="true" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
           <folding />
         </state>
       </provider>

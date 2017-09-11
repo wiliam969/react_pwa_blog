@@ -1,0 +1,47 @@
+.blog-single-container {
+    background: #cbcbcb;
+}
+
+.blog-single-content-wrapper {
+    background:white;
+}
+
+.blog-single-content-wrapper-fix {
+    padding:40px;
+}
+
+.blog-single-date {
+    text-align:left;
+    padding:5px 0px 5px 0px;
+    color:grey;
+    font-size:.9rem;
+
+}
+
+.blog-single-title {
+    text-align: left;
+    font-size: 2rem;
+    line-height:40px;
+    font-weight: 100;
+}
+
+.blog-single-text {
+    tex-align:left;
+}
+
+.blog-single-text h1, .blog-single-text h2, .blog-single-text h3,.blog-single-text h4,.blog-single-text h5 {
+    font-size: 1.5rem;
+    text-align: left;
+    padding: 10px 0px 10px 0px;
+}
+
+.blog-single-text img {
+    max-height:100%;
+    max-width:100%;
+}
+
+.blog-single-text p {
+    text-align:left;
+    font-size:1rem;
+    line-height:23px;
+}

@@ -40,7 +40,11 @@ class Home extends Component {
             for (var i = 0; i < 6; i++ ) {
                 color += letters[Math.floor(Math.random() * 16)];
             }
-                document.body.style.backgroundColor = color //() to execute the function!
+            const homeloadingwrapper = document.getElementById("home-loading-container")
+
+            if(homeloadingwrapper) {
+                homeloadingwrapper.style.backgroundColor = color //() to execute the function!
+            }
         }, 3000);
     }
 
@@ -53,10 +57,12 @@ class Home extends Component {
         return (
             <div classname="home-container">
 
-                <div className="home-loading-container">
-                    <button className="load-blogs-btn" onClick={this.fetchNewPosts}>Search for new Blogs</button>
-                    {this.props.homedata.isFetchingNew &&
+                <div className="home-loading-container" id="home-loading-container">
+                    {this.props.homedata.isFetchingNew
+                        ?
                         <Loading type="reload"></Loading>
+                        :
+                        <button className="load-blogs-btn" onClick={this.fetchNewPosts}>Search for new Blogs</button>
                     }
                 </div>
                 {   this.props.homedata.isFetching &&

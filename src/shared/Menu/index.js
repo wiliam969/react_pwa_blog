@@ -30,7 +30,6 @@ export default class Menu extends Component {
                     {/*<Link to="/category/news">News</Link>*/}
                     {/*<Link to="/category/studien">Studien</Link>*/}
                     <Link className="nav-items" to="/gallery">Gallery</Link>
-                    <Link className="nav-items" to="/aboutme">AboutMe</Link>
                 </div>
                 <div className="triangle-down">
                     <svg width="100%" height="100%" version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">

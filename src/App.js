@@ -1,20 +1,13 @@
 import React, { Component } from 'react'
-import logo from './logo.svg'
+import './boot/fonts/index'
 import './normalize.css'
 import './skeleton.css'
 import './App.css'
 import '../node_modules/react-grid-layout/css/styles.css'
 import '../node_modules/react-resizable/css/styles.css'
 import Root from './root'
+
 import dotenv from 'dotenv'
-import WebFont from 'webfontloader'
-
-WebFont.load({
-    google: {
-        families: ['Dancing Script', 'Pacifico', 'Comfortaa', 'Oswald']
-    }
-})
-
 
 dotenv.config({})
 

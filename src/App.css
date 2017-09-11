@@ -2,12 +2,8 @@ html {
   font-size:100% !important;
 }
 
-body {
-  transition: background 2s;
-}
-
 * {
-  font-family: 'Oswald';
+  font-family: 'Proxima';
 }
 
 .App {
@@ -33,4 +29,10 @@ body {
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+@font-face {
+  font-family: 'Proxima';
+  src: url('./boot/fonts/proxima_nova_regular-webfont-webfont.woff2') format('woff2'),
+  url('./boot/fonts/proxima_nova_regular-webfont-webfont.woff') format('woff')
 }

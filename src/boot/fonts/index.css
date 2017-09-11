@@ -1,0 +1,5 @@
+@font-face {
+    font-family: 'Proxima';
+    src: url('./proxima_nova_regular-webfont-webfont.woff2') format('woff2'),
+         url('./proxima_nova_regular-webfont-webfont.woff') format('woff')
+}

@@ -15,7 +15,7 @@ export default class BlogContent extends Component {
                     <div className="blog-container">
                         <Picture blogid={this.props.content.id} type="full" height="50vh" width="100%" backgroundsize="cover"></Picture>
                         <div className="blog-content-wrapper container">
-                            <p className="blog-date">{this.props.content.date}</p>
+                            <p className="blog-date">{new Date(this.props.content.date).toLocaleDateString()}</p>
                             <div className="blog-title">{this.props.content.title.rendered}</div>
                             <div className="blog-preview-text" dangerouslySetInnerHTML={{__html: this.props.content.content.rendered}}></div>
                         </div>

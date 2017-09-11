@@ -34,14 +34,14 @@ export default class BlogGrid extends Component {
             "xxs": this.generateMobileLayout()
         }
         return (
-            <div className="bloggrid-container">
+            <div className="blog-grid-preview-container">
             {this.props.blogs.length > 0 &&
             <ResponsiveReactGridLayout className="layout" layouts={layouts} breakpoints={{lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0}}
                                        cols={{lg: 12, md: 6, sm: 6, xs: 6, xxs: 6}} useCSSTransforms={true} rowHeight={490} >
                 {this.props.blogs.map((post,index) =>
-                        <div className="grid-item" key={index}>
-                            <div className="blog-fix">
-                                <div className="blog-pic-fix">
+                        <div className="blog-grid-preview-item" key={index}>
+                            <div className="blog-grid-preview-fix">
+                                <div className="blog-grid-preview-pic-fix">
                                     <Link to={{ pathname: '/blog/' + post.id, }}>
                                         <Picture
                                             blogid={post.id}
@@ -51,12 +51,13 @@ export default class BlogGrid extends Component {
                                         </Picture>
                                     </Link>
                                 </div>
-                                <Link to={{ pathname: '/blog/' + post.id, }} className="prevent_a">
-                                    <div className="blog-title">{post.title.rendered}</div>
+                                <div className="blog-grid-preview-date">{new Date(post.date).toLocaleDateString()}</div>
+                                <Link to={{ pathname: '/blog/' + post.id, }} className="blog-grid-preview-prevent-a">
+                                    <div className="blog-grid-preview-title">{post.title.rendered}</div>
                                 </Link>
 
-                                <div className="blog-preview-text" dangerouslySetInnerHTML={{__html: post.excerpt.rendered}}></div>
-                                <Link to={{ pathname: '/blog/' + post.id, }} className="readmore">Weiterlesen...</Link>
+                                <div className="blog-grid-preview-text" dangerouslySetInnerHTML={{__html: post.excerpt.rendered}}></div>
+                                <Link to={{ pathname: '/blog/' + post.id, }} className="blog-grid-preview-readmore">Weiterlesen...</Link>
                             </div>
                         </div>
                 )}

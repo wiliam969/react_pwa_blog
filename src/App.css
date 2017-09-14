@@ -3,7 +3,7 @@ html {
 }
 
 * {
-  font-family: 'Proxima';
+  font-family: 'Roboto';
 }
 
 .App {
@@ -31,8 +31,8 @@ html {
   to { transform: rotate(360deg); }
 }
 
-@font-face {
-  font-family: 'Proxima';
-  src: url('./boot/fonts/proxima_nova_regular-webfont-webfont.woff2') format('woff2'),
-  url('./boot/fonts/proxima_nova_regular-webfont-webfont.woff') format('woff')
-}
+/*@font-face {*/
+  /*font-family: 'Proxima';*/
+  /*src: url('./boot/fonts/proxima_nova_regular-webfont-webfont.woff2') format('woff2'),*/
+  /*url('./boot/fonts/proxima_nova_regular-webfont-webfont.woff') format('woff')*/
+/*}*/

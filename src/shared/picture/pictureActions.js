@@ -33,7 +33,6 @@ export const invalidatePicture = (pictures,postid) => {
 }
 
 export function fetchPicture (props = 1) {
-    console.log(props)
     const id = props
 
     const PostType = props.posttype
@@ -45,8 +44,6 @@ export function fetchPicture (props = 1) {
         return PictureStorage.getPicture(id.blogid)
             .then(PictureResponse => {
                 if(PictureResponse != null) {
-                    console.log("Storage Response")
-                    console.log(PictureResponse)
                     dispatch(receivePicture(PictureResponse.post,id.blogid))
                 } else {
                     return PictureApi.getPicture(id.blogid,PostType)

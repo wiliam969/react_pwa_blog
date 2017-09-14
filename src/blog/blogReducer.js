@@ -39,11 +39,9 @@ function Blog(state = {
                 isFetchingLazy:false,
             }
         case STOP_LAZY_BLOG_SINGLE:
-            console.log(state)
-            let fufu = state.items.map(post => lazy(post,action))
-            console.log(fufu)
+            let blogs = state.items.map(post => lazy(post,action))
             return Object.assign({}, state, {
-                items: fufu
+                items: blogs
             })
         default:
             return state
@@ -51,8 +49,6 @@ function Blog(state = {
 }
 
 function lazy(post,action) {
-    console.log(post)
-    console.log(action)
     if(post.id !== action.prev_id) return post
 
     return Object.assign({}, post, {

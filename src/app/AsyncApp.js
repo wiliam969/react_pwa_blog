@@ -43,7 +43,7 @@ class AsyncApp extends Component {
                 }
                 {!this.props.App.isLoading &&
                     <div>
-                        <Router history={history}>
+                        <Router onUpdate={() => window.scrollTo(0, 0)} history={history}>
                             <div>
                                 <Menu></Menu>
                                 <Route path="/home" component={Home}></Route>

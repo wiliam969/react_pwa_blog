@@ -7,10 +7,12 @@ import {
 } from './sliderActions'
 
 import Picture from '../picture/index'
+import Arrow from '../arrow/arrow'
 
 import PropTypes from 'prop-types'
 
 import Style from './sliderDesign'
+import './slider.css'
 
 class Slider extends Component {
 
@@ -26,16 +28,28 @@ class Slider extends Component {
 
     render () {
         return (
-            <ReactSwipe className="Slider" swipeOptions={{continuous:true, auto: 3000}} style={Style}>
-                {this.props.Slider.items.length > 0 &&
-                    this.props.Slider.items.map((post,index) =>
-                        <div className="slider-item" key={post.id} data-key={index} style={this.humus}>
-                            <Picture posttype="slider" blogid={post.id} type="full" height="50vh" width="100%"></Picture>
-                            <div className="slider-title">IM THE TITLE {index}</div>
-                        </div>
-                    )
-                }
-            </ReactSwipe>
+            <div className="slider-container-main">
+                <div className="slider-prev-btn">
+                    <Arrow type="left"  className="slider-prev-btn"></Arrow>
+                </div>
+
+                <div className="slider-next-btn">
+                    <Arrow type="right"  className="slider-prev-btn"></Arrow>
+                </div>
+                <div>
+                <ReactSwipe className="Slider" swipeOptions={{continuous: true, auto: 3000}} style={Style}>
+
+                        {this.props.Slider.items.length > 0 &&
+                            this.props.Slider.items.map((post,index) =>
+                                <div className="slider-item" key={post.id} data-key={index} style={this.humus}>
+                                    <Picture posttype="slider" blogid={post.id} type="full" height="50vh" width="100%"></Picture>
+                                    <div className="slider-title">IM THE TITLE {index}</div>
+                                </div>
+                            )
+                        }
+                </ReactSwipe>
+                </div>
+            </div>
         )
     }
 }

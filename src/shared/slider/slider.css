@@ -1,0 +1,19 @@
+.slider-container-main {
+    display: block;
+    position: relative;
+}
+
+.slider-prev-btn {
+    position: absolute;
+    top: calc(50% - 25px);
+    left: 25px;
+    display: block;
+    z-index: 2;
+}
+.slider-next-btn {
+    z-index: 2;
+    position: absolute;
+    top: calc(50% - 25px);
+    right: 25px;
+    display: block;
+}

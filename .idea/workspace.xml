@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d86231f-a2d3-463a-a042-6f35d11ec80a" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/shared/slider/sliderDesign.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/slider/slider.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/AsyncApp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/AsyncApp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/Menu/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/Menu/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/picture/pictureActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/picture/pictureActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/picture/pictureApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/picture/pictureApi.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/shared/slider/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/slider/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -24,23 +20,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/shared/slider/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
-              <folding>
-                <element signature="e#0#40#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sliderDesign.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="sliderDesign.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/shared/slider/sliderDesign.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
+            <state>
+              <caret column="10" lean-forward="true" selection-start-column="10" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -48,8 +32,8 @@
       <file leaf-file-name="sliderReducer.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/shared/slider/sliderReducer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="21" column="37" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
+            <state relative-caret-position="480">
+              <caret line="24" column="24" lean-forward="true" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -63,11 +47,34 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/shared/Menu/index.js">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/shared/slider/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="620">
+              <caret line="31" column="49" lean-forward="true" selection-start-line="31" selection-start-column="49" selection-end-line="31" selection-end-column="49" />
+              <folding>
+                <element signature="e#0#40#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="slider.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/shared/slider/slider.css">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret line="3" column="37" lean-forward="true" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
+              <caret column="22" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="arrow.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/shared/arrow/arrow.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -158,9 +165,9 @@
         <option value="$PROJECT_DIR$/src/shared/Menu/index.js" />
         <option value="$PROJECT_DIR$/src/shared/picture/pictureApi.js" />
         <option value="$PROJECT_DIR$/src/shared/picture/pictureActions.js" />
+        <option value="$PROJECT_DIR$/src/shared/slider/sliderDesign.js" />
         <option value="$PROJECT_DIR$/src/shared/slider/slider.css" />
         <option value="$PROJECT_DIR$/src/shared/slider/index.js" />
-        <option value="$PROJECT_DIR$/src/shared/slider/sliderDesign.js" />
       </list>
     </option>
   </component>
@@ -224,6 +231,13 @@
               <item name="react_pwa_blog" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="shared" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="react_pwa_blog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="react_pwa_blog" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="shared" type="462c0819:PsiDirectoryNode" />
+              <item name="arrow" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="react_pwa_blog" type="b2602c69:ProjectViewProjectNode" />
@@ -332,7 +346,7 @@
       <workItem from="1522915851742" duration="2689000" />
       <workItem from="1522918760476" duration="227000" />
       <workItem from="1522919001936" duration="1561000" />
-      <workItem from="1522923271786" duration="23114000" />
+      <workItem from="1522923271786" duration="24428000" />
     </task>
     <task id="LOCAL-00001" summary="asdasd">
       <created>1504374392149</created>
@@ -467,11 +481,18 @@
       <option name="project" value="LOCAL" />
       <updated>1522956710208</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="slider nearly ready has still some buggs but its nearly fine :)">
+      <created>1522963365669</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1522963365669</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="88706000" />
+    <option name="totallyTimeSpent" value="90020000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -486,13 +507,13 @@
     <frame x="-8" y="-8" width="2576" height="1426" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.12332545" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.12332545" />
       <window_info anchor="bottom" id="TODO" order="9" weight="0.3287879" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="0" sideWeight="0.5021075" side_tool="true" weight="0.32916668" />
       <window_info anchor="bottom" id="Find" order="4" weight="0.32893717" />
-      <window_info anchor="bottom" id="Version Control" order="1" weight="0.3287879" />
-      <window_info active="true" anchor="bottom" id="Run" order="5" visible="true" weight="0.15139751" />
+      <window_info anchor="bottom" id="Version Control" order="1" weight="0.32841614" />
+      <window_info anchor="bottom" id="Run" order="5" visible="true" weight="0.15139751" />
       <window_info anchor="bottom" id="npm" order="15" weight="0.1886646" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="2" weight="0.20885094" />
@@ -558,30 +579,10 @@
     <MESSAGE value="last shot" />
     <MESSAGE value="so we did a couple of things firstly we now joined up home and blogsingle to one piece :) the structure is now much better" />
     <MESSAGE value="so we began with the slider which was pretty simple slider is nearly ready after that we are going to create the &quot;leistungen tab&quot; or the cv" />
-    <option name="LAST_COMMIT_MESSAGE" value="so we began with the slider which was pretty simple slider is nearly ready after that we are going to create the &quot;leistungen tab&quot; or the cv" />
+    <MESSAGE value="slider nearly ready has still some buggs but its nearly fine :)" />
+    <option name="LAST_COMMIT_MESSAGE" value="slider nearly ready has still some buggs but its nearly fine :)" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/blog/blogApi.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/blog/blogsingle/blogsingleReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="725">
-          <caret line="58" column="25" selection-start-line="58" selection-start-column="25" selection-end-line="58" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/blog/blogStorage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="828">
-          <caret line="43" column="27" selection-start-line="43" selection-start-column="27" selection-end-line="43" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/blog/blogRedurcer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1500">
@@ -791,34 +792,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/shared/slider/sliderReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="21" column="37" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/shared/slider/sliderActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/shared/Menu/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="3" column="37" lean-forward="true" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/shared/slider/sliderApi.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gallery/components/galleryFullscreen.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="700">
@@ -890,20 +863,67 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/shared/slider/index.js">
+    <entry file="file://$PROJECT_DIR$/src/shared/Menu/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="500">
-          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
+          <caret line="28" column="73" lean-forward="true" selection-start-line="28" selection-start-column="73" selection-end-line="28" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shared/slider/sliderApi.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/shared/slider/sliderDesign.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
+        <state>
+          <caret column="10" lean-forward="true" selection-start-column="10" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shared/slider/sliderReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="24" column="24" lean-forward="true" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shared/slider/sliderActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shared/arrow/back.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shared/arrow/arrow.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shared/slider/slider.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="22" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shared/slider/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="620">
+          <caret line="31" column="49" lean-forward="true" selection-start-line="31" selection-start-column="49" selection-end-line="31" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

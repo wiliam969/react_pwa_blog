@@ -53,8 +53,8 @@ const mapStateToProps = (state, ownProps) => {
     let blog = {}
     let gallery = {}
 
-    blog = Object.assign({}, state.Blog)
-    home = Object.assign({}, state.Home)
+    blog = Object.assign({}, state.BlogSingle)
+    home = Object.assign({}, state.Blog)
     gallery = Object.assign({}, state.Gallery)
 
     return {

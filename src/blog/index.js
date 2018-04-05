@@ -14,7 +14,7 @@ import Quotation from './quotation/index'
 
 import './blog.css'
 
-class Home extends Component {
+class Blog extends Component {
 
     FetchingStyle = {
         color:"red",
@@ -29,7 +29,7 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        if(this.props.homedata.items.length === 0) {
+        if(this.props.Blog.items.length === 0) {
             const { dispatch } = this.props
             dispatch(fetchBlogPreviews(this.props))
         }
@@ -55,40 +55,40 @@ class Home extends Component {
 
     render () {
         return (
-            <div classname="home-container">
+            <div classname="blog-container">
 
                 <div className="home-loading-container" id="home-loading-container">
-                    {this.props.homedata.isFetchingNew
+                    {this.props.Blog.isFetchingNew
                         ?
                         <Loading type="reload"></Loading>
                         :
                         <button className="load-blogs-btn" onClick={this.fetchNewPosts}>Search for new Blogs</button>
                     }
                 </div>
-                {   this.props.homedata.isFetching &&
+                {   this.props.Blog.isFetching &&
                     <div className="loading-container">
                         <Loading type="Pacman">
                         </Loading>
                     </div>
 
                 }
-                {   this.props.homedata.didInvalidate &&
+                {   this.props.Blog.didInvalidate &&
                     <h1 style={this.FetchingStyle}>Something went Wrong</h1>
                 }
                     <div className="data-container">
                         {/*<Quotation></Quotation>*/}
                         <div className="home-smoke"></div>
-                        <BlogGrid blogs={this.props.homedata.items}></BlogGrid>
-                        {/*<BlogList blogs={this.props.homedata.items}></BlogList>*/}
+                        <BlogGrid blogs={this.props.Blog.items}></BlogGrid>
+                        {/*<BlogList blogs={this.props.Blog.items}></BlogList>*/}
 
                         <div className="lazyloadcontainer">
                             {
-                                this.props.homedata.isFetchingLazy &&
+                                this.props.Blog.isFetchingLazy &&
                                 <Loading type="Spin"></Loading>
                             }
 
                             {
-                                this.props.homedata.stopLazyLoad ?
+                                this.props.Blog.stopLazyLoad ?
                                     <LazyLoader type="Home"></LazyLoader>
                                     :
                                     <h1>THIS IS THE END MA FRIEND</h1>
@@ -101,20 +101,20 @@ class Home extends Component {
 }
 
 
-Home.propTypes = {
+Blog.propTypes = {
     dispatch: PropTypes.func
 }
 
 function mapStateToProps(state,ownProps) {
-    var homedata = { didInvalidate: '', isFetching: '',}
+    var blog = { didInvalidate: '', isFetching: '',}
 
-    homedata = Object.assign({}, state.Home)
+    blog = Object.assign({}, state.Blog)
     return {
-        homedata: homedata,
+        Blog: blog,
     }
 }
 
 
 
-export default connect(mapStateToProps)(Home)
+export default connect(mapStateToProps)(Blog)
 

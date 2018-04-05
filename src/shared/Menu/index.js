@@ -23,6 +23,7 @@ export default class Menu extends Component {
 
                 <div className="nav-menu">
                     <Link className="nav-items" to="/home">Home</Link>
+                    <Link className="nav-items" to="/blog/">Blog</Link>
                     {/*<Link to="/category/allgemein">Allgemein</Link>*/}
                     {/*<Link to="/category/analyse">Analyse</Link>*/}
                     {/*<Link to="/category/interview">Interview</Link>*/}

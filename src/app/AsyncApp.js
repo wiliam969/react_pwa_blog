@@ -8,11 +8,12 @@ import {
 
 import Menu from '../shared/Menu/index'
 import Footer from '../shared/Footer/index'
-import Home from '../blog/index'
+import Blog from '../blog/index'
 import AboutMe from '../aboutme/index'
 import Gallery from '../gallery/index'
-import Blog from '../blog/blogsingle/index'
+import BlogSingle from '../blog/blogsingle/index'
 import Category from '../category/index'
+import Home from '../home/index'
 
 import { BrowserRouter as Router,Route } from 'react-router-dom'
 import createBrowserHistory from 'history/createBrowserHistory'
@@ -47,9 +48,10 @@ class AsyncApp extends Component {
                             <div>
                                 <Menu></Menu>
                                 <Route path="/home" component={Home}></Route>
+                                <Route path="/blog" component={Blog} exact></Route>
                                 <Route path="/aboutme" component={AboutMe} aboutme={this.props.aboutme}></Route>
                                 <Route path="/gallery" component={Gallery} gallery={this.props.gallery}></Route>
-                                <Route path="/blog/:id" component={Blog}></Route>
+                                <Route path="/blog/:id" component={BlogSingle}></Route>
                                 <Route path="/category/:name" component={Category}></Route>
                             </div>
                         </Router>
@@ -67,18 +69,21 @@ AsyncApp.propTypes = {
 }
 
 function mapStateToProps(state,ownProps) {
-    var homedata = { didInvalidate: '', isFetching: '',}
+    var Blog = { didInvalidate: '', isFetching: '',}
     var App = { isLoading:true}
-    var Blog = { didInvalidate: '', isFetching: '', bloginformation: {}}
+    var BlogSingle = { didInvalidate: '', isFetching: '', bloginformation: {}}
+    var Home = { isfuckiing: true }
 
-        homedata = Object.assign({}, state.Home)
-        App = Object.assign({}, state.App)
         Blog = Object.assign({}, state.Blog)
+        App = Object.assign({}, state.App)
+        BlogSingle = Object.assign({}, state.BlogSingle)
+        Home = Object.assign({}, state.Home)
 
     return {
-        homedata: homedata,
+        Blog: Blog,
         App:App,
-        Blog:Blog
+        BlogSingle:BlogSingle,
+        Home:Home,
     }
 }
 

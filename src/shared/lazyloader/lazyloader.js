@@ -4,8 +4,8 @@ import PropTypes from 'prop-types'
 
 import { fetchLazyCategoryItems } from '../../category/categoryActions'
 import { fetchLazyGalleryItems } from '../../gallery/galleryActions'
-import { fetchLazyBlog } from '../../blog/blogActions'
-import { fetchLazyBlogPreview } from '../../home/homeActions'
+import { fetchLazyBlog } from '../../blog/blogsingle/blogsingleActions'
+import { fetchLazyBlogPreview } from '../../blog/blogActions'
 
 import VisibilitySensor from 'react-visibility-sensor'
 

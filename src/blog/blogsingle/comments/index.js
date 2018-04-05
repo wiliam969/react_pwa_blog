@@ -4,7 +4,7 @@ import CommentForm from './CommentForm'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { sendComments,fetchComments,fetchLazyComments,showComments } from './commentsActions'
-import Loading from '../../shared/loading/loading'
+import Loading from '../../../shared/loading/loading'
 
 class Comments extends Component {
 

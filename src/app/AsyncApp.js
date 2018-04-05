@@ -8,10 +8,10 @@ import {
 
 import Menu from '../shared/Menu/index'
 import Footer from '../shared/Footer/index'
-import Home from '../home/index'
+import Home from '../blog/index'
 import AboutMe from '../aboutme/index'
 import Gallery from '../gallery/index'
-import Blog from '../blog/index'
+import Blog from '../blog/blogsingle/index'
 import Category from '../category/index'
 
 import { BrowserRouter as Router,Route } from 'react-router-dom'

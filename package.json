@@ -24,6 +24,7 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1",
+    "save": "^2.3.2",
     "swipe-js-iso": "^2.0.3",
     "webfontloader": "^1.6.28"
   },

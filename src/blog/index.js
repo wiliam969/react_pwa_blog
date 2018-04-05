@@ -1,62 +1,120 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { fetchBlogSingle } from './blogActions'
+import { connect } from 'react-redux'
+import {
+    fetchNewBlogPreview,
+    fetchBlogPreviews
+} from './blogActions'
 
-import Blog from './single/index'
-import Comments from './comments/index'
-
+import Loading from '../shared/loading/loading'
 import LazyLoader from '../shared/lazyloader/lazyloader'
+import BlogGrid from '../shared/blog/bloggrid'
 
-class BlogSingle extends Component {
+import Quotation from './quotation/index'
 
-    componentDidMount() {
-        const { dispatch } = this.props
-        dispatch(fetchBlogSingle(this.props))
+import './blog.css'
+
+class Home extends Component {
+
+    FetchingStyle = {
+        color:"red",
+        fontSize:"40px",
+        fontWeight:900,
     }
 
-    render() {
+    constructor(props) {
+        super(props)
+
+        this.fetchNewPosts = this.fetchNewPosts.bind(this);
+    }
+
+    componentDidMount() {
+        if(this.props.homedata.items.length === 0) {
+            const { dispatch } = this.props
+            dispatch(fetchBlogPreviews(this.props))
+        }
+
+        setInterval(function() {
+            var letters = '0123456789ABCDEF'.split('');
+            var color = '#';
+            for (var i = 0; i < 6; i++ ) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            const homeloadingwrapper = document.getElementById("blog-loading-container")
+
+            if(homeloadingwrapper) {
+                homeloadingwrapper.style.backgroundColor = color //() to execute the function!
+            }
+        }, 3000);
+    }
+
+    fetchNewPosts() {
+        const { dispatch } = this.props
+        dispatch(fetchNewBlogPreview(this.props))
+    }
+
+    render () {
         return (
-            <div>
-                { this.props.Blog.items.length > 0 &&
-                        <div>
-                            {this.props.Blog.items.map((post,index) =>
-                                <div>
-                                    <Blog key={index} data-key={index} blog={post} isFetching={this.props.Blog.isFetching} didInvalidate={this.props.Blog.didInvalidate}></Blog>
+            <div classname="home-container">
 
-                                    { !post.stopLazyLoad &&
-                                    <LazyLoader type="Blog" date={post.date} id={post.id} index={index}></LazyLoader>
-                                    }
+                <div className="home-loading-container" id="home-loading-container">
+                    {this.props.homedata.isFetchingNew
+                        ?
+                        <Loading type="reload"></Loading>
+                        :
+                        <button className="load-blogs-btn" onClick={this.fetchNewPosts}>Search for new Blogs</button>
+                    }
+                </div>
+                {   this.props.homedata.isFetching &&
+                    <div className="loading-container">
+                        <Loading type="Pacman">
+                        </Loading>
+                    </div>
 
-                                    <Comments blogid={post.id}></Comments>
-                                </div>
-                            )}
+                }
+                {   this.props.homedata.didInvalidate &&
+                    <h1 style={this.FetchingStyle}>Something went Wrong</h1>
+                }
+                    <div className="data-container">
+                        {/*<Quotation></Quotation>*/}
+                        <div className="home-smoke"></div>
+                        <BlogGrid blogs={this.props.homedata.items}></BlogGrid>
+                        {/*<BlogList blogs={this.props.homedata.items}></BlogList>*/}
 
-                            {this.props.Blog.stopLazyLoad &&
-                                <h1>NO MORE POSTS FOUND</h1>
+                        <div className="lazyloadcontainer">
+                            {
+                                this.props.homedata.isFetchingLazy &&
+                                <Loading type="Spin"></Loading>
+                            }
+
+                            {
+                                this.props.homedata.stopLazyLoad ?
+                                    <LazyLoader type="Home"></LazyLoader>
+                                    :
+                                    <h1>THIS IS THE END MA FRIEND</h1>
                             }
                         </div>
-                }
+                    </div>
             </div>
-        )
+        );
     }
 }
 
-BlogSingle.propTypes = {
+
+Home.propTypes = {
     dispatch: PropTypes.func
 }
 
-const mapStateToProps = (state, ownProps) => {
-    var blog = { didInvalidate: '', isFetching: '', items: {}}
-    var comment = { isComments: false }
+function mapStateToProps(state,ownProps) {
+    var homedata = { didInvalidate: '', isFetching: '',}
 
-    blog = Object.assign({}, state.Blog)
-    comment = Object.assign({}, state.Comments)
-
+    homedata = Object.assign({}, state.Home)
     return {
-        Blog: blog,
-        Comment: comment
+        homedata: homedata,
     }
 }
 
-export default connect(mapStateToProps)(BlogSingle)
+
+
+export default connect(mapStateToProps)(Home)
+

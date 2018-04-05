@@ -31,3 +31,7 @@ a.nav-items {
     height:50px;
     transform:rotate(180deg);
 }
+
+.footer > .nav-menu {
+    padding:0px !important;
+}

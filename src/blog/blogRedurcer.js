@@ -8,9 +8,9 @@ import {
     RECEIVE_LAZY_BLOG_PREVIEW,
     RECEIVE_NEW_BLOG_PREVIEW,
     STOP_LAZY_BLOG_PREVIEW,
-} from './homeActions'
+} from './blogActions'
 
-function Home(
+function Blog(
     state = {
         isFetching: false,
         isFetchingLazy: false,
@@ -83,4 +83,4 @@ function Home(
     }
 }
 
-export default Home
+export default Blog

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Picture from '../../shared/picture/index'
+import Picture from '../../../shared/picture/index'
 import './blog.css'
 
 export default class BlogContent extends Component {

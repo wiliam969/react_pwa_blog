@@ -1,6 +1,6 @@
-import { REQUEST_BLOG_SINGLE,REQUEST_LAZY_BLOG_SINGLE, RECEIVE_BLOG_SINGLE,RECEIVE_LAZY_BLOG_SINGLE, INVALIDATE_BLOG_SINGLE,STOP_LAZY_BLOG_SINGLE } from './blogActions'
+import { REQUEST_BLOG_SINGLE,REQUEST_LAZY_BLOG_SINGLE, RECEIVE_BLOG_SINGLE,RECEIVE_LAZY_BLOG_SINGLE, INVALIDATE_BLOG_SINGLE,STOP_LAZY_BLOG_SINGLE } from './blogsingleActions'
 
-function Blog(state = {
+function BlogSingle(state = {
         isFetching: false,
         isFetchingLazy:false,
         didInvalidate: false,
@@ -56,4 +56,4 @@ function lazy(post,action) {
     })
 }
 
-export default Blog
+export default BlogSingle

@@ -1,105 +1,166 @@
 /**
  * Created by wiliam969 on 28.04.2017.
  */
-
 import BlogApi from './blogApi'
 import BlogStorage from './blogStorage'
 
-export const REQUEST_BLOG_SINGLE = 'REQUEST_BLOG_SINGLE'
-export const REQUEST_LAZY_BLOG_SINGLE = 'REQUEST_LAZY_BLOG_SINGLE'
-export const RECEIVE_BLOG_SINGLE = 'RECEIVE_BLOG_SINGLE'
-export const RECEIVE_LAZY_BLOG_SINGLE = 'RECEIVE_LAZY_BLOG_SINGLE'
-export const INVALIDATE_BLOG_SINGLE = 'INVALIDATE_BLOG_SINGLE'
-export const STOP_LAZY_BLOG_SINGLE = 'STOP_LAZY_BLOG_SINGLE'
+export const REQUEST_BLOG_PREVIEW = 'REQUEST_BLOG_PREVIEW'
+export const REQUEST_LAZY_BLOG_PREVIEW = 'REQUEST_LAZY_BLOG_PREVIEW'
+export const REQUEST_NEW_BLOG_PREVIEW = 'REQUEST_NEW_BLOG_PREVIEW'
+export const RECEIVE_BLOG_PREVIEW = 'RECEIVE_BLOG_PREVIEW'
+export const RECEIVE_LOCAL_BLOG_PREVIEW = 'RECEIVE_LOCAL_BLOG_PREVIEW'
+export const RECEIVE_LAZY_BLOG_PREVIEW = 'RECEIVE_LAZY_BLOG_PREVIEW'
+export const INVALIDATE_BLOG_PREVIEW = 'INVALIDATE_BLOG_PREVIEW'
+export const STOP_LAZY_BLOG_PREVIEW = 'STOP_LAZY_BLOG_PREVIEW'
+export const RECEIVE_NEW_BLOG_PREVIEW = 'RECEIVE_NEW_BLOG_PREVIEW'
 
-export const requestBlogSingle = (id) => {
+
+export const requestBlogPreview = (blogs) => {
     return {
-        type: 'REQUEST_BLOG_SINGLE',
-        id
+        type: 'REQUEST_BLOG_PREVIEW',
+        blogs
     }
 }
 
-export const requestLazyBlogSingle = (id) => {
+export const requestLazyBlogPreview = () => {
     return {
-        type: 'REQUEST_LAZY_BLOG_SINGLE',
-        id
+        type:'REQUEST_LAZY_BLOG_PREVIEW',
     }
 }
 
-export const receiveBlogSingle = (blog,id) => {
+export const requestNewBlogPreview = () => {
     return {
-        type: 'RECEIVE_BLOG_SINGLE',
-        blog,
-        id,
+        type:'REQUEST_NEW_BLOG_PREVIEW'
+    }
+}
+
+export const receiveBlogpreview = (blogs) => {
+    return {
+        type: 'RECEIVE_BLOG_PREVIEW',
+        blogs,
         receivedAt: Date.now(),
     }
 }
 
-export const receiveLazyBlogSingle = (blog,id) => {
+export const receiveLocalBlogPreview = (blogs) => {
     return {
-        type:'RECEIVE_LAZY_BLOG_SINGLE',
-        blog:blog,
-        id,
-        receivedAt: Date.now(),
+        type: 'RECEIVE_LOCAL_BLOG_PREVIEW',
+        blogs,
+        receivedAt: Date.now()
     }
 }
 
-export const invalidateBlogSingle = (blog,id) => {
+export const receiveLazyBlogPreview = (blogs) => {
     return {
-        type:'INVALIDATE_BLOG_SINGLE',
-        id
+        type:'RECEIVE_LAZY_BLOG_PREVIEW',
+        blogs,
     }
 }
 
-export const stopLazyBlogSingle = (id,index) => {
+export const invalidateBlogPreview = (blogs) => {
     return {
-        type: 'STOP_LAZY_BLOG_SINGLE',
-        prev_id:id,
-        index,
+        type:'INVALIDATE_BLOG_PREVIEW',
+        blogs
     }
 }
 
-export function fetchBlogSingle(blog = 1) {
-    const id = blog.match.params.id
+export const stopLazyBlogPreview = () => {
+    return {
+        type:'STOP_LAZY_BLOG_PREVIEW',
+    }
+}
 
-    return function (dispatch) {
-        dispatch(requestBlogSingle(id))
+export const receiveAfterBlogPreview = (blogs) => {
+    return {
+        type:'RECEIVE_NEW_BLOG_PREVIEW',
+        blogs,
+        receivedAt: Date.now()
+    }
+}
 
-        return BlogStorage.getBlogSingle(id)
-            .then(StorageResponse => {
-                if(StorageResponse != null) {
-                    dispatch(receiveBlogSingle(StorageResponse,id))
+// this is it lul it wörks haha didint expected this :D
+
+export function fetchBlogPreviews(blogs) {
+
+    return function(dispatch) {
+
+        dispatch(requestBlogPreview(blogs))
+
+        return BlogStorage.getBlogPreview()
+            .then(LocalPost => {
+                if(LocalPost.length > 0) {
+                    dispatch(receiveLocalBlogPreview(LocalPost))
                 } else {
-                    return BlogApi.getBlogSingle(id)
+                    BlogApi.getLatestBlogList()
+                        .then((posts) => {
+                            dispatch(receiveBlogpreview(posts))
+
+                            BlogStorage.updateOldestDate(posts)
+
+                            return BlogStorage.saveBlogPreviews(posts)
+                        })
+                        .catch(error => {
+                            return dispatch(invalidateBlogPreview(error))
+                        })
+                }
+            }).catch(error => {
+                dispatch(invalidateBlogPreview(error))
+            })
+    }
+}
+
+export function fetchLazyBlogPreview(page) {
+    console.log(page)
+    return function (dispatch) {
+
+        dispatch(requestLazyBlogPreview())
+
+        return BlogStorage.getLazyBlogPreview(page)
+            .then(StorageItems => {
+
+                if(StorageItems.length > 0) {
+                    console.log("Store")
+                    console.log(StorageItems)
+                    dispatch(receiveLazyBlogPreview(StorageItems))
+                } else {
+                    BlogApi.getLazyBlogPreview(page)
                         .then(ApiResponse => {
-                            BlogStorage.saveBlogSingle(ApiResponse)
-                            dispatch(receiveBlogSingle(ApiResponse,id))
-                        }).catch(error => {
-                            dispatch(invalidateBlogSingle(id))
+                            console.log("Api")
+                            console.log(ApiResponse)
+                            if(ApiResponse.length === 0){
+                                return dispatch(stopLazyBlogPreview())
+                            }
+
+                            dispatch(receiveLazyBlogPreview(ApiResponse))
+
+                            return BlogStorage.saveBlogPreviews(ApiResponse)
+                        })
+                        .catch(error => {
+                            dispatch(invalidateBlogPreview(error))
                         })
                 }
             })
+            .catch(error => {
+                dispatch(invalidateBlogPreview(error))
+            })
+
     }
 }
 
-export function fetchLazyBlog(props) {
-    console.log(props)
-    const datum = props.date
-    const id = props.id
-    const index = props.index
-    console.log(id)
-    return function (dispatch,props) {
-        dispatch(requestLazyBlogSingle(id))
-        return BlogApi.getLazyBlogSingle(datum)
-            .then(post => {
-                if(typeof post === 'undefined' && post === null) {
-                    return dispatch(stopLazyBlogSingle(id,index))
-                }
-                dispatch(receiveLazyBlogSingle(post,post.id,id))
-                dispatch(stopLazyBlogSingle(id,index))
+export function fetchNewBlogPreview() {
+    return function (dispatch) {
+        dispatch(requestNewBlogPreview())
+
+        return BlogApi.getnewBlogPreviews()
+            .then(blogs => {
+                dispatch(receiveAfterBlogPreview(blogs))
+
+                BlogStorage.updateLatestDate()
+
+                return BlogStorage.saveBlogPreviews(blogs)
             })
             .catch(error => {
-                dispatch(invalidateBlogSingle(error))
+                return dispatch(invalidateBlogPreview(error))
             })
     }
 }

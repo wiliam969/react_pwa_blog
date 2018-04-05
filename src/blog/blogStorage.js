@@ -1,48 +1,83 @@
 import db from '../boot/bootIndexeddb'
 
 export default class BlogStorage {
-    static getBlogSingle(id) {
-        const post_id = parseInt(id)
-        return db.table('blog').get(post_id)
-            .then(items => {
-                return items
+    static getBlogPreview() {
+        return db.blog.orderBy('date').reverse().limit(4).toArray()
+            .then(bitems => {
+                return bitems
+            })
+            .catch(error => {
+                return error
+            })
+
+    }
+    static getLazyBlogPreview(page) {
+        if(page === 1){
+            page = 0
+
+        }
+        return db.table('timestamp').get(1)
+            .then(lazyitems => {
+                return db.table('blog').where('date').below(lazyitems.oldestDate).reverse().offset(page * 4).limit(4).toArray()
+                    .then(bitems => {
+                        return bitems
+                    })
+                    .catch(error => {
+                        return error
+                    })
             })
             .catch(error => {
                 return error
             })
     }
-    static saveBlogSingle(post) {
-        return db.blog.put({
-            id:post.id,
-            date:post.date,
-            date_gmt:post.date_gmt,
-            guid:post.guid,
-            modified:post.modified,
-            modified_gmt:post.modified_gmt,
-            slug:post.slug,
-            status:post.status,
-            type:post.type,
-            link:post.link,
-            title:post.title,
-            content:post.content,
-            excerpt:post.excerpt,
-            author:post.author,
-            featured_media:post.featured_media,
-            comment_status:post.comment_status,
-            ping_status:post.ping_status,
-            sticky:post.sticky,
-            template:post.template,
-            format:post.format,
-            meta:post.meta,
-            categories:post.categories,
-            tags:post.tags,
-            _links:post._links
+
+    static updateOldestDate(date) {
+        const oldestdate = date[3].date
+
+        return db.timestamp.put({
+            oldestDate:oldestdate
         })
-        .then(response => {
-            return response
-        })
-        .catch(error => {
+    }
+
+    static updateLatestDate() {
+        var tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
+        var localISOTime = (new Date(Date.now() - tzoffset)).toISOString().slice(0, -1);
+
+        return db.timestamp.update(1, {latestDate: localISOTime}).then(()=>{
+            return true
+        }).catch(error => {
             return error
+        })
+    }
+
+    static saveBlogPreviews(blogs) {
+        return blogs.map((post,index) => {
+            db.blog.put({
+                id:post.id,
+                date:post.date,
+                date_gmt:post.date_gmt,
+                guid:post.guid,
+                modified:post.modified,
+                modified_gmt:post.modified_gmt,
+                slug:post.slug,
+                status:post.status,
+                type:post.type,
+                link:post.link,
+                title:post.title,
+                content:post.content,
+                excerpt:post.excerpt,
+                author:post.author,
+                featured_media:post.featured_media,
+                comment_status:post.comment_status,
+                ping_status:post.ping_status,
+                sticky:post.sticky,
+                template:post.template,
+                format:post.format,
+                meta:post.meta,
+                categories:post.categories,
+                tags:post.tags,
+                _links:post._links
+            })
         })
     }
 }

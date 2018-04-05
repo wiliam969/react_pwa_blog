@@ -43,15 +43,22 @@ export function fetchPicture (props = 1) {
 
         return PictureStorage.getPicture(id.blogid)
             .then(PictureResponse => {
+                console.log(id.blogid)
+                console.log(PostType)
                 if(PictureResponse != null) {
+                    console.log(PictureResponse)
                     dispatch(receivePicture(PictureResponse.post,id.blogid))
                 } else {
+                    console.log(id.blogid)
+                    console.log(PostType)
                     return PictureApi.getPicture(id.blogid,PostType)
                         .then(picture => {
+                            console.log(picture)
                             PictureStorage.savePicture(picture,id.blogid)
                             dispatch(receivePicture(picture,id.blogid))
                         })
                         .catch(error => {
+                            console.log(error)
                             return dispatch(invalidatePicture(error,id.blogid))
                         })
                 }

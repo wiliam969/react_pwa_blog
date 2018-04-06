@@ -27,7 +27,7 @@ class simpleSlider extends Component {
 
     render () {
         const settings = {
-            dots: true,
+            dots: false,
             infinite:true,
             speed: 500,
             slidesToScroll:1,
@@ -39,7 +39,12 @@ class simpleSlider extends Component {
                     this.props.Slider.items.map((post,index) =>
                         <div key={index} style={this.humus}>
                             <Picture posttype="slider" blogid={post.id} type="full" height="50vh" width="100%"></Picture>
-                            <div className="slider-title">{post.title.rendered}</div>
+                            <a href={post._rbs_slider_readmore_btn} target="_blank">
+                                <div className="slider-description-wrapper  ">
+                                    <div className="slider-title">{post.title.rendered}</div>
+                                </div>
+                            </a>
+
                         </div>
                     )
                 }

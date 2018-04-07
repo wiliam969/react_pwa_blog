@@ -4,6 +4,7 @@ import {
     fetchSlider
 } from './sliderActions'
 import PropTypes from 'prop-types'
+import { Link } from "react-router-dom";
 
 import Picture from '../picture/index'
 
@@ -38,12 +39,12 @@ class simpleSlider extends Component {
                 {this.props.Slider.items.length > 0 &&
                     this.props.Slider.items.map((post,index) =>
                         <div key={index} style={this.humus}>
-                            <Picture posttype="slider" blogid={post.id} type="full" height="50vh" width="100%"></Picture>
-                            <a href={post._rbs_slider_readmore_btn} target="_blank">
-                                <div className="slider-description-wrapper  ">
+                            <Picture posttype="slider" blogid={post.id} type="full" height="75vh" width="100%" backgroundsize="cover"></Picture>
+                            <Link to={post._rbs_slider_readmore_btn} target="_blank">
+                                <div className="slider-description-wrapper">
                                     <div className="slider-title">{post.title.rendered}</div>
                                 </div>
-                            </a>
+                            </Link>
 
                         </div>
                     )

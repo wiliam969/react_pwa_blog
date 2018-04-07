@@ -1,6 +1,6 @@
 export default class GalleryApi {
     static getGalleryItems() {
-        return fetch(process.env.REACT_APP_API_URI + 'gallery?per_page=6', {method: 'GET'})
+        return fetch('https://backend.kerstin-witte.de/wp-json/wp/v2/' + 'gallery?per_page=6', {method: 'GET'})
             .then(response => response.json())
             .then(responseJson => {
                 console.log(responseJson)
@@ -9,7 +9,7 @@ export default class GalleryApi {
     }
 
     static getLazyGalleryItems(page) {
-        return fetch(process.env.REACT_APP_API_URI + 'gallery?per_page=6&page=2', {method: 'GET'})
+        return fetch('https://backend.kerstin-witte.de/wp-json/wp/v2/' + 'gallery?per_page=6&page=2', {method: 'GET'})
             .then(response => response.json())
             .then(responseJson => {
                 console.log(responseJson)
@@ -25,7 +25,7 @@ export default class GalleryApi {
      */
     static getGallerySingleItem(id) {
         console.log(id)
-        return fetch(process.env.REACT_APP_API_URI + 'gallery/' + id, {method: 'GET'})
+        return fetch('https://backend.kerstin-witte.de/wp-json/wp/v2/' + 'gallery/' + id, {method: 'GET'})
             .then(response => response.json())
             .then(responseJson => {
                 console.log(responseJson)

@@ -63,7 +63,10 @@ class Gallery extends Component {
                             closeFull={this.closeFullscreen}
                             isPrev={this.props.gallery.isPrev}
                             isNext={this.props.gallery.isNext}
-                            isFullscreen={this.props.gallery.isFullscreen}>
+                            isFullscreen={this.props.gallery.isFullscreen}
+                            next_state={this.props.gallery.next_state}
+                            prev_state={this.props.gallery.prev_state}>
+
                         </GalleryFullscreen>
                         <GalleryGrid
                             items={this.props.gallery.Items}

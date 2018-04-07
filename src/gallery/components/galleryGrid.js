@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
-import ReactGridLayout from 'react-grid-layout'
 import Picture from '../../shared/picture/index'
 import './grid.css'
 
@@ -38,14 +37,16 @@ export default class GalleryGrid extends Component{
                                            cols={{lg: 12, md: 6, sm: 6, xs: 6, xxs: 6}} useCSSTransforms={true} rowHeight={200} >
                     {this.props.items.map((post,index) =>
                         <div className="box" key={index} onClick={ () => this.props.onClickedPicture(this.props,index)}>
-                            <Picture
-                                blogid={post.id}
-                                type="thumbnail"
-                                posttype="gallery"
-                                height="200px"
-                                width="100%"
-                                backgroundSize="cover">
-                            </Picture>
+                            <Link key={post.id} to={{ pathname: `gallery/img/${post.id}`, state: {modal:true} }}>
+                                <Picture
+                                    blogid={post.id}
+                                    type="thumbnail"
+                                    posttype="gallery"
+                                    height="200px"
+                                    width="100%"
+                                    backgroundsize="cover">
+                                </Picture>
+                            </Link>
                         </div>
                     )}
                 </ResponsiveReactGridLayout>

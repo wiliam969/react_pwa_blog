@@ -69,6 +69,8 @@ function Gallery(state = {
                 isFullscreen:true,
                 current_item: state.current_item.concat(state.Items[action.Items]),
                 current_id: action.Items,
+                prev_state: action.Items - 1,
+                next_state: action.Items + 1,
                 isPrev:false,
                 isNext:false,
             }
@@ -78,18 +80,19 @@ function Gallery(state = {
                 ...state,
                 current_item: state.current_item.concat(state.Items[action.Items - 1]),
                 current_id:action.Items - 1,
-                prev_state: action.Items - 1,
+                prev_state: action.Items - 2,
+                next_state: action.Items,
                 isPrev:false,
                 isNext:false,
             }
         case FETCH_NEXT_FULLSCREEN_GALLERY_ITEM:
             state.current_item = [];
-
             return {
                 ...state,
                 current_item: state.current_item.concat(state.Items[action.Items + 1]),
                 current_id:action.Items + 1,
-                next_state: action.Items + 1,
+                next_state: action.Items + 2,
+                prev_state: action.Items,
                 isPrev:false,
                 isNext:false,
             }

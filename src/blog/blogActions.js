@@ -3,6 +3,7 @@
  */
 import BlogApi from './blogApi'
 import BlogStorage from './blogStorage'
+import {stopLazyGalleryItems} from "../gallery/galleryActions";
 
 export const REQUEST_BLOG_PREVIEW = 'REQUEST_BLOG_PREVIEW'
 export const REQUEST_LAZY_BLOG_PREVIEW = 'REQUEST_LAZY_BLOG_PREVIEW'
@@ -86,10 +87,30 @@ export function fetchBlogPreviews(blogs) {
 
         dispatch(requestBlogPreview(blogs))
 
-        return BlogStorage.getBlogPreview()
-            .then(LocalPost => {
-                if(LocalPost.length > 0) {
-                    dispatch(receiveLocalBlogPreview(LocalPost))
+        return BlogStorage.checksetup()
+            .then(checkStorage => {
+                console.log(checkStorage)
+                if(typeof checkStorage != "undefined") {
+                    BlogStorage.getBlogPreview()
+                        .then(LocalPost => {
+                            if(LocalPost.length > 0) {
+                                dispatch(receiveLocalBlogPreview(LocalPost))
+                            } else {
+                                BlogApi.getLatestBlogList()
+                                    .then((posts) => {
+                                        dispatch(receiveBlogpreview(posts))
+
+                                        BlogStorage.updateOldestDate(posts)
+
+                                        return BlogStorage.saveBlogPreviews(posts)
+                                    })
+                                    .catch(error => {
+                                        return dispatch(invalidateBlogPreview(error))
+                                    })
+                                }
+                        }).catch(error => {
+                        dispatch(invalidateBlogPreview(error))
+                    })
                 } else {
                     BlogApi.getLatestBlogList()
                         .then((posts) => {
@@ -104,7 +125,7 @@ export function fetchBlogPreviews(blogs) {
                         })
                 }
             }).catch(error => {
-                dispatch(invalidateBlogPreview(error))
+                return dispatch(invalidateBlogPreview(error))
             })
     }
 }
@@ -127,7 +148,11 @@ export function fetchLazyBlogPreview(page) {
                         .then(ApiResponse => {
                             console.log("Api")
                             console.log(ApiResponse)
-                            if(ApiResponse.length === 0){
+                            if(typeof ApiResponse.data != "undefined") {
+                                console.log(ApiResponse)
+                                return dispatch(stopLazyBlogPreview())
+
+                            } else if(ApiResponse.length === 0){
                                 return dispatch(stopLazyBlogPreview())
                             }
 

@@ -1,6 +1,13 @@
 import db from '../boot/bootIndexeddb'
 
 export default class BlogStorage {
+    static checksetup() {
+        return db.timestamp.get('oldestDate')
+            .then(check => {
+                console.log(check)
+                return check
+            })
+    }
     static getBlogPreview() {
         return db.blog.orderBy('date').reverse().limit(4).toArray()
             .then(bitems => {

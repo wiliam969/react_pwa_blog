@@ -16,7 +16,11 @@ export default class BlogsingleApi {
             .then((response) => response.json())
             .then(responseJson => {
                 console.log(responseJson)
-                return responseJson[0]
+                if(responseJson.length > 0) {
+                    return responseJson[0]
+                } else {
+                    return responseJson
+                }
             })
             .catch(error => {
                 return error

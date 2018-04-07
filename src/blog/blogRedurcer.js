@@ -47,7 +47,7 @@ function Blog(
                 isFetching: false,
                 didInvalidate: false,
                 items: state.items.concat(action.blogs),
-                receivedAt:action.receivedAt
+                receivedAt:action.receivedAt,
             }
         case RECEIVE_LOCAL_BLOG_PREVIEW:
             return Object.assign({}, state, {
@@ -76,6 +76,7 @@ function Blog(
             return Object.assign({}, state, {
                 isFetching: false,
                 didInvalidateLazy: false,
+                isFetchingLazy:false,
                 stopLazyLoad:false,
             })
         default:

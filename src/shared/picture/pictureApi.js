@@ -4,7 +4,7 @@ export default class PictureApi {
     static getPicture(id,postType = 'posts') {
         console.log(postType)
         console.log(id)
-        return fetch('https://backend.kerstin-witte.de/wp-json/wp/v2/' + 'media?parent=' + id,{method:'GET'})
+        return fetch(process.env.REACT_APP_API_URI + 'media?parent=' + id,{method:'GET'})
             .then((response) => response.json())
             .then(responseJson => {
                 console.log(responseJson)
@@ -13,12 +13,12 @@ export default class PictureApi {
                     return responseJson[0]
                 } else if (responseJson.length === 0) {
                     console.log(responseJson)
-                    return fetch('https://backend.kerstin-witte.de/wp-json/wp/v2/' + postType + '/' + id, {method:'GET'})
+                    return fetch(process.env.REACT_APP_API_URI + postType + '/' + id, {method:'GET'})
                         .then(response => response.json())
                         .then(responseJson => {
                             if(responseJson.featured_media != 0) {
                                 console.log(responseJson)
-                                return fetch('https://backend.kerstin-witte.de/wp-json/wp/v2/' + 'media/' + responseJson.featured_media, {method:'GET'})
+                                return fetch(process.env.REACT_APP_API_URI + 'media/' + responseJson.featured_media, {method:'GET'})
                                     .then(response => response.json())
                                     .then(responseJson => {
                                         console.log(responseJson)

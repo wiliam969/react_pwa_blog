@@ -91,7 +91,7 @@ class Blog extends Component {
                                 this.props.Blog.stopLazyLoad ?
                                     <LazyLoader type="Home"></LazyLoader>
                                     :
-                                    <h1>THIS IS THE END MA FRIEND</h1>
+                                    <h1>no elder blog found</h1>
                             }
                         </div>
                     </div>

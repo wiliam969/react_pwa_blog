@@ -9,7 +9,7 @@ export default class GalleryApi {
     }
 
     static getLazyGalleryItems(page) {
-        return fetch('https://backend.kerstin-witte.de/wp-json/wp/v2/' + 'gallery?per_page=6&page=2', {method: 'GET'})
+        return fetch('https://backend.kerstin-witte.de/wp-json/wp/v2/' + 'gallery?per_page=6&page=' + page, {method: 'GET'})
             .then(response => response.json())
             .then(responseJson => {
                 console.log(responseJson)

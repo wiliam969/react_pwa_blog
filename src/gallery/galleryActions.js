@@ -129,10 +129,12 @@ export function fetchLazyGalleryItems (page) {
         return GalleryApi.getLazyGalleryItems(page)
             .then(ApiResponse => {
                 console.log(ApiResponse)
-                if(ApiResponse.length === 0) {
+
+                if(typeof ApiResponse.data != "undefined") {
+
                     console.log(ApiResponse)
                     return dispatch(stopLazyGalleryItems())
-                } else{
+                } else {
                     return dispatch(receiveLazyGalleryItems(ApiResponse))
                 }
             })

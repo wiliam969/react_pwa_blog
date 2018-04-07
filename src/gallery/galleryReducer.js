@@ -18,7 +18,7 @@ function Gallery(state = {
     isFetchingLazy:false,
     didInvalidate: false,
     stopLazyLoad:false,
-    LazyPage:1,
+    LazyPage:2,
     isFullscreen:false,
     Items: [],
     current_item:[],

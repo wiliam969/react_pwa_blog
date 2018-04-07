@@ -27,7 +27,7 @@ class LazyLoader extends Component {
                         this.props.sendBlog(this.props)
                         break;
                     case 'Gallery':
-                        this.props.sendGallery(this.props.gallery.stopLazyLoad)
+                        this.props.sendGallery(this.props.gallery.LazyPage)
                         break;
                     case 'Category':
                         this.props.sendCategory(this.props)

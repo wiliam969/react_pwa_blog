@@ -26,6 +26,8 @@ export default class BlogApi {
             })
     }
 
+
+
     static getnewBlogPreviews() {
         return db.timestamp.get({id: 1})
             .then(response => {

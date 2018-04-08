@@ -55,6 +55,7 @@ function Gallery(state = {
                 ...state,
                 isFetching:false,
                 Items: state.Items.concat(action.Items),
+                LazyPage: 2,
             }
         case RECEIVE_LAZY_GALLERY_ITEMS:
             return {

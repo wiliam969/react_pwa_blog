@@ -2,18 +2,37 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import { fetchLazyCategoryItems } from '../../category/categoryActions'
-import { fetchLazyGalleryItems } from '../../gallery/galleryActions'
-import { fetchLazyBlog } from '../../blog/blogsingle/blogsingleActions'
-import { fetchLazyBlogPreview } from '../../blog/blogActions'
+import { fetchLazyCategoryItems }   from '../../category/categoryActions'
+import { fetchLazyGalleryItems }    from '../../gallery/galleryActions'
+import { fetchLazyBlog }            from '../../blog/blogsingle/blogsingleActions'
+import { fetchLazyBlogPreview }     from '../../blog/blogActions'
 
 import VisibilitySensor from 'react-visibility-sensor'
 
 class LazyLoader extends Component {
 
+    constructor(props) {
+        super(props)
+        this.state = { lazyBtn: false}
+
+        this.isBtnActive = this.isBtnActive.bind(this);
+    }
+
     isActive() {
-        const Active = !(this.props.gallery.isFetchingLazy === true && this.props.home.isFetchingLazy === true && (this.props.blog.isFetchingLazy === true && this.props.blog.isFetching === true))
-        return Active
+        let Active
+        if(this.state.lazyBtn) {
+            Active = !(this.props.gallery.isFetchingLazy === true && this.props.home.isFetchingLazy === true && (this.props.blog.isFetchingLazy === true && this.props.blog.isFetching === true))
+            return Active
+        } else {
+            Active = false
+            return Active
+        }
+    }
+
+    isBtnActive() {
+        this.setState({
+            lazyBtn: true
+        })
     }
 
     render() {
@@ -39,7 +58,13 @@ class LazyLoader extends Component {
             }
         }
         return (
-            <VisibilitySensor onChange={onChange} active={this.isActive} delayedCall={true} resizeCheck={true}></VisibilitySensor>
+            <div>
+                {!this.state.lazyBtn ?
+                    <button onClick={this.isBtnActive}>Load More</button>
+                    :
+                    <VisibilitySensor onChange={onChange} active={this.isActive} delayedCall={true} resizeCheck={true}></VisibilitySensor>
+                }
+            </div>
         )
     }
 }

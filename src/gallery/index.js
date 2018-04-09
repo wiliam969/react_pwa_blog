@@ -13,6 +13,7 @@ import Loading from '../shared/loading/loading'
 import GalleryGrid from "./components/galleryGrid"
 import GalleryFullscreen from './components/galleryFullscreen'
 import LazyLoader from '../shared/lazyloader/lazyloader'
+import rBGColorGenerator from "../shared/background/randomBackgroundColor";
 
 class Gallery extends Component {
 
@@ -22,6 +23,8 @@ class Gallery extends Component {
     componentDidMount() {
         const { dispatch } = this.props
         dispatch(fetchGalleryItems(this.props))
+
+        // rBGColorGenerator.randomBackgroundColor("gallery-loading-container", 2500)
     }
 
     loadFullScreenPicture(props,index) {
@@ -43,6 +46,14 @@ class Gallery extends Component {
     render() {
         return(
             <div>
+                <div className="home-loading-container" id="gallery-loading-container">
+                    {/*{this.props.Blog.isFetchingNew*/}
+                        {/*?*/}
+                        {/*<Loading type="reload"></Loading>*/}
+                        {/*:*/}
+                        {/*<button className="load-blogs-btn" onClick={this.fetchNewPosts}>Search for new Blogs</button>*/}
+                    {/*}*/}
+                </div>
                 {this.props.gallery.isFetching &&
                     <Loading type="Spin"/>
                 }

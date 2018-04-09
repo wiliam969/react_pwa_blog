@@ -9,8 +9,9 @@ import {
 import Loading from '../shared/loading/loading'
 import LazyLoader from '../shared/lazyloader/lazyloader'
 import BlogGrid from '../shared/blog/bloggrid'
-
 import Quotation from './quotation/index'
+
+import rBGColorGenerator from '../shared/background/randomBackgroundColor'
 
 import './blog.css'
 
@@ -34,18 +35,7 @@ class Blog extends Component {
             dispatch(fetchBlogPreviews(this.props))
         }
 
-        setInterval(function() {
-            var letters = '0123456789ABCDEF'.split('');
-            var color = '#';
-            for (var i = 0; i < 6; i++ ) {
-                color += letters[Math.floor(Math.random() * 16)];
-            }
-            const homeloadingwrapper = document.getElementById("blog-loading-container")
-
-            if(homeloadingwrapper) {
-                homeloadingwrapper.style.backgroundColor = color //() to execute the function!
-            }
-        }, 3000);
+        // rBGColorGenerator.randomBackgroundColor("home-loading-container", 2500)
     }
 
     fetchNewPosts() {
@@ -91,7 +81,7 @@ class Blog extends Component {
                                 this.props.Blog.stopLazyLoad ?
                                     <LazyLoader type="Home"></LazyLoader>
                                     :
-                                    <h1>no elder blog found</h1>
+                                    <p style={{color: "red"}}>No older Blog found. Sorry!</p>
                             }
                         </div>
                     </div>

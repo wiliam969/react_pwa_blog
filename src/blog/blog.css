@@ -2,7 +2,7 @@
     display:block;
     position:relative;
     min-height:300px;
-    transition: background 2s;
+    transition: background 2.5s;
 }
 
 .load-blogs-btn{

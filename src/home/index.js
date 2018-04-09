@@ -20,7 +20,14 @@ class Home extends Component {
     render () {
         return (
             <div>
-                <div className="Hello">Hello It's me! Super Mario</div>
+                {/*<div className="home-loading-container" id="home-loading-container">*/}
+                    {/*/!*{this.props.Blog.isFetchingNew*!/*/}
+                        {/*/!*?*!/*/}
+                        {/*/!*<Loading type="reload"></Loading>*!/*/}
+                        {/*/!*:*!/*/}
+                        {/*/!*<button className="load-blogs-btn" onClick={this.fetchNewPosts}>Search for new Blogs</button>*!/*/}
+                    {/*/!*}*!/*/}
+                {/*</div>*/}
 
                 <Slider className="carousel" swipeOptions={{continuous: true}}></Slider>
             </div>

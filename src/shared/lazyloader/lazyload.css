@@ -1,0 +1,12 @@
+.lazyload-btn{
+    border-radius:25px;
+    background:#149DD9;
+    color:white;
+    border:0px;
+    margin:0px;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%,-50%);
+}

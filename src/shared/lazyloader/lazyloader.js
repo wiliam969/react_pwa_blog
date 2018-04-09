@@ -9,6 +9,8 @@ import { fetchLazyBlogPreview }     from '../../blog/blogActions'
 
 import VisibilitySensor from 'react-visibility-sensor'
 
+import "./lazyload.css"
+
 class LazyLoader extends Component {
 
     constructor(props) {
@@ -60,7 +62,7 @@ class LazyLoader extends Component {
         return (
             <div>
                 {!this.state.lazyBtn ?
-                    <button onClick={this.isBtnActive}>Load More</button>
+                    <button onClick={this.isBtnActive} className="lazyload-btn">Load More</button>
                     :
                     <VisibilitySensor onChange={onChange} active={this.isActive} delayedCall={true} resizeCheck={true}></VisibilitySensor>
                 }

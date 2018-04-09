@@ -39,7 +39,7 @@ class simpleSlider extends Component {
                 {this.props.Slider.items.length > 0 &&
                     this.props.Slider.items.map((post,index) =>
                         <div key={index} style={this.humus}>
-                            <Picture posttype="slider" blogid={post.id} type="full" height="75vh" width="100%" backgroundsize="cover"></Picture>
+                            <Picture posttype="slider" featured_media_id={post.featured_media} type="full" height="75vh" width="100%" backgroundsize="cover"/>
                             <Link to={post._rbs_slider_readmore_btn} target="_blank">
                                 <div className="slider-description-wrapper">
                                     <div className="slider-title">{post.title.rendered}</div>

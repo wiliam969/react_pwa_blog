@@ -5,18 +5,15 @@ import Loading from '../../../shared/loading/loading'
 
 export default class Blog extends Component {
 
-    componentDidMount() {
-    }
-
     render() {
         return (
             <div>
                 {   this.props.isFetching &&
-                <Loading type="Spin"></Loading>
+                    <Loading ></Loading>
                 }
 
                 {   this.props.didInvalidate &&
-                <h1 style={this.FetchingStyle}> NOOOOOOOOOOOOOOOOOOO LOL WUT Something went WRONG i guess .... holy fuck terribly wrong</h1>
+                <p> Something went wrong</p>
                 }
                 {
                     !this.props.isFetching && !this.props.didInvalidate &&

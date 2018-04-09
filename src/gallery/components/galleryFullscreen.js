@@ -38,7 +38,7 @@ export default class GalleryFullscreen extends Component {
                                 <div className='gal_fullscreen_picture gal_fullscreen_middle_fix'>
                                     <Picture
                                         key={index}
-                                        blogid={post.id}
+                                        featured_media_id={post.featured_media}
                                         type="large"
                                         posttype="gallery"
                                         height="100vh"

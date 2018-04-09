@@ -59,7 +59,7 @@ export default class BlogGrid extends Component {
                                 <div className="blog-grid-preview-pic-fix">
                                     <Link to={{ pathname: '/blog/' + post.id, }}>
                                         <Picture
-                                            blogid={post.id}
+                                            featured_media_id={post.featured_media}
                                             is169={true}
                                             type="medium_large"
                                             backgroundsize="cover">

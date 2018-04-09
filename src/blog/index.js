@@ -76,9 +76,6 @@ class Blog extends Component {
     }
 }
 
-
-
-
 Blog.propTypes = {
     dispatch: PropTypes.func
 }
@@ -91,8 +88,6 @@ function mapStateToProps(state,ownProps) {
         Blog: blog,
     }
 }
-
-
 
 export default connect(mapStateToProps)(Blog)
 

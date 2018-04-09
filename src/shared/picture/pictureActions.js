@@ -32,39 +32,29 @@ export const invalidatePicture = (pictures,postid) => {
     }
 }
 
-export function fetchPicture (props = 1) {
-    const id = props
+export function fetchPicture (id) {
+    console.log(id)
+    return function(dispatch) {
 
-    const PostType = props.posttype
+        dispatch(requestPicture(id))
 
-    return function(dispatch,post_id) {
-
-        dispatch(requestPicture(post_id))
-
-        return PictureStorage.getPicture(id.blogid)
+        return PictureStorage.getPicture(id)
             .then(PictureResponse => {
-                console.log(id.blogid)
-                console.log(PostType)
                 if(PictureResponse != null) {
-                    console.log(PictureResponse)
-                    dispatch(receivePicture(PictureResponse.post,id.blogid))
+                    dispatch(receivePicture(PictureResponse.post,id))
                 } else {
-                    console.log(id.blogid)
-                    console.log(PostType)
-                    return PictureApi.getPicture(id.blogid,PostType)
+                    return PictureApi.getPicture(id)
                         .then(picture => {
-                            console.log(picture)
-                            PictureStorage.savePicture(picture,id.blogid)
-                            dispatch(receivePicture(picture,id.blogid))
+                            PictureStorage.savePicture(picture,id)
+                            dispatch(receivePicture(picture,id))
                         })
                         .catch(error => {
-                            console.log(error)
-                            return dispatch(invalidatePicture(error,id.blogid))
+                            return dispatch(invalidatePicture(error,id))
                         })
                 }
             })
             .catch(error => {
-                dispatch(invalidatePicture(error, id.blogid))
+                dispatch(invalidatePicture(error, id))
             })
     }
 }

@@ -39,7 +39,7 @@ export default class GalleryGrid extends Component{
                         <div className="box" key={index} onClick={ () => this.props.onClickedPicture(this.props,index)}>
                             <Link key={post.id} to={{ pathname: `gallery/img/${post.id}`, state: {modal:true} }}>
                                 <Picture
-                                    blogid={post.id}
+                                    featured_media_id={post.featured_media}
                                     type="medium_large"
                                     posttype="gallery"
                                     height="200px"

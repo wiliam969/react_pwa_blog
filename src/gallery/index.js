@@ -46,56 +46,63 @@ class Gallery extends Component {
     render() {
         return(
             <div>
-                <div className="home-loading-container" id="gallery-loading-container">
-                    {/*{this.props.Blog.isFetchingNew*/}
-                        {/*?*/}
-                        {/*<Loading type="reload"></Loading>*/}
-                        {/*:*/}
-                        {/*<button className="load-blogs-btn" onClick={this.fetchNewPosts}>Search for new Blogs</button>*/}
-                    {/*}*/}
-                </div>
-                {this.props.gallery.isFetching &&
+                {this.props.gallery.isFetching ?
                     <Loading type="Spin"/>
-                }
+                    :
+                    <div className="gallery-wrapper">
 
-                {this.props.gallery.didInvalidate &&
-                    <h1>LUL SOMETHING WENT WRONG FU GABEN</h1>
-                }
+                            <div className="home-loading-container" id="gallery-loading-container">
+                                {/*{this.props.Blog.isFetchingNew*/}
+                                    {/*?*/}
+                                    {/*<Loading type="reload"></Loading>*/}
+                                    {/*:*/}
+                                    {/*<button className="load-blogs-btn" onClick={this.fetchNewPosts}>Search for new Blogs</button>*/}
+                                {/*}*/}
+                            </div>
 
-                {!this.props.gallery.isFetching && !this.props.gallery.didInvalidate &&
-                    <div>
-                        <GalleryFullscreen
-                            last_item={this.props.gallery.Items.length}
-                            item={this.props.gallery.current_item}
-                            id={this.props.gallery.current_id}
-                            dispatch={this.props.dispatch}
-                            prevPicture={this.prevFullScreenPicture}
-                            nextPicture={this.nextFullScreenPicture}
-                            closeFull={this.closeFullscreen}
-                            isPrev={this.props.gallery.isPrev}
-                            isNext={this.props.gallery.isNext}
-                            isFullscreen={this.props.gallery.isFullscreen}
-                            next_state={this.props.gallery.next_state}
-                            prev_state={this.props.gallery.prev_state}>
 
-                        </GalleryFullscreen>
-                        <GalleryGrid
-                            items={this.props.gallery.Items}
-                            dispatch={this.props.dispatch}
-                            onClickedPicture={this.loadFullScreenPicture}>
-                        </GalleryGrid>
+                            {this.props.gallery.didInvalidate &&
+                                <p>Something went wrong! Sorry.</p>
+                            }
+
+                            {!this.props.gallery.isFetching && !this.props.gallery.didInvalidate &&
+                                <div>
+                                    <GalleryFullscreen
+                                        last_item={this.props.gallery.Items.length}
+                                        item={this.props.gallery.current_item}
+                                        id={this.props.gallery.current_id}
+                                        dispatch={this.props.dispatch}
+                                        prevPicture={this.prevFullScreenPicture}
+                                        nextPicture={this.nextFullScreenPicture}
+                                        closeFull={this.closeFullscreen}
+                                        isPrev={this.props.gallery.isPrev}
+                                        isNext={this.props.gallery.isNext}
+                                        isFullscreen={this.props.gallery.isFullscreen}
+                                        next_state={this.props.gallery.next_state}
+                                        prev_state={this.props.gallery.prev_state}>
+
+                                    </GalleryFullscreen>
+                                    <GalleryGrid
+                                        items={this.props.gallery.Items}
+                                        dispatch={this.props.dispatch}
+                                        onClickedPicture={this.loadFullScreenPicture}>
+                                    </GalleryGrid>
+                                </div>
+                            }
+
+                            <div className="lazyloadcontainer">
+                                {this.props.gallery.isFetchingLazy &&
+                                <Loading type="Spin"/>
+                                }
+
+                                {
+                                    !this.props.gallery.stopLazyLoad ?
+                                        <LazyLoader type="Gallery"></LazyLoader>
+                                        :
+                                        <h1>THIS IS THE END MA FRIEND</h1>
+                                }
+                            </div>
                     </div>
-                }
-
-                {this.props.gallery.isFetchingLazy &&
-                    <Loading type="Spin"/>
-                }
-
-                {
-                    !this.props.gallery.stopLazyLoad ?
-                        <LazyLoader type="Gallery"></LazyLoader>
-                        :
-                        <h1>THIS IS THE END MA FRIEND</h1>
                 }
             </div>
         );

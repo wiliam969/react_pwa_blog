@@ -45,46 +45,47 @@ class Blog extends Component {
 
     render () {
         return (
-            <div classname="blog-container">
-
-                <div className="home-loading-container" id="home-loading-container">
-                    {this.props.Blog.isFetchingNew
-                        ?
-                        <Loading type="reload"></Loading>
-                        :
-                        <button className="load-blogs-btn" onClick={this.fetchNewPosts}>Search for new Blogs</button>
-                    }
-                </div>
-                {   this.props.Blog.isFetching &&
+            <div className="blog-container">
+                {   this.props.Blog.isFetching ?
                     <div className="loading-container">
                         <Loading type="Pacman">
                         </Loading>
                     </div>
-
-                }
-                {   this.props.Blog.didInvalidate &&
-                    <h1 style={this.FetchingStyle}>Something went Wrong</h1>
-                }
-                    <div className="data-container">
-                        {/*<Quotation></Quotation>*/}
-                        <div className="home-smoke"></div>
-                        <BlogGrid blogs={this.props.Blog.items}></BlogGrid>
-                        {/*<BlogList blogs={this.props.Blog.items}></BlogList>*/}
-
-                        <div className="lazyloadcontainer">
-                            {
-                                this.props.Blog.isFetchingLazy &&
-                                <Loading type="Spin"></Loading>
-                            }
-
-                            {
-                                this.props.Blog.stopLazyLoad ?
-                                    <LazyLoader type="Home"></LazyLoader>
-                                    :
-                                    <p style={{color: "red"}}>No older Blog found. Sorry!</p>
+                    :
+                    <div className="blog-wrapper">
+                        <div className="home-loading-container" id="home-loading-container">
+                            {this.props.Blog.isFetchingNew
+                                ?
+                                <Loading type="reload"></Loading>
+                                :
+                                <button className="load-blogs-btn" onClick={this.fetchNewPosts}>Search for new Blogs</button>
                             }
                         </div>
+                        {   this.props.Blog.didInvalidate &&
+                            <p style={this.FetchingStyle}>Something went Wrong</p>
+                        }
+                            <div className="data-container">
+                                {/*<Quotation></Quotation>*/}
+                                <div className="home-smoke"></div>
+                                <BlogGrid blogs={this.props.Blog.items}></BlogGrid>
+                                {/*<BlogList blogs={this.props.Blog.items}></BlogList>*/}
+
+                                <div className="lazyloadcontainer">
+                                    {
+                                        this.props.Blog.isFetchingLazy &&
+                                        <Loading type="Spin"></Loading>
+                                    }
+
+                                    {
+                                        this.props.Blog.stopLazyLoad ?
+                                            <LazyLoader type="Home"></LazyLoader>
+                                            :
+                                            <p style={{color: "red"}}>No older Blog found. Sorry!</p>
+                                    }
+                                </div>
+                            </div>
                     </div>
+                }
             </div>
         );
     }

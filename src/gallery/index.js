@@ -46,6 +46,7 @@ class Gallery extends Component {
     render() {
         return(
             <div>
+
                 {this.props.gallery.isFetching ?
                     <Loading type="Spin"/>
                     :

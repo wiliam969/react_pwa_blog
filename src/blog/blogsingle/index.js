@@ -6,6 +6,7 @@ import { fetchBlogSingle } from './blogsingleActions'
 import Blog from './content/index'
 import Comments from './comments/index'
 
+import Loading from '../../shared/loading/loading'
 import LazyLoader from '../../shared/lazyloader/lazyloader'
 
 class BlogSingle extends Component {
@@ -18,24 +19,35 @@ class BlogSingle extends Component {
     render() {
         return (
             <div>
-                { this.props.BlogSingle.items.length > 0 &&
+                { this.props.BlogSingle.isFetching ?
+                    <div className="loading-container">
+                        <Loading type="Pacman">
+                        </Loading>
+                    </div>
+                    :
+                    <div className="blog-single-wrapper">
+                        { this.props.BlogSingle.items.length > 0 &&
                         <div>
                             {this.props.BlogSingle.items.map((post,index) =>
                                 <div>
                                     <Blog key={index} data-key={index} blog={post} isFetching={this.props.BlogSingle.isFetching} didInvalidate={this.props.BlogSingle.didInvalidate}></Blog>
 
-                                    { !post.stopLazyLoad &&
-                                    <LazyLoader type="Blog" date={post.date} id={post.id} index={index}></LazyLoader>
-                                    }
+                                    <div className="lazyloadcontainer">
+                                        { !post.stopLazyLoad &&
+                                        <LazyLoader type="Blog" date={post.date} id={post.id} index={index}></LazyLoader>
+                                        }
+                                    </div>
 
                                     <Comments blogid={post.id}></Comments>
                                 </div>
                             )}
 
                             {this.props.BlogSingle.stopLazyLoad &&
-                                <h1>NO MORE POSTS FOUND</h1>
+                            <h1>NO MORE POSTS FOUND</h1>
                             }
                         </div>
+                        }
+                    </div>
                 }
             </div>
         )

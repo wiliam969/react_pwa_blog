@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import {
     fetchNewBlogPreview,
-    fetchBlogPreviews
+    fetchBlogPreviews,
+    fetchLazyBlogPreview
 } from './blogActions'
 
 import Loading from '../shared/loading/loading'
@@ -19,16 +20,11 @@ import './blog.css'
 
 class Blog extends Component {
 
-    FetchingStyle = {
-        color:"red",
-        fontSize:"40px",
-        fontWeight:900,
-    }
-
     constructor(props) {
         super(props)
 
-        this.fetchNewPosts = this.fetchNewPosts.bind(this);
+        this.fetchNewPosts = this.fetchNewPosts.bind(this)
+        this.fetchLazyPosts = this.fetchLazyPosts.bind(this)
     }
 
     componentDidMount() {
@@ -45,6 +41,11 @@ class Blog extends Component {
         dispatch(fetchNewBlogPreview(this.props))
     }
 
+    fetchLazyPosts() {
+        const { dispatch } = this.props
+        dispatch(fetchLazyBlogPreview(this.props.Blog.LazyPage))
+    }
+
     render () {
         return (
             <div className="blog-container">
@@ -52,7 +53,7 @@ class Blog extends Component {
                         <Loading></Loading>
                     :
                     <div className="blog-wrapper">
-                        <div className="home-loading-container" id="home-loading-container">
+                        <div className="blog-loading-container" id="blog-loading-container">
                             {this.props.Blog.isFetchingNew
                                 ?
                                 <Loading type="reload"></Loading>
@@ -61,27 +62,12 @@ class Blog extends Component {
                             }
                         </div>
                         {   this.props.Blog.didInvalidate &&
-                            <p style={this.FetchingStyle}>Something went Wrong</p>
+                            <p>Something went Wrong</p>
                         }
-                            <div className="data-container">
-                                {/*<Quotation></Quotation>*/}
-                                <div className="home-smoke"></div>
+                            <div className="blog-container">
                                 <BlogGrid blogs={this.props.Blog.items}></BlogGrid>
-                                {/*<BlogList blogs={this.props.Blog.items}></BlogList>*/}
 
-                                <div className="lazyloadcontainer">
-                                    {
-                                        this.props.Blog.isFetchingLazy &&
-                                        <Loading type="Spin"></Loading>
-                                    }
-
-                                    {
-                                        this.props.Blog.stopLazyLoad ?
-                                            <LazyLoader type="Home"></LazyLoader>
-                                            :
-                                            <p style={{color: "red"}}>No older Blog found. Sorry!</p>
-                                    }
-                                </div>
+                                <LazyLoader type={this.fetchLazyPosts} fetch={this.props.Blog.isFetchingLazy} stop={this.props.Blog.stopLazyLoad} name="Blog"></LazyLoader>
                             </div>
                     </div>
                 }
@@ -89,6 +75,8 @@ class Blog extends Component {
         );
     }
 }
+
+
 
 
 Blog.propTypes = {

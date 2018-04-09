@@ -82,13 +82,16 @@ export function fetchBlogSingle(blog = 1) {
     }
 }
 
-export function fetchLazyBlog(props) {
-    console.log(props)
-    const datum = props.date
-    const id = props.id
-    const index = props.index
+
+
+export function fetchLazyBlog(date,ids,indexes) {
+    const datum = date
+    const id = ids
+    const index = indexes
+    console.log(datum)
     console.log(id)
-    return function (dispatch,props) {
+    console.log(index)
+    return function (dispatch) {
         dispatch(requestLazyBlogSingle(id))
         return BlogsingleApi.getLazyBlogSingle(datum)
             .then(post => {

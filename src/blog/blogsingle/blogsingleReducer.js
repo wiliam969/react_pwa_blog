@@ -4,7 +4,7 @@ function BlogSingle(state = {
         isFetching: false,
         isFetchingLazy:false,
         didInvalidate: false,
-        stopLazyLoad:false,
+        stopLazyLoad:true,
         items: [],
     }, action) {
     switch(action.type) {
@@ -52,7 +52,8 @@ function lazy(post,action) {
     if(post.id !== action.prev_id) return post
 
     return Object.assign({}, post, {
-        stopLazyLoad:true,
+        stopLazyLoad:false,
+        isFetchingLazy:false,
     })
 }
 

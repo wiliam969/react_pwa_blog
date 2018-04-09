@@ -2,12 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import { fetchLazyCategoryItems }   from '../../category/categoryActions'
-import { fetchLazyGalleryItems }    from '../../gallery/galleryActions'
-import { fetchLazyBlog }            from '../../blog/blogsingle/blogsingleActions'
-import { fetchLazyBlogPreview }     from '../../blog/blogActions'
-
 import VisibilitySensor from 'react-visibility-sensor'
+import Loading from '../loading/loading'
 
 import "./lazyload.css"
 
@@ -15,56 +11,44 @@ class LazyLoader extends Component {
 
     constructor(props) {
         super(props)
-        this.state = { lazyBtn: false}
 
-        this.isBtnActive = this.isBtnActive.bind(this);
-    }
+        this.state  = { isBtn: true }
 
-    isActive() {
-        let Active
-        if(this.state.lazyBtn) {
-            Active = !(this.props.gallery.isFetchingLazy === true && this.props.home.isFetchingLazy === true && (this.props.blog.isFetchingLazy === true && this.props.blog.isFetching === true))
-            return Active
-        } else {
-            Active = false
-            return Active
-        }
+        this.isBtnActive = this.isBtnActive.bind(this)
     }
 
     isBtnActive() {
         this.setState({
-            lazyBtn: true
+            isBtn:false,
         })
     }
 
     render() {
-        const onChange = (isVisible) => {
-            if(isVisible && this.isActive() === true) {
-                switch(this.props.type) {
-                    case 'Home':
-                        this.props.sendHome(this.props.home.LazyPage)
-                        break;
-                    case 'Blog':
-                        this.props.sendBlog(this.props)
-                        break;
-                    case 'Gallery':
-                        this.props.sendGallery(this.props.gallery.LazyPage)
-                        break;
-                    case 'Category':
-                        this.props.sendCategory(this.props)
-                        break;
-                    default:
-                        this.props.sendHome(this.props)
-                }
-
-            }
-        }
         return (
-            <div>
-                {!this.state.lazyBtn ?
-                    <button onClick={this.isBtnActive} className="lazyload-btn">Load More</button>
+            <div className="lazyload-container">
+                {this.props.fetch ?
+                    <Loading></Loading>
                     :
-                    <VisibilitySensor onChange={onChange} active={this.isActive} delayedCall={true} resizeCheck={true}></VisibilitySensor>
+                    <div>
+                        {this.props.stop ?
+                            <div className="lazyload-wrapper">
+                                {this.state.isBtn ?
+                                    <button onClick={this.isBtnActive} className="lazyload-btn">Load
+                                        More {this.props.name} Items</button>
+                                    :
+                                    <VisibilitySensor
+                                        onChange={this.props.type}
+                                        active={!this.props.fetch}
+                                        delacedCall={true}
+                                        resizeCheck={true}
+                                        scrollCheck={true}>
+                                    </VisibilitySensor>
+                                }
+                            </div>
+                            :
+                            <p style={{color: "red"}}>No older {this.props.name} Items found. Sorry!</p>
+                        }
+                    </div>
                 }
             </div>
         )
@@ -76,28 +60,22 @@ LazyLoader.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    let home = {}
-    let blog = {}
-    let gallery = {}
+    let type = {}
+    let fetch = {}
+    let name = {}
+    let stop = {}
 
-    blog = Object.assign({}, state.BlogSingle)
-    home = Object.assign({}, state.Blog)
-    gallery = Object.assign({}, state.Gallery)
+    type = ownProps.type
+    fetch = ownProps.fetch
+    name = ownProps.name
+    stop = ownProps.stop
 
     return {
-        blog: blog,
-        home:home,
-        gallery:gallery,
+        type:type,
+        fetch:fetch,
+        name:name,
+        stop:stop,
     }
 }
 
-const mapDispatchToProps = (dispatch,ownProps) => {
-    return({
-        sendCategory: (e) => { dispatch(fetchLazyCategoryItems(e))},
-        sendGallery: (e) => { dispatch(fetchLazyGalleryItems(e))},
-        sendBlog: (e) => { dispatch(fetchLazyBlog(e))},
-        sendHome: (e) => { dispatch(fetchLazyBlogPreview(e))},
-    })
-}
-
-export default connect(mapStateToProps,mapDispatchToProps)(LazyLoader)
+export default connect(mapStateToProps)(LazyLoader)

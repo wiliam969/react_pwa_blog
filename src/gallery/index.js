@@ -6,7 +6,8 @@ import {
     fetchFullscreenGalleryItem,
     nextFullScreenGalleryitem,
     prevFullScreenGalleryItem,
-    closeFullscreenGallery
+    closeFullscreenGallery,
+    fetchLazyGalleryItems
 } from "./galleryActions"
 
 import Loading from '../shared/loading/loading'
@@ -23,6 +24,8 @@ class Gallery extends Component {
     componentDidMount() {
         const { dispatch } = this.props
         dispatch(fetchGalleryItems(this.props))
+
+        this.fetchLazyGallery = this.fetchLazyGallery.bind(this)
 
         // rBGColorGenerator.randomBackgroundColor("gallery-loading-container", 2500)
     }
@@ -43,6 +46,10 @@ class Gallery extends Component {
         props.dispatch(closeFullscreenGallery())
     }
 
+    fetchLazyGallery(page) {
+        const { dispatch } = this.props
+        dispatch(fetchLazyGalleryItems(page))
+    }
     render() {
         return(
             <div>
@@ -91,18 +98,12 @@ class Gallery extends Component {
                                 </div>
                             }
 
-                            <div className="lazyloadcontainer">
-                                {this.props.gallery.isFetchingLazy &&
-                                <Loading type="Spin"/>
-                                }
-
-                                {
-                                    !this.props.gallery.stopLazyLoad ?
-                                        <LazyLoader type="Gallery"></LazyLoader>
-                                        :
-                                        <h1>THIS IS THE END MA FRIEND</h1>
-                                }
-                            </div>
+                                <LazyLoader
+                                    type={ () => {this.fetchLazyGallery(this.props.gallery.LazyPage)}}
+                                    fetch={this.props.gallery.isFetchingLazy}
+                                    stop={this.props.gallery.stopLazyLoad}
+                                    name="Gallery">
+                                </LazyLoader>
                     </div>
                 }
             </div>

@@ -10,6 +10,7 @@ import {
     FETCH_NEXT_FULLSCREEN_GALLERY_ITEM,
     STOP_FETCH_PREV_FULLSCREEN_GALLERY_ITEM,
     STOP_FETCH_NEXT_FULLSCREEN_GALLERY_ITEM,
+    STOP_LAZY_GALLERY_ITEMS,
     CLOSE_FULLSCREEN_GALLERY_ITEM,
 } from './galleryActions'
 
@@ -17,7 +18,7 @@ function Gallery(state = {
     isFetching: false,
     isFetchingLazy:false,
     didInvalidate: false,
-    stopLazyLoad:false,
+    stopLazyLoad:true,
     LazyPage:2,
     isFullscreen:false,
     Items: [],
@@ -56,6 +57,7 @@ function Gallery(state = {
                 isFetching:false,
                 Items: state.Items.concat(action.Items),
                 LazyPage: 2,
+                stopLazyLoad:true,
             }
         case RECEIVE_LAZY_GALLERY_ITEMS:
             return {
@@ -108,6 +110,12 @@ function Gallery(state = {
                 ...state,
                 isPrev:false,
                 isNext:true,
+            }
+        case STOP_LAZY_GALLERY_ITEMS:
+            return {
+                ...state,
+                isFetchingLazy:false,
+                stopLazyLoad:false,
             }
         case CLOSE_FULLSCREEN_GALLERY_ITEM:
             return {

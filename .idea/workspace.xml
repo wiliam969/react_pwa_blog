@@ -3,10 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="8d86231f-a2d3-463a-a042-6f35d11ec80a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blog/blogsingle/blogsingleReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/blog/blogsingle/blogsingleReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blog/blogsingle/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/blog/blogsingle/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gallery/components/galleryGrid.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/gallery/components/galleryGrid.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/lazyloader/lazyloader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/lazyloader/lazyloader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gallery/components/fullscreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/gallery/components/fullscreen.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gallery/galleryReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/gallery/galleryReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gallery/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/gallery/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -23,10 +22,10 @@
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/blog/blogsingle/index.js">
+        <entry file="file://$PROJECT_DIR$/src/blog/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="48" column="47" lean-forward="true" selection-start-line="48" selection-start-column="47" selection-end-line="48" selection-end-column="47" />
+            <state relative-caret-position="480">
+              <caret line="69" column="171" lean-forward="true" selection-start-line="69" selection-start-column="32" selection-end-line="69" selection-end-column="171" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -34,23 +33,44 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="blogsingleReducer.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/blog/blogsingle/blogsingleReducer.js">
+      <file leaf-file-name="fullscreen.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/gallery/components/fullscreen.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
-              <caret line="34" column="43" lean-forward="true" selection-start-line="34" selection-start-column="43" selection-end-line="34" selection-end-column="43" />
+            <state relative-caret-position="360">
+              <caret line="18" column="14" lean-forward="true" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="lazyloader.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/shared/lazyloader/lazyloader.js">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gallery/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="37" column="42" lean-forward="true" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="42" />
+            <state relative-caret-position="1320">
+              <caret line="96" column="50" lean-forward="true" selection-start-line="96" selection-start-column="50" selection-end-line="96" selection-end-column="50" />
               <folding>
-                <element signature="e#0#40#0" expanded="true" />
+                <element signature="e#0#39#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="galleryReducer.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gallery/galleryReducer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="520">
+              <caret line="59" column="34" selection-start-line="59" selection-start-column="34" selection-end-line="59" selection-end-column="34" />
+              <folding>
+                <element signature="e#0#463#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="galleryActions.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gallery/galleryActions.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="541">
+              <caret line="68" column="37" selection-start-line="68" selection-start-column="14" selection-end-line="68" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -83,6 +103,8 @@
       <find>home</find>
       <find>stopLazyLoad</find>
       <find>isFetchingLazy</find>
+      <find>STOP</find>
+      <find>STOP_LAZY_GALLERY_ITEMS</find>
     </findStrings>
     <replaceStrings>
       <replace>props.picture</replace>
@@ -95,7 +117,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/shared/picture/index.js" />
         <option value="$PROJECT_DIR$/src/shared/blog/bloggrid.js" />
         <option value="$PROJECT_DIR$/src/shared/blog/bloggrid.css" />
         <option value="$PROJECT_DIR$/src/boot/fonts/index.js" />
@@ -128,10 +149,8 @@
         <option value="$PROJECT_DIR$/src/blog/blogStorage.js" />
         <option value="$PROJECT_DIR$/src/blog/blogRedurcer.js" />
         <option value="$PROJECT_DIR$/src/blog/blogActions.js" />
-        <option value="$PROJECT_DIR$/src/gallery/galleryReducer.js" />
         <option value="$PROJECT_DIR$/src/shared/background/randomBackgroundColor.js" />
         <option value="$PROJECT_DIR$/.env" />
-        <option value="$PROJECT_DIR$/src/gallery/index.js" />
         <option value="$PROJECT_DIR$/src/home/index.js" />
         <option value="$PROJECT_DIR$/src/app/AsyncApp.js" />
         <option value="$PROJECT_DIR$/src/shared/loading/loading.css" />
@@ -143,9 +162,12 @@
         <option value="$PROJECT_DIR$/src/blog/index.js" />
         <option value="$PROJECT_DIR$/src/blog/blogsingle/blogsingleActions.js" />
         <option value="$PROJECT_DIR$/src/gallery/components/galleryGrid.js" />
-        <option value="$PROJECT_DIR$/src/shared/lazyloader/lazyloader.js" />
-        <option value="$PROJECT_DIR$/src/blog/blogsingle/index.js" />
         <option value="$PROJECT_DIR$/src/blog/blogsingle/blogsingleReducer.js" />
+        <option value="$PROJECT_DIR$/src/blog/blogsingle/index.js" />
+        <option value="$PROJECT_DIR$/src/shared/lazyloader/lazyloader.js" />
+        <option value="$PROJECT_DIR$/src/gallery/index.js" />
+        <option value="$PROJECT_DIR$/src/gallery/galleryReducer.js" />
+        <option value="$PROJECT_DIR$/src/gallery/components/fullscreen.css" />
       </list>
     </option>
   </component>
@@ -189,19 +211,6 @@
               <item name="react_pwa_blog" type="b2602c69:ProjectViewProjectNode" />
               <item name="react_pwa_blog" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="blog" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="react_pwa_blog" type="b2602c69:ProjectViewProjectNode" />
-              <item name="react_pwa_blog" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="blog" type="462c0819:PsiDirectoryNode" />
-              <item name="blogsingle" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="react_pwa_blog" type="b2602c69:ProjectViewProjectNode" />
-              <item name="react_pwa_blog" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="gallery" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -216,13 +225,6 @@
               <item name="react_pwa_blog" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="shared" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="react_pwa_blog" type="b2602c69:ProjectViewProjectNode" />
-              <item name="react_pwa_blog" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="shared" type="462c0819:PsiDirectoryNode" />
-              <item name="blog" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="react_pwa_blog" type="b2602c69:ProjectViewProjectNode" />
@@ -334,7 +336,7 @@
       <workItem from="1522919001936" duration="1561000" />
       <workItem from="1522923271786" duration="42019000" />
       <workItem from="1523096179331" duration="17246000" />
-      <workItem from="1523216143776" duration="33532000" />
+      <workItem from="1523216143776" duration="35425000" />
     </task>
     <task id="LOCAL-00001" summary="asdasd">
       <created>1504374392149</created>
@@ -574,11 +576,18 @@
       <option name="project" value="LOCAL" />
       <updated>1523296495908</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="i fixed it now more or less it was a general fail which i tried to fix for over 6 months ago">
+      <created>1523308156736</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1523308156736</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="158389000" />
+    <option name="totallyTimeSpent" value="160282000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -650,7 +659,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="css declaration of bloggrid was a bit vague" />
     <MESSAGE value="some css for the blog single stuff" />
     <MESSAGE value="it destroys the lazy load but i dont know it works kinda" />
     <MESSAGE value="grid is now more or less responsive" />
@@ -675,17 +683,10 @@
     <MESSAGE value="BlogSingle Section now also has a &quot;spinning wheel&quot;" />
     <MESSAGE value="Holy Moly i found a nice and neet trick to enhance my coding style im now gonna try to use that on different objects like lazyload or picture" />
     <MESSAGE value="i tried to improve my lazyload query in the current state it is a bit fucked up ...." />
-    <option name="LAST_COMMIT_MESSAGE" value="i tried to improve my lazyload query in the current state it is a bit fucked up ...." />
+    <MESSAGE value="i fixed it now more or less it was a general fail which i tried to fix for over 6 months ago" />
+    <option name="LAST_COMMIT_MESSAGE" value="i fixed it now more or less it was a general fail which i tried to fix for over 6 months ago" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/shared/slider/sliderDesign.js" />
-    <entry file="file://$PROJECT_DIR$/src/shared/picture/defaultPicture.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="20" lean-forward="true" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/shared/Menu/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="460">
@@ -704,30 +705,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="18" column="66" lean-forward="true" selection-start-line="18" selection-start-column="66" selection-end-line="18" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gallery/galleryActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="135" column="59" lean-forward="true" selection-start-line="132" selection-start-column="16" selection-end-line="135" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gallery/galleryApi.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="27" column="50" selection-start-line="27" selection-start-column="50" selection-end-line="27" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gallery/galleryReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="505">
-          <caret line="57" column="28" selection-start-line="57" selection-start-column="28" selection-end-line="57" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#463#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -908,16 +885,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gallery/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-338">
-          <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gallery/components/galleryFullscreen.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="699">
@@ -964,16 +931,6 @@
           <caret line="96" column="27" selection-start-line="96" selection-start-column="26" selection-end-line="96" selection-end-column="27" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/blog/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="46" column="5" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1026,30 +983,87 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/blog/blogsingle/index.js">
+    <entry file="file://$PROJECT_DIR$/src/blog/blogsingle/blogsingleReducer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="48" column="47" lean-forward="true" selection-start-line="48" selection-start-column="47" selection-end-line="48" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="680">
+          <caret line="34" column="43" lean-forward="true" selection-start-line="34" selection-start-column="43" selection-end-line="34" selection-end-column="43" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/shared/lazyloader/lazyloader.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="37" column="42" lean-forward="true" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="42" />
+        <state relative-caret-position="880">
+          <caret line="44" column="67" selection-start-line="44" selection-start-column="67" selection-end-line="44" selection-end-column="67" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/blog/blogsingle/blogsingleReducer.js">
+    <entry file="file://$PROJECT_DIR$/src/blog/blogsingle/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="34" column="43" lean-forward="true" selection-start-line="34" selection-start-column="43" selection-end-line="34" selection-end-column="43" />
+        <state relative-caret-position="-1">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shared/blog/bloglist.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gallery/galleryApi.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="27" column="50" selection-start-line="27" selection-start-column="50" selection-end-line="27" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gallery/galleryActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="541">
+          <caret line="68" column="37" selection-start-line="68" selection-start-column="14" selection-end-line="68" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gallery/galleryReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="59" column="34" selection-start-line="59" selection-start-column="34" selection-end-line="59" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#463#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gallery/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1320">
+          <caret line="96" column="50" lean-forward="true" selection-start-line="96" selection-start-column="50" selection-end-line="96" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blog/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="69" column="171" lean-forward="true" selection-start-line="69" selection-start-column="32" selection-end-line="69" selection-end-column="171" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gallery/components/fullscreen.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="18" column="14" lean-forward="true" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
         </state>
       </provider>
     </entry>

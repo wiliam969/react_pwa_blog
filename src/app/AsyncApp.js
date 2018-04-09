@@ -2,10 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import {
-    FetchingData,
-} from './appActions'
-
 import Menu from '../shared/Menu/index'
 import Footer from '../shared/Footer/index'
 import Blog from '../blog/index'
@@ -27,30 +23,21 @@ class AsyncApp extends Component {
         height: 100+ 'vh'
     }
 
-    componentDidMount() {
-        const { dispatch } = this.props
-        dispatch(FetchingData(this.props))
-    }
-
-    componentDidUpdate(prevProps) {
-
-    }
     render() {
         const history = createBrowserHistory()
         return(
             <div id="main-container" style={this.main}>
-                {this.props.App.isLoading &&
+                {this.props.App.isLoading ?
                     <Loading type="Pacman"></Loading>
-                }
-                {!this.props.App.isLoading &&
-                    <div>
+                    :
+                    <div id="main-wrapper">
                         <Router onUpdate={() => window.scrollTo(0, 0)} history={history}>
                             <div>
                                 <Menu></Menu>
                                 <Route path="/" component={Home} exact></Route>
                                 <Route path="/blog" component={Blog} exact></Route>
-                                <Route path="/aboutme" component={AboutMe} aboutme={this.props.aboutme}></Route>
-                                <Route path="/gallery" component={Gallery} gallery={this.props.gallery}></Route>
+                                <Route path="/aboutme" component={AboutMe}></Route>
+                                <Route path="/gallery" component={Gallery}></Route>
                                 <Route path="/blog/:id" component={BlogSingle}></Route>
                                 <Route path="/category/:name" component={Category}></Route>
                             </div>
@@ -69,10 +56,10 @@ AsyncApp.propTypes = {
 }
 
 function mapStateToProps(state,ownProps) {
-    var Blog = { didInvalidate: '', isFetching: '',}
-    var App = { isLoading:true}
-    var BlogSingle = { didInvalidate: '', isFetching: '', bloginformation: {}}
-    var Home = { isfuckiing: true }
+        var Blog = { }
+        var App = { }
+        var BlogSingle = { }
+        var Home = { }
 
         Blog = Object.assign({}, state.Blog)
         App = Object.assign({}, state.App)

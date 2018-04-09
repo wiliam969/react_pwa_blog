@@ -7,11 +7,13 @@ import {
 } from './blogActions'
 
 import Loading from '../shared/loading/loading'
+import LoadingBtn from '../shared/loading/loading-btn'
 import LazyLoader from '../shared/lazyloader/lazyloader'
 import BlogGrid from '../shared/blog/bloggrid'
-import Quotation from './quotation/index'
 
-import rBGColorGenerator from '../shared/background/randomBackgroundColor'
+// import Quotation from './quotation/index'
+
+// import rBGColorGenerator from '../shared/background/randomBackgroundColor'
 
 import './blog.css'
 
@@ -47,10 +49,7 @@ class Blog extends Component {
         return (
             <div className="blog-container">
                 {   this.props.Blog.isFetching ?
-                    <div className="loading-container">
-                        <Loading type="Pacman">
-                        </Loading>
-                    </div>
+                        <Loading></Loading>
                     :
                     <div className="blog-wrapper">
                         <div className="home-loading-container" id="home-loading-container">
@@ -58,7 +57,7 @@ class Blog extends Component {
                                 ?
                                 <Loading type="reload"></Loading>
                                 :
-                                <button className="load-blogs-btn" onClick={this.fetchNewPosts}>Search for new Blogs</button>
+                                <LoadingBtn name="Search for new Blogs" onClick={this.fetchNewPosts}></LoadingBtn>
                             }
                         </div>
                         {   this.props.Blog.didInvalidate &&

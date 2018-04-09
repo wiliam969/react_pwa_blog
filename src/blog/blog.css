@@ -5,19 +5,6 @@
     transition: background 2.5s;
 }
 
-.load-blogs-btn{
-    border-radius:25px;
-    background:#149DD9;
-    color:white;
-    border:0px;
-    margin:0px;
-    position: absolute;
-    top:50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%,-50%);
-}
-
 .lazyloadcontainer {
     min-height:150px;
     position:relative;
@@ -25,3 +12,4 @@
     background:white;
     margin:20px 0px 50px 0px;
 }
+

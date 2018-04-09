@@ -40,7 +40,7 @@ export default class GalleryGrid extends Component{
                             <Link key={post.id} to={{ pathname: `gallery/img/${post.id}`, state: {modal:true} }}>
                                 <Picture
                                     blogid={post.id}
-                                    type="thumbnail"
+                                    type="medium_large"
                                     posttype="gallery"
                                     height="200px"
                                     width="100%"

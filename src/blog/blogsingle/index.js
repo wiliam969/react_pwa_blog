@@ -15,8 +15,8 @@ import LazyLoader from '../../shared/lazyloader/lazyloader'
 
 class BlogSingle extends Component {
 
-    constructor(props) {
-        super(props)
+    constructor() {
+        super()
 
         this.fetchLazyBlogs = this.fetchLazyBlogs.bind(this)
     }
@@ -44,11 +44,16 @@ class BlogSingle extends Component {
                                 <div>
                                     <Blog key={index} data-key={index} blog={post} isFetching={this.props.BlogSingle.isFetching} didInvalidate={this.props.BlogSingle.didInvalidate}></Blog>
 
+                                    {console.log(this.props.BlogSingle)}
+                                    {console.log(post.stopLazyLoad)}
                                     <LazyLoader
-                                        type={() => {this.fetchLazyBlogs(post.date,post.id,index)}}
+                                        type={this.fetchLazyBlogs}
                                         fetch={this.props.BlogSingle.isFetchingLazy}
-                                        stop={this.props.BlogSingle.stopLazyLoad}
-                                        name="Single Blog">
+                                        stop={post.stopLazyLoad}
+                                        name="Single Blog"
+                                        date={post.date}
+                                        id={post.id}
+                                        index={index}>
                                     </LazyLoader>
 
                                     <Comments blogid={post.id}></Comments>

@@ -25,21 +25,21 @@ function BlogSingle(state = {
                 isFetchingLazy:true,
             }
         case RECEIVE_BLOG_SINGLE:
-            action.blog.stopLazyLoad = false
+            action.blog.stopLazyLoad = true
             return {
                 ...state,
                 items: state.items.concat(action.blog),
                 isFetching: false,
             }
         case RECEIVE_LAZY_BLOG_SINGLE:
-
+            action.blog.stopLazyLoad = true
             return {
                 ...state,
                 items: state.items.concat(action.blog),
                 isFetchingLazy:false,
             }
         case STOP_LAZY_BLOG_SINGLE:
-            let blogs = state.items.map(post => lazy(post,action))
+            let blogs = state.items.map(post => stopLazy(post,action))
             return Object.assign({}, state, {
                 items: blogs
             })
@@ -48,7 +48,7 @@ function BlogSingle(state = {
     }
 }
 
-function lazy(post,action) {
+function stopLazy(post,action) {
     if(post.id !== action.prev_id) return post
 
     return Object.assign({}, post, {

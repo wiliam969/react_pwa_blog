@@ -15,12 +15,17 @@ class LazyLoader extends Component {
         this.state  = { isBtn: true }
 
         this.isBtnActive = this.isBtnActive.bind(this)
+        this.handleChange = this.handleChange.bind(this)
     }
 
     isBtnActive() {
         this.setState({
             isBtn:false,
         })
+    }
+
+    handleChange () {
+        this.props.type(this.props.date,this.props.id,this.props.index)
     }
 
     render() {
@@ -37,7 +42,7 @@ class LazyLoader extends Component {
                                         More {this.props.name} Items</button>
                                     :
                                     <VisibilitySensor
-                                        onChange={this.props.type}
+                                        onChange={this.handleChange}
                                         active={!this.props.fetch}
                                         delacedCall={true}
                                         resizeCheck={true}

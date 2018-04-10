@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import ReactGridLayout from 'react-grid-layout'
 import Picture from '../picture/index'
 
 import {Responsive, WidthProvider} from 'react-grid-layout';
@@ -57,7 +56,7 @@ export default class BlogGrid extends Component {
                         <div className="blog-grid-preview-item" key={index}>
                             <div className="blog-grid-preview-fix">
                                 <div className="blog-grid-preview-pic-fix">
-                                    <Link to={{ pathname: '/blog/' + post.id, }}>
+                                    <Link to={{ pathname: '/blog/' + post.slug, }}>
                                         <Picture
                                             featured_media_id={post.featured_media}
                                             is169={true}
@@ -67,12 +66,12 @@ export default class BlogGrid extends Component {
                                     </Link>
                                 </div>
                                 <div className="blog-grid-preview-date">{new Date(post.date).toLocaleDateString()}</div>
-                                <Link to={{ pathname: '/blog/' + post.id, }} className="blog-grid-preview-prevent-a">
+                                <Link to={{ pathname: '/blog/' + post.slug, }} className="blog-grid-preview-prevent-a">
                                     <div className="blog-grid-preview-title">{post.title.rendered}</div>
                                 </Link>
 
                                 <div className="blog-grid-preview-text" dangerouslySetInnerHTML={{__html: post.excerpt.rendered}}></div>
-                                <Link to={{ pathname: '/blog/' + post.id, }} className="blog-grid-preview-readmore">Weiterlesen...</Link>
+                                <Link to={{ pathname: '/blog/' + post.slug, }} className="blog-grid-preview-readmore">Weiterlesen...</Link>
                             </div>
                         </div>
                 )}

@@ -7,6 +7,9 @@ import {
 
 import VisibilitySensor from 'react-visibility-sensor'
 
+/*
+    Todo: The default Picture doesn't work to the current state which means every other picture is not working as soon as an items gets load where the picture is missing =/
+ */
 class Picture extends Component {
 
     isActive = true

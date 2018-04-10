@@ -26,6 +26,11 @@ class simpleSlider extends Component {
         dispatch(fetchSlider(this.props))
     }
 
+
+    /*
+        Todo: Were not getting an image so its completly broken
+        Todo: I atleast want to consider using this in gallery
+     */
     render () {
         const settings = {
             dots: false,

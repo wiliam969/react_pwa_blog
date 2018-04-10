@@ -46,6 +46,9 @@ class Blog extends Component {
         dispatch(fetchLazyBlogPreview(this.props.Blog.LazyPage))
     }
 
+    /*
+    Todo: Here we have a to the current state random error with the FetchNewBlogs function idk what its causing but it seems to be a 404 error
+     */
     render () {
         return (
             <div className="blog-container">

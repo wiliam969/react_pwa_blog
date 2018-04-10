@@ -23,6 +23,11 @@ class AsyncApp extends Component {
         height: 100+ 'vh'
     }
 
+
+    /*
+        Todo: EVERY Function should be commented aswell as EVERY class
+        Todo: We NEED a Socialmedia plugin which has to work with the gallery as well as the blogs
+     */
     render() {
         const history = createBrowserHistory()
         return(

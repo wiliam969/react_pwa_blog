@@ -20,6 +20,12 @@ export default class GalleryFullscreen extends Component {
         this.props.nextPicture(this.props,this.props.id)
     }
 
+
+    /*
+        Todo: I want to create a Slider with the react-slick plugin so the fullscreen gallery is much smoother and way cooler
+        Todo: The Gallery Items need Links
+        Todo: The Gallery Items need a Title aswell as an Description which we can Display in the HTML Title
+     */
     render() {
         const fuckme = {
             pointerEvents: 'none',

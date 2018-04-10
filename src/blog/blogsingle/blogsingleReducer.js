@@ -20,10 +20,10 @@ function BlogSingle(state = {
                 isFetching:true,
             }
         case REQUEST_LAZY_BLOG_SINGLE:
-            return {
-                ...state,
-                isFetchingLazy:true,
-            }
+            let hefe = state.items.map(post => requestLazy(post,action))
+            return Object.assign({}, state, {
+                items: hefe
+            })
         case RECEIVE_BLOG_SINGLE:
             action.blog.stopLazyLoad = true
             return {
@@ -54,6 +54,15 @@ function stopLazy(post,action) {
     return Object.assign({}, post, {
         stopLazyLoad:false,
         isFetchingLazy:false,
+    })
+}
+
+function requestLazy(post,action) {
+    if(post.id !== action.prev_id) return post
+
+    return Object.assign({}, post, {
+        stopLazyLoad:false,
+        isFetchingLazy:true,
     })
 }
 

@@ -8,7 +8,8 @@ import {
     nextFullScreenGalleryitem,
     prevFullScreenGalleryItem,
     closeFullscreenGallery,
-    fetchLazyGalleryItems
+    fetchLazyGalleryItems,
+    fetchURLFullscreenGalleryItem
 } from "./galleryActions"
 
 import "./gallery.css"
@@ -29,6 +30,10 @@ class Gallery extends Component {
         dispatch(fetchGalleryItems(this.props))
 
         this.fetchLazyGallery = this.fetchLazyGallery.bind(this)
+
+        if(this.props.match.params.slug) {
+            dispatch(fetchURLFullscreenGalleryItem(this.props))
+        }
 
         // rBGColorGenerator.randomBackgroundColor("gallery-loading-container", 2500)
     }
@@ -85,14 +90,13 @@ class Gallery extends Component {
                                     isNext={this.props.gallery.isNext}
                                     isFullscreen={this.props.gallery.isFullscreen}
                                     next_state={this.props.gallery.next_state}
-                                    prev_state={this.props.gallery.prev_state}>
+                                    prev_state={this.props.gallery.prev_state}
+                                    isURLFullscreen={this.props.gallery.isURLFullscreen}/>
 
-                                </GalleryFullscreen>
                                 <GalleryGrid
                                     items={this.props.gallery.Items}
                                     dispatch={this.props.dispatch}
-                                    onClickedPicture={this.loadFullScreenPicture}>
-                                </GalleryGrid>
+                                    onClickedPicture={this.loadFullScreenPicture}/>
                             </div>
                         }
 

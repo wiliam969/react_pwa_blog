@@ -12,6 +12,8 @@ import {
     STOP_FETCH_NEXT_FULLSCREEN_GALLERY_ITEM,
     STOP_LAZY_GALLERY_ITEMS,
     CLOSE_FULLSCREEN_GALLERY_ITEM,
+    REQUEST_URL_FULLSCREEN_GALLERY_ITEM,
+    RECEIVE_URL_FULLSCREEN_GALLERY_ITEM
 } from './galleryActions'
 
 function Gallery(state = {
@@ -28,6 +30,7 @@ function Gallery(state = {
     next_state:false,
     isPrev:false,
     isNext:false,
+    isURLFullscreen:false,
 }, action) {
     switch(action.type) {
         case INVALIDATE_GALLERY_ITEMS:
@@ -76,6 +79,7 @@ function Gallery(state = {
                 next_state: action.Items + 1,
                 isPrev:false,
                 isNext:false,
+                isURLFullscreen:false,
             }
         case FETCH_PREV_FULLSCREEN_GALLERY_ITEM:
             state.current_item = [];
@@ -121,6 +125,23 @@ function Gallery(state = {
             return {
                 ...state,
                 isFullscreen:false,
+            }
+        case REQUEST_URL_FULLSCREEN_GALLERY_ITEM:
+            return {
+                ...state,
+                isFetching:true,
+            }
+        case RECEIVE_URL_FULLSCREEN_GALLERY_ITEM:
+            return {
+                ...state,
+                isFullscreen:true,
+                current_item: state.current_item.concat(action.Items),
+                current_id: action.Items.id,
+                prev_state: action.Items.id - 1,
+                next_state: action.Items.id + 1,
+                isPrev:false,
+                isNext:false,
+                isURLFullscreen:true,
             }
         default:
             return state

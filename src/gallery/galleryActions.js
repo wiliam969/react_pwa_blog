@@ -19,6 +19,9 @@ export const STOP_FETCH_NEXT_FULLSCREEN_GALLERY_ITEM = 'STOP_FETCH_NEXT_FULLSCRE
 
 export const CLOSE_FULLSCREEN_GALLERY_ITEM = 'CLOSE_FULLSCREEN_GALLERY_ITEM'
 
+export const REQUEST_URL_FULLSCREEN_GALLERY_ITEM = 'REQUEST_URL_FULLSCREEN_GALLERY_ITEM'
+export const RECEIVE_URL_FULLSCREEN_GALLERY_ITEM = 'RECEIVE_URL_FULLSCREEN_GALLERY_ITEM'
+
 export const requestGalleryItems = () => {
     return {
         type: 'REQUEST_GALLERY_ITEMS'
@@ -51,10 +54,11 @@ export const receiveLazyGalleryItems = (Items) => {
     }
 }
 
-export const receiveFullscreenGalleryItems = (Items) => {
+export const receiveFullscreenGalleryItems = (Items,slug) => {
     return {
         type:'RECEIVE_FULLSCREEN_GALLERY_ITEMS',
-        Items
+        Items,
+        slug
     }
 }
 
@@ -99,6 +103,21 @@ export const stopFetchNextFullscreenGalleryItem = () => {
 export const closeFullscreenGalleryItem = () => {
     return {
         type:'CLOSE_FULLSCREEN_GALLERY_ITEM'
+    }
+}
+
+export const requestURLFullscreenGalleryItem = (Slug) => {
+    return {
+        type:'REQUEST_URL_FULLSCREEN_GALLERY_ITEM',
+        Slug:Slug
+    }
+}
+
+export const receiveURLFullscreenGalleryItem = (Item,Slug) => {
+    return {
+        type:'RECEIVE_URL_FULLSCREEN_GALLERY_ITEM',
+        Items:Item,
+        Slug:Slug
     }
 }
 
@@ -179,5 +198,23 @@ export function nextFullScreenGalleryitem (index,props) {
 export function closeFullscreenGallery () {
     return function (dispatch) {
         return dispatch(closeFullscreenGalleryItem())
+    }
+}
+
+export function fetchURLFullscreenGalleryItem(props) {
+    console.log(props)
+    const slug = props.match.params.slug
+    console.log(slug)
+
+    return function (dispatch) {
+        dispatch(requestURLFullscreenGalleryItem())
+
+        return GalleryApi.getGallerySingleItem(slug)
+            .then(ApiResponse => {
+                return dispatch(receiveURLFullscreenGalleryItem(ApiResponse,slug))
+            }).catch(error => {
+                console.log(error)
+                return dispatch(stopFetchPrevFullscreenGalleryItem())
+            })
     }
 }

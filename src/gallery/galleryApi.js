@@ -23,14 +23,15 @@ export default class GalleryApi {
      * @param id
      * @returns {Promise.<TResult>}
      */
-    static getGallerySingleItem(id) {
-        console.log(id)
-        return fetch(process.env.REACT_APP_API_URI + 'gallery/' + id, {method: 'GET'})
+    static getGallerySingleItem(slug) {
+        console.log(slug)
+        return fetch(process.env.REACT_APP_API_URI + 'gallery/?slug=' + slug, {method: 'GET'})
             .then(response => response.json())
             .then(responseJson => {
+
                 console.log(responseJson)
 
-                return responseJson
+                return responseJson[0]
             })
             .catch(error => {
                 console.log(error)

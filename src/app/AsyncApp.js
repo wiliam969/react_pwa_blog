@@ -52,7 +52,8 @@ class AsyncApp extends Component {
                                 <Route path="/" component={Home} exact></Route>
                                 <Route path="/blog" component={Blog} exact></Route>
                                 <Route path="/aboutme" component={AboutMe}></Route>
-                                <Route path="/gallery" component={Gallery}></Route>
+                                <Route path="/gallery" component={Gallery} exact></Route>
+                                <Route path="/gallery/:slug" component={Gallery}></Route>
                                 <Route path="/blog/:slug" component={BlogSingle}></Route>
                                 <Route path="/category/:name" component={Category}></Route>
                             </div>

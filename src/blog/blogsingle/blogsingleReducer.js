@@ -26,6 +26,7 @@ function BlogSingle(state = {
             })
         case RECEIVE_BLOG_SINGLE:
             action.blog.stopLazyLoad = true
+            console.log(action.blog)
             return {
                 ...state,
                 items: state.items.concat(action.blog),
@@ -57,6 +58,7 @@ function stopLazy(post,action) {
     })
 }
 
+// With this function im editing the BlogSingle Item because every single Blog Item has its own Stoplazyload aswell as isfetchinglazy function
 function requestLazy(post,action) {
     if(post.id !== action.prev_id) return post
 

@@ -13,9 +13,8 @@ import Loading from '../../shared/loading/loading'
 import LazyLoader from '../../shared/lazyloader/lazyloader'
 
 /*
-        This is the BlogSingle Class. The Itention behind this class is that it behaves like a wrapper for every single Blog Item
+        This is the BlogSingle Class. The Intention behind this class is that it behaves like a wrapper for every single Blog Item
         Which means we have an Array of BlogItems which gets fully displayed and here the get wrapped
-        Todo: The problem here is that to the current state we get always a duplicate when we are using the lazyload function which may be a reducer problem
         Todo: We should also get rid of the blog:id thing we need a smooth title or other structure which the client can read
         Todo: The HTML Title of the Website should be always the Title of the Blog
 */
@@ -48,7 +47,7 @@ class BlogSingle extends Component {
                         { this.props.BlogSingle.items.length > 0 &&
                         <div>
                             {this.props.BlogSingle.items.map((post,index) =>
-                                <div>
+                                <div key={index}>
                                     <Blog key={index} data-key={index} blog={post} isFetching={this.props.BlogSingle.isFetching} didInvalidate={this.props.BlogSingle.didInvalidate}></Blog>
 
                                     {console.log(this.props.BlogSingle)}

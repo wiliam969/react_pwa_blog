@@ -1,9 +1,12 @@
 import db from '../../boot/bootIndexeddb'
 
 export default class BlogStorage {
-    static getBlogSingle(id) {
-        const post_id = parseInt(id)
-        return db.table('blog').get(post_id)
+
+    /*
+        Searches in the IndexedDB for a specific slug and returns the right one
+     */
+    static getBlogSingle(slug) {
+        return db.table('blog').get({slug: slug})
             .then(items => {
                 return items
             })

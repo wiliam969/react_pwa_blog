@@ -22,7 +22,7 @@ export const requestBlogSingle = (id) => {
 export const requestLazyBlogSingle = (id) => {
     return {
         type: 'REQUEST_LAZY_BLOG_SINGLE',
-        id
+        prev_id:id
     }
 }
 
@@ -59,25 +59,31 @@ export const stopLazyBlogSingle = (id,index) => {
     }
 }
 
+/*
+    Gets the Slug of the URI and returns it to the specific handlers after that it returns an object if the slug was correct
+ */
 export function fetchBlogSingle(blog = 1) {
-    const id = blog.match.params.id
+    const slug = blog.match.params.slug
 
     return function (dispatch) {
-        dispatch(requestBlogSingle(id))
+        dispatch(requestBlogSingle(slug))
 
-        return BlogStorage.getBlogSingle(id)
+        return BlogStorage.getBlogSingle(slug)
             .then(StorageResponse => {
                 if(StorageResponse != null) {
-                    dispatch(receiveBlogSingle(StorageResponse,id))
+                    dispatch(receiveBlogSingle(StorageResponse,slug))
                 } else {
-                    return BlogsingleApi.getBlogSingle(id)
+                    return BlogsingleApi.getBlogSingle(slug)
                         .then(ApiResponse => {
+                            console.log(ApiResponse)
                             BlogStorage.saveBlogSingle(ApiResponse)
-                            dispatch(receiveBlogSingle(ApiResponse,id))
+                            dispatch(receiveBlogSingle(ApiResponse,slug))
                         }).catch(error => {
-                            dispatch(invalidateBlogSingle(id))
+                            dispatch(invalidateBlogSingle(error,slug))
                         })
                 }
+            }).catch(error => {
+                dispatch(invalidateBlogSingle(error,slug))
             })
     }
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { Helmet } from 'react-helmet'
 
 import Menu from '../shared/Menu/index'
 import Footer from '../shared/Footer/index'
@@ -32,6 +33,15 @@ class AsyncApp extends Component {
         const history = createBrowserHistory()
         return(
             <div id="main-container" style={this.main}>
+                <Helmet>
+                    <meta charSet="utf-8"/>
+                    <meta name="description" content="Kerstin Witte Website"/>
+                    <meta name="keywords" content="Erziehung,haha,pepe"/>
+                    <meta name="author" content="Kerstin Witte"/>
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                    <title>{process.env.REACT_APP_IDB_NAME + " -  Home"}</title>
+                    <link rel="canonical" href="localhost:3000/"/>
+                </Helmet>
                 {this.props.App.isLoading ?
                     <Loading type="Pacman"></Loading>
                     :

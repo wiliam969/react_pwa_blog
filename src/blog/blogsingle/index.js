@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import { Helmet } from 'react-helmet'
+
 import {
     fetchBlogSingle,
     fetchLazyBlog,
@@ -35,10 +37,11 @@ class BlogSingle extends Component {
         const { dispatch } = this.props
         dispatch(fetchLazyBlog(date,id,index))
     }
-
     render() {
         return (
             <div>
+
+
                 { this.props.BlogSingle.isFetching ?
                     <Loading></Loading>
                     :
@@ -47,10 +50,14 @@ class BlogSingle extends Component {
                         <div>
                             {this.props.BlogSingle.items.map((post,index) =>
                                 <div key={index}>
+                                    <Helmet>
+                                        <meta name="description" content={this.props.BlogSingle.items[0].content.rendered}/>
+                                        <meta name="keywords" content={this.props.BlogSingle.items[0].tags}/>
+                                        <title>{this.props.BlogSingle.items[0].title.rendered}</title>
+                                        <link rel="canonical" href={window.location.href}/>
+                                    </Helmet>
                                     <Blog key={index} data-key={index} blog={post} isFetching={this.props.BlogSingle.isFetching} didInvalidate={this.props.BlogSingle.didInvalidate}></Blog>
 
-                                    {console.log(this.props.BlogSingle)}
-                                    {console.log(post.stopLazyLoad)}
                                     <LazyLoader
                                         type={this.fetchLazyBlogs}
                                         fetch={this.props.BlogSingle.isFetchingLazy}

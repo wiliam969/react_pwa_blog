@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { Helmet } from 'react-helmet'
 import {
     fetchNewBlogPreview,
     fetchBlogPreviews,
@@ -52,6 +53,12 @@ class Blog extends Component {
     render () {
         return (
             <div className="blog-container">
+                <Helmet>
+                    {/*<meta name="description" content={this.props.BlogSingle.items[0].content.rendered}/>*/}
+                    {/*<meta name="keywords" content={this.props.BlogSingle.items[0].tags}/>*/}
+                    <title>Blog</title>
+                    <link rel="canonical" href={window.location.href}/>
+                </Helmet>
                 {   this.props.Blog.isFetching ?
                         <Loading></Loading>
                     :

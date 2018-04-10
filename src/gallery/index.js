@@ -1,6 +1,7 @@
 import React,{ Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { Helmet } from 'react-helmet'
 import {
     fetchGalleryItems,
     fetchFullscreenGalleryItem,
@@ -55,7 +56,12 @@ class Gallery extends Component {
     render() {
         return(
             <div>
-
+                <Helmet>
+                    {/*<meta name="description" content={this.props.BlogSingle.items[0].content.rendered}/>*/}
+                    {/*<meta name="keywords" content={this.props.BlogSingle.items[0].tags}/>*/}
+                    <title>Gallery</title>
+                    <link rel="canonical" href={window.location.href}/>
+                </Helmet>
                 {this.props.gallery.isFetching ?
                     <Loading/>
                     :

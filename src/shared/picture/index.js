@@ -50,7 +50,7 @@ class Picture extends Component {
             }
         } else {
             Style['padding'] = 100 + "% 0 0"
-            Style['margin'] = 0 + "px -35px"
+            // Style['margin'] = 0 + "px -35px"
             Style['backgroundColor'] = 'grey'
             Style['opacity'] = 0.1
         }

@@ -7,6 +7,7 @@ function Picture(state = {
     switch(action.type) {
         case INVALIDATE_PICTURE:
             return {
+                ...state,
                 didInvalidate: true,
                 error: action.error,
             }

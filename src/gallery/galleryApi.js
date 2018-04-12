@@ -38,4 +38,20 @@ export default class GalleryApi {
                 return error
             })
     }
+
+    static getGalleryNextPrevItem(type,date) {
+        console.log(date)
+        return fetch(process.env.REACT_APP_API_URI + 'gallery/?' + type + '=' + date, {method: 'GET'})
+            .then(response => response.json())
+            .then(responseJson => {
+                console.log(responseJson)
+
+                return responseJson[0]
+            })
+            .catch(error => {
+                console.log(error)
+                return error
+            })
+
+    }
 }

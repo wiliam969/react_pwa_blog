@@ -3,6 +3,8 @@ import Picture from '../../shared/picture/index'
 import Arrow from '../../shared/arrow/arrow'
 import './fullscreen.css'
 
+import { Link } from 'react-router-dom'
+
 export default class GalleryFullscreen extends Component {
 
     closeButton (e) {
@@ -20,12 +22,6 @@ export default class GalleryFullscreen extends Component {
         this.props.nextPicture(this.props,this.props.id)
     }
 
-
-    /*
-        Todo: I want to create a Slider with the react-slick plugin so the fullscreen gallery is much smoother and way cooler
-        Todo: The Gallery Items need Links
-        Todo: The Gallery Items need a Title aswell as an Description which we can Display in the HTML Title
-     */
     render() {
         const fuckme = {
             pointerEvents: 'none',
@@ -38,7 +34,11 @@ export default class GalleryFullscreen extends Component {
                 { this.props.isFullscreen &&
                     <div className='gal_fullscreen_container'>
                         <div className='gal_fullscreen_close' onClick={ (e) => this.closeButton(e,this.props)}>
-                            {!this.props.isURLFullscreen && <div className='gal_fullscreen_btn_prev' onClick={ (e) => this.prevButton(e,this.props)} style={this.props.prev_state < 0 ? fuckme : clapme}><Arrow type="left"></Arrow></div>}
+                            {!this.props.isURLFullscreen &&
+                                <div className='gal_fullscreen_btn_prev' onClick={ (e) => this.prevButton(e,this.props)} style={this.props.prev_state < 0 ? fuckme : clapme}>
+                                    <Arrow type="left"/>
+                                </div>
+                            }
 
                             { this.props.item.map((post,index) =>
                                 <div className='gal_fullscreen_picture gal_fullscreen_middle_fix'>

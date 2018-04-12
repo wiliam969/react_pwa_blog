@@ -20,6 +20,14 @@ import GalleryFullscreen from './components/galleryFullscreen'
 import LazyLoader from '../shared/lazyloader/lazyloader'
 import rBGColorGenerator from "../shared/background/randomBackgroundColor";
 
+/*
+        This Gallery is heavily dependent on Instagramm its has some aspects on his own but most ideas rely on the concept of how instagramm/facebook is handling data
+        Todo: I want to create a Slider with the react-slick plugin so the fullscreen gallery is much smoother and way cooler
+        Todo: If i click on the Next or Prev Btn in Fullscreen the Link does not get updated
+        Todo: if i already looked at half of the pictures in Fullscreen it should load more Items for the Gallery
+        Todo: Rather the Item is there or not i have to get an Item the Fullscreen shit has to work independently
+        Todo: The Gallery Items need a Title aswell as an Description which we can Display in the HTML Title
+*/
 class Gallery extends Component {
 
     constructor(props) {
@@ -60,7 +68,7 @@ class Gallery extends Component {
     }
     render() {
         return(
-            <div>
+            <div className="container gallery-container">
                 <Helmet>
                     {/*<meta name="description" content={this.props.BlogSingle.items[0].content.rendered}/>*/}
                     {/*<meta name="keywords" content={this.props.BlogSingle.items[0].tags}/>*/}

@@ -186,8 +186,12 @@ export function prevFullScreenGalleryItem (index,props) {
 }
 
 export function nextFullScreenGalleryitem (index,props) {
+    console.log(props)
+
+
     return function (dispatch) {
         if(index < (props.last_item - 1)) {
+            // return GalleryApi.getGalleryNextPrevItem("before",)
             return dispatch(fetchNextFullscreenGalleryItem(index))
         } else {
             return dispatch(stopFetchNextFullscreenGalleryItem())

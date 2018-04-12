@@ -6,20 +6,15 @@ import './grid.css'
 import {Responsive, WidthProvider} from 'react-grid-layout';
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
+/*
+    Todo: Here i have to create a custom WidthProvider so the height as the same size as the witdh
+    Todo: based on this code would be a great help :https://github.com/STRML/react-grid-layout/issues/399
+ */
 export default class GalleryGrid extends Component{
 
-    generateDesktopLayout() {
+    generateLayout(height) {
         return this.props.items.map((post,index) => {
-            let height = 1
-            return { x: index * 4 % 12, y: Math.floor(index/3), w: 4, h: height, i: index.toString(), "static":true,} /* Math.floor(index / 1)*/
-        })
-    }
-
-
-    generateMobileLayout() {
-        return this.props.items.map((post,index) => {
-            let height = 3
-            return { x: index * 4 % 12, y: index * height, w: 6, h: height, i: index.toString(), "static":true,}
+            return { x: index * 4 % 12, y: Math.floor(index/3), w: 4, h:height, i:index.toString(), "static": true,}
         })
     }
 
@@ -30,8 +25,9 @@ export default class GalleryGrid extends Component{
             // "sm": this.generateMobileLayout(),
             // "xs": this.generateMobileLayout(),
             // "xxs": this.generateMobileLayout(),
-            "desktop" : this.generateDesktopLayout(),
-            "mobile" : this.generateMobileLayout(),
+            "phone": this.generateLayout(1),
+            "desktop" : this.generateLayout(1),
+            "mobile" : this.generateLayout(1),
         }
 
         /*lg: 1200, md: 960, sm: 768, xs: 480, xxs: 0,
@@ -41,8 +37,8 @@ export default class GalleryGrid extends Component{
         return (
             <div>
                 {this.props.items.length > 0 &&
-                <ResponsiveReactGridLayout className="layout" layouts={layouts} breakpoints={{desktop: 768, mobile: 0}}
-                                           cols={{ desktop: 12, mobile: 3}} useCSSTransforms={true} rowHeight={200} >
+                <ResponsiveReactGridLayout className="layout" layouts={layouts} breakpoints={{desktop: 768, mobile: 480, phone:0}}
+                                           cols={{ desktop: 12, mobile: 12, phone:12}} useCSSTransforms={true}>
                     {this.props.items.map((post,index) =>
                         <div className="box" key={index} onClick={ () => this.props.onClickedPicture(this.props,index)}>
                             <Link key={post.id} to={{ pathname: `/gallery/${post.slug}`, state: {modal:true} }} replace>
@@ -50,7 +46,7 @@ export default class GalleryGrid extends Component{
                                     featured_media_id={post.featured_media}
                                     type="medium_large"
                                     posttype="gallery"
-                                    height="200px"
+                                    height="100%"
                                     width="100%"
                                     backgroundsize="cover">
                                 </Picture>

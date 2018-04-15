@@ -4,7 +4,6 @@ export default class BlogStorage {
     static checksetup() {
         return db.timestamp.get('oldestDate')
             .then(check => {
-                (check)
                 return check
             })
     }

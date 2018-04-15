@@ -3,7 +3,6 @@ export default class GalleryApi {
         return fetch(process.env.REACT_APP_API_URI + 'gallery?per_page=6', {method: 'GET'})
             .then(response => response.json())
             .then(responseJson => {
-                console.log(responseJson)
                 return responseJson
             })
     }
@@ -41,7 +40,7 @@ export default class GalleryApi {
 
     static getGalleryNextPrevItem(type,date) {
         console.log(date)
-        return fetch(process.env.REACT_APP_API_URI + 'gallery/?' + type + '=' + date, {method: 'GET'})
+        return fetch(process.env.REACT_APP_API_URI + 'gallery/?' + type + '=' + date + "&per_page=1&page=1", {method: 'GET'})
             .then(response => response.json())
             .then(responseJson => {
                 console.log(responseJson)

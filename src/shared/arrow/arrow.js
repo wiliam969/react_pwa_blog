@@ -6,9 +6,9 @@ import Right from './next.png'
 export default class Arrow extends Component {
 
     loadCorrectType(type) {
-        if(type == "left") {
+        if(type === "left") {
             return Left
-        } else if (type == "right") {
+        } else if (type === "right") {
             return Right
         }
     }

@@ -74,9 +74,10 @@ export const stopLazyGalleryItems = () => {
     }
 }
 
-export const fetchPrevFullscreenGalleryItem = (Items) => {
+export const fetchPrevFullscreenGalleryItem = (index,Items) => {
     return {
         type:'FETCH_PREV_FULLSCREEN_GALLERY_ITEM',
+        Index:index,
         Items
     }
 }
@@ -177,13 +178,15 @@ export function fetchFullscreenGalleryItem (id) {
 
 export function prevFullScreenGalleryItem (index,props) {
     console.log(props)
+    const date = props.item[0].date
     return function (dispatch) {
+
         if(props.id > 0 ) {
-            const prev_id = props.id - 1
-            props.history.push('/gallery/' + prev_id)
-
-
-            return dispatch(fetchPrevFullscreenGalleryItem(index))
+        return GalleryApi.getGalleryNextPrevItem("before",date)
+            .then(ApiResponse => {
+                console.log(ApiResponse)
+                return dispatch(fetchPrevFullscreenGalleryItem(index,ApiResponse))
+            })
         } else {
             return dispatch(stopFetchPrevFullscreenGalleryItem())
         }

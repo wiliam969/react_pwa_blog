@@ -27,8 +27,10 @@ class BlogSingle extends Component {
     }
 
     componentDidMount() {
-        const { dispatch } = this.props
-        dispatch(fetchBlogSingle(this.props))
+        if(this.props.BlogSingle.items.length === 0) {
+            const { dispatch } = this.props
+            dispatch(fetchBlogSingle(this.props))
+        }
     }
 
     // Fetching all Blogs AFTER the main Blog

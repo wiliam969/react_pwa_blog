@@ -33,10 +33,13 @@ class Gallery extends Component {
     constructor(props) {
         super(props)
     }
+
     componentDidMount() {
-        const { dispatch } = this.props
-        console.log("hello")
-        dispatch(fetchGalleryItems(this.props))
+        const {dispatch} = this.props
+        if(this.props.gallery.Items.length === 0) {
+            console.log("hello")
+            dispatch(fetchGalleryItems(this.props))
+        }
 
         this.fetchLazyGallery = this.fetchLazyGallery.bind(this)
 

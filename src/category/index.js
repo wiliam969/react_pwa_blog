@@ -9,7 +9,7 @@ import BlogGrid from '../shared/blog/bloggrid'
 import LazyLoader from '../shared/lazyloader/lazyloader'
 import BlogListLazy from './components/blogListLazy'
 
-import Loading from '../shared/loading/loading'
+import Loading from '../shared/utilities/loading'
 
 
 class Category extends Component {

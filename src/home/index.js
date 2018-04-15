@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import Slider from '../shared/slider/index'
-import Loading from '../shared/loading/loading'
+import Loading from '../shared/utilities/loading'
 import Lazyloader from '../shared/lazyloader/lazyloader'
 
 import "./home.css"

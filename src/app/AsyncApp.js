@@ -12,10 +12,9 @@ import BlogSingle from '../blog/blogsingle/index'
 import Category from '../category/index'
 import Home from '../home/index'
 
-import { BrowserRouter as Router,Route } from 'react-router-dom'
+import { Router,BrowserRouter ,Route,Redirect,Switch } from 'react-router-dom'
 import createBrowserHistory from 'history/createBrowserHistory'
-import Loading from "../shared/loading/loading";
-
+import Loading from "../shared/utilities/loading";
 
 
 class AsyncApp extends Component {
@@ -32,7 +31,7 @@ class AsyncApp extends Component {
     render() {
         const history = createBrowserHistory()
         return(
-            <div id="main-container" style={this.main}>
+            <div id="app" style={this.main}>
                 <Helmet>
                     <meta charSet="utf-8"/>
                     <meta name="description" content="Kerstin Witte Website"/>
@@ -43,12 +42,14 @@ class AsyncApp extends Component {
                     <link rel="canonical" href="localhost:3000/"/>
                 </Helmet>
                 {this.props.App.isLoading ?
-                    <Loading type="Pacman"></Loading>
+                    <Loading></Loading>
                     :
-                    <div id="main-wrapper">
-                        <Router onUpdate={() => window.scrollTo(0, 0)} history={history}>
-                            <div>
+                    <BrowserRouter basename="" id="">
+                        <div>
+                            <div id="menu-container">
                                 <Menu></Menu>
+                            </div>
+                            <Switch id="main-container">
                                 <Route path="/" component={Home} exact></Route>
                                 <Route path="/blog" component={Blog} exact></Route>
                                 <Route path="/aboutme" component={AboutMe}></Route>
@@ -56,11 +57,11 @@ class AsyncApp extends Component {
                                 <Route path="/gallery/:slug" component={Gallery}></Route>
                                 <Route path="/blog/:slug" component={BlogSingle}></Route>
                                 <Route path="/category/:name" component={Category}></Route>
-                            </div>
-                        </Router>
-
-                        <Footer> </Footer>
-                    </div>
+                                <Redirect from='*' to='/' />
+                                <Footer/>
+                            </Switch>
+                        </div>
+                    </BrowserRouter>
                 }
             </div>
         )
@@ -73,12 +74,12 @@ AsyncApp.propTypes = {
 
 function mapStateToProps(state,ownProps) {
         var Blog = { }
-        var App = { }
+        var App = { isLoading: true,}
         var BlogSingle = { }
         var Home = { }
 
         Blog = Object.assign({}, state.Blog)
-        App = Object.assign({}, state.App)
+        App = Object.assign({}, state.AsyncApp)
         BlogSingle = Object.assign({}, state.BlogSingle)
         Home = Object.assign({}, state.Home)
 

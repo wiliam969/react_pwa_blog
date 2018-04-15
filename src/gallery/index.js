@@ -14,11 +14,11 @@ import {
 
 import "./gallery.css"
 
-import Loading from '../shared/loading/loading'
+import Loading from '../shared/utilities/loading'
 import GalleryGrid from "./components/galleryGrid"
 import GalleryFullscreen from './components/galleryFullscreen'
 import LazyLoader from '../shared/lazyloader/lazyloader'
-import rBGColorGenerator from "../shared/background/randomBackgroundColor";
+import rBGColorGenerator from "../shared/utilities/randomBackgroundColor";
 
 /*
         This Gallery is heavily dependent on Instagramm its has some aspects on his own but most ideas rely on the concept of how instagramm/facebook is handling data
@@ -35,6 +35,7 @@ class Gallery extends Component {
     }
     componentDidMount() {
         const { dispatch } = this.props
+        console.log("hello")
         dispatch(fetchGalleryItems(this.props))
 
         this.fetchLazyGallery = this.fetchLazyGallery.bind(this)
@@ -75,9 +76,9 @@ class Gallery extends Component {
                     <title>Gallery</title>
                     <link rel="canonical" href={window.location.href}/>
                 </Helmet>
-                {this.props.gallery.isFetching ?
-                    <Loading/>
-                    :
+                {/*{this.props.gallery.isFetching ?*/}
+                    {/*<Loading/>*/}
+                    {/*:*/}
                     <div className="gallery-wrapper">
                         <div className="gallery-loading-container"/>
                         {this.props.gallery.didInvalidate &&
@@ -116,7 +117,7 @@ class Gallery extends Component {
                             name="Gallery">
                         </LazyLoader>
                     </div>
-                }
+                // }
             </div>
         );
     }

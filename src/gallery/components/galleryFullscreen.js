@@ -1,6 +1,6 @@
 import React , { Component } from 'react'
 import Picture from '../../shared/picture/index'
-import Arrow from '../../shared/arrow/arrow'
+import Arrow from '../../shared/utilities/arrow'
 import './fullscreen.css'
 
 import { Link } from 'react-router-dom'

@@ -11,7 +11,7 @@ import {
 import Blog from './content/index'
 import Comments from './comments/index'
 
-import Loading from '../../shared/loading/loading'
+import Loading from '../../shared/utilities/loading'
 import LazyLoader from '../../shared/lazyloader/lazyloader'
 
 /*
@@ -67,7 +67,7 @@ class BlogSingle extends Component {
                                         index={index}>
                                     </LazyLoader>
 
-                                    <Comments blogid={post.id}></Comments>
+                                    {/*<Comments blogid={post.id}></Comments>*/}
                                 </div>
                             )}
                         </div>

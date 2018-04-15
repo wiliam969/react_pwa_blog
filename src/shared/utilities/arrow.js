@@ -1,7 +1,7 @@
 import React , { Component } from 'react'
 
-import Left from './back.png'
-import Right from './next.png'
+import Left from './img/back.png'
+import Right from './img/next.png'
 
 export default class Arrow extends Component {
 

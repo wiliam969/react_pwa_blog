@@ -3,7 +3,11 @@
  */
 import BlogApi from './blogApi'
 import BlogStorage from './blogStorage'
-import {stopLazyGalleryItems} from "../gallery/galleryActions";
+
+import {
+    isFetchingData,
+    stopFetchingData
+} from '../app/appActions'
 
 export const REQUEST_BLOG_PREVIEW = 'REQUEST_BLOG_PREVIEW'
 export const REQUEST_LAZY_BLOG_PREVIEW = 'REQUEST_LAZY_BLOG_PREVIEW'
@@ -85,13 +89,14 @@ export function fetchBlogPreviews(blogs) {
 
     return function(dispatch) {
 
-        dispatch(requestBlogPreview(blogs))
+        dispatch(isFetchingData(blogs))
 
 
     BlogApi.getLatestBlogList()
         .then((posts) => {
             dispatch(receiveBlogpreview(posts))
 
+            dispatch(stopFetchingData())
             return BlogStorage.updateOldestDate(posts)
         })
         .catch(error => {
@@ -99,6 +104,7 @@ export function fetchBlogPreviews(blogs) {
         })
     }
 }
+
 
 export function fetchLazyBlogPreview(page) {
     return function (dispatch) {

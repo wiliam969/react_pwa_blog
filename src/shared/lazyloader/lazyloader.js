@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import VisibilitySensor from 'react-visibility-sensor'
-import Loading from '../loading/loading'
+import Loading from '../utilities/loading'
 
 import "./lazyload.css"
 

@@ -1,5 +1,10 @@
 import GalleryApi from './galleryApi'
 
+import {
+    isFetchingData,
+    stopFetchingData
+} from '../app/appActions'
+
 export const REQUEST_GALLERY_ITEMS = 'REQUEST_GALLERY_ITEMS'
 export const RECEIVE_GALLERY_ITEMS = 'RECEIVE_GALLERY_ITEMS'
 export const INVALIDATE_GALLERY_ITEMS = 'INVALIDATE_GALLERY_ITEMS'
@@ -124,13 +129,14 @@ export const receiveURLFullscreenGalleryItem = (Item,Slug) => {
 
 export function fetchGalleryItems () {
     return function (dispatch) {
-        dispatch(requestGalleryItems())
+        dispatch(isFetchingData())
 
         return GalleryApi.getGalleryItems()
             .then(ApiResponse => {
                 console.log(ApiResponse)
+                dispatch(receiveGalleryItems(ApiResponse))
 
-                return dispatch(receiveGalleryItems(ApiResponse))
+                return dispatch (stopFetchingData())
             })
             .catch(error => {
                 dispatch(invalidateGalleryItems())
@@ -138,8 +144,9 @@ export function fetchGalleryItems () {
                 return error
             })
     }
-
 }
+
+
 
 export function fetchLazyGalleryItems (page) {
     console.log(page)

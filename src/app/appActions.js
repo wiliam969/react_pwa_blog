@@ -5,11 +5,18 @@ import AppApi from './appApi'
 import AppStorage from './appStorage'
 
 export const IS_LOADING = 'IS_LOADING'
+export const STOP_LOADING = 'STOP_LOADING'
 export const FETCH_CATEGORY = 'FETCH_CATEGORY'
 
 export const isLoading = () => {
     return {
         type: 'IS_LOADING'
+    }
+}
+
+export const stopLoading = () => {
+    return {
+        type: 'STOP_LOADING'
     }
 }
 
@@ -20,9 +27,15 @@ export const fetchCategory = (categories) => {
     }
 }
 
-export function FetchingData() {
+export function isFetchingData() {
     return function(dispatch) {
         return dispatch(isLoading())
+    }
+}
+
+export function stopFetchingData() {
+    return function(dispatch) {
+        return dispatch(stopLoading())
     }
 }
 

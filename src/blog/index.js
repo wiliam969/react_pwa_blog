@@ -8,8 +8,8 @@ import {
     fetchLazyBlogPreview
 } from './blogActions'
 
-import Loading from '../shared/loading/loading'
-import LoadingBtn from '../shared/loading/loading-btn'
+import Loading from '../shared/utilities/loading'
+import LoadingBtn from '../shared/utilities/loading-btn'
 import LazyLoader from '../shared/lazyloader/lazyloader'
 import BlogGrid from '../shared/blog/bloggrid'
 

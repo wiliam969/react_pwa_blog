@@ -3,7 +3,6 @@
  */
 
 import BlogsingleApi from './blogsingleApi'
-import BlogStorage from './blogStorage'
 
 export const REQUEST_BLOG_SINGLE = 'REQUEST_BLOG_SINGLE'
 export const REQUEST_LAZY_BLOG_SINGLE = 'REQUEST_LAZY_BLOG_SINGLE'
@@ -68,24 +67,15 @@ export function fetchBlogSingle(blog = 1) {
     return function (dispatch) {
         dispatch(requestBlogSingle(slug))
 
-        return BlogStorage.getBlogSingle(slug)
-            .then(StorageResponse => {
-                if(StorageResponse != null) {
-                    dispatch(receiveBlogSingle(StorageResponse,slug))
-                } else {
-                    return BlogsingleApi.getBlogSingle(slug)
-                        .then(ApiResponse => {
-                            console.log(ApiResponse)
-                            BlogStorage.saveBlogSingle(ApiResponse)
-                            dispatch(receiveBlogSingle(ApiResponse,slug))
-                        }).catch(error => {
-                            dispatch(invalidateBlogSingle(error,slug))
-                        })
-                }
+        return BlogsingleApi.getBlogSingle(slug)
+            .then(ApiResponse => {
+                console.log(ApiResponse)
+                return dispatch(receiveBlogSingle(ApiResponse,slug))
             }).catch(error => {
-                dispatch(invalidateBlogSingle(error,slug))
+                return dispatch(invalidateBlogSingle(error,slug))
             })
     }
+
 }
 
 
@@ -101,11 +91,10 @@ export function fetchLazyBlog(date,ids,indexes) {
                 if(typeof post === 'undefined' && post === null) {
                     return dispatch(stopLazyBlogSingle(id,index))
                 }
-                dispatch(receiveLazyBlogSingle(post,post.id,id))
-                dispatch(stopLazyBlogSingle(id,index))
+                return dispatch(receiveLazyBlogSingle(post,post.id,id))
             })
             .catch(error => {
-                dispatch(invalidateBlogSingle(error))
+                return dispatch(invalidateBlogSingle(error))
             })
     }
 }

@@ -94,9 +94,6 @@ export function fetchLazyBlog(date,ids,indexes) {
     const datum = date
     const id = ids
     const index = indexes
-    console.log(datum)
-    console.log(id)
-    console.log(index)
     return function (dispatch) {
         dispatch(requestLazyBlogSingle(id))
         return BlogsingleApi.getLazyBlogSingle(datum)

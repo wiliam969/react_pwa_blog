@@ -38,7 +38,6 @@ export function getCategories() {
                         if(ApiResponse.length > 0) {
                             return AppStorage.saveCategories(ApiResponse)
                                 .then(save => {
-                                    console.log(save)
                                     return dispatch(fetchCategory(ApiResponse))
                                 })
                         }

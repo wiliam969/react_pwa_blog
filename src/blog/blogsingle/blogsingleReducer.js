@@ -26,7 +26,6 @@ function BlogSingle(state = {
             })
         case RECEIVE_BLOG_SINGLE:
             action.blog.stopLazyLoad = true
-            console.log(action.blog)
             return {
                 ...state,
                 items: state.items.concat(action.blog),

@@ -19,11 +19,9 @@ export default class BlogsingleApi {
     }
 
     static getLazyBlogSingle(date) {
-        console.log(date)
         return fetch(process.env.REACT_APP_API_URI +'posts?before=' + date + '&per_page=1', {method: 'GET'})
             .then((response) => response.json())
             .then(responseJson => {
-                console.log(responseJson)
                 if(responseJson.length > 0) {
                     return responseJson[0]
                 } else {

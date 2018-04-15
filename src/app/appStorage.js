@@ -16,7 +16,6 @@ export default class AppStorage {
             })
         })
         .then(response => {
-            console.log(response)
             return response
         })
         .catch(error => {
@@ -27,7 +26,6 @@ export default class AppStorage {
     static getCategories() {
         return db.categories.toArray()
             .then(response => {
-                console.log(response)
                 return response
             })
             .catch(error => {

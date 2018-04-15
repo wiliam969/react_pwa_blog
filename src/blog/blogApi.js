@@ -15,12 +15,10 @@ export default class BlogApi {
         return db.timestamp.get({id:1})
             .then(response => {
                 const oldestDate = response.oldestDate
-                console.log(oldestDate)
 
                 return fetch(process.env.REACT_APP_API_URI + 'posts?before=' + oldestDate + '&per_page=4&page=' + page, {method: 'GET'})
                     .then((response) => response.json())
                     .then(responseJson => {
-                        console.log(responseJson)
                         return responseJson
                     })
             })

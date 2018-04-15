@@ -10,10 +10,18 @@ const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
 export default class BlogGrid extends Component {
 
+    generateLayout(height) {
+        return this.props.blogs.map((post,index) => {
+            ( index + "=" + Math.floor(index / 2))
+
+            return { x: index * 6 % 12, y: Math.floor(index / 2) * 2, w: 6, h:height, i:index.toString(), "static": true,}
+        })
+    }
+
     generateDesktopLayout() {
         return this.props.blogs.map((post,index) => {
             let height = 2
-            return { x: index * 3 % 12, y: Math.floor(index / 4) * height, w: 3, h: height, i: index.toString(), "static":true,}
+            return { x: index * 4 % 12, y: Math.floor(index / 3) * height, w: 3, h: height, i: index.toString(), "static":true,}
         })
     }
 
@@ -43,7 +51,7 @@ export default class BlogGrid extends Component {
         var layouts = {
             "lg":  this.generateDesktopLayout(),
             "md":  this.generateLaptopLayout(),
-            "sm":  this.generateTabletLayout(),
+            "sm":  this.generateLayout(2),
             "xs":  this.generateMobileLayout(),
             "xxs": this.generateMobileLayout()
         }
@@ -51,7 +59,7 @@ export default class BlogGrid extends Component {
             <div className="blog-grid-preview-container">
             {this.props.blogs.length > 0 &&
             <ResponsiveReactGridLayout className="layout" layouts={layouts} breakpoints={{lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0}}
-                                       cols={{lg: 12, md: 12, sm: 12, xs: 12, xxs: 12}} useCSSTransforms={true} rowHeight={490} >
+                                       cols={{lg: 12, md: 12, sm: 12, xs: 12, xxs: 12}} useCSSTransforms={true} rowHeight={490}>
                 {this.props.blogs.map((post,index) =>
                         <div className="blog-grid-preview-item" key={index}>
                             <div className="blog-grid-preview-fix">

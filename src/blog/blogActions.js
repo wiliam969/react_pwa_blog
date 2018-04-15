@@ -87,88 +87,39 @@ export function fetchBlogPreviews(blogs) {
 
         dispatch(requestBlogPreview(blogs))
 
-        return BlogStorage.checksetup()
-            .then(checkStorage => {
-                console.log(checkStorage)
-                if(typeof checkStorage != "undefined") {
-                    BlogStorage.getBlogPreview()
-                        .then(LocalPost => {
-                            if(LocalPost.length > 0) {
-                                dispatch(receiveLocalBlogPreview(LocalPost))
-                            } else {
-                                BlogApi.getLatestBlogList()
-                                    .then((posts) => {
-                                        dispatch(receiveBlogpreview(posts))
 
-                                        BlogStorage.updateOldestDate(posts)
+    BlogApi.getLatestBlogList()
+        .then((posts) => {
+            dispatch(receiveBlogpreview(posts))
 
-                                        return BlogStorage.saveBlogPreviews(posts)
-                                    })
-                                    .catch(error => {
-                                        return dispatch(invalidateBlogPreview(error))
-                                    })
-                                }
-                        }).catch(error => {
-                        dispatch(invalidateBlogPreview(error))
-                    })
-                } else {
-                    BlogApi.getLatestBlogList()
-                        .then((posts) => {
-                            dispatch(receiveBlogpreview(posts))
-
-                            BlogStorage.updateOldestDate(posts)
-
-                            return BlogStorage.saveBlogPreviews(posts)
-                        })
-                        .catch(error => {
-                            return dispatch(invalidateBlogPreview(error))
-                        })
-                }
-            }).catch(error => {
-                return dispatch(invalidateBlogPreview(error))
-            })
+            return BlogStorage.updateOldestDate(posts)
+        })
+        .catch(error => {
+            return dispatch(invalidateBlogPreview(error))
+        })
     }
 }
 
 export function fetchLazyBlogPreview(page) {
-    console.log(page)
     return function (dispatch) {
 
         dispatch(requestLazyBlogPreview())
 
-        return BlogStorage.getLazyBlogPreview(page)
-            .then(StorageItems => {
 
-                if(StorageItems.length > 0) {
-                    console.log("Store")
-                    console.log(StorageItems)
-                    dispatch(receiveLazyBlogPreview(StorageItems))
-                } else {
-                    BlogApi.getLazyBlogPreview(page)
-                        .then(ApiResponse => {
-                            console.log("Api")
-                            console.log(ApiResponse)
-                            if(typeof ApiResponse.data != "undefined") {
-                                console.log(ApiResponse)
-                                return dispatch(stopLazyBlogPreview())
+        BlogApi.getLazyBlogPreview(page)
+            .then(ApiResponse => {
+                if(typeof ApiResponse.data != "undefined") {
+                    return dispatch(stopLazyBlogPreview())
 
-                            } else if(ApiResponse.length === 0){
-                                return dispatch(stopLazyBlogPreview())
-                            }
-
-                            dispatch(receiveLazyBlogPreview(ApiResponse))
-
-                            return BlogStorage.saveBlogPreviews(ApiResponse)
-                        })
-                        .catch(error => {
-                            dispatch(invalidateBlogPreview(error))
-                        })
+                } else if(ApiResponse.length === 0){
+                    return dispatch(stopLazyBlogPreview())
                 }
+
+                return dispatch(receiveLazyBlogPreview(ApiResponse))
             })
             .catch(error => {
                 dispatch(invalidateBlogPreview(error))
             })
-
     }
 }
 
@@ -180,9 +131,7 @@ export function fetchNewBlogPreview() {
             .then(blogs => {
                 dispatch(receiveAfterBlogPreview(blogs))
 
-                BlogStorage.updateLatestDate()
-
-                return BlogStorage.saveBlogPreviews(blogs)
+                return BlogStorage.updateLatestDate()
             })
             .catch(error => {
                 return dispatch(invalidateBlogPreview(error))

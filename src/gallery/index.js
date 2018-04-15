@@ -39,7 +39,7 @@ class Gallery extends Component {
 
         this.fetchLazyGallery = this.fetchLazyGallery.bind(this)
 
-        if(this.props.match.params.slug) {
+        if(this.props.match.params.slug && !this.props.gallery.isFullscreen) {
             dispatch(fetchURLFullscreenGalleryItem(this.props))
         }
 
@@ -87,6 +87,7 @@ class Gallery extends Component {
                         {!this.props.gallery.isFetching && !this.props.gallery.didInvalidate &&
                             <div>
                                 <GalleryFullscreen
+                                    history={this.props.history}
                                     last_item={this.props.gallery.Items.length}
                                     item={this.props.gallery.current_item}
                                     id={this.props.gallery.current_id}

@@ -52,7 +52,7 @@ class Blog extends Component {
      */
     render () {
         return (
-            <div className="blog-container">
+            <div className="blog-container container">
                 <Helmet>
                     {/*<meta name="description" content={this.props.BlogSingle.items[0].content.rendered}/>*/}
                     {/*<meta name="keywords" content={this.props.BlogSingle.items[0].tags}/>*/}

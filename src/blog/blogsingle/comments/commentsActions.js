@@ -80,13 +80,11 @@ export const isComment = (id) => {
 
 export function fetchComments(post,page) {
     const post_id = post
-    console.log(post_id)
 
     return function (dispatch) {
         dispatch(requestComment(post_id.blogid))
         return CommentsApi.getComments(post_id.blogid,page)
             .then(comments => {
-                console.log(comments)
                 if(comments.length  === 0) {
                     return dispatch(stopComment(post_id.blogid))
                 }

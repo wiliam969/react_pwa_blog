@@ -176,8 +176,13 @@ export function fetchFullscreenGalleryItem (id) {
 }
 
 export function prevFullScreenGalleryItem (index,props) {
+    console.log(props)
     return function (dispatch) {
         if(props.id > 0 ) {
+            const prev_id = props.id - 1
+            props.history.push('/gallery/' + prev_id)
+
+
             return dispatch(fetchPrevFullscreenGalleryItem(index))
         } else {
             return dispatch(stopFetchPrevFullscreenGalleryItem())
@@ -191,6 +196,8 @@ export function nextFullScreenGalleryitem (index,props) {
 
     return function (dispatch) {
         if(index < (props.last_item - 1)) {
+            const next_id = props.id + 1
+            props.history.push('/gallery/' + next_id)
             // return GalleryApi.getGalleryNextPrevItem("before",)
             return dispatch(fetchNextFullscreenGalleryItem(index))
         } else {
@@ -198,6 +205,9 @@ export function nextFullScreenGalleryitem (index,props) {
         }
     }
 }
+
+
+
 
 export function closeFullscreenGallery () {
     return function (dispatch) {

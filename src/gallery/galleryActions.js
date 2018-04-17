@@ -174,6 +174,9 @@ export function fetchLazyGalleryItems (page) {
 }
 
 export function fetchFullscreenGalleryItem (id) {
+
+
+
     const gal_id = id
 
     return function (dispatch) {

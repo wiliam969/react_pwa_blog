@@ -8,6 +8,10 @@ import {
     fetchLazyBlogPreview
 } from './blogActions'
 
+import {
+    fetchAlert
+} from "../shared/Alert/alertActions";
+
 import Loading from '../shared/utilities/loading'
 import LoadingBtn from '../shared/utilities/loading-btn'
 import LazyLoader from '../shared/lazyloader/lazyloader'
@@ -29,10 +33,12 @@ class Blog extends Component {
     }
 
     componentDidMount() {
+        const { dispatch } = this.props
         if(this.props.Blog.items.length === 0) {
-            const { dispatch } = this.props
             dispatch(fetchBlogPreviews(this.props))
         }
+
+        dispatch(fetchAlert("success","<h4>you did it</h4>"))
 
         // rBGColorGenerator.randomBackgroundColor("home-loading-container", 2500)
     }

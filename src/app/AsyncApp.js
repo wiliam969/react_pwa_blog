@@ -11,6 +11,7 @@ import Gallery from '../gallery/index'
 import BlogSingle from '../blog/blogsingle/index'
 import Category from '../category/index'
 import Home from '../home/index'
+import Alert from '../shared/Alert/alert'
 
 import { Router,BrowserRouter ,Route,Redirect,Switch } from 'react-router-dom'
 import createBrowserHistory from 'history/createBrowserHistory'
@@ -49,6 +50,7 @@ class AsyncApp extends Component {
                             <div id="menu-container">
                                 <Menu></Menu>
                             </div>
+                            <Alert/>
                             <Switch id="main-container">
                                 <Route path="/" component={Home} exact></Route>
                                 <Route path="/blog" component={Blog} exact></Route>

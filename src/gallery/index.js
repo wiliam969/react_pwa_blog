@@ -17,6 +17,7 @@ import "./gallery.css"
 import Loading from '../shared/utilities/loading'
 import GalleryGrid from "./components/galleryGrid"
 import GalleryFullscreen from './components/galleryFullscreen'
+import GalleryFullscreenSlider from './components/galleryFullscreenSlider'
 import LazyLoader from '../shared/lazyloader/lazyloader'
 import rBGColorGenerator from "../shared/utilities/randomBackgroundColor";
 
@@ -90,7 +91,7 @@ class Gallery extends Component {
 
                         {!this.props.gallery.isFetching && !this.props.gallery.didInvalidate &&
                             <div>
-                                <GalleryFullscreen
+                                <GalleryFullscreenSlider
                                     history={this.props.history}
                                     last_item={this.props.gallery.Items.length}
                                     item={this.props.gallery.current_item}
@@ -105,6 +106,21 @@ class Gallery extends Component {
                                     next_state={this.props.gallery.next_state}
                                     prev_state={this.props.gallery.prev_state}
                                     isURLFullscreen={this.props.gallery.isURLFullscreen}/>
+                                {/*<GalleryFullscreen*/}
+                                    {/*history={this.props.history}*/}
+                                    {/*last_item={this.props.gallery.Items.length}*/}
+                                    {/*item={this.props.gallery.current_item}*/}
+                                    {/*id={this.props.gallery.current_id}*/}
+                                    {/*dispatch={this.props.dispatch}*/}
+                                    {/*prevPicture={this.prevFullScreenPicture}*/}
+                                    {/*nextPicture={this.nextFullScreenPicture}*/}
+                                    {/*closeFull={this.closeFullscreen}*/}
+                                    {/*isPrev={this.props.gallery.isPrev}*/}
+                                    {/*isNext={this.props.gallery.isNext}*/}
+                                    {/*isFullscreen={this.props.gallery.isFullscreen}*/}
+                                    {/*next_state={this.props.gallery.next_state}*/}
+                                    {/*prev_state={this.props.gallery.prev_state}*/}
+                                    {/*isURLFullscreen={this.props.gallery.isURLFullscreen}/>*/}
 
                                 <GalleryGrid
                                     items={this.props.gallery.Items}

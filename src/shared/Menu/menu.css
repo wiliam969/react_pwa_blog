@@ -35,3 +35,11 @@ a.nav-items {
     padding:0px !important;
 }
 
+a.nav-items-mobile {
+    position: relative;
+    height: 35px;
+    width: 35px;
+    display: inline-block;
+    cursor: pointer;
+    margin: 20px 10px;
+}

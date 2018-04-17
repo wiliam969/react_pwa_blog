@@ -11,9 +11,11 @@ import Comments from '../blog/blogsingle/comments/commentsRedurcer'
 import Category from '../category/categoryReducer'
 import Gallery from '../gallery/galleryReducer'
 import Slider from '../shared/slider/sliderReducer'
+import Alert from '../shared/Alert/alertReducer'
 
 const Reducer = combineReducers({
     AsyncApp,
+    Alert,
     Quotations,
     Blog,
     Picture,

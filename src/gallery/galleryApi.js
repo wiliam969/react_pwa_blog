@@ -53,4 +53,8 @@ export default class GalleryApi {
             })
 
     }
+
+    static getGalleryFullscreenItems(id) {
+        return fetch(process.env.REACT_APP_API_URI + 'gallery/')
+    }
 }

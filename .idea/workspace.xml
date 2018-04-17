@@ -3,11 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="8d86231f-a2d3-463a-a042-6f35d11ec80a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/AsyncApp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/AsyncApp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blog/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/blog/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/Alert/alert.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/Alert/alert.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/Alert/alertActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/Alert/alertActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/Alert/alertReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/Alert/alertReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gallery/components/galleryFullscreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/gallery/components/galleryFullscreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gallery/galleryActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/gallery/galleryActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gallery/galleryApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/gallery/galleryApi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gallery/galleryReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/gallery/galleryReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gallery/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/gallery/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/home/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/home/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/Menu/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/Menu/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -23,13 +25,56 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/blog/index.js">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gallery/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="40" column="36" selection-start-line="40" selection-start-column="36" selection-end-line="40" selection-end-column="36" />
+            <state relative-caret-position="580">
+              <caret line="52" column="48" selection-start-line="52" selection-start-column="23" selection-end-line="52" selection-end-column="48" />
               <folding>
-                <element signature="e#0#40#0" expanded="true" />
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="galleryFullscreen.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gallery/components/galleryFullscreen.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="600">
+              <caret line="39" column="38" lean-forward="true" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="galleryReducer.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gallery/galleryReducer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="564">
+              <caret line="93" column="13" selection-start-line="93" selection-start-column="13" selection-end-line="93" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="galleryApi.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/gallery/galleryApi.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="43" column="114" selection-start-line="43" selection-start-column="114" selection-end-line="43" selection-end-column="114" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="galleryActions.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gallery/galleryActions.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="524">
+              <caret line="98" column="20" selection-start-line="98" selection-start-column="20" selection-end-line="98" selection-end-column="20" />
+              <folding>
+                <element signature="e#0#37#0" expanded="true" />
+                <element signature="n#!!block;n#closeFullscreenGallery#0" />
               </folding>
             </state>
           </provider>
@@ -47,8 +92,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>next()</find>
-      <find>last_i</find>
       <find>next_state</find>
       <find>prev_state</find>
       <find>fetchLazyGalleryItems</find>
@@ -73,10 +116,12 @@
       <find>stop</find>
       <find>fetchPrevFullscreenGalleryItem</find>
       <find>F</find>
-      <find>&lt;p</find>
+      <find />
       <find>norma</find>
       <find>svg</find>
       <find>react-boot</find>
+      <find>prevFullScreenGalleryItem</find>
+      <find>fetchNextFullscreenGalleryItem</find>
     </findStrings>
     <replaceStrings>
       <replace>props.picture</replace>
@@ -93,14 +138,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/shared/slider/index.js" />
         <option value="$PROJECT_DIR$/src/blog/blogsingle/blogStorage.js" />
         <option value="$PROJECT_DIR$/src/shared/picture/pictureReducer.js" />
         <option value="$PROJECT_DIR$/src/shared/picture/pictureApi.js" />
         <option value="$PROJECT_DIR$/src/shared/picture/index.js" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/src/gallery/components/fullscreen.css" />
-        <option value="$PROJECT_DIR$/src/gallery/components/galleryFullscreen.js" />
         <option value="$PROJECT_DIR$/src/gallery/components/MyWidthProvider.js" />
         <option value="$PROJECT_DIR$/src/gallery/components/galleryGrid.js" />
         <option value="$PROJECT_DIR$/src/shared/blog/bloggrid.js" />
@@ -113,7 +156,6 @@
         <option value="$PROJECT_DIR$/src/boot/bootIndexeddb.js" />
         <option value="$PROJECT_DIR$/src/shared/arrow/arrow.js" />
         <option value="$PROJECT_DIR$/src/blog/blogStorage.js" />
-        <option value="$PROJECT_DIR$/src/gallery/galleryReducer.js" />
         <option value="$PROJECT_DIR$/src/app/appActions.js" />
         <option value="$PROJECT_DIR$/src/app/appReducer.js" />
         <option value="$PROJECT_DIR$/src/blog/blogActions.js" />
@@ -125,18 +167,13 @@
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/src/blog/blogsingle/index.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
-        <option value="$PROJECT_DIR$/src/gallery/index.js" />
         <option value="$PROJECT_DIR$/src/gallery/components/galleryFullscreenSlider.js" />
-        <option value="$PROJECT_DIR$/src/gallery/galleryActions.js" />
-        <option value="$PROJECT_DIR$/src/gallery/galleryApi.js" />
         <option value="$PROJECT_DIR$/src/shared/Menu/blog_black.svg" />
         <option value="$PROJECT_DIR$/src/shared/Menu/gallery_black.svg" />
         <option value="$PROJECT_DIR$/src/shared/Menu/home_black.svg" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/shared/utilities/loading.css" />
         <option value="$PROJECT_DIR$/src/shared/lazyloader/lazyload.css" />
-        <option value="$PROJECT_DIR$/src/shared/Menu/menu.css" />
-        <option value="$PROJECT_DIR$/src/shared/Menu/index.js" />
         <option value="$PROJECT_DIR$/src/shared/Alert.js" />
         <option value="$PROJECT_DIR$/src/boot/bootReducer.js" />
         <option value="$PROJECT_DIR$/src/app/AsyncApp.js" />
@@ -144,6 +181,14 @@
         <option value="$PROJECT_DIR$/src/shared/Alert/alertReducer.js" />
         <option value="$PROJECT_DIR$/src/shared/Alert/alert.js" />
         <option value="$PROJECT_DIR$/src/blog/index.js" />
+        <option value="$PROJECT_DIR$/src/shared/Menu/menu.css" />
+        <option value="$PROJECT_DIR$/src/shared/Menu/index.js" />
+        <option value="$PROJECT_DIR$/src/home/index.js" />
+        <option value="$PROJECT_DIR$/src/gallery/index.js" />
+        <option value="$PROJECT_DIR$/src/gallery/components/galleryFullscreen.js" />
+        <option value="$PROJECT_DIR$/src/gallery/galleryActions.js" />
+        <option value="$PROJECT_DIR$/src/gallery/galleryReducer.js" />
+        <option value="$PROJECT_DIR$/src/gallery/galleryApi.js" />
       </list>
     </option>
   </component>
@@ -159,8 +204,8 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="560" />
-    <option name="y" value="-18" />
+    <option name="x" value="416" />
+    <option name="y" value="-8" />
     <option name="width" value="1400" />
     <option name="height" value="1000" />
   </component>
@@ -187,47 +232,13 @@
               <item name="react_pwa_blog" type="b2602c69:ProjectViewProjectNode" />
               <item name="react_pwa_blog" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="blog" type="462c0819:PsiDirectoryNode" />
+              <item name="gallery" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="react_pwa_blog" type="b2602c69:ProjectViewProjectNode" />
               <item name="react_pwa_blog" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="boot" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="react_pwa_blog" type="b2602c69:ProjectViewProjectNode" />
-              <item name="react_pwa_blog" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="shared" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="react_pwa_blog" type="b2602c69:ProjectViewProjectNode" />
-              <item name="react_pwa_blog" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="shared" type="462c0819:PsiDirectoryNode" />
-              <item name="blog" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="react_pwa_blog" type="b2602c69:ProjectViewProjectNode" />
-              <item name="react_pwa_blog" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="shared" type="462c0819:PsiDirectoryNode" />
-              <item name="Menu" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="react_pwa_blog" type="b2602c69:ProjectViewProjectNode" />
-              <item name="react_pwa_blog" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="shared" type="462c0819:PsiDirectoryNode" />
-              <item name="picture" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="react_pwa_blog" type="b2602c69:ProjectViewProjectNode" />
-              <item name="react_pwa_blog" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="shared" type="462c0819:PsiDirectoryNode" />
-              <item name="slider" type="462c0819:PsiDirectoryNode" />
+              <item name="home" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -339,21 +350,7 @@
       <workItem from="1523310133483" duration="3637000" />
       <workItem from="1523360846626" duration="21403000" />
       <workItem from="1523449919124" duration="11393000" />
-      <workItem from="1523800130349" duration="46653000" />
-    </task>
-    <task id="LOCAL-00003" summary="improved the blog single things">
-      <created>1504863200998</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1504863200998</updated>
-    </task>
-    <task id="LOCAL-00004" summary="improved the blog single things">
-      <created>1504872511871</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1504872511871</updated>
+      <workItem from="1523800130349" duration="52843000" />
     </task>
     <task id="LOCAL-00005" summary="improved the blog single things">
       <created>1504873868914</created>
@@ -684,11 +681,25 @@
       <option name="project" value="LOCAL" />
       <updated>1523994135140</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="some buggs fixed but unfortunately the alert thing does not work as expected">
+      <created>1523996711858</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1523996711858</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Menu is now really really cool =)">
+      <created>1524005510373</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1524005510373</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="243545000" />
+    <option name="totallyTimeSpent" value="249735000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -700,16 +711,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="2576" height="1426" extended-state="6" />
+    <frame x="-2568" y="352" width="2576" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.12332545" />
+      <window_info content_ui="combo" id="Project" order="1" weight="0.12332545" />
       <window_info anchor="bottom" id="TODO" order="9" weight="0.14829193" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="0" sideWeight="0.5021075" side_tool="true" weight="0.32916668" />
       <window_info anchor="bottom" id="Find" order="4" weight="0.32841614" />
       <window_info anchor="bottom" id="Version Control" order="1" weight="0.3275862" />
-      <window_info anchor="bottom" id="Run" order="5" visible="true" weight="0.27406833" />
+      <window_info anchor="bottom" id="Run" order="5" weight="0.27406833" />
       <window_info anchor="bottom" id="npm" order="15" weight="0.1886646" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="2" weight="0.3090062" />
@@ -726,6 +737,30 @@
       <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
       <window_info anchor="bottom" id="Statistic" order="13" sideWeight="0.49789253" visible="true" weight="0.24791667" />
     </layout>
+    <layout-to-restore>
+      <window_info anchor="bottom" id="Salesforce" order="14" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="npm" order="15" weight="0.1886646" />
+      <window_info anchor="bottom" id="Run" order="5" visible="true" weight="0.27406833" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.12332545" />
+      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="9" weight="0.14829193" />
+      <window_info anchor="bottom" id="Debug Logs" order="11" sideWeight="0.49789253" weight="0.32916668" />
+      <window_info anchor="bottom" id="Find" order="4" weight="0.32841614" />
+      <window_info anchor="bottom" id="Debug" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="Execute Anonymous" order="12" sideWeight="0.49789253" weight="0.32916668" />
+      <window_info anchor="bottom" id="Terminal" order="2" weight="0.3090062" />
+      <window_info anchor="bottom" id="Event Log" order="0" sideWeight="0.5021075" side_tool="true" weight="0.32916668" />
+      <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
+      <window_info anchor="bottom" id="Version Control" order="1" weight="0.3275862" />
+      <window_info anchor="bottom" id="Statistic" order="13" sideWeight="0.49789253" visible="true" weight="0.24791667" />
+      <window_info anchor="bottom" id="Message" order="3" />
+      <window_info id="Favorites" order="0" side_tool="true" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -760,8 +795,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="the gallery is more or less fixed beta status has now arrived :)" />
-    <MESSAGE value="fixed a couple things but unfortunately i now have a weird lazy load bug i may have to recreate the lazyload module so you have to click the first time on an button to activate the lazyload plugin" />
     <MESSAGE value="helllo my name is ninooooo" />
     <MESSAGE value="more or less fixed some problems with lazylaod im still not satisfied but yeah" />
     <MESSAGE value="still having problems with the rdmbackgroundcolor but we will figure that out soon &lt;3" />
@@ -785,25 +818,11 @@
     <MESSAGE value="+improved the spinning wheel of the loading function looks now much better" />
     <MESSAGE value="pomn" />
     <MESSAGE value="++ HOOOOLY MOLY WHAT AN ACT FUCKING ALERTS BUT I THINK IT WAS WORTH IT HAHA :)" />
-    <option name="LAST_COMMIT_MESSAGE" value="++ HOOOOLY MOLY WHAT AN ACT FUCKING ALERTS BUT I THINK IT WAS WORTH IT HAHA :)" />
+    <MESSAGE value="some buggs fixed but unfortunately the alert thing does not work as expected" />
+    <MESSAGE value="Menu is now really really cool =)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Menu is now really really cool =)" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/shared/utilities/loading.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/appStorage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="27" column="31" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/appReducer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
@@ -896,24 +915,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gallery/galleryApi.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gallery/galleryActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="178" selection-start-line="178" selection-end-line="178" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-            <element signature="n#!!block;n#closeFullscreenGallery#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/shared/Menu/blog_blue.svg">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -962,28 +963,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/shared/Menu/menu.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="667">
-          <caret line="39" column="14" selection-start-line="39" selection-start-column="12" selection-end-line="39" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/shared/picture/pictureActions.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <folding>
             <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/shared/Menu/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="52" column="26" lean-forward="true" selection-start-line="52" selection-start-column="26" selection-end-line="52" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1002,16 +986,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
           <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gallery/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-30">
-          <caret line="97" column="47" selection-start-line="97" selection-start-column="47" selection-end-line="97" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1106,23 +1080,6 @@
     <entry file="file://$PROJECT_DIR$/src/blog/blogsingle/blogsingleReducer.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gallery/galleryReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="724">
-          <caret line="83" column="48" selection-start-line="83" selection-start-column="48" selection-end-line="83" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gallery/components/galleryFullscreen.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="870">
-          <caret line="55" column="38" lean-forward="true" selection-start-line="55" selection-start-column="38" selection-end-line="55" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/shared/Alert/alertReducer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -1146,11 +1103,90 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/blog/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="40" column="36" selection-start-line="40" selection-start-column="36" selection-end-line="40" selection-end-column="36" />
+        <state relative-caret-position="800">
+          <caret line="40" column="53" lean-forward="true" selection-start-line="40" selection-start-column="53" selection-end-line="40" selection-end-column="53" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shared/Menu/menu.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="34" column="33" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shared/Menu/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="33" column="6" selection-start-line="33" selection-start-column="6" selection-end-line="33" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" column="18" selection-start-line="1" selection-end-line="1" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/home/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="620">
+          <caret line="31" column="88" selection-start-line="31" selection-start-column="88" selection-end-line="31" selection-end-column="88" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gallery/components/galleryFullscreen.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="39" column="38" lean-forward="true" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gallery/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="580">
+          <caret line="52" column="48" selection-start-line="52" selection-start-column="23" selection-end-line="52" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gallery/galleryActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="524">
+          <caret line="98" column="20" selection-start-line="98" selection-start-column="20" selection-end-line="98" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+            <element signature="n#!!block;n#closeFullscreenGallery#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gallery/galleryReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="564">
+          <caret line="93" column="13" selection-start-line="93" selection-start-column="13" selection-end-line="93" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gallery/galleryApi.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="43" column="114" selection-start-line="43" selection-start-column="114" selection-end-line="43" selection-end-column="114" />
         </state>
       </provider>
     </entry>

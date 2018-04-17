@@ -41,7 +41,7 @@ export default class GalleryFullscreen extends Component {
                             }
 
                             { this.props.item.map((post,index) =>
-                                <div className='gal_fullscreen_picture gal_fullscreen_middle_fix'>
+                                <div key={index} className='gal_fullscreen_picture gal_fullscreen_middle_fix'>
                                     <Picture
                                         key={index}
                                         featured_media_id={post.featured_media}

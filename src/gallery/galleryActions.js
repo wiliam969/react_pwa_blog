@@ -93,9 +93,10 @@ export const stopFetchPrevFullscreenGalleryItem = () => {
     }
 }
 
-export const fetchNextFullscreenGalleryItem = (Items) => {
+export const fetchNextFullscreenGalleryItem = (index,Items) => {
     return {
         type:'FETCH_NEXT_FULLSCREEN_GALLERY_ITEM',
+        Index:index,
         Items
     }
 }
@@ -192,7 +193,7 @@ export function prevFullScreenGalleryItem (index,props) {
     return function (dispatch) {
 
         if(props.id > 0 ) {
-        return GalleryApi.getGalleryNextPrevItem("before",date)
+        return GalleryApi.getGalleryNextPrevItem("after",date)
             .then(ApiResponse => {
                 console.log(ApiResponse)
                 return dispatch(fetchPrevFullscreenGalleryItem(index,ApiResponse))
@@ -206,13 +207,18 @@ export function prevFullScreenGalleryItem (index,props) {
 export function nextFullScreenGalleryitem (index,props) {
     console.log(props)
 
+    const date = props.item[0].date
 
     return function (dispatch) {
         if(index < (props.last_item - 1)) {
-            const next_id = props.id + 1
-            props.history.push('/gallery/' + next_id)
-            // return GalleryApi.getGalleryNextPrevItem("before",)
-            return dispatch(fetchNextFullscreenGalleryItem(index))
+            return GalleryApi.getGalleryNextPrevItem("before", date)
+                .then(ApiResponse => {
+                    console.log(ApiResponse)
+                    return dispatch(fetchNextFullscreenGalleryItem(index, ApiResponse))
+                }).catch(error => {
+                    console.log(error)
+                    return dispatch(stopFetchNextFullscreenGalleryItem())
+                })
         } else {
             return dispatch(stopFetchNextFullscreenGalleryItem())
         }

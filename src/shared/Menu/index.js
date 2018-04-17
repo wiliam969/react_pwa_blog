@@ -60,7 +60,7 @@ export default class Menu extends Component {
                         <Navbar fixedTop={true} fluid={true} id="nav-menu-navbar">
                             <Navbar.Header>
                                 <Navbar.Brand>
-                                    <NavLink className="nav-items" to="/">Kerstin Witte</NavLink>
+                                    <NavLink className="nav-items" to="/">{process.env.REACT_APP_IDB_NAME}</NavLink>
                                 </Navbar.Brand>
                             </Navbar.Header>
                             <Nav id="nav-menu-nav">

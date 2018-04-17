@@ -14,15 +14,12 @@ import {
 
 import "./gallery.css"
 
-import Loading from '../shared/utilities/loading'
 import GalleryGrid from "./components/galleryGrid"
 import GalleryFullscreen from './components/galleryFullscreen'
-import GalleryFullscreenSlider from './components/galleryFullscreenSlider'
 import LazyLoader from '../shared/lazyloader/lazyloader'
-import rBGColorGenerator from "../shared/utilities/randomBackgroundColor";
 
 /*
-        This Gallery is heavily dependent on Instagramm its has some aspects on his own but most ideas rely on the concept of how instagramm/facebook is handling data
+        This Gallery is heavily inspired on Instagramm its has some aspects on his own but most ideas rely on the concept of how instagramm/facebook is handling data
         Todo: I want to create a Slider with the react-slick plugin so the fullscreen gallery is much smoother and way cooler
         Todo: If i click on the Next or Prev Btn in Fullscreen the Link does not get updated
         Todo: if i already looked at half of the pictures in Fullscreen it should load more Items for the Gallery
@@ -38,7 +35,6 @@ class Gallery extends Component {
     componentDidMount() {
         const {dispatch} = this.props
         if(this.props.gallery.Items.length === 0) {
-            console.log("hello")
             dispatch(fetchGalleryItems(this.props))
         }
 
@@ -47,8 +43,6 @@ class Gallery extends Component {
         if(this.props.match.params.slug && !this.props.gallery.isFullscreen) {
             dispatch(fetchURLFullscreenGalleryItem(this.props))
         }
-
-        // rBGColorGenerator.randomBackgroundColor("gallery-loading-container", 2500)
     }
 
     loadFullScreenPicture(props,index) {
@@ -75,68 +69,47 @@ class Gallery extends Component {
         return(
             <div className="container gallery-container">
                 <Helmet>
-                    {/*<meta name="description" content={this.props.BlogSingle.items[0].content.rendered}/>*/}
-                    {/*<meta name="keywords" content={this.props.BlogSingle.items[0].tags}/>*/}
                     <title>Gallery</title>
                     <link rel="canonical" href={window.location.href}/>
                 </Helmet>
-                {/*{this.props.gallery.isFetching ?*/}
-                    {/*<Loading/>*/}
-                    {/*:*/}
-                    <div className="gallery-wrapper">
-                        <div className="gallery-loading-container"/>
-                        {this.props.gallery.didInvalidate &&
-                            <p>Something went wrong! Sorry.</p>
-                        }
 
-                        {!this.props.gallery.isFetching && !this.props.gallery.didInvalidate &&
-                            <div>
-                                <GalleryFullscreenSlider
-                                    history={this.props.history}
-                                    last_item={this.props.gallery.Items.length}
-                                    item={this.props.gallery.current_item}
-                                    id={this.props.gallery.current_id}
-                                    dispatch={this.props.dispatch}
-                                    prevPicture={this.prevFullScreenPicture}
-                                    nextPicture={this.nextFullScreenPicture}
-                                    closeFull={this.closeFullscreen}
-                                    isPrev={this.props.gallery.isPrev}
-                                    isNext={this.props.gallery.isNext}
-                                    isFullscreen={this.props.gallery.isFullscreen}
-                                    next_state={this.props.gallery.next_state}
-                                    prev_state={this.props.gallery.prev_state}
-                                    isURLFullscreen={this.props.gallery.isURLFullscreen}/>
-                                {/*<GalleryFullscreen*/}
-                                    {/*history={this.props.history}*/}
-                                    {/*last_item={this.props.gallery.Items.length}*/}
-                                    {/*item={this.props.gallery.current_item}*/}
-                                    {/*id={this.props.gallery.current_id}*/}
-                                    {/*dispatch={this.props.dispatch}*/}
-                                    {/*prevPicture={this.prevFullScreenPicture}*/}
-                                    {/*nextPicture={this.nextFullScreenPicture}*/}
-                                    {/*closeFull={this.closeFullscreen}*/}
-                                    {/*isPrev={this.props.gallery.isPrev}*/}
-                                    {/*isNext={this.props.gallery.isNext}*/}
-                                    {/*isFullscreen={this.props.gallery.isFullscreen}*/}
-                                    {/*next_state={this.props.gallery.next_state}*/}
-                                    {/*prev_state={this.props.gallery.prev_state}*/}
-                                    {/*isURLFullscreen={this.props.gallery.isURLFullscreen}/>*/}
+                <div className="gallery-wrapper">
+                    <div className="gallery-loading-container"/>
+                    {this.props.gallery.didInvalidate &&
+                        <p>Something went wrong! Sorry.</p>
+                    }
 
-                                <GalleryGrid
-                                    items={this.props.gallery.Items}
-                                    dispatch={this.props.dispatch}
-                                    onClickedPicture={this.loadFullScreenPicture}/>
-                            </div>
-                        }
+                    {!this.props.gallery.isFetching && !this.props.gallery.didInvalidate &&
+                        <div>
+                            <GalleryFullscreen
+                                history={this.props.history}
+                                last_item={this.props.gallery.Items.length}
+                                item={this.props.gallery.current_item}
+                                id={this.props.gallery.current_id}
+                                dispatch={this.props.dispatch}
+                                prevPicture={this.prevFullScreenPicture}
+                                nextPicture={this.nextFullScreenPicture}
+                                closeFull={this.closeFullscreen}
+                                isPrev={this.props.gallery.isPrev}
+                                isNext={this.props.gallery.isNext}
+                                isFullscreen={this.props.gallery.isFullscreen}
+                                next_state={this.props.gallery.next_state}
+                                prev_state={this.props.gallery.prev_state}
+                                isURLFullscreen={this.props.gallery.isURLFullscreen}/>
 
-                        <LazyLoader
-                            type={ () => {this.fetchLazyGallery(this.props.gallery.LazyPage)}}
-                            fetch={this.props.gallery.isFetchingLazy}
-                            stop={this.props.gallery.stopLazyLoad}
-                            name="Gallery">
-                        </LazyLoader>
-                    </div>
-                // }
+                            <GalleryGrid
+                                items={this.props.gallery.Items}
+                                dispatch={this.props.dispatch}
+                                onClickedPicture={this.loadFullScreenPicture}/>
+                        </div>
+                    }
+                    <LazyLoader
+                        type={ () => {this.fetchLazyGallery(this.props.gallery.LazyPage)}}
+                        fetch={this.props.gallery.isFetchingLazy}
+                        stop={this.props.gallery.stopLazyLoad}
+                        name="Gallery">
+                    </LazyLoader>
+                </div>
             </div>
         );
     }

@@ -40,7 +40,8 @@ export default class GalleryApi {
 
     static getGalleryNextPrevItem(type,date) {
         console.log(date)
-        return fetch(process.env.REACT_APP_API_URI + 'gallery/?' + type + '=' + date + "&per_page=1&page=1", {method: 'GET'})
+        const order = type === "after" ? "asc" : "desc"
+        return fetch(process.env.REACT_APP_API_URI + 'gallery/?' + type + '=' + date + '&per_page=1&page=1&order=' + order, {method: 'GET'})
             .then(response => response.json())
             .then(responseJson => {
                 console.log(responseJson)

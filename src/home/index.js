@@ -30,8 +30,6 @@ class Home extends Component {
                 {/*</div>*/}
 
                 <Slider className="carousel" swipeOptions={{continuous: true}}></Slider>
-
-                <img src="https://1.bp.blogspot.com/_CWw5NMM8rhU/TKRxpxonwBI/AAAAAAAAEhU/iUI35tWq6gg/s1600/0-ALBERTO+VARGAS-hindart3.jpg"></img>
             </div>
         )
     }

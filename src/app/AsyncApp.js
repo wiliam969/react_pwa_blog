@@ -26,6 +26,10 @@ class AsyncApp extends Component {
 
 
     /*
+        Here happens a lot of the magic!
+        Were init the whole React Router Dom Magic with a Switch (also to get more perf)
+        Also here we have a nice little Alert handler which fetches all the errors =)
+        Currently we also have here a Loading class which stops if the router sends a request
         Todo: EVERY Function should be commented aswell as EVERY class
         Todo: We NEED a Socialmedia plugin which has to work with the gallery as well as the blogs
      */

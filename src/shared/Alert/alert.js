@@ -2,7 +2,7 @@ import React , { Component } from 'react'
 import { Alert, Row, Grid } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import PropTypes from "prop-types";
-import {fetchAlert} from "./alertActions";
+import { closSpecificAlert } from "./alertActions";
 
 class AlertAction extends Component {
 
@@ -10,41 +10,28 @@ class AlertAction extends Component {
         super(props)
 
         this.handleDismiss = this.handleDismiss.bind(this);
-        this.handleShow    = this.handleShow.bind(this);
-
-        this.state = {
-            show: true
-        }
     }
 
-    componentDidMount() {
+    handleDismiss(index) {
         const { dispatch } = this.props
-        dispatch(fetchAlert("success","<p>Everything works as expected</p>"))
-    }
-
-    handleDismiss() {
-        this.setState({ show: false })
-    }
-
-    handleShow() {
-        this.setState({ show: true })
+        dispatch(closSpecificAlert(index))
     }
 
     render() {
-            return(
-                <Grid className="alert-container">
-                    {this.props.alert.items.length > 0 &&
-                        this.props.alert.items.map((post,index) =>
-                            <Row className="alert-row">
-                                <Alert key={index} bsStyle={post.alertType} onDismiss={this.handleDismiss}>
-                                    <div className="alert-content" dangerouslySetInnerHTML={{__html: post.content}}/>
-                                </Alert>
-                            </Row>
-                        )
-                    }
-                </Grid>
-            )
-        }
+        return(
+            <Grid className="alert-container">
+                {this.props.alert.items.length > 0 &&
+                    this.props.alert.items.map((post,index) =>
+                        <Row className="alert-row">
+                        <Alert key={index} bsStyle={post.alertType}>
+                        <div className="alert-content" dangerouslySetInnerHTML={{__html: post.content}}/>
+                        </Alert>
+                        </Row>
+                    )
+                }
+            </Grid>
+        )
+    }
 }
 
 AlertAction.propTypes = {

@@ -38,8 +38,7 @@ class Blog extends Component {
             dispatch(fetchBlogPreviews(this.props))
         }
 
-        dispatch(fetchAlert("success","<h4>you did it</h4>"))
-
+        dispatch(fetchAlert("warning","<h4>ok</h4>"))
         // rBGColorGenerator.randomBackgroundColor("home-loading-container", 2500)
     }
 
@@ -77,6 +76,7 @@ class Blog extends Component {
                                 <LoadingBtn name="Search for new Blogs" onClick={this.fetchNewPosts}></LoadingBtn>
                             }
                         </div>
+
                         {   this.props.Blog.didInvalidate &&
                             <p>Something went Wrong</p>
                         }

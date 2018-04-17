@@ -1,4 +1,4 @@
-import { RECEIVE_ALERT } from "./alertActions";
+import { RECEIVE_ALERT,CLOSE_ALERT } from "./alertActions";
 
 function Alert(state = {
     inc:0,
@@ -10,17 +10,24 @@ function Alert(state = {
                 items: state.items.concat({
                     alertType: action.alertType,
                     content: action.content,
+                    isActive:true,
                 }),
             }
+        case CLOSE_ALERT:
+            return state
         default:
             return state
     }
 }
 
-function receiveAlert(post,action) {
+
+
+
+function closeAlert(post,action) {
+    console.log(post)
+
     return Object.assign({}, post, {
-        alertType: action.alertType,
-        content: action.contze
+        isActive: action.isActive
     })
 }
 

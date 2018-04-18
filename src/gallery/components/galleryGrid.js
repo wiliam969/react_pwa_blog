@@ -8,6 +8,16 @@ const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
 export default class GalleryGrid extends Component{
 
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            margin: [10,10]
+        }
+
+        this.LayoutFix = this.LayoutFix.bind(this)
+    }
+
     generateLayout(height) {
         const height_adjustment = height !== 1 ? height : 1
         return this.props.items.map((post,index) => {
@@ -17,6 +27,17 @@ export default class GalleryGrid extends Component{
 
     LayoutFix(containerWidth,margin,cols,containerPadding) {
         console.log("containerWidth: " + containerWidth + " - " + "margin: " + margin + " - " + "cols: " + cols + " - " + "containerPadding: " + containerPadding)
+        margin = 2
+
+        if(containerWidth <= 960 && containerWidth > 480) {
+            this.setState({
+                margin: [5,5]
+            })
+        } else if (containerWidth <= 480) {
+            this.setState({
+                margin: [2,2]
+            })
+        }
     }
 
 
@@ -41,6 +62,7 @@ export default class GalleryGrid extends Component{
                     breakpoints={{desktop: 768, mobile: 480, phone:0}}
                     cols={{ desktop: 12, mobile: 12, phone:12}}
                     useCSSTransforms={true}
+                    margin={this.state.margin}
                     onWidthChange={this.LayoutFix} >
                     {this.props.items.map((post,index) =>
                         <div className="box" key={index} onClick={ () => this.props.onClickedPicture(this.props,index)}>

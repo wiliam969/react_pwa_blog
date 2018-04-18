@@ -5,7 +5,7 @@
     transition: background 2.5s;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
     .gallery-container {
         padding:0px;
     }

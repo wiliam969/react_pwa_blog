@@ -59,7 +59,7 @@ export default class BlogGrid extends Component {
             <div className="blog-grid-preview-container">
             {this.props.blogs.length > 0 &&
             <ResponsiveReactGridLayout className="layout" layouts={layouts} breakpoints={{lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0}}
-                                       cols={{lg: 12, md: 12, sm: 12, xs: 12, xxs: 12}} useCSSTransforms={true} rowHeight={490}>
+                                       cols={{lg: 12, md: 12, sm: 12, xs: 12, xxs: 12}} useCSSTransforms={true} autoSize={true}>
                 {this.props.blogs.map((post,index) =>
                         <div className="blog-grid-preview-item" key={index}>
                             <div className="blog-grid-preview-fix">

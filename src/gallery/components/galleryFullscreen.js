@@ -36,7 +36,12 @@ export default class GalleryFullscreen extends Component {
         return (
             <div>
                 { this.props.item.map((post,index) =>
-                <Modal key={index} bsSize="large" show={this.props.isFullscreen} onHide={ (e) => this.closeButton(e,this.props)}>
+                <Modal
+                    key={index}
+                    bsSize="large"
+                    show={this.props.isFullscreen}
+                    onHide={ (e) => this.closeButton(e,this.props)}
+                    dialogClassName="container">
                         <Modal.Header closeButton>
                             {post.title.rendered}
                         </Modal.Header>

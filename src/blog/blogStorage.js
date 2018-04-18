@@ -8,7 +8,7 @@ export default class BlogStorage {
             })
     }
     static getBlogPreview() {
-        return db.blog.orderBy('date').reverse().limit(4).toArray()
+        return db.blog.orderBy('date').reverse().limit(3).toArray()
             .then(bitems => {
                 return bitems
             })
@@ -19,7 +19,7 @@ export default class BlogStorage {
     }
 
     static updateOldestDate(date) {
-        const oldestDate = date[3].date
+        const oldestDate = date[2].date
 
         return db.timestamp.put({oldestDate:oldestDate, id: 1})
     }

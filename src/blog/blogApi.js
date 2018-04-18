@@ -2,7 +2,7 @@ import db from '../boot/bootIndexeddb'
 
 export default class BlogApi {
     static getLatestBlogList() {
-        return fetch(process.env.REACT_APP_API_URI + 'posts?per_page=4', {method: 'GET'})
+        return fetch(process.env.REACT_APP_API_URI + 'posts?per_page=3', {method: 'GET'})
         .then((response) => response.json())
         .then(responseJson => {
             return responseJson
@@ -16,7 +16,7 @@ export default class BlogApi {
             .then(response => {
                 const oldestDate = response.oldestDate
 
-                return fetch(process.env.REACT_APP_API_URI + 'posts?before=' + oldestDate + '&per_page=4&page=' + page, {method: 'GET'})
+                return fetch(process.env.REACT_APP_API_URI + 'posts?before=' + oldestDate + '&per_page=3&page=' + page, {method: 'GET'})
                     .then((response) => response.json())
                     .then(responseJson => {
                         return responseJson

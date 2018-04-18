@@ -32,27 +32,19 @@
 
 
 .gal_fullscreen_btn_prev {
-  height:auto;
-  width:auto;
-  margin:0;
-  position:absolute;
-  top:50%;
-  left:5%;
-  margin-right:-50%;
-  transform: translate(-50%, -50%);
-  z-index:15;
+  height:25px;
+  width:25px;
+  position:relative;
+  display:inline-block;
+  float:left;
   cursor:pointer;
 }
 
 .gal_fullscreen_btn_next {
-  height:auto;
-  width:auto;
-  margin:0;
-  position:absolute;
-  top:50%;
-  left:95%;
-  margin-right:-50%;
-  transform: translate(-50%, -50%);
-  z-index:15;
+  height:25px;
+  width:25px;
+  position:relative;
+  display:inline-block;
+  float:right;
   cursor:pointer;
 }

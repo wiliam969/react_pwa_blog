@@ -4,3 +4,9 @@
     min-height:300px;
     transition: background 2.5s;
 }
+
+@media (max-width: 480px) {
+    .gallery-container {
+        padding:0px;
+    }
+}

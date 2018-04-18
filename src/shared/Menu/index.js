@@ -35,30 +35,22 @@ export default class Menu extends Component {
                         <Nav id="nav-menu-mobile-nav">
                             <NavItem>
                                 <NavLink eventKey={1} exact className="nav-items-mobile" to="/">
-                                    <Button bsSize="large">
-                                        <Glyphicon glyph="home" />
-                                    </Button>
+                                    <Glyphicon glyph="home" />
                                 </NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink eventKey={2} className="nav-items-mobile"       to="/blog/">
-                                    <Button bsSize="large">
-                                        <Glyphicon glyph="align-left" />
-                                    </Button>
+                                    <Glyphicon glyph="align-left" />
                                 </NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink eventKey={3} className="nav-items-mobile"       to="/aboutme">
-                                    <Button bsSize="large">
-                                        <Glyphicon glyph="user" />
-                                    </Button>
+                                    <Glyphicon glyph="user" />
                                 </NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink eventKey={4} className="nav-items-mobile"       to="/gallery">
-                                    <Button bsSize="large">
-                                        <Glyphicon glyph="picture" />
-                                    </Button>
+                                    <Glyphicon glyph="picture" />
                                 </NavLink>
                             </NavItem>
                         </Nav>

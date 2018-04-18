@@ -48,7 +48,7 @@ export default class GalleryGrid extends Component{
             // "sm": this.generateMobileLayout(),
             // "xs": this.generateMobileLayout(),
             // "xxs": this.generateMobileLayout(),
-            "phone": this.generateLayout(0.5),
+            "phone": this.generateLayout(0.75),
             "desktop" : this.generateLayout(2),
             "mobile" : this.generateLayout(1),
         }

@@ -38,7 +38,6 @@ class Blog extends Component {
             dispatch(fetchBlogPreviews(this.props))
         }
 
-        dispatch(fetchAlert("warning","<h4>ok</h4>"))
         // rBGColorGenerator.randomBackgroundColor("home-loading-container", 2500)
     }
 

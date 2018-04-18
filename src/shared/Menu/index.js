@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import './menu.css'
 import triangle from './triangle.svg'
 
-import { Col, Grid, Row, Nav, Navbar, NavItem, Glyphicon} from 'react-bootstrap'
+import { Col, Grid, Row, Nav, Navbar, NavItem, Glyphicon, Button} from 'react-bootstrap'
 
 
 export default class Menu extends Component {
@@ -35,22 +35,30 @@ export default class Menu extends Component {
                         <Nav id="nav-menu-mobile-nav">
                             <NavItem>
                                 <NavLink eventKey={1} exact className="nav-items-mobile" to="/">
-                                    <Glyphicon glyph="home" />
+                                    <Button bsSize="large">
+                                        <Glyphicon glyph="home" />
+                                    </Button>
                                 </NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink eventKey={2} className="nav-items-mobile"       to="/blog/">
-                                    <Glyphicon glyph="align-left" />
+                                    <Button bsSize="large">
+                                        <Glyphicon glyph="align-left" />
+                                    </Button>
                                 </NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink eventKey={3} className="nav-items-mobile"       to="/aboutme">
-                                    <Glyphicon glyph="user" />
+                                    <Button bsSize="large">
+                                        <Glyphicon glyph="user" />
+                                    </Button>
                                 </NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink eventKey={4} className="nav-items-mobile"       to="/gallery">
-                                    <Glyphicon glyph="picture" />
+                                    <Button bsSize="large">
+                                        <Glyphicon glyph="picture" />
+                                    </Button>
                                 </NavLink>
                             </NavItem>
                         </Nav>

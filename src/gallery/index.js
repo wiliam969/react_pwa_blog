@@ -18,6 +18,8 @@ import GalleryGrid from "./components/galleryGrid"
 import GalleryFullscreen from './components/galleryFullscreen'
 import LazyLoader from '../shared/lazyloader/lazyloader'
 
+import GalleryMasonry from "./components/galleryMasonry"
+
 /*
         This Gallery is heavily inspired on Instagramm its has some aspects on his own but most ideas rely on the concept of how instagramm/facebook is handling data
         Todo: I want to create a Slider with the react-slick plugin so the fullscreen gallery is much smoother and way cooler
@@ -65,6 +67,7 @@ class Gallery extends Component {
         const { dispatch } = this.props
         dispatch(fetchLazyGalleryItems(page))
     }
+
     render() {
         return(
             <div className="container gallery-container">
@@ -114,6 +117,10 @@ class Gallery extends Component {
         );
     }
 }
+
+
+
+
 
 Gallery.propTypes = {
     dispatch: PropTypes.func

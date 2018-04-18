@@ -22,6 +22,10 @@ export default class GalleryFullscreen extends Component {
         this.props.nextPicture(this.props,this.props.id)
     }
 
+    /**
+     * Todo: Here i should use the Modal function of Bootstrap
+     * @returns {*}
+     */
     render() {
         const fuckme = {
             pointerEvents: 'none',

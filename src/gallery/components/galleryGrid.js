@@ -13,8 +13,9 @@ const ResponsiveReactGridLayout = WidthProvider(Responsive);
 export default class GalleryGrid extends Component{
 
     generateLayout(height) {
+        const height_adjustment = height !== 1 ? height : 1
         return this.props.items.map((post,index) => {
-            return { x: index * 4 % 12, y: Math.floor(index/3), w: 4, h:height, i:index.toString(), "static": true,}
+            return { x: index * 4 % 12, y: Math.floor(index/3) * height_adjustment, w: 4, h:height, i:index.toString(), "static": true,}
         })
     }
 
@@ -25,8 +26,8 @@ export default class GalleryGrid extends Component{
             // "sm": this.generateMobileLayout(),
             // "xs": this.generateMobileLayout(),
             // "xxs": this.generateMobileLayout(),
-            "phone": this.generateLayout(1),
-            "desktop" : this.generateLayout(1),
+            "phone": this.generateLayout(0.5),
+            "desktop" : this.generateLayout(2),
             "mobile" : this.generateLayout(1),
         }
 
@@ -38,7 +39,7 @@ export default class GalleryGrid extends Component{
             <div>
                 {this.props.items.length > 0 &&
                 <ResponsiveReactGridLayout className="layout" layouts={layouts} breakpoints={{desktop: 768, mobile: 480, phone:0}}
-                                           cols={{ desktop: 12, mobile: 12, phone:12}} useCSSTransforms={true}>
+                                           cols={{ desktop: 12, mobile: 12, phone:12}} useCSSTransforms={true} >
                     {this.props.items.map((post,index) =>
                         <div className="box" key={index} onClick={ () => this.props.onClickedPicture(this.props,index)}>
                             <Link key={post.id} to={{ pathname: `/gallery/${post.slug}`, state: {modal:true} }} replace>

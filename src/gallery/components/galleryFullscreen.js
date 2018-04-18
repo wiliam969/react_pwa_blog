@@ -3,12 +3,13 @@ import Picture from '../../shared/picture/index'
 import Arrow from '../../shared/utilities/arrow'
 import './fullscreen.css'
 
+import { Modal } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 export default class GalleryFullscreen extends Component {
 
     closeButton (e) {
-        e.stopPropagation()
+        //e.stopPropagation()
         this.props.closeFull(this.props)
     }
 
@@ -35,17 +36,13 @@ export default class GalleryFullscreen extends Component {
         const clapme = {}
         return (
             <div>
-                { this.props.isFullscreen &&
-                    <div className='gal_fullscreen_container'>
-                        <div className='gal_fullscreen_close' onClick={ (e) => this.closeButton(e,this.props)}>
-                            {!this.props.isURLFullscreen &&
-                                <div className='gal_fullscreen_btn_prev' onClick={ (e) => this.prevButton(e,this.props)} style={this.props.prev_state < 0 ? fuckme : clapme}>
-                                    <Arrow type="left"/>
-                                </div>
-                            }
-
-                            { this.props.item.map((post,index) =>
-                                <div key={index} className='gal_fullscreen_picture gal_fullscreen_middle_fix'>
+                    { this.props.item.map((post,index) =>
+                    <Modal key={index} bsSize="large" show={this.props.isFullscreen} onHide={ (e) => this.closeButton(e,this.props)}>
+                            <Modal.Header closeButton>
+                                {post.title.rendered}
+                            </Modal.Header>
+                            <Modal.Body>
+                                <div style={{ width : "100%"}}>
                                     <Picture
                                         key={index}
                                         featured_media_id={post.featured_media}
@@ -53,15 +50,29 @@ export default class GalleryFullscreen extends Component {
                                         posttype="gallery"
                                         height="100vh"
                                         width="100%"
-                                        picture_width={true}
-                                        picture_height={true}
                                         backgroundSize="contain">
                                     </Picture>
                                 </div>
-                            )
-                            }
-                            {!this.props.isURLFullscreen && <div className='gal_fullscreen_btn_next' onClick={ (e) => this.nextButton(e,this.props)} style={this.props.last_item === this.props.next_state ? fuckme : clapme}><Arrow type="right" ></Arrow></div>}
-                        </div>
+                            </Modal.Body>
+
+                            <Modal.Footer>
+                                {!this.props.isURLFullscreen &&
+                                <div className='gal_fullscreen_btn_prev' onClick={ (e) => this.prevButton(e,this.props)} style={this.props.prev_state < 0 ? fuckme : clapme}>
+                                    <Arrow type="left"/>
+                                </div>
+                                }
+                                {!this.props.isURLFullscreen &&
+                                <div className='gal_fullscreen_btn_next' onClick={ (e) => this.nextButton(e,this.props)} style={this.props.last_item === this.props.next_state ? fuckme : clapme}>
+                                    <Arrow type="right" />
+                                </div>
+                                }
+                            </Modal.Footer>
+
+                    </Modal>
+                    )}
+                {!this.props.isURLFullscreen &&
+                    <div className='gal_fullscreen_btn_next' onClick={ (e) => this.nextButton(e,this.props)} style={this.props.last_item === this.props.next_state ? fuckme : clapme}>
+                        <Arrow type="right" />
                     </div>
                 }
             </div>

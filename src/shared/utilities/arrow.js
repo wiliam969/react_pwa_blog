@@ -18,8 +18,8 @@ export default class Arrow extends Component {
         const arrowContainer = "arrow-container"
         const arrowWrapper = "arrow-wrapper"
         const img_style = {
-            width: 50 + "px",
-            height: 50 + "px"
+            width: 25 + "px",
+            height: 25 + "px"
         }
         const loadingType = this.props.type
 

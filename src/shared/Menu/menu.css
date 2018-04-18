@@ -40,3 +40,17 @@
 .glyphicon {
     font-size: 2rem;
 }
+
+@media (min-width:768px) {
+    #nav-menu-mobile-nav {
+        float:none;
+    }
+
+    #nav-menu-mobile-navbar>.container {
+        width: 100%
+    }
+
+    .nav>li {
+        float:none;
+    }
+}

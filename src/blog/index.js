@@ -8,10 +8,6 @@ import {
     fetchLazyBlogPreview
 } from './blogActions'
 
-import {
-    fetchAlert
-} from "../shared/Alert/alertActions";
-
 import Loading from '../shared/utilities/loading'
 import LoadingBtn from '../shared/utilities/loading-btn'
 import LazyLoader from '../shared/lazyloader/lazyloader'

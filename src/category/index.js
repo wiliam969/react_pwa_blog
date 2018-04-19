@@ -7,7 +7,6 @@ import {
 
 import BlogGrid from '../shared/blog/bloggrid'
 import LazyLoader from '../shared/lazyloader/lazyloader'
-import BlogListLazy from './components/blogListLazy'
 
 import Loading from '../shared/utilities/loading'
 

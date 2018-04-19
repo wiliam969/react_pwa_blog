@@ -9,7 +9,6 @@ import {
 } from './blogsingleActions'
 
 import Blog from './content/index'
-import Comments from './comments/index'
 
 import Loading from '../../shared/utilities/loading'
 import LazyLoader from '../../shared/lazyloader/lazyloader'

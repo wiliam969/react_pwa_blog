@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import './menu.css'
-import triangle from './triangle.svg'
 
-import { Col, Grid, Row, Nav, Navbar, NavItem, Glyphicon, Button} from 'react-bootstrap'
+import { Col, Grid, Row, Nav, Navbar, NavItem, Glyphicon} from 'react-bootstrap'
 
 
 export default class Menu extends Component {
@@ -23,8 +22,6 @@ export default class Menu extends Component {
         const eventID = parseInt(match.params.eventID)
         return !isNaN(eventID) && eventID % 2 === 1
     }
-
-
 
     render() {
         return (

@@ -4,11 +4,6 @@
 
 import BlogsingleApi from './blogsingleApi'
 
-import {
-    isFetchingData,
-    stopFetchingData
-} from "../../app/appActions";
-
 export const REQUEST_BLOG_SINGLE = 'REQUEST_BLOG_SINGLE'
 export const REQUEST_LAZY_BLOG_SINGLE = 'REQUEST_LAZY_BLOG_SINGLE'
 export const RECEIVE_BLOG_SINGLE = 'RECEIVE_BLOG_SINGLE'

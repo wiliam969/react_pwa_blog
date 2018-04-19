@@ -26,12 +26,10 @@ export const invalidateSlider = (slider) => {
 }
 
 export function fetchSlider (cat = 1) {
-    const category = cat
+    return function (dispatch,cat) {
+        dispatch(requestSlider(cat))
 
-    return function (dispatch,category) {
-        dispatch(requestSlider(category))
-
-        return SliderApi.getSlider(category)
+        return SliderApi.getSlider(cat)
             .then(SliderResponse => {
                 if(SliderResponse != null) {
                     dispatch(receiveSlider(SliderResponse))

@@ -4,7 +4,6 @@ import Arrow from '../../shared/utilities/arrow'
 import './fullscreen.css'
 
 import { Modal } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
 
 export default class GalleryFullscreen extends Component {
 

@@ -18,8 +18,6 @@ import GalleryGrid from "./components/galleryGrid"
 import GalleryFullscreen from './components/galleryFullscreen'
 import LazyLoader from '../shared/lazyloader/lazyloader'
 
-import GalleryMasonry from "./components/galleryMasonry"
-
 /*
         This Gallery is heavily inspired on Instagramm its has some aspects on his own but most ideas rely on the concept of how instagramm/facebook is handling data
         Todo: If i click on the Next or Prev Btn in Fullscreen the Link does not get updated
@@ -28,10 +26,6 @@ import GalleryMasonry from "./components/galleryMasonry"
         Todo: The Gallery Items need a Title aswell as an Description which we can Display in the HTML Title
 */
 class Gallery extends Component {
-
-    constructor(props) {
-        super(props)
-    }
 
     componentDidMount() {
         const {dispatch} = this.props

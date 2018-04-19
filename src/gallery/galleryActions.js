@@ -158,7 +158,7 @@ export function fetchLazyGalleryItems (page) {
             .then(ApiResponse => {
                 console.log(ApiResponse)
 
-                if(typeof ApiResponse.data != "undefined") {
+                if(typeof ApiResponse.data !== "undefined") {
 
                     console.log(ApiResponse)
                     return dispatch(stopLazyGalleryItems())
@@ -175,10 +175,6 @@ export function fetchLazyGalleryItems (page) {
 }
 
 export function fetchFullscreenGalleryItem (id) {
-
-
-
-    const gal_id = id
 
     return function (dispatch) {
         dispatch(requestFullscreenGalleryItems())

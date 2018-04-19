@@ -114,7 +114,7 @@ export function fetchLazyBlogPreview(page) {
 
         BlogApi.getLazyBlogPreview(page)
             .then(ApiResponse => {
-                if(typeof ApiResponse.data != "undefined") {
+                if(typeof ApiResponse.data !== "undefined") {
                     return dispatch(stopLazyBlogPreview())
 
                 } else if(ApiResponse.length === 0){

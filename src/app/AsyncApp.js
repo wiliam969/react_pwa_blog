@@ -13,8 +13,7 @@ import Category from '../category/index'
 import Home from '../home/index'
 import Alert from '../shared/Alert/alert'
 
-import { Router,BrowserRouter ,Route,Redirect,Switch } from 'react-router-dom'
-import createBrowserHistory from 'history/createBrowserHistory'
+import { BrowserRouter ,Route,Redirect,Switch } from 'react-router-dom'
 import Loading from "../shared/utilities/loading";
 
 
@@ -34,7 +33,6 @@ class AsyncApp extends Component {
         Todo: We NEED a Socialmedia plugin which has to work with the gallery as well as the blogs
      */
     render() {
-        const history = createBrowserHistory()
         return(
             <div id="app" style={this.main}>
                 <Helmet>

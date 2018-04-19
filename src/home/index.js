@@ -1,17 +1,11 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import Slider from '../shared/slider/index'
-import Loading from '../shared/utilities/loading'
-import Lazyloader from '../shared/lazyloader/lazyloader'
 
 import "./home.css"
 
 class Home extends Component {
-    constructor(props) {
-        super(props)
-    }
 
     componentDidMount() {
 

@@ -26,9 +26,6 @@ export default class GalleryGrid extends Component{
     }
 
     LayoutFix(containerWidth,margin,cols,containerPadding) {
-        console.log("containerWidth: " + containerWidth + " - " + "margin: " + margin + " - " + "cols: " + cols + " - " + "containerPadding: " + containerPadding)
-        margin = 2
-
         if(containerWidth <= 960 && containerWidth > 480) {
             this.setState({
                 margin: [5,5]

@@ -16,7 +16,7 @@ class Projects extends Component {
         return(
             <div className="container gallery-container">
                 <Helmet>
-                    <title>Gallery</title>
+                    <title>Projects</title>
                     <link rel="canonical" href={window.location.href}/>
                 </Helmet>
 
@@ -59,4 +59,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(Projects)
+//export default connect(mapStateToProps)(Projects)

@@ -71,6 +71,9 @@ export default class Menu extends Component {
                                     <NavLink className="nav-items" to="/aboutme">About Me</NavLink>
                                 </NavItem>
                                 <NavItem>
+                                    <NavLink className="nav-items" to="/projects">Projects</NavLink>
+                                </NavItem>
+                                <NavItem>
                                     <NavLink className="nav-items" to="/gallery">Gallery</NavLink>
                                 </NavItem>
                             </Nav>

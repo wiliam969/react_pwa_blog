@@ -46,7 +46,12 @@ export default class Menu extends Component {
                                 </NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink eventKey={4} className="nav-items-mobile"       to="/gallery">
+                                <NavLink eventKey={4} className="nav-items-mobile"       to="/projects">
+                                    <Glyphicon glyph="th-large"/>
+                                </NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink eventKey={5} className="nav-items-mobile"       to="/gallery">
                                     <Glyphicon glyph="picture" />
                                 </NavLink>
                             </NavItem>

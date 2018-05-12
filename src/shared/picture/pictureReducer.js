@@ -17,14 +17,14 @@ function Picture(state = {
                 didInvalidate: false,
             })
         case RECEIVE_PICTURE:
-            return {
+            return Object.assign({}, state,{
                 isFetching:false,
                 didInvalidate:false,
                 picture_obj: {
                     ...state.picture_obj,
                         [action.id]: action.picture.media_details.sizes,
                 }
-            }
+            })
         default:
             return state
     }

@@ -23,7 +23,7 @@ class Picture extends Component {
             transition:'opacity 2s',
         }
 
-        if(this.props.thumbnail != null) {
+        if(this.props.thumbnail != null && this.props.featured_media_id !== 0) {
             const thumbnail = this.props.thumbnail
             const type = thumbnail.hasOwnProperty(this.props.type) === true ? this.props.type : 'full'
             const picture_url = thumbnail[type].source_url
@@ -60,7 +60,7 @@ class Picture extends Component {
 
    render() {
        const onChange = (isVisible) => {
-           if(isVisible && this.props.thumbnail == null && this.isActive) {
+           if(isVisible && this.props.thumbnail == null && this.isActive && this.props.featured_media_id !== 0) {
                this.props.sendTheAlert(this.props.featured_media_id)
                this.isActive = false
            }

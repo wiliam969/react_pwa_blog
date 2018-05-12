@@ -9,26 +9,26 @@ export const REQUEST_PICTURE = 'REQUEST_PICTURE'
 export const RECEIVE_PICTURE = 'RECEIVE_PICTURE'
 export const INVALIDATE_PICTURE = 'INVALIDATE_PICTURE'
 
-export const requestPicture = (pictures) => {
+export const requestPicture = (pictureId) => {
     return {
         type: 'REQUEST_PICTURE',
-        id: pictures,
+        id: pictureId,
     }
 }
 
-export const receivePicture = (pictures,postid) => {
+export const receivePicture = (pictures,pictureId) => {
     return {
         type: 'RECEIVE_PICTURE',
         picture: pictures,
-        id:postid
+        id:pictureId
     }
 }
 
-export const invalidatePicture = (pictures,postid) => {
+export const invalidatePicture = (pictures,pictureId) => {
     return {
         type:'INVALIDATE_PICTURE',
         error:pictures,
-        id:postid
+        id:pictureId
     }
 }
 

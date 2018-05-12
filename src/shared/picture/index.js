@@ -23,7 +23,7 @@ class Picture extends Component {
             transition:'opacity 2s',
         }
 
-        if(this.props.thumbnail != null && this.props.thumbnail.isFetching !== true && this.props.thumbnail.didInvalidate !== true ) {
+        if(this.props.thumbnail != null && this.props.featured_media_id !== 0) {
             const thumbnail = this.props.thumbnail
             const type = thumbnail.hasOwnProperty(this.props.type) === true ? this.props.type : 'full'
             const picture_url = thumbnail[type].source_url
@@ -60,7 +60,7 @@ class Picture extends Component {
 
    render() {
        const onChange = (isVisible) => {
-           if(isVisible && this.props.thumbnail == null && this.isActive) {
+           if(isVisible && this.props.thumbnail == null && this.isActive && this.props.featured_media_id !== 0) {
                this.props.sendTheAlert(this.props.featured_media_id)
                this.isActive = false
            }
@@ -81,30 +81,23 @@ Picture.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
     let featured_media_id = 1
-    let thumbnail = {
-        isFetching:true,
-        didInvalidate:false,
-        itm:{}
-    }
+    let thumbnail = {}
     let type = "thumbnail"
     let backgroundsize = "contain"
     let is169 = false
-    let didInvalidate = false
 
     featured_media_id = ownProps.featured_media_id
-    thumbnail = Object.assign({}, state.Picture.picture_obj[featured_media_id])
-    didInvalidate = Object.assign({}, state.Picture)
+    thumbnail = Object.assign({}, state.Picture.picture_obj)
     type = ownProps.type
     backgroundsize = ownProps.backgroundsize
     is169 = ownProps.is169
 
     return {
         featured_media_id:featured_media_id,
-        thumbnail: thumbnail,
+        thumbnail: thumbnail[featured_media_id],
         type:type,
         backgroundsize:backgroundsize,
         is169:is169,
-        didInvalidate: didInvalidate,
     }
 }
 

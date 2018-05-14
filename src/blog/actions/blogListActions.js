@@ -1,48 +1,48 @@
 /**
  * Created by wiliam969 on 28.04.2017.
  */
-import BlogApi from './blogApi'
-import BlogStorage from './blogStorage'
+import BlogListApi from '../api/blogListApi'
+import BlogStorage from '../blogStorage'
 
 import {
     isFetchingData,
     stopFetchingData
-} from '../app/appActions'
+} from '../../app/appActions'
 
-export const REQUEST_BLOG_PREVIEW = 'REQUEST_BLOG_PREVIEW'
-export const REQUEST_LAZY_BLOG_PREVIEW = 'REQUEST_LAZY_BLOG_PREVIEW'
-export const REQUEST_NEW_BLOG_PREVIEW = 'REQUEST_NEW_BLOG_PREVIEW'
-export const RECEIVE_BLOG_PREVIEW = 'RECEIVE_BLOG_PREVIEW'
-export const RECEIVE_LOCAL_BLOG_PREVIEW = 'RECEIVE_LOCAL_BLOG_PREVIEW'
-export const RECEIVE_LAZY_BLOG_PREVIEW = 'RECEIVE_LAZY_BLOG_PREVIEW'
-export const INVALIDATE_BLOG_PREVIEW = 'INVALIDATE_BLOG_PREVIEW'
-export const STOP_LAZY_BLOG_PREVIEW = 'STOP_LAZY_BLOG_PREVIEW'
-export const RECEIVE_NEW_BLOG_PREVIEW = 'RECEIVE_NEW_BLOG_PREVIEW'
-export const STOP_NEW_BLOG_PREVIEW = 'STOP_NEW_BLOG_PREVIEW'
+export const REQUEST_BLOG_LIST = 'REQUEST_BLOG_PREVIEW'
+export const REQUEST_LAZY_BLOG_LIST = 'REQUEST_LAZY_BLOG_LIST'
+export const REQUEST_NEW_BLOG_LIST = 'REQUEST_NEW_BLOG_LIST'
+export const RECEIVE_BLOG_LIST = 'RECEIVE_BLOG_LIST'
+export const RECEIVE_LOCAL_BLOG_LIST = 'RECEIVE_LOCAL_BLOG_LIST'
+export const RECEIVE_LAZY_BLOG_LIST = 'RECEIVE_LAZY_BLOG_LIST'
+export const INVALIDATE_BLOG_LIST = 'INVALIDATE_BLOG_LIST'
+export const STOP_LAZY_BLOG_LIST = 'STOP_LAZY_BLOG_LIST'
+export const RECEIVE_NEW_BLOG_LIST = 'RECEIVE_NEW_BLOG_LIST'
+export const STOP_NEW_BLOG_LIST = 'STOP_NEW_BLOG_LIST'
 
 
 export const requestBlogPreview = (blogs) => {
     return {
-        type: 'REQUEST_BLOG_PREVIEW',
+        type: 'REQUEST_BLOG_LIST',
         blogs
     }
 }
 
 export const requestLazyBlogPreview = () => {
     return {
-        type:'REQUEST_LAZY_BLOG_PREVIEW',
+        type:'REQUEST_LAZY_BLOG_LIST',
     }
 }
 
 export const requestNewBlogPreview = () => {
     return {
-        type:'REQUEST_NEW_BLOG_PREVIEW'
+        type:'REQUEST_NEW_BLOG_LIST'
     }
 }
 
 export const receiveBlogpreview = (blogs) => {
     return {
-        type: 'RECEIVE_BLOG_PREVIEW',
+        type: 'RECEIVE_BLOG_LIST',
         blogs,
         receivedAt: Date.now(),
     }
@@ -50,7 +50,7 @@ export const receiveBlogpreview = (blogs) => {
 
 export const receiveLocalBlogPreview = (blogs) => {
     return {
-        type: 'RECEIVE_LOCAL_BLOG_PREVIEW',
+        type: 'RECEIVE_LOCAL_BLOG_LIST',
         blogs,
         receivedAt: Date.now()
     }
@@ -58,27 +58,27 @@ export const receiveLocalBlogPreview = (blogs) => {
 
 export const receiveLazyBlogPreview = (blogs) => {
     return {
-        type:'RECEIVE_LAZY_BLOG_PREVIEW',
+        type:'RECEIVE_LAZY_BLOG_LIST',
         blogs,
     }
 }
 
 export const invalidateBlogPreview = (blogs) => {
     return {
-        type:'INVALIDATE_BLOG_PREVIEW',
+        type:'INVALIDATE_BLOG_LIST',
         blogs
     }
 }
 
 export const stopLazyBlogPreview = () => {
     return {
-        type:'STOP_LAZY_BLOG_PREVIEW',
+        type:'STOP_LAZY_BLOG_LIST',
     }
 }
 
 export const receiveAfterBlogPreview = (blogs) => {
     return {
-        type:'RECEIVE_NEW_BLOG_PREVIEW',
+        type:'RECEIVE_NEW_BLOG_LIST',
         blogs,
         receivedAt: Date.now()
     }
@@ -86,7 +86,7 @@ export const receiveAfterBlogPreview = (blogs) => {
 
 export const stopNewBlogPreview = () => {
     return {
-        type:'STOP_NEW_BLOG_PREVIEW',
+        type:'STOP_NEW_BLOG_LIST',
     }
 }
 
@@ -99,7 +99,7 @@ export function fetchBlogPreviews(blogs) {
         dispatch(isFetchingData(blogs))
 
 
-    BlogApi.getLatestBlogList()
+    BlogListApi.getLatestBlogList()
         .then((posts) => {
             dispatch(receiveBlogpreview(posts))
 
@@ -120,7 +120,7 @@ export function fetchLazyBlogPreview(page) {
         dispatch(requestLazyBlogPreview())
 
 
-        BlogApi.getLazyBlogPreview(page)
+        BlogListApi.getLazyBlogPreview(page)
             .then(ApiResponse => {
                 if(typeof ApiResponse.data !== "undefined") {
                     return dispatch(stopLazyBlogPreview())
@@ -141,7 +141,7 @@ export function fetchNewBlogPreview() {
     return function (dispatch) {
         dispatch(requestNewBlogPreview())
 
-        return BlogApi.getnewBlogPreviews()
+        return BlogListApi.getnewBlogPreviews()
             .then(apiResponse => {
                 if(apiResponse.length === 0) {
                     return dispatch(stopNewBlogPreview())

@@ -6,7 +6,7 @@ import {
     fetchNewBlogPreview,
     fetchBlogPreviews,
     fetchLazyBlogPreview
-} from './blogActions'
+} from './actions/blogListActions'
 
 import Loading from '../shared/utilities/loading'
 import LoadingBtn from '../shared/utilities/loading-btn'
@@ -30,7 +30,7 @@ class Blog extends Component {
 
     componentDidMount() {
         const { dispatch } = this.props
-        if(this.props.Blog.items.length === 0) {
+        if(this.props.Blog.blogsListIds.length === 0) {
             dispatch(fetchBlogPreviews(this.props))
         }
 
@@ -52,9 +52,6 @@ class Blog extends Component {
      */
     render () {
         return (
-
-
-
             <div className="blog-container container">
                 <Helmet>
                     {/*<meta name="description" content={this.props.BlogSingle.items[0].content.rendered}/>*/}
@@ -79,7 +76,7 @@ class Blog extends Component {
                             <p>Something went Wrong</p>
                         }
                             <div className="blog-container">
-                                <BlogGrid blogs={this.props.Blog.items}></BlogGrid>
+                                <BlogGrid blogsbyId={this.props.Blog.blogsbyId} blogsListIds={this.props.Blog.blogsListIds}></BlogGrid>
 
                                 <LazyLoader type={this.fetchLazyPosts} fetch={this.props.Blog.isFetchingLazy} stop={this.props.Blog.stopLazyLoad} name="Blog"></LazyLoader>
                             </div>

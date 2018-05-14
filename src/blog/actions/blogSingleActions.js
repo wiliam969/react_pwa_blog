@@ -2,7 +2,7 @@
  * Created by wiliam969 on 28.04.2017.
  */
 
-import BlogsingleApi from './blogsingleApi'
+import BlogsingleApi from '../api/blogsingleApi'
 
 export const REQUEST_BLOG_SINGLE = 'REQUEST_BLOG_SINGLE'
 export const REQUEST_LAZY_BLOG_SINGLE = 'REQUEST_LAZY_BLOG_SINGLE'

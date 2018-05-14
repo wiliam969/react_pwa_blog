@@ -6,7 +6,7 @@ import { Helmet } from 'react-helmet'
 import {
     fetchBlogSingle,
     fetchLazyBlog,
-} from './blogsingleActions'
+} from '../actions/blogSingleActions'
 
 import Blog from './content/index'
 

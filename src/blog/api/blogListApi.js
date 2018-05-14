@@ -1,6 +1,6 @@
-import db from '../boot/bootIndexeddb'
+import db from '../../boot/bootIndexeddb'
 
-export default class BlogApi {
+export default class BlogListApi {
     static getLatestBlogList() {
         return fetch(process.env.REACT_APP_API_URI + 'posts?per_page=3', {method: 'GET'})
         .then((response) => response.json())

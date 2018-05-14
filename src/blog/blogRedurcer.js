@@ -74,23 +74,16 @@ function Blog(
                 blogsListIds:lazyblogsListIds,
 
             })
-
-            // return {
-            //     ...state,
-            //     LazyPage: state.LazyPage +1,
-            //     isFetchingLazy:false,
-            //     items: state.items.concat(action.blogs),
-            // }
         case RECEIVE_NEW_BLOG_LIST:
-            return {
-                ...state,
-                items: [
-                    ...action.blogs,
-                    ...state.items,
-                ],
+            let newblogsbyId = prepareBlogsbyIds(state,action)
+            let newblogsListIds = prepareNewBlogsLists(state,action)
+            return Object.assign({}, state,{
                 NewPage: state.NewPage +1,
                 isFetchingNew:false,
-            }
+                blogsbyId: newblogsbyId,
+                blogsListIds:newblogsListIds,
+
+            })
         case STOP_LAZY_BLOG_LIST:
             return Object.assign({}, state, {
                 isFetching: false,
@@ -113,8 +106,6 @@ function Blog(
 }
 
 function prepareBlogsbyIds(post,action) {
-    const last_items = post.blogsbyId
-    console.log(post)
     let Blogs = post.blogsbyId
     console.log(Blogs)
 
@@ -143,6 +134,18 @@ function prepareBlogsList(post,action) {
         let temp_id = post.id
 
         BlogsIds.push(temp_id)
+    })
+
+    return BlogsIds
+}
+
+function prepareNewBlogsLists(post,action) {
+    let BlogsIds = post.blogsListIds
+
+    action.blogs.forEach(function (post) {
+        let temp_id = post.id
+
+        BlogsIds.unshift(temp_id)
     })
 
     return BlogsIds

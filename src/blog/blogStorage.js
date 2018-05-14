@@ -7,6 +7,7 @@ export default class BlogStorage {
                 return check
             })
     }
+
     static getBlogPreview() {
         return db.blog.orderBy('date').reverse().limit(3).toArray()
             .then(bitems => {
@@ -32,7 +33,7 @@ export default class BlogStorage {
     static updateLatestTimestamp(post) {
         const latestDate = post[0].date
 
-        return db.timestamp.update({latestDate:latestDate, id:2})
+        return db.timestamp.update(1,{latestDate:latestDate})
     }
 }
 

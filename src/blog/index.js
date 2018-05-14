@@ -15,8 +15,6 @@ import BlogGrid from '../shared/blog/bloggrid'
 
 // import Quotation from './quotation/index'
 
-// import rBGColorGenerator from '../shared/background/randomBackgroundColor'
-
 import './blog.css'
 
 class Blog extends Component {
@@ -33,8 +31,6 @@ class Blog extends Component {
         if(this.props.Blog.blogsListIds.length === 0) {
             dispatch(fetchBlogPreviews(this.props))
         }
-
-        // rBGColorGenerator.randomBackgroundColor("home-loading-container", 2500)
     }
 
     fetchNewPosts() {

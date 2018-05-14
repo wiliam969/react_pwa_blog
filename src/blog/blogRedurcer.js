@@ -4,7 +4,6 @@ import {
     REQUEST_NEW_BLOG_LIST,
     INVALIDATE_BLOG_LIST,
     RECEIVE_BLOG_LIST,
-    RECEIVE_LOCAL_BLOG_LIST,
     RECEIVE_LAZY_BLOG_LIST,
     RECEIVE_NEW_BLOG_LIST,
     STOP_LAZY_BLOG_LIST,
@@ -36,10 +35,12 @@ function Blog(
         NewPage:1,
     }, action) {
     switch(action.type) {
+        case REQUEST_BLOG_SINGLE:
         case REQUEST_BLOG_LIST:
             return Object.assign({}, state, {
                 isFetching: true,
             })
+        case REQUEST_LAZY_BLOG_SINGLE:
         case REQUEST_LAZY_BLOG_LIST:
             return Object.assign({}, state, {
                 isFetchingLazy: true,
@@ -48,6 +49,7 @@ function Blog(
             return Object.assign({}, state, {
                 isFetchingNew: true
             })
+        case RECEIVE_BLOG_SINGLE:
         case RECEIVE_BLOG_LIST:
             let blogsbyId = prepareBlogsbyIds(state,action)
             let blogsListIds = prepareBlogsList(state,action)
@@ -58,12 +60,7 @@ function Blog(
                 blogsbyId: blogsbyId,
                 blogsListIds: blogsListIds,
             })
-        case RECEIVE_LOCAL_BLOG_LIST:
-            return Object.assign({}, state, {
-                isFetching: false,
-                didInvalidate: false,
-                items: state.items.concat(action.blogs),
-            })
+        case RECEIVE_LAZY_BLOG_SINGLE:
         case RECEIVE_LAZY_BLOG_LIST:
             let lazyblogsbyId = prepareBlogsbyIds(state,action)
             let lazyblogsListIds = prepareBlogsList(state,action)
@@ -84,6 +81,7 @@ function Blog(
                 blogsListIds:newblogsListIds,
 
             })
+        case STOP_LAZY_BLOG_SINGLE:
         case STOP_LAZY_BLOG_LIST:
             return Object.assign({}, state, {
                 isFetching: false,
@@ -92,10 +90,10 @@ function Blog(
                 stopLazyLoad:false,
             })
         case STOP_NEW_BLOG_LIST:
-            return {
-                ...state,
+            return Object.assign({}, state, {
                 isFetchingNew: false,
-            }
+            })
+        case INVALIDATE_BLOG_SINGLE:
         case INVALIDATE_BLOG_LIST:
             return Object.assign({}, state, {
                 didInvalidate: true

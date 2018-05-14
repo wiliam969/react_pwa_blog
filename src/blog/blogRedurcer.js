@@ -50,20 +50,37 @@ function Blog(
                 isFetchingNew: true
             })
         case RECEIVE_BLOG_SINGLE:
+            let singleblogsbyId = prepareBlogsbyIds(state,action)
+            let singleListIds = prepareBlogsOrder(state,action)
+
+            return Object.assign({}, state, {
+                isFetching:false,
+                didInvalidate:false,
+                blogsbyId: singleblogsbyId,
+                blogsListIds:singleListIds,
+            })
         case RECEIVE_BLOG_LIST:
             let blogsbyId = prepareBlogsbyIds(state,action)
-            let blogsListIds = prepareBlogsList(state,action)
+            let blogsListIds = prepareBlogsOrder(state,action)
 
             return Object.assign({}, state, {
                 isFetching:false,
                 didInvalidate:false,
                 blogsbyId: blogsbyId,
-                blogsListIds: blogsListIds,
+                blogsSingleIds: blogsListIds,
             })
         case RECEIVE_LAZY_BLOG_SINGLE:
+            let lazysingleblogsbyId = prepareBlogsbyIds(state,action)
+            let lazysingleListIds = prepareBlogsOrder(state,action)
+
+            return Object.assign({}, state, {
+                isFetchingLazy:false,
+                blogsbyId: lazysingleblogsbyId,
+                blogsListIds:lazysingleListIds,
+            })
         case RECEIVE_LAZY_BLOG_LIST:
             let lazyblogsbyId = prepareBlogsbyIds(state,action)
-            let lazyblogsListIds = prepareBlogsList(state,action)
+            let lazyblogsListIds = prepareBlogsOrder(state,action)
             return Object.assign({}, state,{
                 LazyPage: state.LazyPage +1,
                 isFetchingLazy:false,
@@ -125,7 +142,7 @@ function prepareBlogsbyIds(post,action) {
     return Blogs
 }
 
-function prepareBlogsList(post,action) {
+function prepareBlogsOrder(post,action) {
     let BlogsIds = post.blogsListIds
 
     action.blogs.forEach(function(post) {

@@ -18,6 +18,7 @@ export const RECEIVE_LAZY_BLOG_PREVIEW = 'RECEIVE_LAZY_BLOG_PREVIEW'
 export const INVALIDATE_BLOG_PREVIEW = 'INVALIDATE_BLOG_PREVIEW'
 export const STOP_LAZY_BLOG_PREVIEW = 'STOP_LAZY_BLOG_PREVIEW'
 export const RECEIVE_NEW_BLOG_PREVIEW = 'RECEIVE_NEW_BLOG_PREVIEW'
+export const STOP_NEW_BLOG_PREVIEW = 'STOP_NEW_BLOG_PREVIEW'
 
 
 export const requestBlogPreview = (blogs) => {
@@ -83,6 +84,12 @@ export const receiveAfterBlogPreview = (blogs) => {
     }
 }
 
+export const stopNewBlogPreview = () => {
+    return {
+        type:'STOP_NEW_BLOG_PREVIEW',
+    }
+}
+
 // this is it lul it wörks haha didint expected this :D
 
 export function fetchBlogPreviews(blogs) {
@@ -97,7 +104,8 @@ export function fetchBlogPreviews(blogs) {
             dispatch(receiveBlogpreview(posts))
 
             dispatch(stopFetchingData())
-            return BlogStorage.updateOldestDate(posts)
+
+            return BlogStorage.createDefaultTimestamps(posts)
         })
         .catch(error => {
             return dispatch(invalidateBlogPreview(error))
@@ -134,10 +142,14 @@ export function fetchNewBlogPreview() {
         dispatch(requestNewBlogPreview())
 
         return BlogApi.getnewBlogPreviews()
-            .then(blogs => {
-                dispatch(receiveAfterBlogPreview(blogs))
+            .then(apiResponse => {
+                if(apiResponse.length === 0) {
+                    return dispatch(stopNewBlogPreview())
+                }
 
-                return BlogStorage.updateLatestDate()
+                dispatch(receiveAfterBlogPreview(apiResponse))
+
+                return BlogStorage.updateLatestTimestamp(apiResponse)
             })
             .catch(error => {
                 return dispatch(invalidateBlogPreview(error))

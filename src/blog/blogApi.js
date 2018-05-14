@@ -28,7 +28,6 @@ export default class BlogApi {
         return db.timestamp.get({id: 1})
             .then(response => {
                 let timestamp = response.latestDate
-
                 return fetch(process.env.REACT_APP_API_URI + 'posts?after=' + timestamp, {method: 'GET'})
                     .then((response) => response.json())
                     .then(responseJson => {

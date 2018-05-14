@@ -36,20 +36,22 @@ class AsyncApp extends Component {
     render() {
         return(
             <div id="app" style={this.main}>
-                <Helmet>
-                    <meta charSet="utf-8"/>
-                    <meta name="description" content="Kerstin Witte Website"/>
-                    <meta name="keywords" content="Erziehung,haha,pepe"/>
-                    <meta name="author" content="Kerstin Witte"/>
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-                    <title>{process.env.REACT_APP_IDB_NAME + " -  Home"}</title>
-                    <link rel="canonical" href="localhost:3000/"/>
-                </Helmet>
-                {this.props.App.isLoading ?
-                    <Loading></Loading>
-                    :
+
+                    {this.props.App.isLoading ?
+                        <Loading></Loading>
+                        :
+
                     <BrowserRouter basename="" id="">
                         <div>
+                            <Helmet>
+                                <meta charSet="utf-8"/>
+                                <meta name="description" content="Kerstin Witte Website"/>
+                                <meta name="keywords" content="Erziehung,haha,pepe"/>
+                                <meta name="author" content="Kerstin Witte"/>
+                                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                                <title>{process.env.REACT_APP_IDB_NAME + " -  Home"}</title>
+                                <link rel="canonical" href="localhost:3000/"/>
+                            </Helmet>
                             <div id="menu-container">
                                 <Menu></Menu>
                             </div>

@@ -8,6 +8,7 @@ import {
     RECEIVE_LAZY_BLOG_PREVIEW,
     RECEIVE_NEW_BLOG_PREVIEW,
     STOP_LAZY_BLOG_PREVIEW,
+    STOP_NEW_BLOG_PREVIEW,
 } from './blogActions'
 
 function Blog(
@@ -79,6 +80,11 @@ function Blog(
                 isFetchingLazy:false,
                 stopLazyLoad:false,
             })
+        case STOP_NEW_BLOG_PREVIEW:
+            return {
+                ...state,
+                isFetchingNew: false,
+            }
         default:
             return state
     }

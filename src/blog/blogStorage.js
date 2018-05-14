@@ -18,16 +18,21 @@ export default class BlogStorage {
 
     }
 
-    static updateOldestDate(date) {
-        const oldestDate = date[2].date
+    /*
+        Creating the Timestamps on startup =)
+     */
+    static createDefaultTimestamps(post) {
+        const oldestDate = post[post.length-1].date
 
-        return db.timestamp.put({oldestDate:oldestDate, id: 1})
+        const latestDate = post[0].date
+
+        return db.timestamp.put({oldestDate:oldestDate,latestDate: latestDate, id:1})
     }
 
-    static updateLatestDate() {
-        const tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
-        const localISOTime = (new Date(Date.now() - tzoffset)).toISOString().slice(0, -1);
-        return db.timestamp.put({latestDate: localISOTime, id: 1})
+    static updateLatestTimestamp(post) {
+        const latestDate = post[0].date
+
+        return db.timestamp.update({latestDate:latestDate, id:2})
     }
 }
 

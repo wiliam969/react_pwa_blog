@@ -88,6 +88,7 @@ function Blog(
                 blogsListIds:lazyblogsListIds,
 
             })
+
         case RECEIVE_NEW_BLOG_LIST:
             let newblogsbyId = prepareBlogsbyIds(state,action)
             let newblogsListIds = prepareNewBlogsLists(state,action)

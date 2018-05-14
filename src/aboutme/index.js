@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import cv from "./cv"
+// import cv from "./cv"
 
 export default class AboutMe extends Component {
     render() {

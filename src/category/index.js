@@ -5,7 +5,7 @@ import {
     fetchCategoryItems
 } from './categoryActions'
 
-import BlogGrid from '../shared/blog/bloggrid'
+import BlogGrid from '../blog/container/blogGrid'
 import LazyLoader from '../shared/lazyloader/lazyloader'
 
 import Loading from '../shared/utilities/loading'

@@ -28,7 +28,7 @@ export const requestLazyBlogSingle = (id) => {
 export const receiveBlogSingle = (blog,id) => {
     return {
         type: 'RECEIVE_BLOG_SINGLE',
-        blog,
+        blogs:blog,
         id,
         receivedAt: Date.now(),
     }
@@ -37,7 +37,7 @@ export const receiveBlogSingle = (blog,id) => {
 export const receiveLazyBlogSingle = (blog,id) => {
     return {
         type:'RECEIVE_LAZY_BLOG_SINGLE',
-        blog:blog,
+        blogs:blog,
         id,
         receivedAt: Date.now(),
     }

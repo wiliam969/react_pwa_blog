@@ -8,7 +8,7 @@ export default class BlogsingleApi {
             .then((response) => response.json())
             .then(responseJson => {
                 if(responseJson.length > 0) {
-                    return responseJson[0]
+                    return responseJson
                 } else {
                     return responseJson
                 }

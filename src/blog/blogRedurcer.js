@@ -27,9 +27,9 @@ function Blog(
         isFetchingNew: false,
         didInvalidate: false,
         stopLazyLoad:true,
-        blogsbyId: {},
-        blogsListIds: [],
-        blogsSingleIds: [],
+        blogsbySlug: {},
+        blogsListSlugs: [],
+        blogsSingleSlugs: [],
         receivedAt: "",
         LazyPage:1,
         NewPage:1,
@@ -50,53 +50,53 @@ function Blog(
                 isFetchingNew: true
             })
         case RECEIVE_BLOG_SINGLE:
-            let singleblogsbyId = prepareBlogsbyIds(state,action)
+            let singleblogsbySlug = prepareblogsbySlugs(state,action)
             let singleListIds = prepareBlogsOrder(state,action)
 
             return Object.assign({}, state, {
                 isFetching:false,
                 didInvalidate:false,
-                blogsbyId: singleblogsbyId,
-                blogsListIds:singleListIds,
+                blogsbySlug: singleblogsbySlug,
+                blogsSingleSlugs:singleListIds,
             })
         case RECEIVE_BLOG_LIST:
-            let blogsbyId = prepareBlogsbyIds(state,action)
-            let blogsListIds = prepareBlogsOrder(state,action)
+            let blogsbySlug = prepareblogsbySlugs(state,action)
+            let blogsListSlugs = prepareBlogsOrder(state,action)
 
             return Object.assign({}, state, {
                 isFetching:false,
                 didInvalidate:false,
-                blogsbyId: blogsbyId,
-                blogsSingleIds: blogsListIds,
+                blogsbySlug: blogsbySlug,
+                blogsListSlugs: blogsListSlugs,
             })
         case RECEIVE_LAZY_BLOG_SINGLE:
-            let lazysingleblogsbyId = prepareBlogsbyIds(state,action)
+            let lazysingleblogsbySlug = prepareblogsbySlugs(state,action)
             let lazysingleListIds = prepareBlogsOrder(state,action)
 
             return Object.assign({}, state, {
                 isFetchingLazy:false,
-                blogsbyId: lazysingleblogsbyId,
-                blogsListIds:lazysingleListIds,
+                blogsbySlug: lazysingleblogsbySlug,
+                blogsSingleSlugs:lazysingleListIds,
             })
         case RECEIVE_LAZY_BLOG_LIST:
-            let lazyblogsbyId = prepareBlogsbyIds(state,action)
-            let lazyblogsListIds = prepareBlogsOrder(state,action)
+            let lazyblogsbySlug = prepareblogsbySlugs(state,action)
+            let lazyblogsListSlugs = prepareBlogsOrder(state,action)
             return Object.assign({}, state,{
                 LazyPage: state.LazyPage +1,
                 isFetchingLazy:false,
-                blogsbyId: lazyblogsbyId,
-                blogsListIds:lazyblogsListIds,
+                blogsbySlug: lazyblogsbySlug,
+                blogsListSlugs:lazyblogsListSlugs,
 
             })
 
         case RECEIVE_NEW_BLOG_LIST:
-            let newblogsbyId = prepareBlogsbyIds(state,action)
-            let newblogsListIds = prepareNewBlogsLists(state,action)
+            let newblogsbySlug = prepareblogsbySlugs(state,action)
+            let newblogsListSlugs = prepareNewBlogsLists(state,action)
             return Object.assign({}, state,{
                 NewPage: state.NewPage +1,
                 isFetchingNew:false,
-                blogsbyId: newblogsbyId,
-                blogsListIds:newblogsListIds,
+                blogsbySlug: newblogsbySlug,
+                blogsListSlugs:newblogsListSlugs,
 
             })
         case STOP_LAZY_BLOG_SINGLE:
@@ -121,8 +121,9 @@ function Blog(
     }
 }
 
-function prepareBlogsbyIds(post,action) {
-    let Blogs = post.blogsbyId
+
+function prepareblogsbySlugs(post,action) {
+    let Blogs = post.blogsbySlug
     console.log(Blogs)
 
     action.blogs.forEach(function(post) {
@@ -135,7 +136,7 @@ function prepareBlogsbyIds(post,action) {
             featured_media_id: post.featured_media,
         }
 
-        Blogs[post.id] = temp_blog
+        Blogs[post.slug] = temp_blog
     })
 
     console.log(Blogs)
@@ -144,10 +145,10 @@ function prepareBlogsbyIds(post,action) {
 }
 
 function prepareBlogsOrder(post,action) {
-    let BlogsIds = post.blogsListIds
+    let BlogsIds = post.blogsListSlugs
 
     action.blogs.forEach(function(post) {
-        let temp_id = post.id
+        let temp_id = post.slug
 
         BlogsIds.push(temp_id)
     })
@@ -156,10 +157,10 @@ function prepareBlogsOrder(post,action) {
 }
 
 function prepareNewBlogsLists(post,action) {
-    let BlogsIds = post.blogsListIds
+    let BlogsIds = post.blogsListSlugs
 
     action.blogs.forEach(function (post) {
-        let temp_id = post.id
+        let temp_id = post.slug
 
         BlogsIds.unshift(temp_id)
     })

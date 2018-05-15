@@ -8,7 +8,7 @@ import Footer from '../shared/Footer/index'
 import Blog from '../blog/index'
 import AboutMe from '../aboutme/index'
 import Gallery from '../gallery/index'
-import BlogSingle from '../blog/blogsingle/index'
+import BlogSingle from '../blog/blogSingle'
 import Projects from '../projects/index'
 import Category from '../category/index'
 import Home from '../home/index'
@@ -62,7 +62,7 @@ class AsyncApp extends Component {
                                 <Route path="/aboutme" component={AboutMe}></Route>
                                 <Route path="/gallery" component={Gallery} exact></Route>
                                 <Route path="/gallery/:slug" component={Gallery}></Route>
-                                <Route path="/blog/:slug" component={BlogSingle}></Route>
+                                <Route path="/blog/:slug" component={Blog}></Route>
                                 <Route path="/category/:name" component={Category}></Route>
                                 <Route path="/projects" component={Projects}></Route>
                                 <Redirect from='*' to='/' />

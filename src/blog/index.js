@@ -1,85 +1,74 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
-import {
-    fetchNewBlogPreview,
-    fetchBlogPreviews,
-    fetchLazyBlogPreview
-} from './actions/blogListActions'
+import { withRouter } from 'react-router'
+
+import { fetchBlogPreviews } from './actions/blogListActions'
+import { fetchBlogSingle } from './actions/blogSingleActions'
 
 import Loading from '../shared/utilities/loading'
-import LoadingBtn from '../shared/utilities/loading-btn'
 import LazyLoader from '../shared/lazyloader/lazyloader'
-import BlogGrid from '../shared/blog/bloggrid'
 
-// import Quotation from './quotation/index'
+import BlogList from './blogList'
+import BlogSingle from './blogSingle'
+/*
+        This is the BlogSingle Class. The Intention behind this class is that it behaves like a wrapper for every single Blog Item
+        Which means we have an Array of BlogItems which gets fully displayed and here the get wrapped
+        Todo: When i already loaded a couple of single blogs and after that im going to the blogpreview page and again click on a blog its weird it should just load the next blog not every item which i already saw
 
-import './blog.css'
-
+*/
 class Blog extends Component {
 
-    constructor(props) {
-        super(props)
-
-        this.fetchNewPosts = this.fetchNewPosts.bind(this)
-        this.fetchLazyPosts = this.fetchLazyPosts.bind(this)
+    constructor() {
+        super()
     }
 
     componentDidMount() {
         const { dispatch } = this.props
-        if(this.props.Blog.blogsListIds.length === 0) {
-            dispatch(fetchBlogPreviews(this.props))
-        }
+        const slug = this.props.match.params.slug
+        this.props.Blog.blogsbySlug[slug] !== slug && dispatch(fetchBlogSingle(this.props))
+        this.props.Blog.blogsListSlugs.length === 0 && !this.props.match.params.slug && dispatch(fetchBlogPreviews(this.props))
     }
 
-    fetchNewPosts() {
-        const { dispatch } = this.props
-        dispatch(fetchNewBlogPreview(this.props))
-    }
-
-    fetchLazyPosts() {
-        const { dispatch } = this.props
-        dispatch(fetchLazyBlogPreview(this.props.Blog.LazyPage))
-    }
-
-    /*
-    Todo: Here we have a to the current state random error with the FetchNewBlogs function idk what its causing but it seems to be a 404 error
-     */
-    render () {
+    render() {
         return (
-            <div className="blog-container container">
+            <div>
                 <Helmet>
-                    {/*<meta name="description" content={this.props.BlogSingle.items[0].content.rendered}/>*/}
-                    {/*<meta name="keywords" content={this.props.BlogSingle.items[0].tags}/>*/}
                     <title>Blog</title>
                     <link rel="canonical" href={window.location.href}/>
                 </Helmet>
-                {   this.props.Blog.isFetching ?
-                        <Loading></Loading>
+
+                {   this.props.Blog.didInvalidate &&
+                    <p>Something went Wrong</p>
+                }
+
+                { this.props.Blog.isFetching ?
+                    <Loading></Loading>
                     :
-                    <div className="blog-wrapper">
-                        <div className="blog-loading-container" id="blog-loading-container">
-                            {this.props.Blog.isFetchingNew
-                                ?
-                                <Loading type="reload"></Loading>
-                                :
-                                <LoadingBtn name="Search for new Blogs" onClick={this.fetchNewPosts}></LoadingBtn>
-                            }
-                        </div>
-
-                        {   this.props.Blog.didInvalidate &&
-                            <p>Something went Wrong</p>
+                    <div className="blog-container">
+                        {this.props.match.params.slug ?
+                            <BlogSingle blogsbySlug={this.props.Blog.blogsbySlug} blogsSingleSlugs={this.props.Blog.blogsSingleSlugs}/>
+                            :
+                            <BlogList blogsbySlug={this.props.Blog.blogsbySlug} blogsListSlugs={this.props.Blog.blogsListSlugs}/>
                         }
-                            <div className="blog-container">
-                                <BlogGrid blogsbyId={this.props.Blog.blogsbyId} blogsListIds={this.props.Blog.blogsListIds}></BlogGrid>
+                        {/*<LazyLoader*/}
+                        {/*type={this.fetchLazyBlogs}*/}
+                        {/*fetch={this.props.BlogSingle.isFetchingLazy}*/}
+                        {/*stop={post.stopLazyLoad}*/}
+                        {/*name="Single Blog"*/}
+                        {/*date={post.date}*/}
+                        {/*id={post.id}*/}
+                        {/*index={index}>*/}
+                        {/*</LazyLoader>*/}
 
-                                <LazyLoader type={this.fetchLazyPosts} fetch={this.props.Blog.isFetchingLazy} stop={this.props.Blog.stopLazyLoad} name="Blog"></LazyLoader>
-                            </div>
+                            {/*<Comments blogid={post.id}></Comments>*/}
                     </div>
                 }
+
+
             </div>
-        );
+        )
     }
 }
 
@@ -87,14 +76,14 @@ Blog.propTypes = {
     dispatch: PropTypes.func
 }
 
-function mapStateToProps(state,ownProps) {
-    var blog = { didInvalidate: '', isFetching: '',}
+const mapStateToProps = (state, ownProps) => {
+    var Blog = { didInvalidate: '', isFetching: '', items: {}}
 
-    blog = Object.assign({}, state.Blog)
+    Blog = Object.assign({}, state.Blog)
+
     return {
-        Blog: blog,
+        Blog: Blog,
     }
 }
 
-export default connect(mapStateToProps)(Blog)
-
+export default withRouter(connect(mapStateToProps)(Blog))

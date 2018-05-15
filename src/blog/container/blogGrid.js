@@ -63,7 +63,7 @@ export default class BlogGrid extends Component {
                             </div>
                             <div
                                 className="blog-grid-preview-date">{new Date(blogs[post].date).toLocaleDateString()}</div>
-                            <Link to={{pathname: '/blog/' + post.slug,}}
+                            <Link to={{pathname: '/blog/' + blogs[post].slug,}}
                                   className="blog-grid-preview-prevent-a">
                                 <div className="blog-grid-preview-title">{blogs[post].title}</div>
                             </Link>

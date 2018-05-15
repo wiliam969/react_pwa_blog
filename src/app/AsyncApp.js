@@ -40,36 +40,35 @@ class AsyncApp extends Component {
                     {this.props.App.isLoading ?
                         <Loading></Loading>
                         :
-
-                    <BrowserRouter basename="" id="">
-                        <div>
-                            <Helmet>
-                                <meta charSet="utf-8"/>
-                                <meta name="description" content="Kerstin Witte Website"/>
-                                <meta name="keywords" content="Erziehung,haha,pepe"/>
-                                <meta name="author" content="Kerstin Witte"/>
-                                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-                                <title>{process.env.REACT_APP_IDB_NAME + " -  Home"}</title>
-                                <link rel="canonical" href="localhost:3000/"/>
-                            </Helmet>
-                            <div id="menu-container">
-                                <Menu></Menu>
+                        <BrowserRouter basename="" id="">
+                            <div>
+                                <Helmet>
+                                    <meta charSet="utf-8"/>
+                                    <meta name="description" content="Kerstin Witte Website"/>
+                                    <meta name="keywords" content="Erziehung,haha,pepe"/>
+                                    <meta name="author" content="Kerstin Witte"/>
+                                    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                                    <title>{process.env.REACT_APP_IDB_NAME + " -  Home"}</title>
+                                    <link rel="canonical" href="localhost:3000/"/>
+                                </Helmet>
+                                <div id="menu-container">
+                                    <Menu></Menu>
+                                </div>
+                                <Alert/>
+                                <Switch id="main-container">
+                                    <Route path="/" component={Home} exact></Route>
+                                    <Route path="/blog" component={Blog} exact></Route>
+                                    <Route path="/aboutme" component={AboutMe}></Route>
+                                    <Route path="/gallery" component={Gallery} exact></Route>
+                                    <Route path="/gallery/:slug" component={Gallery}></Route>
+                                    <Route path="/blog/:slug" component={Blog}></Route>
+                                    <Route path="/category/:name" component={Category}></Route>
+                                    <Route path="/projects" component={Projects}></Route>
+                                    <Redirect from='*' to='/' />
+                                    <Footer/>
+                                </Switch>
                             </div>
-                            <Alert/>
-                            <Switch id="main-container">
-                                <Route path="/" component={Home} exact></Route>
-                                <Route path="/blog" component={Blog} exact></Route>
-                                <Route path="/aboutme" component={AboutMe}></Route>
-                                <Route path="/gallery" component={Gallery} exact></Route>
-                                <Route path="/gallery/:slug" component={Gallery}></Route>
-                                <Route path="/blog/:slug" component={Blog}></Route>
-                                <Route path="/category/:name" component={Category}></Route>
-                                <Route path="/projects" component={Projects}></Route>
-                                <Redirect from='*' to='/' />
-                                <Footer/>
-                            </Switch>
-                        </div>
-                    </BrowserRouter>
+                        </BrowserRouter>
                 }
             </div>
         )

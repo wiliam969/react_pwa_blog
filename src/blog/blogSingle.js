@@ -7,11 +7,9 @@ import {
     fetchLazyBlog,
 } from './actions/blogSingleActions'
 
-import BlogSingle from './container/blogSingle'
+import BlogSingleRender from './container/blogSingleRender'
 
-import Loading from '../shared/utilities/loading'
 import LazyLoader from '../shared/lazyloader/lazyloader'
-import Picture from '../shared/picture/index'
 
 /*
         This is the BlogSingle Class. The Intention behind this class is that it behaves like a wrapper for every single Blog Item
@@ -19,7 +17,7 @@ import Picture from '../shared/picture/index'
         Todo: When i already loaded a couple of single blogs and after that im going to the blogpreview page and again click on a blog its weird it should just load the next blog not every item which i already saw
 
 */
-class BlogList extends Component {
+class BlogSingle extends Component {
 
     constructor() {
         super()
@@ -43,7 +41,7 @@ class BlogList extends Component {
                     {/*<link rel="canonical" href={window.location.href}/>*/}
                 {/*</Helmet>*/}
 
-                <BlogSingle blogsbySlug={this.props.blogsbySlug} blogsSingleSlugs={this.props.blogsSingleSlugs}></BlogSingle>
+                <BlogSingleRender blogsbySlug={this.props.blogsbySlug} blogsSingleSlugs={this.props.blogsSingleSlugs}/>
 
                 {/*<LazyLoader*/}
                     {/*type={this.fetchLazyBlogs}*/}
@@ -61,9 +59,10 @@ class BlogList extends Component {
     }
 }
 
-BlogList.propTypes = {
+BlogSingle.propTypes = {
     dispatch: PropTypes.func
 }
+
 
 const mapStateToProps = (state, ownProps) => {
     var Blog = { didInvalidate: '', isFetching: '', items: {}}
@@ -75,4 +74,4 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 
-export default connect(mapStateToProps)(BlogList)
+export default connect(mapStateToProps)(BlogSingle)

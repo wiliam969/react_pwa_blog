@@ -31,6 +31,13 @@ class Blog extends Component {
         this.props.Blog.blogsListSlugs.length === 0 && !this.props.match.params.slug && dispatch(fetchBlogPreviews(this.props))
     }
 
+    // shouldComponentUpdate() {
+    //     const { dispatch } = this.props
+    //     const slug = this.props.match.params.slug
+    //     this.props.Blog.blogsbySlug[slug] !== slug && dispatch(fetchBlogSingle(this.props)) && return true
+    //     this.props.Blog.blogsListSlugs.length === 0 && !this.props.match.params.slug && dispatch(fetchBlogPreviews(this.props)) && return true
+    // }
+
     render() {
         return (
             <div>
@@ -86,4 +93,5 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 
-export default withRouter(connect(mapStateToProps)(Blog))
+
+export default connect(mapStateToProps)(Blog)

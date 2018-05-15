@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import Picture from '../../shared/picture/index'
 import './blog.css'
 
-export default class BlogContent extends Component {
+export default class BlogSingleRender extends Component {
+
     render() {
         const blogs = this.props.blogsbySlug
         return (

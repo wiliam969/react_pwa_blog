@@ -22,21 +22,44 @@ class Blog extends Component {
 
     constructor() {
         super()
+
+        this.getBlogList = this.getBlogList.bind(this)
+        this.getBlogSingle = this.getBlogSingle.bind(this)
     }
 
     componentDidMount() {
-        const { dispatch } = this.props
-        const slug = this.props.match.params.slug
-        this.props.Blog.blogsbySlug[slug] !== slug && dispatch(fetchBlogSingle(this.props))
-        this.props.Blog.blogsListSlugs.length === 0 && !this.props.match.params.slug && dispatch(fetchBlogPreviews(this.props))
+        this.getBlogList()
+        this.getBlogSingle()
+        // const { dispatch } = this.props
+        // const slug = this.props.match.params.slug
+        // this.props.Blog.blogsbySlug[slug] !== slug && dispatch(fetchBlogSingle(this.props))
+        // this.props.Blog.blogsListSlugs.length === 0 && !this.props.match.params.slug && dispatch(fetchBlogPreviews(this.props))
     }
 
+
+
     // shouldComponentUpdate() {
-    //     const { dispatch } = this.props
-    //     const slug = this.props.match.params.slug
-    //     this.props.Blog.blogsbySlug[slug] !== slug && dispatch(fetchBlogSingle(this.props)) && return true
-    //     this.props.Blog.blogsListSlugs.length === 0 && !this.props.match.params.slug && dispatch(fetchBlogPreviews(this.props)) && return true
+    //     this.getBlogList()
+    //     this.getBlogSingle()
+    //     return true
+    // //     const { dispatch } = this.props
+    // //     const slug = this.props.match.params.slug
+    // //     this.props.Blog.blogsbySlug[slug] !== slug && dispatch(fetchBlogSingle(this.props)) && return true
+    // //     this.props.Blog.blogsListSlugs.length === 0 && !this.props.match.params.slug && dispatch(fetchBlogPreviews(this.props)) && return true
     // }
+
+    getBlogList() {
+        if(this.props.Blog.blogsListSlugs.length === 0 && !this.props.match.params.slug) {
+            this.props.getBlogList(this.props)
+        }
+    }
+
+    getBlogSingle() {
+        const slug = this.props.match.params.slug
+        if(this.props.Blog.blogsbySlug[slug] !== slug) {
+            this.props.getBlogSingle(this.props)
+        }
+    }
 
     render() {
         return (
@@ -80,7 +103,9 @@ class Blog extends Component {
 }
 
 Blog.propTypes = {
-    dispatch: PropTypes.func
+    dispatch: PropTypes.func,
+    getBlogList: PropTypes.func.isRequired,
+    getBlogSingle: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (state, ownProps) => {
@@ -93,5 +118,12 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getBlogList: (props) => { dispatch(fetchBlogPreviews(props))},
+        getBlogSingle: (props) => { dispatch(fetchBlogSingle(props))},
+    }
+}
 
-export default connect(mapStateToProps)(Blog)
+
+export default connect(mapStateToProps,mapDispatchToProps)(Blog)

@@ -8,7 +8,6 @@ import Footer from '../shared/Footer/index'
 import Blog from '../blog/index'
 import AboutMe from '../aboutme/index'
 import Gallery from '../gallery/index'
-import BlogSingle from '../blog/blogSingle'
 import Projects from '../projects/index'
 import Category from '../category/index'
 import Home from '../home/index'
@@ -52,18 +51,18 @@ class AsyncApp extends Component {
                                     <link rel="canonical" href="localhost:3000/"/>
                                 </Helmet>
                                 <div id="menu-container">
-                                    <Menu></Menu>
+                                    <Menu/>
                                 </div>
                                 <Alert/>
                                 <Switch id="main-container">
-                                    <Route path="/" component={Home} exact></Route>
-                                    <Route path="/blog" component={Blog} exact></Route>
-                                    <Route path="/aboutme" component={AboutMe}></Route>
-                                    <Route path="/gallery" component={Gallery} exact></Route>
-                                    <Route path="/gallery/:slug" component={Gallery}></Route>
-                                    <Route path="/blog/:slug" component={Blog}></Route>
-                                    <Route path="/category/:name" component={Category}></Route>
-                                    <Route path="/projects" component={Projects}></Route>
+                                    <Route path="/"                 component={Home} exact/>
+                                    <Route path="/blog"             component={Blog} exact/>
+                                    <Route path="/blog/:slug"       component={Blog}/>
+                                    <Route path="/aboutme"          component={AboutMe}/>
+                                    <Route path="/gallery"          component={Gallery} exact/>
+                                    <Route path="/gallery/:slug"    component={Gallery}/>
+                                    <Route path="/category/:name"   component={Category}/>
+                                    <Route path="/projects"         component={Projects}/>
                                     <Redirect from='*' to='/' />
                                     <Footer/>
                                 </Switch>

@@ -23,6 +23,7 @@ class BlogSingle extends Component {
         super()
 
         this.fetchLazyBlogs = this.fetchLazyBlogs.bind(this)
+        this.fetchpop = this.fetchpop.bind(this)
     }
 
     // Fetching all Blogs AFTER the main Blog
@@ -31,7 +32,13 @@ class BlogSingle extends Component {
         dispatch(fetchLazyBlog(date,id,index))
     }
 
+    fetchpop() {
+        this.props.getBlogSingle
+    }
+
+
     render() {
+        this.fetchpop()
         return (
             <div>
                 {/*<Helmet>*/}
@@ -59,19 +66,4 @@ class BlogSingle extends Component {
     }
 }
 
-BlogSingle.propTypes = {
-    dispatch: PropTypes.func
-}
-
-
-const mapStateToProps = (state, ownProps) => {
-    var Blog = { didInvalidate: '', isFetching: '', items: {}}
-
-    Blog = Object.assign({}, state.Blog)
-
-    return {
-        Blog: Blog,
-    }
-}
-
-export default connect(mapStateToProps)(BlogSingle)
+export default BlogSingle

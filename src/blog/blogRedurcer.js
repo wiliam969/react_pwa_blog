@@ -60,7 +60,10 @@ function Blog(
                 blogsSingleSlugs:singleListIds,
             })
         case RECEIVE_BLOG_LIST:
-            let blogsbySlug = prepareblogsbySlugs(state,action)
+            const blogsbySlug = prepareblogsbySlugs(state,action)
+            console.log(blogsbySlug)
+
+            // let blogsbySlug = prepareblogsbySlugs(state,action)
             let blogsListSlugs = prepareBlogsOrder(state,action)
 
             return Object.assign({}, state, {
@@ -121,27 +124,82 @@ function Blog(
     }
 }
 
-
+/**
+ * Todo: Here we have to recode everything to immutable state
+ * Todo: creating object instead of array :(
+ *
+ * @param post
+ * @param action
+ * @returns {{}|blogsbySlug}
+ */
 function prepareblogsbySlugs(post,action) {
-    let Blogs = post.blogsbySlug
-    console.log(Blogs)
+    console.log(post)
+    console.log(action)
 
-    action.blogs.forEach(function(post) {
-        let temp_blog = {
-            date:       post.date,
-            slug:       post.slug,
-            title:      post.title.rendered,
-            content:    post.content.rendered,
-            excerpt:    post.excerpt.rendered,
-            featured_media_id: post.featured_media,
-        }
+    let mongolen = post.blogsbySlug
 
-        Blogs[post.slug] = temp_blog
+    const defaultBlog = action.blogs.map(function (action) {
+        console.log(action)
+        let objBlogs = Object.create(action)
+
+        objBlogs.date=       action.date
+        objBlogs.slug  =    action.slug
+        objBlogs.title =     action.title.rendered
+        objBlogs.content=    action.content.rendered
+        objBlogs.excerpt=    action.excerpt.rendered
+        objBlogs.featured_media_id= action.featured_media
+
+        console.log(objBlogs)
+
+        let fu = action.slug
+
+        mongolen[action.blog] = Object.assign(objBlogs)
+
+
+        return action
     })
 
-    console.log(Blogs)
+    console.log(defaultBlog)
 
-    return Blogs
+    console.log(mongolen)
+    // let Blogs = post.blogsbySlug
+    // console.log(Blogs)
+    //
+    //     action.blogs.forEach(function(post) {
+    //     let temp_blog = {
+    //         date:       post.date,
+    //         slug:       post.slug,
+    //         title:      post.title.rendered,
+    //         content:    post.content.rendered,
+    //         excerpt:    post.excerpt.rendered,
+    //         featured_media_id: post.featured_media,
+    //     }
+    //
+    //     Blogs[post.slug] = temp_blog
+    // })
+    //
+    // console.log(Blogs)
+
+    let objBlogs = Object.create(action)
+
+    objBlogs.date=       action.date
+    objBlogs.slug  =    action.slug
+    objBlogs.title =     action.title.rendered
+    objBlogs.content=    action.content.rendered
+    objBlogs.excerpt=    action.excerpt.rendered
+    objBlogs.featured_media_id= action.featured_media
+
+    return objBlogs
+    console.log(objBlogs)
+
+    let schmuBlogs = Object.assign({}, post.blogsbySlug, objBlogs)
+    console.log(schmuBlogs)
+
+    return schmuBlogs
+
+
+
+    // return Blogs
 }
 
 function prepareBlogsOrder(post,action) {

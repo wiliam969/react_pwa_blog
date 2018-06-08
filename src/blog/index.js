@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
-import { withRouter } from 'react-router'
+import { withRouter } from 'react-router-dom'
 
 import { fetchBlogPreviews } from './actions/blogListActions'
 import { fetchBlogSingle } from './actions/blogSingleActions'
@@ -36,8 +36,19 @@ class Blog extends Component {
         // this.props.Blog.blogsListSlugs.length === 0 && !this.props.match.params.slug && dispatch(fetchBlogPreviews(this.props))
     }
 
+    componentWillReceiveProps(nextProps) {
+        this.props = nextProps;
+    }
 
 
+    // componentDidUpdate(prevProps,prevState,snapshot) {
+    //     console.log("called")
+    //     console.log(prevProps)
+    //     console.log(prevState)
+    //     console.log(snapshot)
+    //     this.getBlogList()
+    //     this.getBlogSingle()
+    // }
     // shouldComponentUpdate() {
     //     this.getBlogList()
     //     this.getBlogSingle()
@@ -78,7 +89,7 @@ class Blog extends Component {
                     :
                     <div className="blog-container">
                         {this.props.match.params.slug ?
-                            <BlogSingle blogsbySlug={this.props.Blog.blogsbySlug} blogsSingleSlugs={this.props.Blog.blogsSingleSlugs}/>
+                            <BlogSingle getBlogSingle={this.getBlogList()} blogsbySlug={this.props.Blog.blogsbySlug} blogsSingleSlugs={this.props.Blog.blogsSingleSlugs}/>
                             :
                             <BlogList blogsbySlug={this.props.Blog.blogsbySlug} blogsListSlugs={this.props.Blog.blogsListSlugs}/>
                         }
@@ -126,4 +137,4 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(Blog)
+export default withRouter(connect(mapStateToProps,mapDispatchToProps,null, { pure: false})(Blog))

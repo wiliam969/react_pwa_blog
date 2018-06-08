@@ -48,14 +48,6 @@ export const receiveBlogpreview = (blogs) => {
     }
 }
 
-export const receiveLocalBlogPreview = (blogs) => {
-    return {
-        type: 'RECEIVE_LOCAL_BLOG_LIST',
-        blogs,
-        receivedAt: Date.now()
-    }
-}
-
 export const receiveLazyBlogPreview = (blogs) => {
     return {
         type:'RECEIVE_LAZY_BLOG_LIST',

@@ -59,4 +59,4 @@ function mapStateToProps(state) {
     }
 }
 
-//export default connect(mapStateToProps)(Projects)
+export default connect(mapStateToProps)(Projects)

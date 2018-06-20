@@ -133,14 +133,13 @@ function Blog(
  * @returns {{}|blogsbySlug}
  */
 function prepareblogsbySlugs(post,action) {
-    console.log(post)
-    console.log(action)
-
-    let mongolen = post.blogsbySlug
+    let BlogObj = post.blogsbySlug
 
     const defaultBlog = action.blogs.map(function (action) {
-        console.log(action)
-        let objBlogs = Object.create(action)
+
+        let objBlogs = action.slug
+
+        objBlogs = Object.create(action)
 
         objBlogs.date=       action.date
         objBlogs.slug  =    action.slug
@@ -149,57 +148,12 @@ function prepareblogsbySlugs(post,action) {
         objBlogs.excerpt=    action.excerpt.rendered
         objBlogs.featured_media_id= action.featured_media
 
-        console.log(objBlogs)
-
-        let fu = action.slug
-
-        mongolen[action.blog] = Object.assign(objBlogs)
-
+        BlogObj[action.slug] = Object.assign(objBlogs)
 
         return action
     })
 
-    console.log(defaultBlog)
-
-    console.log(mongolen)
-    // let Blogs = post.blogsbySlug
-    // console.log(Blogs)
-    //
-    //     action.blogs.forEach(function(post) {
-    //     let temp_blog = {
-    //         date:       post.date,
-    //         slug:       post.slug,
-    //         title:      post.title.rendered,
-    //         content:    post.content.rendered,
-    //         excerpt:    post.excerpt.rendered,
-    //         featured_media_id: post.featured_media,
-    //     }
-    //
-    //     Blogs[post.slug] = temp_blog
-    // })
-    //
-    // console.log(Blogs)
-
-    let objBlogs = Object.create(action)
-
-    objBlogs.date=       action.date
-    objBlogs.slug  =    action.slug
-    objBlogs.title =     action.title.rendered
-    objBlogs.content=    action.content.rendered
-    objBlogs.excerpt=    action.excerpt.rendered
-    objBlogs.featured_media_id= action.featured_media
-
-    return objBlogs
-    console.log(objBlogs)
-
-    let schmuBlogs = Object.assign({}, post.blogsbySlug, objBlogs)
-    console.log(schmuBlogs)
-
-    return schmuBlogs
-
-
-
-    // return Blogs
+    return BlogObj
 }
 
 function prepareBlogsOrder(post,action) {

@@ -2,32 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d86231f-a2d3-463a-a042-6f35d11ec80a" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/project/actions/projectListActions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/project/actions/projectSingleActions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/project/api/projectListApi.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/project/api/projectsingleApi.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/project/container/project.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/project/container/projectGrid.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/project/container/projectSingleRender.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/project/container/projectgrid.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/project/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/project/project.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/project/projectList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/project/projectRedurcer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/project/projectSingle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/project/projectStorage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/aboutme/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/aboutme/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/AsyncApp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/AsyncApp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blog/blogList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/blog/blogList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blog/blogRedurcer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/blog/blogRedurcer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blog/blogSingle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/blog/blogSingle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blog/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/blog/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/boot/bootReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/boot/bootReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/projects/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/projects/projectsActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/aboutme/aboutme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/projects/projectsApi.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/projects/projectsReducer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/project/container/projectGrid.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/container/projectGrid.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -42,7 +18,41 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/project/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="960">
+              <caret line="61" column="16" selection-start-line="61" selection-start-column="16" selection-end-line="61" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="projectGrid.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/project/container/projectGrid.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="600">
+              <caret line="54" column="63" selection-start-line="54" selection-start-column="63" selection-end-line="54" selection-end-column="63" />
+              <folding>
+                <element signature="e#0#40#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AsyncApp.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/app/AsyncApp.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="460">
+              <caret line="50" column="82" lean-forward="true" selection-start-line="50" selection-start-column="82" selection-end-line="50" selection-end-column="82" />
+              <folding>
+                <element signature="e#0#40#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -111,7 +121,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/shared/Alert/alertReducer.js" />
         <option value="$PROJECT_DIR$/src/projects/projectsApi.js" />
         <option value="$PROJECT_DIR$/src/projects/projectsActions.js" />
@@ -159,9 +168,10 @@
         <option value="$PROJECT_DIR$/src/project/projectRedurcer.js" />
         <option value="$PROJECT_DIR$/src/project/index.js" />
         <option value="$PROJECT_DIR$/src/project/projectList.js" />
-        <option value="$PROJECT_DIR$/src/app/AsyncApp.js" />
         <option value="$PROJECT_DIR$/src/aboutme/aboutme.css" />
         <option value="$PROJECT_DIR$/src/aboutme/index.js" />
+        <option value="$PROJECT_DIR$/src/project/container/projectGrid.js" />
+        <option value="$PROJECT_DIR$/src/app/AsyncApp.js" />
       </list>
     </option>
   </component>
@@ -798,7 +808,7 @@
         <observation name="typedSelect" value="9.0" />
       </dailyData>
       <dailyData date="10-7-2018">
-        <observation name="cancelled" value="797.0" />
+        <observation name="cancelled" value="841.0" />
         <observation name="explicitSelect" value="21.0" />
         <observation name="typedSelect" value="158.0" />
       </dailyData>
@@ -864,7 +874,7 @@
         <observation name="count" value="58.0" />
       </dailyData>
       <dailyData date="10-7-2018">
-        <observation name="count" value="976.0" />
+        <observation name="count" value="1020.0" />
       </dailyData>
     </factor>
     <factor id="doubleFeature:explicitProximity">
@@ -2047,14 +2057,7 @@
               <item name="react_pwa_blog" type="b2602c69:ProjectViewProjectNode" />
               <item name="react_pwa_blog" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="shared" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="react_pwa_blog" type="b2602c69:ProjectViewProjectNode" />
-              <item name="react_pwa_blog" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="shared" type="462c0819:PsiDirectoryNode" />
-              <item name="picture" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -2075,7 +2078,7 @@
     <property name="node.js.selected.package.prettier" value="" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -2192,7 +2195,7 @@
       <workItem from="1531153175707" duration="880000" />
       <workItem from="1531154830119" duration="10895000" />
       <workItem from="1531227670131" duration="9532000" />
-      <workItem from="1531251416259" duration="2831000" />
+      <workItem from="1531251416259" duration="3632000" />
     </task>
     <task id="LOCAL-00001" summary="asdasd">
       <created>1504374392149</created>
@@ -2467,11 +2470,18 @@
       <option name="project" value="LOCAL" />
       <updated>1531235681758</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="copied the whole blog thing to the project side">
+      <created>1531254882930</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1531254882930</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="180243000" />
+    <option name="totallyTimeSpent" value="181044000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2484,6 +2494,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1426" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="9" weight="0.32841614" />
       <window_info anchor="bottom" id="Event Log" order="0" sideWeight="0.5021075" side_tool="true" weight="0.32841614" />
@@ -2543,7 +2554,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="css declaration of bloggrid was a bit vague" />
     <MESSAGE value="some css for the blog single stuff" />
     <MESSAGE value="it destroys the lazy load but i dont know it works kinda" />
     <MESSAGE value="grid is now more or less responsive" />
@@ -2568,7 +2578,8 @@
     <MESSAGE value="trying to fix link update problem" />
     <MESSAGE value="mapdispatchtoprops" />
     <MESSAGE value="fixed nearly every problem which i had after i completly rewrote the blog structure =)" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed nearly every problem which i had after i completly rewrote the blog structure =)" />
+    <MESSAGE value="copied the whole blog thing to the project side" />
+    <option name="LAST_COMMIT_MESSAGE" value="copied the whole blog thing to the project side" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2680,6 +2691,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1600">
           <caret line="80" column="53" selection-start-line="80" selection-start-column="42" selection-end-line="80" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2707,6 +2721,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="165" column="52" selection-start-line="165" selection-start-column="52" selection-end-line="165" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#274#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2793,6 +2810,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1940">
           <caret line="99" column="33" selection-start-line="99" selection-start-column="19" selection-end-line="99" selection-end-column="33" />
+          <folding>
+            <element signature="e#47#97#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2830,16 +2850,6 @@
           <caret line="145" column="60" selection-start-line="145" selection-start-column="60" selection-end-line="145" selection-end-column="60" />
           <folding>
             <element signature="e#0#304#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/AsyncApp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="52" column="57" selection-start-line="52" selection-start-column="57" selection-end-line="52" selection-end-column="57" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2899,23 +2909,6 @@
     <entry file="file://$PROJECT_DIR$/src/logo.svg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/project/container/projectGrid.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="820">
-          <caret line="50" column="34" selection-start-line="50" selection-start-column="34" selection-end-line="50" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/project/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="61" column="16" selection-start-line="61" selection-start-column="16" selection-end-line="61" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/App.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -2940,6 +2933,33 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
           <caret line="16" column="50" lean-forward="true" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/project/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="960">
+          <caret line="61" column="16" selection-start-line="61" selection-start-column="16" selection-end-line="61" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/project/container/projectGrid.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="54" column="63" selection-start-line="54" selection-start-column="63" selection-end-line="54" selection-end-column="63" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/AsyncApp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="50" column="82" lean-forward="true" selection-start-line="50" selection-start-column="82" selection-end-line="50" selection-end-column="82" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>

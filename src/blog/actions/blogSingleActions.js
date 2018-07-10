@@ -62,6 +62,7 @@ export const stopLazyBlogSingle = (id,index) => {
     Gets the Slug of the URI and returns it to the specific handlers after that it returns an object if the slug was correct
  */
 export function fetchBlogSingle(blog = 1) {
+    console.log(blog)
     const slug = blog.match.params.slug
 
     return function (dispatch) {

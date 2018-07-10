@@ -51,7 +51,7 @@ function Blog(
             })
         case RECEIVE_BLOG_SINGLE:
             let singleblogsbySlug = prepareblogsbySlugs(state,action)
-            let singleListIds = prepareBlogsOrder(state,action)
+            let singleListIds = prepareBlogsSingleOrder(state,action)
 
             return Object.assign({}, state, {
                 isFetching:false,
@@ -64,7 +64,7 @@ function Blog(
             console.log(blogsbySlug)
 
             // let blogsbySlug = prepareblogsbySlugs(state,action)
-            let blogsListSlugs = prepareBlogsOrder(state,action)
+            let blogsListSlugs = prepareBlogsListOrder(state,action)
 
             return Object.assign({}, state, {
                 isFetching:false,
@@ -74,7 +74,7 @@ function Blog(
             })
         case RECEIVE_LAZY_BLOG_SINGLE:
             let lazysingleblogsbySlug = prepareblogsbySlugs(state,action)
-            let lazysingleListIds = prepareBlogsOrder(state,action)
+            let lazysingleListIds = prepareBlogsSingleOrder(state,action)
 
             return Object.assign({}, state, {
                 isFetchingLazy:false,
@@ -83,7 +83,7 @@ function Blog(
             })
         case RECEIVE_LAZY_BLOG_LIST:
             let lazyblogsbySlug = prepareblogsbySlugs(state,action)
-            let lazyblogsListSlugs = prepareBlogsOrder(state,action)
+            let lazyblogsListSlugs = prepareBlogsListOrder(state,action)
             return Object.assign({}, state,{
                 LazyPage: state.LazyPage +1,
                 isFetchingLazy:false,
@@ -125,14 +125,13 @@ function Blog(
 }
 
 /**
- * Todo: Here we have to recode everything to immutable state
- * Todo: creating object instead of array :(
- *
  * @param post
  * @param action
  * @returns {{}|blogsbySlug}
  */
 function prepareblogsbySlugs(post,action) {
+
+    console.log(action)
     let BlogObj = post.blogsbySlug
 
     const defaultBlog = action.blogs.map(function (action) {
@@ -156,13 +155,32 @@ function prepareblogsbySlugs(post,action) {
     return BlogObj
 }
 
-function prepareBlogsOrder(post,action) {
+function prepareBlogsListOrder(post,action) {
     let BlogsIds = post.blogsListSlugs
 
     action.blogs.forEach(function(post) {
         let temp_id = post.slug
 
         BlogsIds.push(temp_id)
+    })
+
+    return BlogsIds
+}
+
+function prepareBlogsSingleOrder(post,action) {
+
+    console.log(action)
+    // Use this if you want an appending blogsingle structure so that you have multiple blogposts =)
+    // let BlogsIds = post.blogsSingleSlugs
+
+    let BlogsIds = []
+
+    action.blogs.forEach(function(post) {
+        let temp_id = post.slug
+
+        const checkifExists = BlogsIds.some(x => x === temp_id)
+
+        !checkifExists ? BlogsIds.push(temp_id) : ""
     })
 
     return BlogsIds

@@ -26,6 +26,9 @@ class BlogSingle extends Component {
         this.fetchpop = this.fetchpop.bind(this)
     }
 
+    componentDidMount() {
+        this.fetchpop()
+    }
     // Fetching all Blogs AFTER the main Blog
     fetchLazyBlogs(date,id,index) {
         const { dispatch } = this.props
@@ -33,12 +36,12 @@ class BlogSingle extends Component {
     }
 
     fetchpop() {
-        this.props.getBlogSingle
+        console.log("im messed up")
+        this.props.getBlogSingle(this.props)
     }
 
-
     render() {
-        this.fetchpop()
+
         return (
             <div>
                 {/*<Helmet>*/}
@@ -48,7 +51,7 @@ class BlogSingle extends Component {
                     {/*<link rel="canonical" href={window.location.href}/>*/}
                 {/*</Helmet>*/}
 
-                <BlogSingleRender blogsbySlug={this.props.blogsbySlug} blogsSingleSlugs={this.props.blogsSingleSlugs}/>
+                <BlogSingleRender blogsbySlug={this.props.blogsbySlug} blogsSingleSlugs={this.props.blogsSingleSlugs} location={this.props.location}/>
 
                 {/*<LazyLoader*/}
                     {/*type={this.fetchLazyBlogs}*/}

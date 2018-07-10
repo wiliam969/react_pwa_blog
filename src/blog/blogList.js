@@ -41,18 +41,18 @@ class BlogList extends Component {
         return (
             <div className="blog-list-container container">
                 <div className="blog-list-wrapper">
-                    <div className="blog-list-loading-container" id="blog-list-loading-container">
-                        {this.props.Blog.isFetchingNew
-                            ?
-                            <Loading type="reload"></Loading>
-                            :
-                            <LoadingBtn name="Search for new Blogs" onClick={this.fetchNewPosts}></LoadingBtn>
-                        }
-                    </div>
+                    {/*<div className="blog-list-loading-container" id="blog-list-loading-container">*/}
+                        {/*{this.props.Blog.isFetchingNew*/}
+                            {/*?*/}
+                            {/*<Loading type="reload"></Loading>*/}
+                            {/*:*/}
+                            {/*<LoadingBtn name="Search for new Blogs" onClick={this.fetchNewPosts}></LoadingBtn>*/}
+                        {/*}*/}
+                    {/*</div>*/}
                     <div className="blog-list-container">
-                        <BlogGrid blogsbySlug={this.props.blogsbySlug} blogsListSlugs={this.props.blogsListSlugs}></BlogGrid>
+                        <BlogGrid blogsbySlug={this.props.blogsbySlug} blogsListSlugs={this.props.blogsListSlugs} location={this.props.location}></BlogGrid>
 
-                        <LazyLoader type={this.fetchLazyPosts} fetch={this.props.Blog.isFetchingLazy} stop={this.props.Blog.stopLazyLoad} name="Blog"></LazyLoader>
+                        {/*<LazyLoader type={this.fetchLazyPosts} fetch={this.props.Blog.isFetchingLazy} stop={this.props.Blog.stopLazyLoad} name="Blog"></LazyLoader>*/}
                     </div>
                 </div>
             </div>
@@ -73,5 +73,5 @@ function mapStateToProps(state,ownProps) {
     }
 }
 
-export default connect(mapStateToProps)(BlogList)
+export default BlogList
 

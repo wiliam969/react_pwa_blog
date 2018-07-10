@@ -10,6 +10,7 @@ import Category from '../category/categoryReducer'
 import Gallery from '../gallery/galleryReducer'
 import Slider from '../shared/slider/sliderReducer'
 import Alert from '../shared/Alert/alertReducer'
+import Project from '../project/projectRedurcer'
 
 const Reducer = combineReducers({
     AsyncApp,
@@ -20,6 +21,7 @@ const Reducer = combineReducers({
     Category,
     Gallery,
     Slider,
+    Project,
 })
 
 

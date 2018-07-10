@@ -1,0 +1,44 @@
+.project-single-content-wrapper {
+    background:white;
+}
+
+.project-single-content-wrapper-fix {
+     padding:40px;
+ }
+
+.project-single-date {
+    text-align:left;
+    padding:5px 0px 5px 0px;
+    color:grey;
+    font-size:.9rem;
+
+}
+
+.project-single-title {
+    text-align: left;
+    font-size: 2rem;
+    line-height:40px;
+    font-weight: 100;
+    padding: 0px 0px 20px 0px;
+}
+
+.project-single-text {
+    text-align:left;
+}
+
+.project-single-text h1, .project-single-text h2, .project-single-text h3,.project-single-text h4,.project-single-text h5 {
+    font-size: 1.5rem;
+    text-align: left;
+    padding: 10px 0px 10px 0px;
+}
+
+.project-single-text img {
+    max-height:100%;
+    max-width:100%;
+}
+
+.project-single-text p {
+    text-align:left;
+    font-size:1rem;
+    line-height:1.58;
+}

@@ -12,7 +12,7 @@ import BlogSingleRender from './container/blogSingleRender'
 import LazyLoader from '../shared/lazyloader/lazyloader'
 
 /*
-        This is the BlogSingle Class. The Intention behind this class is that it behaves like a wrapper for every single Blog Item
+        This is the ProjectSingle Class. The Intention behind this class is that it behaves like a wrapper for every single Blog Item
         Which means we have an Array of BlogItems which gets fully displayed and here the get wrapped
         Todo: When i already loaded a couple of single blogs and after that im going to the blogpreview page and again click on a blog its weird it should just load the next blog not every item which i already saw
 
@@ -41,7 +41,6 @@ class BlogSingle extends Component {
     }
 
     render() {
-
         return (
             <div>
                 {/*<Helmet>*/}
@@ -55,7 +54,7 @@ class BlogSingle extends Component {
 
                 {/*<LazyLoader*/}
                     {/*type={this.fetchLazyBlogs}*/}
-                    {/*fetch={this.props.BlogSingle.isFetchingLazy}*/}
+                    {/*fetch={this.props.ProjectSingle.isFetchingLazy}*/}
                     {/*stop={post.stopLazyLoad}*/}
                     {/*name="Single Blog"*/}
                     {/*date={post.date}*/}

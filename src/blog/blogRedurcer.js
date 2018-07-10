@@ -161,7 +161,9 @@ function prepareBlogsListOrder(post,action) {
     action.blogs.forEach(function(post) {
         let temp_id = post.slug
 
-        BlogsIds.push(temp_id)
+        const checkifExists = BlogsIds.some(x => x === temp_id)
+
+        !checkifExists ? BlogsIds.push(temp_id) : ""
     })
 
     return BlogsIds

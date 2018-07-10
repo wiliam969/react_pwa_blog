@@ -14,7 +14,7 @@ import BlogList from './blogList'
 import BlogSingle from './blogSingle'
 
 /*
-        This is the BlogSingle Class. The Intention behind this class is that it behaves like a wrapper for every single Blog Item
+        This is the ProjectSingle Class. The Intention behind this class is that it behaves like a wrapper for every single Blog Item
         Which means we have an Array of BlogItems which gets fully displayed and here the get wrapped
         Todo: When i already loaded a couple of single blogs and after that im going to the blogpreview page and again click on a blog its weird it should just load the next blog not every item which i already saw
 
@@ -49,13 +49,9 @@ class Blog extends Component {
     }
 
     getBlogSingle() {
-        console.log("called u fuckers")
         const slug = this.props.match.params.slug
 
         const checkifExists = this.props.Blog.blogsSingleSlugs.some(x => x === this.props.match.params.slug)
-        console.log(checkifExists)
-        console.log(this.props.Blog.blogsSingleSlugs)
-        console.log(this.props.match.params.slug)
 
         if(this.props.Blog.blogsSingleSlugs.length === 0 || !this.props.Blog.isFetching && this.props.match.params.slug && !checkifExists) {
             this.props.getBlogSingle(this.props)
@@ -82,7 +78,7 @@ class Blog extends Component {
                             <BlogSingle getBlogSingle={this.getBlogSingle} blogsbySlug={this.props.Blog.blogsbySlug} blogsSingleSlugs={this.props.Blog.blogsSingleSlugs} location={this.props.location} history={this.props.history} match={this.props.match}/>
                             :
                             <div>
-                                <BlogList blogsbySlug={this.props.Blog.blogsbySlug} blogsListSlugs={this.props.Blog.blogsListSlugs} location={this.props.location} history={this.props.history} match={this.props.match}/>
+                                <BlogList getBlogList={this.getBlogList} blogsbySlug={this.props.Blog.blogsbySlug} blogsListSlugs={this.props.Blog.blogsListSlugs} location={this.props.location} history={this.props.history} match={this.props.match}/>
                                 <LazyLoader
                                     type={ () => {this.getLazyBlogList(this.props.Blog.LazyPage)}}
                                     fetch={this.props.Blog.isFetchingLazy}

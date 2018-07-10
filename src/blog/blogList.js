@@ -22,6 +22,11 @@ class BlogList extends Component {
 
         this.fetchNewPosts = this.fetchNewPosts.bind(this)
         this.fetchLazyPosts = this.fetchLazyPosts.bind(this)
+        this.getwthf = this.getwthf.bind(this)
+    }
+
+    componentDidMount() {
+        this.getwthf()
     }
 
     fetchNewPosts() {
@@ -33,6 +38,11 @@ class BlogList extends Component {
         const { dispatch } = this.props
         dispatch(fetchLazyBlogPreview(this.props.Blog.LazyPage))
     }
+
+    getwthf() {
+        this.props.getBlogList(this.props)
+    }
+
 
     /*
     Todo: Here we have a to the current state random error with the FetchNewBlogs function idk what its causing but it seems to be a 404 error

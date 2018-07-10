@@ -1,0 +1,17 @@
+.selfie-container {
+     margin-top: 150px !important;
+     position: relative;
+     display: inline-block;
+     margin: auto;
+}
+
+.selfie-wrapper {
+    background: white;
+    width: 150px;
+    height: 200px;
+    position: relative;
+}
+
+.selfie-wrapper > img {
+    border-radius: 50%;
+}

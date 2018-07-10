@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d86231f-a2d3-463a-a042-6f35d11ec80a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/app/AsyncApp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/AsyncApp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/project/container/projectGrid.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/container/projectGrid.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -764,10 +763,6 @@
       </dailyData>
     </factor>
     <factor id="completionFinishedType">
-      <dailyData date="12-5-2018">
-        <observation name="cancelled" value="46.0" />
-        <observation name="explicitSelect" value="4.0" />
-      </dailyData>
       <dailyData date="13-5-2018">
         <observation name="cancelled" value="12.0" />
         <observation name="explicitSelect" value="2.0" />
@@ -812,6 +807,9 @@
         <observation name="explicitSelect" value="21.0" />
         <observation name="typedSelect" value="158.0" />
       </dailyData>
+      <dailyData date="11-7-2018">
+        <observation name="cancelled" value="19.0" />
+      </dailyData>
     </factor>
     <factor id="completionType">
       <dailyData date="12-5-2018">
@@ -846,9 +844,6 @@
       </dailyData>
     </factor>
     <factor id="completionUsage">
-      <dailyData date="12-5-2018">
-        <observation name="count" value="50.0" />
-      </dailyData>
       <dailyData date="13-5-2018">
         <observation name="count" value="14.0" />
       </dailyData>
@@ -875,6 +870,9 @@
       </dailyData>
       <dailyData date="10-7-2018">
         <observation name="count" value="1020.0" />
+      </dailyData>
+      <dailyData date="11-7-2018">
+        <observation name="count" value="19.0" />
       </dailyData>
     </factor>
     <factor id="doubleFeature:explicitProximity">
@@ -2078,7 +2076,7 @@
     <property name="node.js.selected.package.prettier" value="" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="settings.github" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -2195,7 +2193,7 @@
       <workItem from="1531153175707" duration="880000" />
       <workItem from="1531154830119" duration="10895000" />
       <workItem from="1531227670131" duration="9532000" />
-      <workItem from="1531251416259" duration="3632000" />
+      <workItem from="1531251416259" duration="4154000" />
     </task>
     <task id="LOCAL-00001" summary="asdasd">
       <created>1504374392149</created>
@@ -2477,11 +2475,25 @@
       <option name="project" value="LOCAL" />
       <updated>1531254882930</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="problems with project">
+      <created>1531260662132</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1531260662132</updated>
+    </task>
+    <task id="LOCAL-00042" summary="problems with project">
+      <created>1531260880410</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1531260880410</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="181044000" />
+    <option name="totallyTimeSpent" value="181566000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2494,15 +2506,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1426" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="9" weight="0.32841614" />
-      <window_info anchor="bottom" id="Event Log" order="0" sideWeight="0.5021075" side_tool="true" weight="0.32841614" />
-      <window_info anchor="bottom" id="Version Control" order="1" weight="0.32686335" />
-      <window_info anchor="bottom" id="Run" order="5" visible="true" weight="0.2166149" />
+      <window_info anchor="bottom" id="Event Log" order="0" sideWeight="0.500394" side_tool="true" visible="true" weight="0.27639753" />
+      <window_info anchor="bottom" id="Version Control" order="1" sideWeight="0.49842396" weight="0.32686335" />
+      <window_info anchor="bottom" id="Run" order="5" weight="0.2166149" />
       <window_info anchor="bottom" id="npm" order="16" weight="0.1886646" />
-      <window_info anchor="bottom" id="Terminal" order="2" weight="0.27639753" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.20843184" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="2" sideWeight="0.49960598" visible="true" weight="0.27639753" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.20843184" />
       <window_info anchor="bottom" id="Statistic" order="14" sideWeight="0.49789253" weight="0.24767081" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Find" order="4" weight="0.32841614" />
@@ -2554,7 +2565,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="some css for the blog single stuff" />
     <MESSAGE value="it destroys the lazy load but i dont know it works kinda" />
     <MESSAGE value="grid is now more or less responsive" />
     <MESSAGE value="lazyload for blog works now better i think :/" />
@@ -2579,7 +2589,8 @@
     <MESSAGE value="mapdispatchtoprops" />
     <MESSAGE value="fixed nearly every problem which i had after i completly rewrote the blog structure =)" />
     <MESSAGE value="copied the whole blog thing to the project side" />
-    <option name="LAST_COMMIT_MESSAGE" value="copied the whole blog thing to the project side" />
+    <MESSAGE value="problems with project" />
+    <option name="LAST_COMMIT_MESSAGE" value="problems with project" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

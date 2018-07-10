@@ -63,7 +63,7 @@ class AsyncApp extends Component {
                                     <Route path="/gallery/:slug"    component={Gallery}/>
                                     <Route path="/category/:name"   component={Category}/>
                                     <Route path="/projects"         component={Projects} exact/>
-                                    <Route path="/projects:slug"    component={Projects}/>
+                                    <Route path="/projects/:slug"    component={Projects}/>
                                     <Redirect from='*' to='/' />
                                     <Footer/>
                                 </Switch>

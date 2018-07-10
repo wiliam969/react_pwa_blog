@@ -52,7 +52,7 @@ export default class ProjectGrid extends Component {
                     <div className="project-grid-preview-item" key={index}>
                         <div className="project-grid-preview-fix">
                             <div className="project-grid-preview-pic-fix">
-                                <Link to={{pathname: '/project/' + projects[post].slug,}}>
+                                <Link to={{pathname: '/projects/' + projects[post].slug,}}>
                                     <Picture
                                         featured_media_id={projects[post].featured_media_id}
                                         is169={true}
@@ -63,14 +63,14 @@ export default class ProjectGrid extends Component {
                             </div>
                             <div
                                 className="project-grid-preview-date">{new Date(projects[post].date).toLocaleDateString()}</div>
-                            <Link to={{pathname: '/project/' + projects[post].slug,}}
+                            <Link to={{pathname: '/projects/' + projects[post].slug,}}
                                   className="project-grid-preview-prevent-a">
                                 <div className="project-grid-preview-title">{projects[post].title}</div>
                             </Link>
 
                             <div className="project-grid-preview-text"
                                  dangerouslySetInnerHTML={{__html: projects[post].excerpt}}/>
-                            <Link to={{pathname: '/project/' + projects[post].slug,}}
+                            <Link to={{pathname: '/projects/' + projects[post].slug,}}
                                   className="project-grid-preview-readmore">Weiterlesen...</Link>
                         </div>
                     </div>

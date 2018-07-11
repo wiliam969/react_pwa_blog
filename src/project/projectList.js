@@ -51,6 +51,7 @@ class ProjectList extends Component {
         return (
             <div className="project-list-container container">
                 <div className="project-list-wrapper">
+                    <h1>Only a small portion of Projects i worked at</h1>
                     {/*<div className="project-list-loading-container" id="project-list-loading-container">*/}
                         {/*{this.props.Project.isFetchingNew*/}
                             {/*?*/}

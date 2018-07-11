@@ -139,11 +139,12 @@ function prepareprojectsbySlugs(post,action) {
 
         objProjects = Object.create(action)
 
-        objProjects.date=       action.date
-        objProjects.slug  =    action.slug
-        objProjects.title =     action.title.rendered
-        objProjects.content=    action.content.rendered
-        objProjects.featured_media_id= action.featured_media
+        objProjects.date                =   action.date
+        objProjects.slug                =   action.slug
+        objProjects.title               =   action.title.rendered
+        objProjects.content             =   action.content.rendered
+        objProjects.featured_media_id   =   action.featured_media
+        objProjects.meta_data           =   action.meta_data
 
         ProjectObj[action.slug] = Object.assign(objProjects)
 

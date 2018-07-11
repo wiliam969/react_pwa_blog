@@ -28,6 +28,26 @@ export default class ProjectGrid extends Component {
         })
     }
 
+    getCorrectLink(post) {
+        const urlOrDescription = post.meta_data.url_or_description[0]
+        const urlTrueFalse = urlOrDescription === "yes" ? true : false
+
+        const project_url = post.meta_data.project_url[0]
+        const github_url = post.meta_data.github_url[0]
+
+        let link
+
+        if(!urlTrueFalse && project_url.length !== 0) {
+            link = project_url
+        } else if (!urlTrueFalse && github_url.length !== 0) {
+            link = github_url
+        } else {
+            link = '/projects/' + post.slug
+        }
+
+        return link
+    }
+
     render() {
         var layouts = {
             "desktop":  this.generateDesktopLayout(2),
@@ -46,32 +66,21 @@ export default class ProjectGrid extends Component {
                 breakpoints={{desktop: 768, mobile: 480, phone:0}}
                 cols={{desktop: 12, mobile: 12, phone: 12}}
                 useCSSTransforms={true}
-                rowHeight={480}>
+                rowHeight={178}>
 
                 {this.props.projectsListSlugs.map((post,index) =>
                     <div className="project-grid-preview-item" key={index}>
                         <div className="project-grid-preview-fix">
                             <div className="project-grid-preview-pic-fix">
-                                <Link to={{pathname: '/projects/' + projects[post].slug,}}>
+                                <a  href={this.getCorrectLink(projects[post])}>
                                     <Picture
                                         featured_media_id={projects[post].featured_media_id}
                                         is169={true}
                                         type="medium_large"
                                         backgroundsize="cover">
                                     </Picture>
-                                </Link>
+                                </a>
                             </div>
-                            <div
-                                className="project-grid-preview-date">{new Date(projects[post].date).toLocaleDateString()}</div>
-                            <Link to={{pathname: '/projects/' + projects[post].slug,}}
-                                  className="project-grid-preview-prevent-a">
-                                <div className="project-grid-preview-title">{projects[post].title}</div>
-                            </Link>
-
-                            <div className="project-grid-preview-text"
-                                 dangerouslySetInnerHTML={{__html: projects[post].excerpt}}/>
-                            <Link to={{pathname: '/projects/' + projects[post].slug,}}
-                                  className="project-grid-preview-readmore">Weiterlesen...</Link>
                         </div>
                     </div>
                 )}

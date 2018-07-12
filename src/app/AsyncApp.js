@@ -12,17 +12,13 @@ import Projects from '../project/index'
 import Category from '../category/index'
 import Home from '../home/index'
 import Alert from '../shared/Alert/alert'
+import "./asyncApp.css"
 
 import { BrowserRouter ,Route,Redirect,Switch } from 'react-router-dom'
 import Loading from "../shared/utilities/loading";
 
 
 class AsyncApp extends Component {
-
-    main = {
-        height: 100+ 'vh'
-    }
-
 
     /*
         Here happens a lot of the magic!
@@ -53,20 +49,21 @@ class AsyncApp extends Component {
                                 <div id="menu-container">
                                     <Menu/>
                                 </div>
+
                                 <Alert/>
                                 <Switch id="main-container">
-                                    <Route path="/"                 component={Home} exact/>
-                                    <Route path="/blog"             component={Blog} exact/>
-                                    <Route path="/blog/:slug"       component={Blog}/>
-                                    <Route path="/aboutme"          component={AboutMe}/>
-                                    <Route path="/gallery"          component={Gallery} exact/>
-                                    <Route path="/gallery/:slug"    component={Gallery}/>
-                                    <Route path="/category/:name"   component={Category}/>
-                                    <Route path="/projects"         component={Projects} exact/>
-                                    <Route path="/projects/:slug"    component={Projects}/>
-                                    <Redirect from='*' to='/' />
-                                    <Footer/>
+                                    <Route      path="/"                 component={Home} exact/>
+                                    <Route      path="/blog"             component={Blog} exact/>
+                                    <Route      path="/blog/:slug"       component={Blog}/>
+                                    <Route      path="/aboutme"          component={AboutMe}/>
+                                    <Route      path="/gallery"          component={Gallery} exact/>
+                                    <Route      path="/gallery/:slug"    component={Gallery}/>
+                                    <Route      path="/category/:name"   component={Category}/>
+                                    <Route      path="/projects"         component={Projects} exact/>
+                                    <Route      path="/projects/:slug"    component={Projects}/>
+                                    <Redirect   from='*' to='/' />
                                 </Switch>
+                                    <Footer/>
                             </div>
                         </BrowserRouter>
                 }

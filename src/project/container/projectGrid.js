@@ -38,11 +38,38 @@ export default class ProjectGrid extends Component {
         let link
 
         if(!urlTrueFalse && project_url.length !== 0) {
-            link = project_url
+            link = <a  href={project_url}>
+                <Picture
+                    featured_media_id={post.featured_media_id}
+                    // is169={true}
+                    type="medium_large"
+                    backgroundsize="cover"
+                    height="100%"
+                    width="100%">
+                </Picture>
+                </a>
         } else if (!urlTrueFalse && github_url.length !== 0) {
-            link = github_url
+            link = <a  href={github_url}>
+                <Picture
+                    featured_media_id={post.featured_media_id}
+                    // is169={true}
+                    type="medium_large"
+                    backgroundsize="cover"
+                    height="100%"
+                    width="100%">
+                </Picture>
+            </a>
         } else {
-            link = '/projects/' + post.slug
+            link = <Link to={{pathname: '/projects/' + post.slug,}}>
+                <Picture
+                    featured_media_id={post.featured_media_id}
+                    // is169={true}
+                    type="medium_large"
+                    backgroundsize="cover"
+                    height="100%"
+                    width="100%">
+                </Picture>
+            </Link>
         }
 
         return link
@@ -51,8 +78,8 @@ export default class ProjectGrid extends Component {
     render() {
         var layouts = {
             "desktop":  this.generateDesktopLayout(2),
-            "mobile":  this.generateTabletLayout(2),
-            "phone":  this.generateMobileLayout(2),
+            "mobile":  this.generateTabletLayout(1.88),
+            "phone":  this.generateMobileLayout(1.5),
         }
 
         const projects = this.props.projectsbySlug
@@ -70,18 +97,7 @@ export default class ProjectGrid extends Component {
 
                 {this.props.projectsListSlugs.map((post,index) =>
                     <div className="project-grid-preview-item" key={index}>
-                        <div className="project-grid-preview-fix">
-                            <div className="project-grid-preview-pic-fix">
-                                <a  href={this.getCorrectLink(projects[post])}>
-                                    <Picture
-                                        featured_media_id={projects[post].featured_media_id}
-                                        is169={true}
-                                        type="medium_large"
-                                        backgroundsize="cover">
-                                    </Picture>
-                                </a>
-                            </div>
-                        </div>
+                        {this.getCorrectLink(projects[post])}
                     </div>
                 )}
             </ResponsiveReactGridLayout>

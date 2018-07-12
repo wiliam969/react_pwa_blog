@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './boot/fonts/index'
+import './boot/bootFonts'
 import 'normalize.css'
 import './App.css'
 import '../node_modules/react-grid-layout/css/styles.css'

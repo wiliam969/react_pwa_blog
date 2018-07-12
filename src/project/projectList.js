@@ -51,7 +51,7 @@ class ProjectList extends Component {
         return (
             <div className="project-list-container container">
                 <div className="project-list-wrapper">
-                    <h1>Only a small portion of Projects i worked at</h1>
+                    <h1>Only a small portion of Projects i worked at...</h1>
                     {/*<div className="project-list-loading-container" id="project-list-loading-container">*/}
                         {/*{this.props.Project.isFetchingNew*/}
                             {/*?*/}
@@ -62,8 +62,6 @@ class ProjectList extends Component {
                     {/*</div>*/}
                     <div className="project-list-container">
                         <ProjectGrid projectsbySlug={this.props.projectsbySlug} projectsListSlugs={this.props.projectsListSlugs} location={this.props.location}></ProjectGrid>
-
-                        {/*<LazyLoader type={this.fetchLazyPosts} fetch={this.props.Project.isFetchingLazy} stop={this.props.Project.stopLazyLoad} name="Project"></LazyLoader>*/}
                     </div>
                 </div>
             </div>

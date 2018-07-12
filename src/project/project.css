@@ -4,3 +4,10 @@
     min-height:300px;
     transition: background 2.5s;
 }
+
+#project-list-h1 {
+    font-size: 1.6rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+}

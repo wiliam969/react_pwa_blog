@@ -31,8 +31,10 @@ html {
   to { transform: rotate(360deg); }
 }
 
-/*@font-face {*/
-  /*font-family: 'Proxima';*/
-  /*src: url('./boot/fonts/proxima_nova_regular-webfont-webfont.woff2') format('woff2'),*/
-  /*url('./boot/fonts/proxima_nova_regular-webfont-webfont.woff') format('woff')*/
-/*}*/
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
+  color: black;
+}

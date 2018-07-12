@@ -1,30 +1,36 @@
 import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom'
 import './footer.css'
+
+import { Col, Grid, Row, Nav, Navbar, NavItem, Glyphicon } from 'react-bootstrap'
+
+import mail from "./envelope-solid.svg"
+import github from "./github-brands.svg"
+import linked from "./linkedin-in-brands.svg"
 
 export default class Footer extends Component {
     render() {
         return (
             <footer>
-                <div className="footer">
-                    <div className="container">
-                        <div className="nav-left">
-                            <a href="" className="nav-item">
-                                {/*<img src="http://bulma.io/images/bulma-type.png" alt=""/>*/}
+                <Navbar fixedBottom={true} id="nav-menu-mobile-navbar">
+                    <Nav id="nav-menu-mobile-nav">
+                        <NavItem>
+                            <a href="mailto:admin@robin-witte.de"  target="_blank">
+                                <img src={mail}/>
                             </a>
-                        </div>
-                    </div>
-
-                    <span className="nav-toggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </span>
-
-                    <div className="nav-right nav-menu">
-                        <a className="nav-items">Impressum</a>
-                        <a className="nav-items">Datenschutzerklärung</a>
-                    </div>
-                </div>
+                        </NavItem>
+                        <NavItem>
+                            <a href="https://www.linkedin.com/in/robin-witte-3b2105157/"  target="_blank">
+                                <img src={linked}/>
+                            </a>
+                        </NavItem>
+                        <NavItem>
+                            <a href="https://github.com/wiliam969"  target="_blank">
+                                <img src={github}/>
+                            </a>
+                        </NavItem>
+                    </Nav>
+                </Navbar>
             </footer>
         );
     }

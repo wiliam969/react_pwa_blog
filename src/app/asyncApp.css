@@ -1,3 +1,7 @@
 #menu-container {
     margin-top: 50px;
 }
+
+#app {
+    min-height: calc(100vh - 50px);
+}

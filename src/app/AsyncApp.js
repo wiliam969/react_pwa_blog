@@ -30,7 +30,7 @@ class AsyncApp extends Component {
      */
     render() {
         return(
-            <div id="app" style={this.main}>
+            <div id="app">
 
                     {this.props.App.isLoading ?
                         <Loading></Loading>

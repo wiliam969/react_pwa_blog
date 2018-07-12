@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8d86231f-a2d3-463a-a042-6f35d11ec80a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/project/container/projectGrid.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/container/projectGrid.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/project/projectList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/projectList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/project/projectRedurcer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/projectRedurcer.js" afterDir="false" />
-    </list>
+    <list default="true" id="8d86231f-a2d3-463a-a042-6f35d11ec80a" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -27,7 +22,7 @@
             <entry file="file://$PROJECT_DIR$/src/project/container/projectGrid.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="720">
-                  <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+                  <caret line="36" selection-start-line="36" selection-end-line="36" />
                   <folding>
                     <element signature="e#0#40#0" expanded="true" />
                   </folding>
@@ -39,7 +34,7 @@
             <entry file="file://$PROJECT_DIR$/src/project/projectList.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="644">
-                  <caret line="61" column="32" lean-forward="true" selection-start-line="61" selection-start-column="32" selection-end-line="61" selection-end-column="32" />
+                  <caret line="61" column="32" selection-start-line="61" selection-start-column="32" selection-end-line="61" selection-end-column="32" />
                   <folding>
                     <element signature="e#0#40#0" expanded="true" />
                   </folding>
@@ -54,7 +49,7 @@
           <file leaf-file-name="projectgrid.css" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/project/container/projectgrid.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="214">
+                <state relative-caret-position="493">
                   <caret line="29" column="20" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="20" />
                 </state>
               </provider>
@@ -823,7 +818,7 @@
         <observation name="typedSelect" value="158.0" />
       </dailyData>
       <dailyData date="11-7-2018">
-        <observation name="cancelled" value="230.0" />
+        <observation name="cancelled" value="234.0" />
         <observation name="explicitSelect" value="10.0" />
         <observation name="typedSelect" value="45.0" />
       </dailyData>
@@ -889,7 +884,7 @@
         <observation name="count" value="1020.0" />
       </dailyData>
       <dailyData date="11-7-2018">
-        <observation name="count" value="285.0" />
+        <observation name="count" value="289.0" />
       </dailyData>
     </factor>
     <factor id="doubleFeature:explicitProximity">
@@ -2216,7 +2211,7 @@
       <workItem from="1531154830119" duration="10895000" />
       <workItem from="1531227670131" duration="9532000" />
       <workItem from="1531251416259" duration="4437000" />
-      <workItem from="1531294981894" duration="2658000" />
+      <workItem from="1531294981894" duration="4103000" />
     </task>
     <task id="LOCAL-00001" summary="asdasd">
       <created>1504374392149</created>
@@ -2533,11 +2528,18 @@
       <option name="project" value="LOCAL" />
       <updated>1531261348753</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="baba">
+      <created>1531298917528</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1531298917528</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="184507000" />
+    <option name="totallyTimeSpent" value="185952000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2550,18 +2552,17 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1426" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.20843184" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.20843184" />
       <window_info anchor="bottom" id="TODO" order="9" weight="0.32841614" />
       <window_info anchor="bottom" id="Statistic" order="14" sideWeight="0.49789253" weight="0.24767081" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="0" sideWeight="0.50078803" side_tool="true" weight="0.27639753" />
       <window_info anchor="bottom" id="Version Control" order="1" sideWeight="0.49842396" weight="0.32686335" />
-      <window_info anchor="bottom" id="Run" order="5" visible="true" weight="0.2166149" />
+      <window_info anchor="bottom" id="Run" order="5" weight="0.2166149" />
       <window_info anchor="bottom" id="npm" order="16" weight="0.1886646" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="2" sideWeight="0.49921197" weight="0.27639753" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="2" sideWeight="0.49921197" visible="true" weight="0.27639753" />
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="6" weight="0.4" />
       <window_info anchor="bottom" id="Salesforce" order="15" />
@@ -2610,7 +2611,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="it destroys the lazy load but i dont know it works kinda" />
     <MESSAGE value="grid is now more or less responsive" />
     <MESSAGE value="lazyload for blog works now better i think :/" />
     <MESSAGE value="lazyload blog bug" />
@@ -2635,7 +2635,8 @@
     <MESSAGE value="fixed nearly every problem which i had after i completly rewrote the blog structure =)" />
     <MESSAGE value="copied the whole blog thing to the project side" />
     <MESSAGE value="problems with project" />
-    <option name="LAST_COMMIT_MESSAGE" value="problems with project" />
+    <MESSAGE value="baba" />
+    <option name="LAST_COMMIT_MESSAGE" value="baba" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2734,6 +2735,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="820">
           <caret line="65" selection-start-line="65" selection-end-line="65" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2965,7 +2969,7 @@
     <entry file="file://$PROJECT_DIR$/src/project/projectList.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="644">
-          <caret line="61" column="32" lean-forward="true" selection-start-line="61" selection-start-column="32" selection-end-line="61" selection-end-column="32" />
+          <caret line="61" column="32" selection-start-line="61" selection-start-column="32" selection-end-line="61" selection-end-column="32" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>
@@ -2974,7 +2978,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/project/container/projectgrid.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
+        <state relative-caret-position="493">
           <caret line="29" column="20" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="20" />
         </state>
       </provider>
@@ -2982,7 +2986,7 @@
     <entry file="file://$PROJECT_DIR$/src/project/container/projectGrid.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="720">
-          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>

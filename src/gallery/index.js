@@ -69,7 +69,7 @@ class Gallery extends Component {
                     <link rel="canonical" href={window.location.href}/>
                 </Helmet>
 
-                <h1>Stuff i do in my free time ...</h1>
+                <h1 id="gallery-h1">Pastrami beef porchetta tenderloin brisket pork loin...</h1>
 
                 <div className="gallery-wrapper">
                     <div className="gallery-loading-container"/>

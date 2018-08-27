@@ -49,8 +49,6 @@ class Project extends Component {
     }
 
     getProjectSingle() {
-        const slug = this.props.match.params.slug
-
         const checkifExists = this.props.Project.projectsSingleSlugs.some(x => x === this.props.match.params.slug)
 
         if(this.props.Project.projectsSingleSlugs.length === 0 || !this.props.Project.isFetching && this.props.match.params.slug && !checkifExists) {

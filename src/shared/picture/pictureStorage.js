@@ -2,7 +2,7 @@ import db from '../../boot/bootIndexeddb'
 
 export default class BlogStorage {
     static getPicture(blog_id) {
-        const id = parseInt(blog_id)
+        const id = parseInt(blog_id, 10)
 
         return db.table('picture').get(id)
             .then(picture => {

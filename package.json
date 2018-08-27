@@ -10,6 +10,7 @@
     "dexie": "^2.0.4",
     "isomorphic-fetch": "^2.2.1",
     "normalize.css": "^8.0.0",
+    "npm": "^6.4.0",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-bootstrap": "^0.32.1",
@@ -30,7 +31,7 @@
     "webfontloader": "^1.6.28"
   },
   "devDependencies": {
-    "postcss-scss": "^1.0.6",
+    "postcss-scss": "^2.0.0",
     "react-scripts": "^1.1.4",
     "react-svg-loader": "^2.1.0",
     "redux-devtools": "^3.4.1"

@@ -49,8 +49,6 @@ class Blog extends Component {
     }
 
     getBlogSingle() {
-        const slug = this.props.match.params.slug
-
         const checkifExists = this.props.Blog.blogsSingleSlugs.some(x => x === this.props.match.params.slug)
 
         if(this.props.Blog.blogsSingleSlugs.length === 0 || !this.props.Blog.isFetching && this.props.match.params.slug && !checkifExists) {

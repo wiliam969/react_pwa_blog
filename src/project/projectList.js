@@ -1,18 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import {
     fetchNewProjectPreview,
     fetchLazyProjectPreview
 } from './actions/projectListActions'
-
-import Loading from '../shared/utilities/loading'
-import LoadingBtn from '../shared/utilities/loading-btn'
-import LazyLoader from '../shared/lazyloader/lazyloader'
 import ProjectGrid from './container/projectGrid'
-
-// import Quotation from './quotation/index'
-
 import './project.css'
 
 class ProjectList extends Component {
@@ -71,15 +63,6 @@ class ProjectList extends Component {
 
 ProjectList.propTypes = {
     dispatch: PropTypes.func
-}
-
-function mapStateToProps(state,ownProps) {
-    var project = { didInvalidate: '', isFetching: '',}
-
-    project = Object.assign({}, state.Project)
-    return {
-        Project: project,
-    }
 }
 
 export default ProjectList

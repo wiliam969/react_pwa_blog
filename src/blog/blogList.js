@@ -1,18 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import {
     fetchNewBlogPreview,
     fetchLazyBlogPreview
 } from './actions/blogListActions'
-
-import Loading from '../shared/utilities/loading'
-import LoadingBtn from '../shared/utilities/loading-btn'
-import LazyLoader from '../shared/lazyloader/lazyloader'
 import BlogGrid from './container/blogGrid'
-
-// import Quotation from './quotation/index'
-
 import './blog.css'
 
 class BlogList extends Component {
@@ -72,15 +64,6 @@ class BlogList extends Component {
 
 BlogList.propTypes = {
     dispatch: PropTypes.func
-}
-
-function mapStateToProps(state,ownProps) {
-    var blog = { didInvalidate: '', isFetching: '',}
-
-    blog = Object.assign({}, state.Blog)
-    return {
-        Blog: blog,
-    }
 }
 
 export default BlogList

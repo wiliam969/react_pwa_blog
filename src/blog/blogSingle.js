@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
-import { Helmet } from 'react-helmet'
+// import { connect } from 'react-redux'
+// import PropTypes from 'prop-types'
+// import { Helmet } from 'react-helmet'
 
 import {
     fetchLazyBlog,
@@ -9,7 +9,7 @@ import {
 
 import BlogSingleRender from './container/blogSingleRender'
 
-import LazyLoader from '../shared/lazyloader/lazyloader'
+// import LazyLoader from '../shared/lazyloader/lazyloader'
 
 /*
         This is the ProjectSingle Class. The Intention behind this class is that it behaves like a wrapper for every single Blog Item

@@ -19,7 +19,7 @@ export default class Menu extends Component {
             return false
         }
         console.log("right")
-        const eventID = parseInt(match.params.eventID)
+        const eventID = parseInt(match.params.eventID,10)
         return !isNaN(eventID) && eventID % 2 === 1
     }
 
@@ -62,7 +62,7 @@ export default class Menu extends Component {
                         <Navbar fixedTop={true} fluid={true} id="nav-menu-navbar">
                             <Navbar.Header>
                                 <Navbar.Brand>
-                                    <NavLink className="nav-items" to="/">{process.env.REACT_APP_IDB_NAME}</NavLink>
+                                    <NavLink className="nav-items" to="/">{process.env.REACT_APP_IDB_NAME} - v0.5</NavLink>
                                 </Navbar.Brand>
                             </Navbar.Header>
                             <Nav id="nav-menu-nav">

@@ -2,14 +2,12 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
-
 import Menu from '../shared/Menu/index'
 import Footer from '../shared/Footer/index'
 import Blog from '../blog/index'
 import AboutMe from '../aboutme/index'
 import Gallery from '../gallery/index'
 import Projects from '../project/index'
-import Category from '../category/index'
 import Home from '../home/index'
 import Alert from '../shared/Alert/alert'
 import "./asyncApp.css"
@@ -58,7 +56,6 @@ class AsyncApp extends Component {
                                     <Route      path="/aboutme"          component={AboutMe}/>
                                     <Route      path="/gallery"          component={Gallery} exact/>
                                     <Route      path="/gallery/:slug"    component={Gallery}/>
-                                    <Route      path="/category/:name"   component={Category}/>
                                     <Route      path="/projects"         component={Projects} exact/>
                                     <Route      path="/projects/:slug"    component={Projects}/>
                                     <Redirect   from='*' to='/' />

@@ -14,3 +14,10 @@
 .selfie-wrapper > img {
     border-radius: 50%;
 }
+
+#aboutme-h1 {
+    font-size: 1.6rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+}

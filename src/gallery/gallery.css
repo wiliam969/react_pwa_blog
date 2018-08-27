@@ -10,3 +10,10 @@
         padding:0px;
     }
 }
+
+#gallery-h1 {
+    font-size: 1.6rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+}

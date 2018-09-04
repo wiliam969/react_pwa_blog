@@ -16,7 +16,13 @@ footer .navbar {
     margin-bottom: 0px;
 }
 
-footer .navbar-nav>li>a {
+footer #icons>li>a {
     padding-top: 10px !important;
     padding-bottom: 10px !important;
+}
+
+#footer-menu {
+    background: white;
+    border: 0px;
+    box-shadow: 0px 0px 5px black;
 }

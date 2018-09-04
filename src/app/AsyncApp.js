@@ -11,6 +11,7 @@ import Projects from '../project/index'
 import Home from '../home/index'
 import Alert from '../shared/Alert/alert'
 import "./asyncApp.css"
+import CustomSite from '../site/CustomSite'
 
 import { BrowserRouter ,Route,Redirect,Switch } from 'react-router-dom'
 import Loading from "../shared/utilities/loading";
@@ -57,7 +58,8 @@ class AsyncApp extends Component {
                                     <Route      path="/gallery"          component={Gallery} exact/>
                                     <Route      path="/gallery/:slug"    component={Gallery}/>
                                     <Route      path="/projects"         component={Projects} exact/>
-                                    <Route      path="/projects/:slug"    component={Projects}/>
+                                    <Route      path="/projects/:slug"   component={Projects}/>
+                                    <Route      path="/customsite/:slug"  component={CustomSite}/>
                                     <Redirect   from='*' to='/' />
                                 </Switch>
                                     <Footer/>

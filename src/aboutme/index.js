@@ -16,12 +16,12 @@ export default class AboutMe extends Component {
                 </div>
                 <h2>Hey, I'm Robin</h2>
                 <hr/>
-                <h3>future Gamedev - Webdev - Appdev</h3>
+                <h3>Webdev - Appdev</h3>
                 <p>I write, maintain and support software for a living.</p>
                 <p>Playing computer games was one of my hobby's now I'm more interested to glimpse behind the scenes therefore,
                     I like to dabble with programs such as UE4, Blender.</p>
                 <p>PHP and Javascript are my Hometown. I grew up with it. Currently im most comfortable with these languages.</p>
-                <p>In my free time im mostly working on evolving my knowledge about Game Development.</p>
+                <p>In my free time im mostly working on evolving my knowledge about Game Development/C++.</p>
             </div>
         );
     }

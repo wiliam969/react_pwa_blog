@@ -1,7 +1,3 @@
-/**
- * Created by wiliam969 on 28.04.2017.
- */
-
 import BlogsingleApi from '../api/blogsingleApi'
 
 export const REQUEST_BLOG_SINGLE = 'REQUEST_BLOG_SINGLE'
@@ -78,8 +74,6 @@ export function fetchBlogSingle(blog = 1) {
     }
 
 }
-
-
 
 export function fetchLazyBlog(date,ids,indexes) {
     const datum = date

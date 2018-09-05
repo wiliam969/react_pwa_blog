@@ -4,6 +4,11 @@ import { connect } from 'react-redux'
 import PropTypes from "prop-types";
 import { closSpecificAlert } from "./alertActions";
 
+/**
+ * This is still in a beta branch
+ * I want to handle all the errors
+ * global though this class
+ */
 class AlertAction extends Component {
 
     constructor(props) {

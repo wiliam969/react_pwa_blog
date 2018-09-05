@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import Picture from '../../shared/picture/index'
 import { Link } from 'react-router-dom'
 
+/**
+ * This Class is depreciated
+ */
 export default class BlogList extends Component {
 
     humus = {

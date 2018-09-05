@@ -19,7 +19,7 @@ import Loading from "../shared/utilities/loading";
 
 class AsyncApp extends Component {
 
-    /*
+    /**
         Here happens a lot of the magic!
         Were init the whole React Router Dom Magic with a Switch (also to get more perf)
         Also here we have a nice little Alert handler which fetches all the errors =)

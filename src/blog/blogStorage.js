@@ -19,7 +19,7 @@ export default class BlogStorage {
 
     }
 
-    /*
+    /**
         Creating the Timestamps on startup =)
      */
     static createDefaultTimestamps(post) {

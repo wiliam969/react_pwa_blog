@@ -1,6 +1,6 @@
 export default class BlogsingleApi {
 
-    /*
+    /**
         Catches a specific blog based on the slug of the item =)
      */
     static getBlogSingle(slug) {

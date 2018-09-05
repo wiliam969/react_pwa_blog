@@ -1,6 +1,13 @@
-import { IS_LOADING, STOP_LOADING, FETCH_CATEGORY} from './appActions'
+import { IS_LOADING, STOP_LOADING} from './appActions'
 
-function AsyncApp(state = {isLoading:false, categories: {}}, action) {
+/**
+ * Reducer for the currently only one global var
+ * @param state
+ * @param action
+ * @returns {*}
+ * @constructor
+ */
+function AsyncApp(state = {isLoading:false,}, action) {
     switch(action.type) {
         case IS_LOADING:
             return Object.assign({}, state, {
@@ -9,10 +16,6 @@ function AsyncApp(state = {isLoading:false, categories: {}}, action) {
         case STOP_LOADING:
             return Object.assign({}, state, {
                 isLoading: false,
-            })
-        case FETCH_CATEGORY:
-            return Object.assign({}, state, {
-                categories: action.categories,
             })
         default:
             return state

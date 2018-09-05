@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import pic from './test.jpg'
 import "./aboutme.css"
-// import cv from "./cv"
 
+/**
+ * This class has no intention of analyzing or ending data it just outputs content
+ */
 export default class AboutMe extends Component {
     render() {
         return(

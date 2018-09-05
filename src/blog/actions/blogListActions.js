@@ -1,6 +1,3 @@
-/**
- * Created by wiliam969 on 28.04.2017.
- */
 import BlogListApi from '../api/blogListApi'
 import BlogStorage from '../blogStorage'
 
@@ -82,8 +79,13 @@ export const stopNewBlogPreview = () => {
     }
 }
 
-// this is it lul it wörks haha didint expected this :D
-
+/**
+ * Here we call the api to get the latest content and
+ * to update our timestamps in order to receive the
+ * correct blogitems for each btn *
+ * @param blogs
+ * @returns {Function}
+ */
 export function fetchBlogPreviews(blogs) {
 
     return function(dispatch) {
@@ -105,9 +107,14 @@ export function fetchBlogPreviews(blogs) {
     }
 }
 
-
+/**
+ * To seperate each event on the website
+ * we also have an action for the lazyload
+ * of the blog
+ * @param page
+ * @returns {Function}
+ */
 export function fetchLazyBlogPreview(page) {
-    console.log(page)
     return function (dispatch) {
 
         dispatch(requestLazyBlogPreview())
@@ -130,6 +137,10 @@ export function fetchLazyBlogPreview(page) {
     }
 }
 
+/**
+ * Same goes for the New blog function
+ * @returns {function(*): *}
+ */
 export function fetchNewBlogPreview() {
     return function (dispatch) {
         dispatch(requestNewBlogPreview())

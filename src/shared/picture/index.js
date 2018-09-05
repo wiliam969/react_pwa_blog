@@ -7,8 +7,9 @@ import {
 
 import VisibilitySensor from 'react-visibility-sensor'
 
-/*
-    This is the Picture class. With this class we prerender every Picture which is on this Website
+/**
+    This is the Picture class.
+    With this class we prerender every Picture which is on this Website
     We have a custom of variables so we can setup the Picture as we like
  */
 class Picture extends Component {

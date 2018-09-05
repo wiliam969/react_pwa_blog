@@ -18,8 +18,10 @@ import GalleryGrid from "./components/galleryGrid"
 import GalleryFullscreen from './components/galleryFullscreen'
 import LazyLoader from '../shared/lazyloader/lazyloader'
 
-/*
-        This Gallery is heavily inspired on Instagramm its has some aspects on his own but most ideas rely on the concept of how instagramm/facebook is handling data
+/**
+        This Gallery is heavily inspired on Instagramm
+        its has some aspects on his own but most ideas
+        rely on the concept of how instagramm/facebook is handling data
         Todo: If i click on the Next or Prev Btn in Fullscreen the Link does not get updated
         Todo: if i already looked at half of the pictures in Fullscreen it should load more Items for the Gallery
         Todo: Rather the Item is there or not i have to get an Item the Fullscreen shit has to work independently

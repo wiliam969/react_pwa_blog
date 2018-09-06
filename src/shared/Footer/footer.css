@@ -21,6 +21,20 @@ footer #icons>li>a {
     padding-bottom: 10px !important;
 }
 
+footer #icons {
+    margin: 0px -15px;
+}
+
+footer .navbar-collapse {
+    display: block !important;
+}
+
+footer .nav-footer-desktop {
+    display: inline-block;
+    float: right !important;
+    width: auto;
+}
+
 #footer-menu {
     background: white;
     border: 0px;

@@ -38,6 +38,7 @@ class simpleSlider extends Component {
             speed: 500,
             slidesToScroll:1,
             slidesToShow:1,
+            arrows:false,
         }
         return (
             <Slider {...settings}>

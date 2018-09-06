@@ -1,15 +1,20 @@
 {
-  "short_name": "KW",
-  "name": "Kerstin Witte Website",
+  "short_name": "RW",
+  "name": "Robin Witte",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "192x192",
-      "type": "image/png"
+      "src": "favico192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "favico512.png",
+      "type": "image/png",
+      "sizes": "512x512"
     }
   ],
   "start_url": "./index.html",
   "display": "standalone",
-  "theme_color": "#000000",
+  "theme_color": "#ffffff",
   "background_color": "#ffffff"
 }

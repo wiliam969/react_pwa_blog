@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import './footer.css'
 
-import { Nav, Navbar, NavItem } from 'react-bootstrap'
+import {Col, Nav, Navbar, NavItem} from 'react-bootstrap'
 
 import mail from "./envelope-solid.svg"
 import github from "./github-brands.svg"
@@ -15,25 +15,23 @@ export default class Footer extends Component {
                 <Navbar fixedBottom={true} id="nav-menu-mobile-navbar" id="footer-menu">
                     <Navbar.Collapse>
                         <Nav id="icons">
-                            <NavItem>
-                                <a href="mailto:admin@robin-witte.de"  target="_blank" rel="noopener noreferrer">
-                                    <img src={mail} alt="mail"/>
-                                </a>
+                            <NavItem href="mailto:admin@robin-witte.de" rel="noopener noreferrer">
+                                <img src={mail} alt="mail"/>
                             </NavItem>
-                            <NavItem>
-                                <a href="https://github.com/wiliam969"  target="_blank" rel="noopener noreferrer">
-                                    <img src={github} alt="github"/>
-                                </a>
+                            <NavItem href="https://github.com/wiliam969"  target="_blank" rel="noopener noreferrer">
+                                <img src={github} alt="github"/>
                             </NavItem>
                         </Nav>
-                        <Nav pullRight={true}>
-                            <NavItem className="nav-items">
-                                <NavLink to="/customsite/impressum">Impressum</NavLink>
-                            </NavItem>
-                            <NavItem className="nav-items">
-                                <NavLink to="/customsite/datenschutzerklaerung">Datenschutzerklärung</NavLink>
-                            </NavItem>
-                        </Nav>
+                        <Col xs={12} xsHidden={true} smHidden={true} className="nav-footer-desktop">
+                            <Nav pullRight={true}>
+                                <NavItem className="nav-items">
+                                    <NavLink to="/customsite/impressum">Impressum</NavLink>
+                                </NavItem>
+                                <NavItem className="nav-items">
+                                    <NavLink to="/customsite/datenschutzerklaerung">Datenschutzerklärung</NavLink>
+                                </NavItem>
+                            </Nav>
+                        </Col>
                     </Navbar.Collapse>
                 </Navbar>
             </footer>

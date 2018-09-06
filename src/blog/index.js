@@ -21,8 +21,6 @@ import BlogSingle from './blogSingle'
 */
 class Blog extends Component {
 
-
-
     constructor() {
         super()
 

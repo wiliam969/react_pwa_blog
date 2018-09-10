@@ -17,8 +17,6 @@ class Quotation extends Component {
 
         const item = this.props.quotations.quotes[Math.floor(Math.random()*this.props.quotations.quotes.length)]
 
-        console.log(item)
-
         return (
             <div className="quotation-container">
                 { this.props.quotations.quotes.length > 0 &&

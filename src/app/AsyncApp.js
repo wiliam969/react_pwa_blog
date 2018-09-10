@@ -38,12 +38,11 @@ class AsyncApp extends Component {
                             <div>
                                 <Helmet>
                                     <meta charSet="utf-8"/>
-                                    <meta name="description" content="Kerstin Witte Website"/>
-                                    <meta name="keywords" content="Erziehung,haha,pepe"/>
-                                    <meta name="author" content="Kerstin Witte"/>
-                                    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                                    <meta name="description" content={process.env.REACT_APP_IDB_NAME + "Website"}/>
+                                    <meta name="keywords" content="programming,game-dev,app-dev,web-dev,blog,"/>
+                                    <meta name="author" content={process.env.REACT_APP_IDB_NAME}/>
                                     <title>{process.env.REACT_APP_IDB_NAME + " -  Home"}</title>
-                                    <link rel="canonical" href="localhost:3000/"/>
+                                    <link rel="canonical" href={process.env.REACT_APP_URI}/>
                                 </Helmet>
                                 <div id="menu-container">
                                     <Menu/>

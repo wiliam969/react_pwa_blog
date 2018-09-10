@@ -62,7 +62,6 @@ export const stopLazyProjectSingle = (id,index) => {
     Gets the Slug of the URI and returns it to the specific handlers after that it returns an object if the slug was correct
  */
 export function fetchProjectSingle(project = 1) {
-    console.log(project)
     const slug = project.match.params.slug
 
     return function (dispatch) {
@@ -70,7 +69,6 @@ export function fetchProjectSingle(project = 1) {
 
         return ProjectsingleApi.getProjectSingle(slug)
             .then(ApiResponse => {
-                console.log(ApiResponse)
                 return dispatch(receiveProjectSingle(ApiResponse,slug))
             }).catch(error => {
                 return dispatch(invalidateProjectSingle(error,slug))

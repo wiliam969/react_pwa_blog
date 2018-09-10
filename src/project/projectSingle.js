@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 // import { connect } from 'react-redux'
 // import PropTypes from 'prop-types'
-// import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet'
 
 import {
     fetchLazyProject,
@@ -36,7 +36,6 @@ class ProjectSingle extends Component {
     }
 
     fetchpop() {
-        console.log("im messed up")
         this.props.getProjectSingle(this.props)
     }
 
@@ -44,9 +43,9 @@ class ProjectSingle extends Component {
         return (
             <div>
                 {/*<Helmet>*/}
-                    {/*<meta name="description" content={this.props.Project.items[0].content.rendered}/>*/}
-                    {/*<meta name="keywords" content={this.props.Project.items[0].tags}/>*/}
-                    {/*<title>{this.props.Project.items[0].title.rendered}</title>*/}
+                    {/*/!*<meta name="description" content={this.props.Project.items[0].content.rendered}/>*!/*/}
+                    {/*/!*<meta name="keywords" content={this.props.Project.items[0].tags}/>*!/*/}
+                    {/*/!*<title>{this.props.Project.items[0].title.rendered}</title>*!/*/}
                     {/*<link rel="canonical" href={window.location.href}/>*/}
                 {/*</Helmet>*/}
 

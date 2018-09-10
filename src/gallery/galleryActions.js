@@ -134,14 +134,12 @@ export function fetchGalleryItems () {
 
         return GalleryApi.getGalleryItems()
             .then(ApiResponse => {
-                console.log(ApiResponse)
                 dispatch(receiveGalleryItems(ApiResponse))
 
                 return dispatch (stopFetchingData())
             })
             .catch(error => {
                 dispatch(invalidateGalleryItems())
-                console.log(error)
                 return error
             })
     }
@@ -150,17 +148,14 @@ export function fetchGalleryItems () {
 
 
 export function fetchLazyGalleryItems (page) {
-    console.log(page)
     return function (dispatch) {
         dispatch(requestLazyGalleryItems())
 
         return GalleryApi.getLazyGalleryItems(page)
             .then(ApiResponse => {
-                console.log(ApiResponse)
 
                 if(typeof ApiResponse.data !== "undefined") {
 
-                    console.log(ApiResponse)
                     return dispatch(stopLazyGalleryItems())
                 } else {
                     return dispatch(receiveLazyGalleryItems(ApiResponse))
@@ -168,7 +163,6 @@ export function fetchLazyGalleryItems (page) {
             })
             .catch(error => {
                 dispatch(invalidateGalleryItems())
-                console.log(error)
                 return error
             })
     }
@@ -184,14 +178,12 @@ export function fetchFullscreenGalleryItem (id) {
 }
 
 export function prevFullScreenGalleryItem (index,props) {
-    console.log(props)
     const date = props.item[0].date
     return function (dispatch) {
 
         if(props.id > 0 ) {
         return GalleryApi.getGalleryNextPrevItem("after",date)
             .then(ApiResponse => {
-                console.log(ApiResponse)
                 return dispatch(fetchPrevFullscreenGalleryItem(index,ApiResponse))
             })
         } else {
@@ -201,7 +193,6 @@ export function prevFullScreenGalleryItem (index,props) {
 }
 
 export function nextFullScreenGalleryitem (index,props) {
-    console.log(props)
 
     const date = props.item[0].date
 
@@ -209,10 +200,8 @@ export function nextFullScreenGalleryitem (index,props) {
         if(index < (props.last_item - 1)) {
             return GalleryApi.getGalleryNextPrevItem("before", date)
                 .then(ApiResponse => {
-                    console.log(ApiResponse)
                     return dispatch(fetchNextFullscreenGalleryItem(index, ApiResponse))
                 }).catch(error => {
-                    console.log(error)
                     return dispatch(stopFetchNextFullscreenGalleryItem())
                 })
         } else {
@@ -231,9 +220,7 @@ export function closeFullscreenGallery () {
 }
 
 export function fetchURLFullscreenGalleryItem(props) {
-    console.log(props)
     const slug = props.match.params.slug
-    console.log(slug)
 
     return function (dispatch) {
         dispatch(requestURLFullscreenGalleryItem())
@@ -242,7 +229,6 @@ export function fetchURLFullscreenGalleryItem(props) {
             .then(ApiResponse => {
                 return dispatch(receiveURLFullscreenGalleryItem(ApiResponse,slug))
             }).catch(error => {
-                console.log(error)
                 return dispatch(stopFetchPrevFullscreenGalleryItem())
             })
     }

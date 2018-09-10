@@ -11,7 +11,6 @@ export default class GalleryApi {
         return fetch(process.env.REACT_APP_API_URI + 'gallery?per_page=6&page=' + page, {method: 'GET'})
             .then(response => response.json())
             .then(responseJson => {
-                console.log(responseJson)
                 return responseJson
             })
     }
@@ -23,33 +22,24 @@ export default class GalleryApi {
      * @returns {Promise.<TResult>}
      */
     static getGallerySingleItem(slug) {
-        console.log(slug)
         return fetch(process.env.REACT_APP_API_URI + 'gallery/?slug=' + slug, {method: 'GET'})
             .then(response => response.json())
             .then(responseJson => {
-
-                console.log(responseJson)
-
                 return responseJson[0]
             })
             .catch(error => {
-                console.log(error)
                 return error
             })
     }
 
     static getGalleryNextPrevItem(type,date) {
-        console.log(date)
         const order = type === "after" ? "asc" : "desc"
         return fetch(process.env.REACT_APP_API_URI + 'gallery/?' + type + '=' + date + '&per_page=1&page=1&order=' + order, {method: 'GET'})
             .then(response => response.json())
             .then(responseJson => {
-                console.log(responseJson)
-
                 return responseJson[0]
             })
             .catch(error => {
-                console.log(error)
                 return error
             })
 

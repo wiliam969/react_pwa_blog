@@ -107,7 +107,6 @@ export function fetchProjectPreviews(projects) {
 
 
 export function fetchLazyProjectPreview(page) {
-    console.log(page)
     return function (dispatch) {
 
         dispatch(requestLazyProjectPreview())

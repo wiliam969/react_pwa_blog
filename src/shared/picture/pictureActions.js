@@ -33,7 +33,6 @@ export const invalidatePicture = (pictures,pictureId) => {
 }
 
 export function fetchPicture (id) {
-    console.log(id)
     return function(dispatch) {
 
         dispatch(requestPicture(id))

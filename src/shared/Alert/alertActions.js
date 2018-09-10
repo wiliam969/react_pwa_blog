@@ -18,10 +18,7 @@ export const closeAlert = (index) => {
 }
 
 export function fetchAlert (alertType, content) {
-    console.log(alertType)
-    console.log(content)
     return function (dispatch) {
-
         return dispatch(receiveAlert(alertType, content))
     }
 }

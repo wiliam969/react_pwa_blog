@@ -61,7 +61,6 @@ function Blog(
             })
         case RECEIVE_BLOG_LIST:
             const blogsbySlug = prepareblogsbySlugs(state,action)
-            console.log(blogsbySlug)
 
             // let blogsbySlug = prepareblogsbySlugs(state,action)
             let blogsListSlugs = prepareBlogsListOrder(state,action)
@@ -131,7 +130,6 @@ function Blog(
  */
 function prepareblogsbySlugs(post,action) {
 
-    console.log(action)
     let BlogObj = post.blogsbySlug
 
     const defaultBlog = action.blogs.map(function (action) {
@@ -171,7 +169,6 @@ function prepareBlogsListOrder(post,action) {
 
 function prepareBlogsSingleOrder(post,action) {
 
-    console.log(action)
     // Use this if you want an appending blogsingle structure so that you have multiple blogposts =)
     // let BlogsIds = post.blogsSingleSlugs
 

@@ -61,7 +61,6 @@ function Project(
             })
         case RECEIVE_PROJECT_LIST:
             const projectsbySlug = prepareprojectsbySlugs(state,action)
-            console.log(projectsbySlug)
 
             // let projectsbySlug = prepareprojectsbySlugs(state,action)
             let projectsListSlugs = prepareProjectsListOrder(state,action)
@@ -130,7 +129,6 @@ function Project(
  */
 function prepareprojectsbySlugs(post,action) {
 
-    console.log(action)
     let ProjectObj = post.projectsbySlug
 
     const defaultProject = action.projects.map(function (action) {
@@ -170,7 +168,6 @@ function prepareProjectsListOrder(post,action) {
 
 function prepareProjectsSingleOrder(post,action) {
 
-    console.log(action)
     // Use this if you want an appending projectsingle structure so that you have multiple projectposts =)
     // let ProjectsIds = post.projectsSingleSlugs
 

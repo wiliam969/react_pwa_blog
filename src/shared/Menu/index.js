@@ -15,10 +15,8 @@ export default class Menu extends Component {
 
     oddEvent(match,location) {
         if(!match) {
-            console.log("false")
             return false
         }
-        console.log("right")
         const eventID = parseInt(match.params.eventID,10)
         return !isNaN(eventID) && eventID % 2 === 1
     }

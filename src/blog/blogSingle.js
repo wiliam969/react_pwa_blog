@@ -36,7 +36,6 @@ class BlogSingle extends Component {
     }
 
     fetchpop() {
-        console.log("im messed up")
         this.props.getBlogSingle(this.props)
     }
 

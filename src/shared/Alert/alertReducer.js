@@ -24,8 +24,6 @@ function Alert(state = {
 
 
 function closeAlert(post,action) {
-    console.log(post)
-
     return Object.assign({}, post, {
         isActive: action.isActive
     })

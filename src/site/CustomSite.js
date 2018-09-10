@@ -11,8 +11,6 @@ export default class CustomSite extends Component {
 
     componentDidMount() {
 
-        console.log(this.props)
-
         const slug = this.props.match.params.slug
 
         return fetch(process.env.REACT_APP_API_URI + 'pages?slug=' + slug, {method: 'GET'})

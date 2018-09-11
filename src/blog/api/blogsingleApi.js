@@ -1,8 +1,7 @@
 export default class BlogsingleApi {
 
     /**
-        Catches a specific blog based on the slug of the item =)
-     */
+        Catches a specific blog based on the slug of the item =)*/
     static getBlogSingle(slug) {
         return fetch(process.env.REACT_APP_API_URI + 'posts/?slug=' + slug, {method: 'GET'})
             .then((response) => response.json())

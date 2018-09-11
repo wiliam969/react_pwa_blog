@@ -16,9 +16,24 @@ import CustomSite from '../site/CustomSite'
 import { BrowserRouter ,Route,Redirect,Switch } from 'react-router-dom'
 import Loading from "../shared/utilities/loading";
 
+import Api from '../Api'
+
 
 class AsyncApp extends Component {
 
+    constructor(props)
+    {
+        super(props)
+
+        const args =
+        {
+            "slug" : "super-sayajin",
+            "before" : "hahaha",
+            "per_page" : 1,
+        }
+
+        Api.getPosts("posts",args)
+    }
     /**
         Here happens a lot of the magic!
         Were init the whole React Router Dom Magic with a Switch (also to get more perf)

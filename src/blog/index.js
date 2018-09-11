@@ -14,7 +14,7 @@ import BlogList from './blogList'
 import BlogSingle from './blogSingle'
 
 /**
-        This is the ProjectSingle Class. The Intention behind this class is that it behaves like a wrapper for every single Blog Item
+        The Intention behind this class is that it behaves like a wrapper for every single Blog Item
         Which means we have an Array of BlogItems which gets fully displayed and here the get wrapped
         Todo: When i already loaded a couple of single blogs and after that im going to the blogpreview page and again click on a blog its weird it should just load the next blog not every item which i already saw
 
@@ -87,10 +87,6 @@ class Blog extends Component {
                         }
                     </div>
                 }
-
-
-
-
             </div>
         )
     }

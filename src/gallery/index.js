@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet'
 import {
     fetchGalleryItems,
     fetchFullscreenGalleryItem,
-    nextFullScreenGalleryitem,
+    nextFullScreenGalleryItem,
     prevFullScreenGalleryItem,
     closeFullscreenGallery,
     fetchLazyGalleryItems,
@@ -51,7 +51,7 @@ class Gallery extends Component {
     }
 
     nextFullScreenPicture(props,index) {
-        props.dispatch(nextFullScreenGalleryitem(index,props))
+        props.dispatch(nextFullScreenGalleryItem(index,props))
     }
 
     closeFullscreen(props) {

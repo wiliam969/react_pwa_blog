@@ -27,12 +27,11 @@ class AsyncApp extends Component {
 
         const args =
         {
-            "slug" : "super-sayajin",
-            "before" : "hahaha",
+            "before" : "2018-07-21T21:46:49",
             "per_page" : 1,
         }
 
-        Api.getPosts("posts",args)
+        // Api.getPosts("posts",null,)
     }
     /**
         Here happens a lot of the magic!

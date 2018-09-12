@@ -28,6 +28,7 @@ export default class ProjectListApi {
         return db.timestamp.get({id: 1})
             .then(response => {
                 let timestamp = response.latestDate
+
                 return fetch(process.env.REACT_APP_API_URI + 'projects?after=' + timestamp, {method: 'GET'})
                     .then((response) => response.json())
                     .then(responseJson => {

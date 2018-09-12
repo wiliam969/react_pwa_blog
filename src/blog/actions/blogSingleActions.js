@@ -1,4 +1,4 @@
-import BlogsingleApi from '../api/blogsingleApi'
+import Api from '../../Api'
 
 export const REQUEST_BLOG_SINGLE = 'REQUEST_BLOG_SINGLE'
 export const REQUEST_LAZY_BLOG_SINGLE = 'REQUEST_LAZY_BLOG_SINGLE'
@@ -63,7 +63,11 @@ export function fetchBlogSingle(blog = 1) {
     return function (dispatch) {
         dispatch(requestBlogSingle(slug))
 
-        return BlogsingleApi.getBlogSingle(slug)
+        const Args = {
+            slug : slug
+        }
+
+        return Api.getPosts("posts", Args)
             .then(ApiResponse => {
                 return dispatch(receiveBlogSingle(ApiResponse,slug))
             }).catch(error => {
@@ -79,7 +83,13 @@ export function fetchLazyBlog(date,ids,indexes) {
     const index = indexes
     return function (dispatch) {
         dispatch(requestLazyBlogSingle(id))
-        return BlogsingleApi.getLazyBlogSingle(datum)
+
+        const Args = {
+            before : date,
+            per_page : 1,
+        }
+
+        return Api.getPosts("posts", Args)
             .then(post => {
                 if(typeof post === 'undefined' && post === null) {
                     return dispatch(stopLazyBlogSingle(id,index))

@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8d86231f-a2d3-463a-a042-6f35d11ec80a" name="Default" comment="polished some things again">
-      <change afterPath="$PROJECT_DIR$/src/Api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="8d86231f-a2d3-463a-a042-6f35d11ec80a" name="Default" comment="refactoring the api calls">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Api.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/AsyncApp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/AsyncApp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blog/api/blogsingleApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/blog/api/blogsingleApi.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blog/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/blog/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blog/actions/blogListActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/blog/actions/blogListActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blog/actions/blogSingleActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/blog/actions/blogSingleActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blog/api/blogListApi.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blog/api/blogsingleApi.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gallery/galleryActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/gallery/galleryActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gallery/galleryApi.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gallery/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/gallery/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/project/api/projectListApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/api/projectListApi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/picture/pictureActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/picture/pictureActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/picture/pictureApi.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/slider/sliderActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/slider/sliderActions.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -33,35 +41,35 @@
     <session id="992356113">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="9" />
-          <entry key="project.open.time.10" value="2" />
+          <entry key="project.closed" value="10" />
+          <entry key="project.open.time.10" value="3" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.5" value="2" />
           <entry key="project.open.time.6" value="2" />
           <entry key="project.open.time.7" value="2" />
-          <entry key="project.opened" value="9" />
+          <entry key="project.opened" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="12" />
-          <entry key="env" value="10" />
+          <entry key="env" value="11" />
           <entry key="gitignore" value="4" />
           <entry key="html" value="4" />
           <entry key="ico" value="2" />
           <entry key="jpg" value="1" />
-          <entry key="js" value="140" />
+          <entry key="js" value="182" />
           <entry key="json" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key=".env file" value="10" />
+          <entry key=".env file" value="11" />
           <entry key="CSS" value="12" />
           <entry key="HTML" value="4" />
           <entry key="Image" value="3" />
           <entry key="JSON" value="6" />
-          <entry key="JavaScript" value="140" />
+          <entry key="JavaScript" value="182" />
           <entry key="PLAIN_TEXT" value="4" />
         </counts>
       </usages-collector>
@@ -71,9 +79,9 @@
           <entry key="env" value="116" />
           <entry key="gitignore" value="6" />
           <entry key="html" value="28" />
-          <entry key="js" value="4333" />
+          <entry key="js" value="6637" />
           <entry key="json" value="198" />
-          <entry key="txt" value="377" />
+          <entry key="txt" value="407" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -82,8 +90,8 @@
           <entry key="CSS" value="180" />
           <entry key="HTML" value="28" />
           <entry key="JSON" value="198" />
-          <entry key="JavaScript" value="4333" />
-          <entry key="PLAIN_TEXT" value="383" />
+          <entry key="JavaScript" value="6637" />
+          <entry key="PLAIN_TEXT" value="413" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -99,25 +107,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Api.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="575">
-              <caret line="30" column="85" selection-start-line="30" selection-start-column="85" selection-end-line="30" selection-end-column="85" />
+            <state relative-caret-position="-212">
+              <caret line="15" column="45" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="45" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/AsyncApp.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="34" column="28" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
-              <folding>
-                <element signature="e#0#40#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/src/shared/slider/sliderApi.js">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/shared/slider/sliderActions.js">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -132,8 +138,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>BlogStorage</find>
-      <find>containment</find>
       <find>stop</find>
       <find>fetchPrevFullscreenGalleryItem</find>
       <find>F</find>
@@ -162,6 +166,8 @@
       <find>&lt;helmet</find>
       <find>witte</find>
       <find>CreateArgumentString</find>
+      <find>posts</find>
+      <find>nextFullScreenGalleryitem</find>
     </findStrings>
     <replaceStrings>
       <replace>props.picture</replace>
@@ -171,6 +177,9 @@
       <replace>blogsbySlug</replace>
       <replace>Project</replace>
       <replace>GetArgumentString</replace>
+      <replace>Args</replace>
+      <replace>Posts</replace>
+      <replace>nextFullScreenGalleryItem</replace>
     </replaceStrings>
     <dirStrings>
       <dir>C:\Users\admin\reactpwablog\react_pwa_blog\src</dir>
@@ -208,10 +217,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/project/container/projectgrid.css" />
-        <option value="$PROJECT_DIR$/src/boot/fonts/index.css" />
-        <option value="$PROJECT_DIR$/src/boot/fonts/index.js" />
-        <option value="$PROJECT_DIR$/src/boot/bootFonts.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/app/asyncApp.css" />
         <option value="$PROJECT_DIR$/src/App.css" />
@@ -232,12 +237,9 @@
         <option value="$PROJECT_DIR$/src/aboutme/index.js" />
         <option value="$PROJECT_DIR$/src/app/appActions.js" />
         <option value="$PROJECT_DIR$/src/app/appReducer.js" />
-        <option value="$PROJECT_DIR$/src/blog/actions/blogListActions.js" />
-        <option value="$PROJECT_DIR$/src/blog/actions/blogSingleActions.js" />
         <option value="$PROJECT_DIR$/src/blog/blogSingle.js" />
         <option value="$PROJECT_DIR$/src/blog/blogStorage.js" />
         <option value="$PROJECT_DIR$/src/boot/bootReducer.js" />
-        <option value="$PROJECT_DIR$/src/gallery/index.js" />
         <option value="$PROJECT_DIR$/src/shared/Alert/alert.js" />
         <option value="$PROJECT_DIR$/src/shared/blog/bloglist.js" />
         <option value="$PROJECT_DIR$/src/shared/picture/index.js" />
@@ -248,7 +250,6 @@
         <option value="$PROJECT_DIR$/src/boot/bootStore.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/shared/Alert/alertReducer.js" />
-        <option value="$PROJECT_DIR$/src/gallery/galleryActions.js" />
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/src/project/projectSingle.js" />
         <option value="$PROJECT_DIR$/src/project/container/projectSingleRender.js" />
@@ -258,7 +259,15 @@
         <option value="$PROJECT_DIR$/src/blog/index.js" />
         <option value="$PROJECT_DIR$/src/blog/api/blogsingleApi.js" />
         <option value="$PROJECT_DIR$/src/app/AsyncApp.js" />
+        <option value="$PROJECT_DIR$/src/blog/blogRedurcer.js" />
+        <option value="$PROJECT_DIR$/src/blog/actions/blogSingleActions.js" />
+        <option value="$PROJECT_DIR$/src/project/api/projectListApi.js" />
+        <option value="$PROJECT_DIR$/src/blog/actions/blogListActions.js" />
+        <option value="$PROJECT_DIR$/src/shared/picture/pictureActions.js" />
+        <option value="$PROJECT_DIR$/src/gallery/index.js" />
+        <option value="$PROJECT_DIR$/src/gallery/galleryActions.js" />
         <option value="$PROJECT_DIR$/src/Api.js" />
+        <option value="$PROJECT_DIR$/src/shared/slider/sliderActions.js" />
       </list>
     </option>
   </component>
@@ -2161,7 +2170,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -2178,12 +2186,19 @@
               <item name="react_pwa_blog" type="b2602c69:ProjectViewProjectNode" />
               <item name="react_pwa_blog" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="react_pwa_blog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="react_pwa_blog" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="shared" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2331,14 +2346,8 @@
       <workItem from="1536229900671" duration="31000" />
       <workItem from="1536230944634" duration="5241000" />
       <workItem from="1536604279903" duration="6981000" />
-      <workItem from="1536692094508" duration="3004000" />
-    </task>
-    <task id="LOCAL-00005" summary="improved the blog single things">
-      <created>1504873868914</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1504873868917</updated>
+      <workItem from="1536692094508" duration="3064000" />
+      <workItem from="1536775244687" duration="6934000" />
     </task>
     <task id="LOCAL-00006" summary="so the color effekt is there again some things in menu has changed ( triangle) and the home grid is now a bit different">
       <created>1505117798274</created>
@@ -2676,11 +2685,18 @@
       <option name="project" value="LOCAL" />
       <updated>1536611542101</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="refactoring the api calls">
+      <created>1536695143852</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1536695143852</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="229116000" />
+    <option name="totallyTimeSpent" value="236110000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2695,19 +2711,19 @@
     <frame x="-7" y="-7" width="1721" height="944" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.14667459" />
-      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14667459" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Event Log" order="0" sideWeight="0.50296915" side_tool="true" weight="0.3267571" />
       <window_info anchor="bottom" id="Version Control" order="1" sideWeight="0.49703088" weight="0.3267571" />
-      <window_info anchor="bottom" id="Terminal" order="2" sideWeight="0.49881235" weight="0.27620223" />
-      <window_info anchor="bottom" id="Message" order="3" />
-      <window_info anchor="bottom" id="Find" order="4" weight="0.32799014" />
-      <window_info anchor="bottom" id="Run" order="5" sideWeight="0.49881235" weight="0.28976572" />
-      <window_info anchor="bottom" id="Debug" order="6" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="9" weight="0.32799014" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49881235" weight="0.28976572" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Terminal" order="4" sideWeight="0.49881235" weight="0.27620223" />
+      <window_info anchor="bottom" id="Message" order="5" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32799014" />
+      <window_info anchor="bottom" id="Find" order="7" weight="0.32799014" />
+      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Debug Logs" order="11" sideWeight="0.49789253" weight="0.32916668" />
       <window_info anchor="bottom" id="Messages" order="12" />
@@ -2778,7 +2794,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed size of the glyphicons" />
     <MESSAGE value="had to recorrect the gird cause of the newest react bootstrap thing" />
     <MESSAGE value="modified loading btn" />
     <MESSAGE value="fixed some little things on the blogsingle" />
@@ -2803,52 +2818,10 @@
     <MESSAGE value="this was more of a cleanup =)" />
     <MESSAGE value="Fixed many things in order to publish atleast a beta of this project like the manifest etc" />
     <MESSAGE value="polished some things again" />
-    <option name="LAST_COMMIT_MESSAGE" value="polished some things again" />
+    <MESSAGE value="refactoring the api calls" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactoring the api calls" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/blog/quotation/index.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/blog/blogStorage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="21" column="7" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/boot/bootFonts.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="6" column="2" lean-forward="true" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/category/components/blogListLazy.js" />
-    <entry file="file://$PROJECT_DIR$/src/category/index.js" />
-    <entry file="file://$PROJECT_DIR$/src/home/index.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/site/CustomSite.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="27" column="14" lean-forward="true" selection-start-line="27" selection-start-column="14" selection-end-line="27" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/shared/Alert/alert.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/shared/blog/bloglist.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="5" column="29" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/shared/lazyloader/lazyloader.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-300" />
@@ -2895,13 +2868,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="50">
           <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/blog/api/blogListApi.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="4" column="50" lean-forward="true" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="50" />
         </state>
       </provider>
     </entry>
@@ -2983,11 +2949,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gallery/components/galleryFullscreen.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-800" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="512">
@@ -2999,16 +2960,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="7" lean-forward="true" selection-start-column="7" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/appActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="1" column="42" selection-start-line="1" selection-start-column="42" selection-end-line="1" selection-end-column="42" />
         </state>
       </provider>
     </entry>
@@ -3047,13 +2998,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gallery/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="7" lean-forward="true" selection-start-column="7" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/blog/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1">
@@ -3064,17 +3008,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/blog/blogRedurcer.js">
+    <entry file="file://$PROJECT_DIR$/src/project/container/projectGrid.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-875">
+        <state>
           <folding>
-            <element signature="e#0#274#0" expanded="true" />
+            <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/shared/slider/sliderActions.js">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/src/project/api/projectsingleApi.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-325" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/appActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="1" column="42" selection-start-line="1" selection-start-column="42" selection-end-line="1" selection-end-column="42" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.env">
       <provider selected="true" editor-type-id="text-editor">
@@ -3083,26 +3036,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gallery/galleryActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-492">
-          <caret line="151" column="43" lean-forward="true" selection-start-line="151" selection-start-column="43" selection-end-line="151" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/AsyncApp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="34" column="28" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/shared/picture/pictureApi.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/blog/api/blogsingleApi.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -3110,10 +3043,112 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/blog/actions/blogSingleActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1575" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blog/api/blogListApi.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="22" column="21" lean-forward="true" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blog/blogRedurcer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="133" selection-start-line="133" selection-end-line="133" />
+          <folding>
+            <element signature="e#0#274#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/AsyncApp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-22">
+          <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blog/actions/blogListActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="11" selection-start-column="11" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/project/actions/projectListActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/project/api/projectListApi.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="29" column="51" selection-start-line="29" selection-start-column="51" selection-end-line="29" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shared/picture/pictureApi.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shared/picture/pictureActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="38" column="8" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
+          <folding>
+            <element signature="e#48#94#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shared/picture/pictureReducer.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gallery/components/galleryFullscreen.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1750">
+          <caret line="75" column="18" lean-forward="true" selection-start-line="75" selection-start-column="18" selection-end-line="75" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gallery/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/gallery/galleryApi.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="2" column="50" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="50" />
+        <state relative-caret-position="225">
+          <caret line="23" column="31" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="31" />
+          <folding>
+            <element signature="n#!!block;n#getGalleryItems#0;n#GalleryApi#0;n#!!top" />
+            <element signature="n#!!block;n#getLazyGalleryItems#0;n#GalleryApi#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gallery/galleryActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#2#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gallery/galleryReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1301">
+          <folding>
+            <element signature="e#0#573#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3122,10 +3157,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Api.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="30" column="85" selection-start-line="30" selection-start-column="85" selection-end-line="30" selection-end-column="85" />
+        <state relative-caret-position="-212">
+          <caret line="15" column="45" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="45" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shared/slider/sliderActions.js">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>

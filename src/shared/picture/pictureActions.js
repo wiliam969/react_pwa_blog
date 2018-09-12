@@ -2,8 +2,8 @@
  * Created by wiliam969 on 28.04.2017.
  */
 
-import PictureApi from './pictureApi'
-import PictureStorage from './pictureStorage'
+import  PictureStorage from './pictureStorage'
+import Api from '../../Api'
 
 export const REQUEST_PICTURE = 'REQUEST_PICTURE'
 export const RECEIVE_PICTURE = 'RECEIVE_PICTURE'
@@ -37,12 +37,14 @@ export function fetchPicture (id) {
 
         dispatch(requestPicture(id))
 
+        // first we check if we already loaded the imageheaders
         return PictureStorage.getPicture(id)
             .then(PictureResponse => {
                 if(PictureResponse != null) {
                     dispatch(receivePicture(PictureResponse.post,id))
                 } else {
-                    return PictureApi.getPicture(id)
+                    // we call the api
+                    return Api.getPosts("media",null,true,id)
                         .then(picture => {
                             PictureStorage.savePicture(picture,id)
                             dispatch(receivePicture(picture,id))

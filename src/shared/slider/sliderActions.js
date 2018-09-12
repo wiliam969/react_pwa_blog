@@ -1,4 +1,4 @@
-import SliderApi from './sliderApi'
+import Api from '../../Api'
 
 export const REQUEST_SLIDER = 'REQUEST_SLIDER'
 export const RECEIVE_SLIDER = 'RECEIVE_SLIDER'
@@ -29,7 +29,7 @@ export function fetchSlider (cat = 1) {
     return function (dispatch,cat) {
         dispatch(requestSlider(cat))
 
-        return SliderApi.getSlider(cat)
+        return Api.getPosts("slider")
             .then(SliderResponse => {
                 if(SliderResponse != null) {
                     dispatch(receiveSlider(SliderResponse))

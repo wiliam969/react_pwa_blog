@@ -1,5 +1,7 @@
-import BlogListApi from '../api/blogListApi'
 import BlogStorage from '../blogStorage'
+import db from '../../boot/bootIndexeddb'
+
+import Api from '../../Api'
 
 import {
     isFetchingData,
@@ -92,8 +94,11 @@ export function fetchBlogPreviews(blogs) {
 
         dispatch(isFetchingData(blogs))
 
+    const args = {
+          "per_page" : 3
+    }
 
-    BlogListApi.getLatestBlogList()
+    Api.getPosts("posts",args)
         .then((posts) => {
             dispatch(receiveBlogpreview(posts))
 
@@ -119,20 +124,32 @@ export function fetchLazyBlogPreview(page) {
 
         dispatch(requestLazyBlogPreview())
 
+        // since dexie works with promises we have to create
+        // large promise statement to insure that it works
+        return db.timestamp.get({id:1}).then (
+            (response) => {
 
-        BlogListApi.getLazyBlogPreview(page)
-            .then(ApiResponse => {
-                if(typeof ApiResponse.data !== "undefined") {
-                    return dispatch(stopLazyBlogPreview())
-
-                } else if(ApiResponse.length === 0){
-                    return dispatch(stopLazyBlogPreview())
+                const Args = {
+                    before : response.oldestDate,
+                    per_page : 3,
+                    page : page,
                 }
 
-                return dispatch(receiveLazyBlogPreview(ApiResponse))
-            })
-            .catch(error => {
-                dispatch(invalidateBlogPreview(error))
+                return Api.getPosts("posts", Args)
+                    .then(ApiResponse => {
+                        console.log(ApiResponse)
+                        if(typeof ApiResponse.data !== "undefined") {
+                            return dispatch(stopLazyBlogPreview())
+
+                        } else if(ApiResponse.length === 0){
+                            return dispatch(stopLazyBlogPreview())
+                        }
+
+                        return dispatch(receiveLazyBlogPreview(ApiResponse))
+                    })
+                    .catch(error => {
+                        dispatch(invalidateBlogPreview(error))
+                    })
             })
     }
 }
@@ -145,18 +162,27 @@ export function fetchNewBlogPreview() {
     return function (dispatch) {
         dispatch(requestNewBlogPreview())
 
-        return BlogListApi.getnewBlogPreviews()
-            .then(apiResponse => {
-                if(apiResponse.length === 0) {
-                    return dispatch(stopNewBlogPreview())
+        return db.timestamp.get({id: 1})
+            .then(response => {
+
+                const Args = {
+                    before : response.latestDate,
                 }
 
-                dispatch(receiveAfterBlogPreview(apiResponse))
+                return Api.getPosts("posts", Args)
+                    .then(apiResponse => {
+                        if(apiResponse.length === 0) {
+                            return dispatch(stopNewBlogPreview())
+                        }
 
-                return BlogStorage.updateLatestTimestamp(apiResponse)
+                        dispatch(receiveAfterBlogPreview(apiResponse))
+
+                        return BlogStorage.updateLatestTimestamp(apiResponse)
+                    })
+                    .catch(error => {
+                        return dispatch(invalidateBlogPreview(error))
+                    })
             })
-            .catch(error => {
-                return dispatch(invalidateBlogPreview(error))
-            })
+
     }
 }

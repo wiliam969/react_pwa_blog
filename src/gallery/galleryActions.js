@@ -1,4 +1,4 @@
-import GalleryApi from './galleryApi'
+import Api from '../Api'
 
 import {
     isFetchingData,
@@ -93,7 +93,7 @@ export const stopFetchPrevFullscreenGalleryItem = () => {
     }
 }
 
-export const fetchNextFullscreenGalleryItem = (index,Items) => {
+export const fetchnextFullScreenGalleryItem = (index,Items) => {
     return {
         type:'FETCH_NEXT_FULLSCREEN_GALLERY_ITEM',
         Index:index,
@@ -101,7 +101,7 @@ export const fetchNextFullscreenGalleryItem = (index,Items) => {
     }
 }
 
-export const stopFetchNextFullscreenGalleryItem = () => {
+export const stopFetchnextFullScreenGalleryItem = () => {
     return {
         type:'STOP_FETCH_NEXT_FULLSCREEN_GALLERY_ITEM'
     }
@@ -132,7 +132,11 @@ export function fetchGalleryItems () {
     return function (dispatch) {
         dispatch(isFetchingData())
 
-        return GalleryApi.getGalleryItems()
+        const Args = {
+            per_page : 6,
+        }
+
+        return Api.getPosts("gallery", Args)
             .then(ApiResponse => {
                 dispatch(receiveGalleryItems(ApiResponse))
 
@@ -151,15 +155,14 @@ export function fetchLazyGalleryItems (page) {
     return function (dispatch) {
         dispatch(requestLazyGalleryItems())
 
-        return GalleryApi.getLazyGalleryItems(page)
+        const Args = {
+            per_page : 6,
+            page : page,
+        }
+
+        return Api.getPosts("gallery", Args)
             .then(ApiResponse => {
-
-                if(typeof ApiResponse.data !== "undefined") {
-
-                    return dispatch(stopLazyGalleryItems())
-                } else {
-                    return dispatch(receiveLazyGalleryItems(ApiResponse))
-                }
+                return dispatch(receiveLazyGalleryItems(ApiResponse))
             })
             .catch(error => {
                 dispatch(invalidateGalleryItems())
@@ -180,9 +183,17 @@ export function fetchFullscreenGalleryItem (id) {
 export function prevFullScreenGalleryItem (index,props) {
     const date = props.item[0].date
     return function (dispatch) {
-
+        // To check if an item before the current exists
         if(props.id > 0 ) {
-        return GalleryApi.getGalleryNextPrevItem("after",date)
+
+        const Args = {
+            after : date,
+            per_page : 1,
+            page : 1,
+            order : "asc"
+        }
+
+        return Api.getPosts("gallery",Args)
             .then(ApiResponse => {
                 return dispatch(fetchPrevFullscreenGalleryItem(index,ApiResponse))
             })
@@ -192,20 +203,29 @@ export function prevFullScreenGalleryItem (index,props) {
     }
 }
 
-export function nextFullScreenGalleryitem (index,props) {
+export function nextFullScreenGalleryItem (index,props) {
 
     const date = props.item[0].date
 
     return function (dispatch) {
+
+        // To check if an item after the current exist
         if(index < (props.last_item - 1)) {
-            return GalleryApi.getGalleryNextPrevItem("before", date)
+            const Args = {
+                after : date,
+                per_page : 1,
+                page : 1,
+                order : "desc"
+            }
+
+            return Api.getPosts("gallery",Args)
                 .then(ApiResponse => {
-                    return dispatch(fetchNextFullscreenGalleryItem(index, ApiResponse))
+                    return dispatch(fetchnextFullScreenGalleryItem(index, ApiResponse))
                 }).catch(error => {
-                    return dispatch(stopFetchNextFullscreenGalleryItem())
+                    return dispatch(stopFetchnextFullScreenGalleryItem())
                 })
         } else {
-            return dispatch(stopFetchNextFullscreenGalleryItem())
+            return dispatch(stopFetchnextFullScreenGalleryItem())
         }
     }
 }
@@ -225,7 +245,11 @@ export function fetchURLFullscreenGalleryItem(props) {
     return function (dispatch) {
         dispatch(requestURLFullscreenGalleryItem())
 
-        return GalleryApi.getGallerySingleItem(slug)
+        const Args = {
+            slug : slug,
+        }
+
+        return Api.getPosts("gallery", Args)
             .then(ApiResponse => {
                 return dispatch(receiveURLFullscreenGalleryItem(ApiResponse,slug))
             }).catch(error => {

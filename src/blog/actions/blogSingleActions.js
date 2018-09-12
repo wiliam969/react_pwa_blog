@@ -63,9 +63,7 @@ export function fetchBlogSingle(blog = 1) {
     return function (dispatch) {
         dispatch(requestBlogSingle(slug))
 
-        const Args = {
-            slug : slug
-        }
+        const Args = { slug : slug }
 
         return Api.getPosts("posts", Args)
             .then(ApiResponse => {

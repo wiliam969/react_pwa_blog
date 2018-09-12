@@ -1,10 +1,8 @@
 /**
- * TODO: Refactor the current API to a single instance thus we only make API calls from here
  * calling the WorPress API
  * @constructor
  */
 export default class WordPressApi {
-
     /**
      * getting post type items back from the WP Api
      * @param Posts post type

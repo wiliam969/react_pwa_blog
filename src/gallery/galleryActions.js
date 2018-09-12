@@ -155,10 +155,7 @@ export function fetchLazyGalleryItems (page) {
     return function (dispatch) {
         dispatch(requestLazyGalleryItems())
 
-        const Args = {
-            per_page : 6,
-            page : page,
-        }
+        const Args = { per_page : 6, page : page }
 
         return Api.getPosts("gallery", Args)
             .then(ApiResponse => {
@@ -186,12 +183,7 @@ export function prevFullScreenGalleryItem (index,props) {
         // To check if an item before the current exists
         if(props.id > 0 ) {
 
-        const Args = {
-            after : date,
-            per_page : 1,
-            page : 1,
-            order : "asc"
-        }
+        const Args = { after : date, per_page : 1, page : 1, order : "asc" }
 
         return Api.getPosts("gallery",Args)
             .then(ApiResponse => {
@@ -211,12 +203,7 @@ export function nextFullScreenGalleryItem (index,props) {
 
         // To check if an item after the current exist
         if(index < (props.last_item - 1)) {
-            const Args = {
-                after : date,
-                per_page : 1,
-                page : 1,
-                order : "desc"
-            }
+            const Args = { after : date, per_page : 1, page : 1, order : "desc" }
 
             return Api.getPosts("gallery",Args)
                 .then(ApiResponse => {
@@ -245,9 +232,7 @@ export function fetchURLFullscreenGalleryItem(props) {
     return function (dispatch) {
         dispatch(requestURLFullscreenGalleryItem())
 
-        const Args = {
-            slug : slug,
-        }
+        const Args = { slug : slug }
 
         return Api.getPosts("gallery", Args)
             .then(ApiResponse => {

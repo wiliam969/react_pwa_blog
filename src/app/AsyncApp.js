@@ -20,19 +20,6 @@ import Api from '../Api'
 
 
 class AsyncApp extends Component {
-
-    constructor(props)
-    {
-        super(props)
-
-        const args =
-        {
-            "before" : "2018-07-21T21:46:49",
-            "per_page" : 1,
-        }
-
-        // Api.getPosts("posts",null,)
-    }
     /**
         Here happens a lot of the magic!
         Were init the whole React Router Dom Magic with a Switch (also to get more perf)

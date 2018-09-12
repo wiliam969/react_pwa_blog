@@ -94,11 +94,9 @@ export function fetchBlogPreviews(blogs) {
 
         dispatch(isFetchingData(blogs))
 
-    const args = {
-          "per_page" : 3
-    }
+    const Args = { "per_page" : 3 }
 
-    Api.getPosts("posts",args)
+    Api.getPosts("posts",Args)
         .then((posts) => {
             dispatch(receiveBlogpreview(posts))
 
@@ -129,11 +127,7 @@ export function fetchLazyBlogPreview(page) {
         return db.timestamp.get({id:1}).then (
             (response) => {
 
-                const Args = {
-                    before : response.oldestDate,
-                    per_page : 3,
-                    page : page,
-                }
+                const Args = { before : response.oldestDate, per_page : 3, page : page }
 
                 return Api.getPosts("posts", Args)
                     .then(ApiResponse => {
@@ -165,9 +159,7 @@ export function fetchNewBlogPreview() {
         return db.timestamp.get({id: 1})
             .then(response => {
 
-                const Args = {
-                    before : response.latestDate,
-                }
+                const Args = { before : response.latestDate }
 
                 return Api.getPosts("posts", Args)
                     .then(apiResponse => {

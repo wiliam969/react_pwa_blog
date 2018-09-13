@@ -52,7 +52,7 @@ export default class BlogGrid extends Component {
                     <div className="blog-grid-preview-item" key={index}>
                         <div className="blog-grid-preview-fix">
                             <div className="blog-grid-preview-pic-fix">
-                                <Link to={{pathname: '/blog/' + blogs[post].slug,}}>
+                                <Link to={{pathname: '/type/blog/' + blogs[post].slug,}}>
                                     <Picture
                                         featured_media_id={blogs[post].featured_media_id}
                                         is169={true}
@@ -63,14 +63,14 @@ export default class BlogGrid extends Component {
                             </div>
                             <div
                                 className="blog-grid-preview-date">{new Date(blogs[post].date).toLocaleDateString()}</div>
-                            <Link to={{pathname: '/blog/' + blogs[post].slug,}}
+                            <Link to={{pathname: '/type/blog/' + blogs[post].slug,}}
                                   className="blog-grid-preview-prevent-a">
                                 <div className="blog-grid-preview-title">{blogs[post].title}</div>
                             </Link>
 
                             <div className="blog-grid-preview-text"
                                  dangerouslySetInnerHTML={{__html: blogs[post].excerpt}}/>
-                            <Link to={{pathname: '/blog/' + blogs[post].slug,}}
+                            <Link to={{pathname: '/type/blog/' + blogs[post].slug,}}
                                   className="blog-grid-preview-readmore">Weiterlesen...</Link>
                         </div>
                     </div>

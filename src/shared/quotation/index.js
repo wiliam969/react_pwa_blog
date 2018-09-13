@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import {
     fetchQuotations
 } from './quotationsActions';
-import Loading from '../../shared/utilities/loading'
+import Loading from '../utilities/loading'
 import './quotation.css'
 class Quotation extends Component {
 

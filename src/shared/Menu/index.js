@@ -68,13 +68,13 @@ export default class Menu extends Component {
                                     <NavLink exact className="nav-items" to="/">Home</NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className="nav-items" to="/blog/">Blog</NavLink>
+                                    <NavLink className="nav-items" to="/type/posts/">Blog</NavLink>
                                 </NavItem>
                                 <NavItem>
                                     <NavLink className="nav-items" to="/aboutme">About Me</NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className="nav-items" to="/projects">Projects</NavLink>
+                                    <NavLink className="nav-items" to="/type/projects">Projects</NavLink>
                                 </NavItem>
                                 <NavItem>
                                     <NavLink className="nav-items" to="/gallery">Gallery</NavLink>

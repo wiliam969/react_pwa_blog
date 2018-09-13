@@ -20,50 +20,27 @@ export const RECEIVE_NEW_BLOG_LIST = 'RECEIVE_NEW_BLOG_LIST'
 export const STOP_NEW_BLOG_LIST = 'STOP_NEW_BLOG_LIST'
 
 
-export const requestBlogPreview = (blogs) => {
-    return {
-        type: 'REQUEST_BLOG_LIST',
-        blogs
-    }
-}
+export const requestBlogPreview = (blogs) => { return { type: 'REQUEST_BLOG_LIST', blogs } }
+export const requestLazyBlogPreview = () => { return { type:'REQUEST_LAZY_BLOG_LIST' } }
+export const requestNewBlogPreview = () => { return { type:'REQUEST_NEW_BLOG_LIST' } }
+export const invalidateBlogPreview = (blogs) => { return { type:'INVALIDATE_BLOG_LIST', blogs } }
+export const stopLazyBlogPreview = () => { return { type:'STOP_LAZY_BLOG_LIST' } }
+export const stopNewBlogPreview = () => { return { type:'STOP_NEW_BLOG_LIST' }}
 
-export const requestLazyBlogPreview = () => {
-    return {
-        type:'REQUEST_LAZY_BLOG_LIST',
-    }
-}
-
-export const requestNewBlogPreview = () => {
-    return {
-        type:'REQUEST_NEW_BLOG_LIST'
-    }
-}
-
-export const receiveBlogpreview = (blogs) => {
+export const receiveBlogpreview = (blogs,ItemType) => {
     return {
         type: 'RECEIVE_BLOG_LIST',
         blogs,
+        ItemType: ItemType,
         receivedAt: Date.now(),
     }
 }
 
-export const receiveLazyBlogPreview = (blogs) => {
+export const receiveLazyBlogPreview = (blogs,ItemType) => {
     return {
         type:'RECEIVE_LAZY_BLOG_LIST',
         blogs,
-    }
-}
-
-export const invalidateBlogPreview = (blogs) => {
-    return {
-        type:'INVALIDATE_BLOG_LIST',
-        blogs
-    }
-}
-
-export const stopLazyBlogPreview = () => {
-    return {
-        type:'STOP_LAZY_BLOG_LIST',
+        ItemType: ItemType
     }
 }
 
@@ -72,12 +49,6 @@ export const receiveAfterBlogPreview = (blogs) => {
         type:'RECEIVE_NEW_BLOG_LIST',
         blogs,
         receivedAt: Date.now()
-    }
-}
-
-export const stopNewBlogPreview = () => {
-    return {
-        type:'STOP_NEW_BLOG_LIST',
     }
 }
 
@@ -92,28 +63,32 @@ export function fetchBlogPreviews(blogs) {
 
     return function(dispatch) {
 
+        console.log(blogs)
+
         dispatch(isFetchingData(blogs))
 
-    const Args = { "per_page" : 3 }
+        const Args = { "per_page" : 3 }
 
-    Api.getPosts("posts",Args)
-        .then((posts) => {
-            dispatch(receiveBlogpreview(posts))
+        const ItemType = blogs.match.params.type
 
-            dispatch(stopFetchingData())
+        return Api.getPosts(ItemType,Args)
+            .then((posts) => {
+                dispatch(receiveBlogpreview(posts,ItemType))
 
-            return BlogStorage.createDefaultTimestamps(posts)
-        })
-        .catch(error => {
-            return dispatch(invalidateBlogPreview(error))
-        })
+                dispatch(stopFetchingData())
+
+                return BlogStorage.createDefaultTimestamps(posts)
+            })
+            .catch(error => {
+                return dispatch(invalidateBlogPreview(error))
+            })
     }
 }
 
 /**
  * To seperate each event on the website
  * we also have an action for the lazyload
- * of the blog
+ * of the item_type_handler
  * @param page
  * @returns {Function}
  */
@@ -144,12 +119,12 @@ export function fetchLazyBlogPreview(page) {
                     .catch(error => {
                         dispatch(invalidateBlogPreview(error))
                     })
-            })
+        })
     }
 }
 
 /**
- * Same goes for the New blog function
+ * Same goes for the New item_type_handler function
  * @returns {function(*): *}
  */
 export function fetchNewBlogPreview() {

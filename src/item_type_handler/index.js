@@ -16,13 +16,17 @@ import BlogSingle from './blogSingle'
 /**
         The Intention behind this class is that it behaves like a wrapper for every single Blog Item
         Which means we have an Array of BlogItems which gets fully displayed and here the get wrapped
-        Todo: When i already loaded a couple of single blogs and after that im going to the blogpreview page and again click on a blog its weird it should just load the next blog not every item which i already saw
+        Todo: When i already loaded a couple of single blogs and after that im going to the blogpreview page and again click on a item_type_handler its weird it should just load the next item_type_handler not every item which i already saw
 
 */
-class Blog extends Component {
+class ItemTypeHandler extends Component {
 
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            type: this.props.match.params.type
+        }
 
         this.getBlogList = this.getBlogList.bind(this)
         this.getBlogSingle = this.getBlogSingle.bind(this)
@@ -31,6 +35,7 @@ class Blog extends Component {
     componentDidMount() {
         this.getBlogList()
         this.getBlogSingle()
+
         // const { dispatch } = this.props
         // const slug = this.props.match.params.slug
         // this.props.Blog.blogsbySlug[slug] !== slug && dispatch(fetchBlogSingle(this.props))
@@ -55,6 +60,12 @@ class Blog extends Component {
         }
     }
 
+    updateType() {
+        this.setState ({ type: this.props.match.params.type })
+        this.forceUpdate()
+        console.log(this.state.type)
+    }
+
     render() {
         return (
             <div>
@@ -70,20 +81,38 @@ class Blog extends Component {
                 { this.props.Blog.isFetching ?
                     <Loading></Loading>
                     :
-                    <div className="blog-container">
-                        {this.props.match.params.slug ?
-                            <BlogSingle getBlogSingle={this.getBlogSingle} blogsbySlug={this.props.Blog.blogsbySlug} blogsSingleSlugs={this.props.Blog.blogsSingleSlugs} location={this.props.location} history={this.props.history} match={this.props.match}/>
+                    <div>
+                        { this.props.match.params.type === this.state.type ?
+                            <div className="blog-container">
+                                {this.props.match.params.slug ?
+                                    <BlogSingle getBlogSingle={this.getBlogSingle}
+                                                blogsbySlug={this.props.Blog.blogsbySlug}
+                                                blogsSingleSlugs={this.props.Blog.blogsSingleSlugs}
+                                                location={this.props.location} history={this.props.history}
+                                                match={this.props.match}/>
+                                    :
+                                    <div>
+                                        <BlogList getBlogList={this.getBlogList}
+                                                  blogsbySlug={this.props.Blog.blogsbySlug}
+                                                  blogsListSlugs={this.props.Blog.blogsListSlugs}
+                                                  location={this.props.location} history={this.props.history}
+                                                  match={this.props.match}/>
+                                        <LazyLoader
+                                            type={() => {
+                                                this.getLazyBlogList(this.props.Blog.LazyPage)
+                                            }}
+                                            fetch={this.props.Blog.isFetchingLazy}
+                                            stop={this.props.Blog.stopLazyLoad}
+                                            name="Blog">
+                                        </LazyLoader>
+                                    </div>
+
+                                }
+                            </div>
                             :
                             <div>
-                                <BlogList getBlogList={this.getBlogList} blogsbySlug={this.props.Blog.blogsbySlug} blogsListSlugs={this.props.Blog.blogsListSlugs} location={this.props.location} history={this.props.history} match={this.props.match}/>
-                                <LazyLoader
-                                    type={ () => {this.getLazyBlogList(this.props.Blog.LazyPage)}}
-                                    fetch={this.props.Blog.isFetchingLazy}
-                                    stop={this.props.Blog.stopLazyLoad}
-                                    name="Blog">
-                                </LazyLoader>
+                                {this.updateType()}
                             </div>
-
                         }
                     </div>
                 }
@@ -92,7 +121,7 @@ class Blog extends Component {
     }
 }
 
-Blog.propTypes = {
+ItemTypeHandler.propTypes = {
     dispatch: PropTypes.func,
     getBlogList: PropTypes.func.isRequired,
     getBlogSingle: PropTypes.func.isRequired,
@@ -118,4 +147,4 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Blog))
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(ItemTypeHandler))

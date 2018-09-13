@@ -7,19 +7,10 @@ export const RECEIVE_LAZY_BLOG_SINGLE = 'RECEIVE_LAZY_BLOG_SINGLE'
 export const INVALIDATE_BLOG_SINGLE = 'INVALIDATE_BLOG_SINGLE'
 export const STOP_LAZY_BLOG_SINGLE = 'STOP_LAZY_BLOG_SINGLE'
 
-export const requestBlogSingle = (id) => {
-    return {
-        type: 'REQUEST_BLOG_SINGLE',
-        id
-    }
-}
-
-export const requestLazyBlogSingle = (id) => {
-    return {
-        type: 'REQUEST_LAZY_BLOG_SINGLE',
-        prev_id:id
-    }
-}
+export const requestBlogSingle = (id) => { return { type: 'REQUEST_BLOG_SINGLE', id } }
+export const requestLazyBlogSingle = (id) => { return { type: 'REQUEST_LAZY_BLOG_SINGLE', prev_id:id } }
+export const invalidateBlogSingle = (blog,id) => { return { type:'INVALIDATE_BLOG_SINGLE', id } }
+export const stopLazyBlogSingle = (id,index) => { return { type: 'STOP_LAZY_BLOG_SINGLE', prev_id:id, index } }
 
 export const receiveBlogSingle = (blog,id) => {
     return {
@@ -36,21 +27,6 @@ export const receiveLazyBlogSingle = (blog,id) => {
         blogs:blog,
         id,
         receivedAt: Date.now(),
-    }
-}
-
-export const invalidateBlogSingle = (blog,id) => {
-    return {
-        type:'INVALIDATE_BLOG_SINGLE',
-        id
-    }
-}
-
-export const stopLazyBlogSingle = (id,index) => {
-    return {
-        type: 'STOP_LAZY_BLOG_SINGLE',
-        prev_id:id,
-        index,
     }
 }
 
@@ -72,7 +48,6 @@ export function fetchBlogSingle(blog = 1) {
                 return dispatch(invalidateBlogSingle(error,slug))
             })
     }
-
 }
 
 export function fetchLazyBlog(date,ids,indexes) {

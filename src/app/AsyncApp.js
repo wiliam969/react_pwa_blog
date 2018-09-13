@@ -4,10 +4,9 @@ import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
 import Menu from '../shared/Menu/index'
 import Footer from '../shared/Footer/index'
-import Blog from '../blog/index'
+import ItemTypeHandler from '../item_type_handler/index'
 import AboutMe from '../aboutme/index'
 import Gallery from '../gallery/index'
-import Projects from '../project/index'
 import Home from '../home/index'
 import Alert from '../shared/Alert/alert'
 import "./asyncApp.css"
@@ -26,7 +25,7 @@ class AsyncApp extends Component {
         Also here we have a nice little Alert handler which fetches all the errors =)
         Currently we also have here a Loading class which stops if the router sends a request
         Todo: EVERY Function should be commented aswell as EVERY class
-        Todo: We NEED a Socialmedia plugin which has to work with the gallery as well as the blogs
+        Todo: We NEED a Socialmedia plugin which has to work with the gallery as well as the ^^s
      */
     render() {
         return(
@@ -52,13 +51,11 @@ class AsyncApp extends Component {
                                 <Alert/>
                                 <Switch id="main-container">
                                     <Route      path="/"                 component={Home} exact/>
-                                    <Route      path="/blog"             component={Blog} exact/>
-                                    <Route      path="/blog/:slug"       component={Blog}/>
+                                    <Route      path="/type/:type"             component={ItemTypeHandler} exact/>
+                                    <Route      path="/type/:type/:slug"       component={ItemTypeHandler}/>
                                     <Route      path="/aboutme"          component={AboutMe}/>
                                     <Route      path="/gallery"          component={Gallery} exact/>
                                     <Route      path="/gallery/:slug"    component={Gallery}/>
-                                    <Route      path="/projects"         component={Projects} exact/>
-                                    <Route      path="/projects/:slug"   component={Projects}/>
                                     <Route      path="/customsite/:slug"  component={CustomSite}/>
                                     <Redirect   from='*' to='/' />
                                 </Switch>
@@ -76,20 +73,17 @@ AsyncApp.propTypes = {
 }
 
 function mapStateToProps(state,ownProps) {
-        var Blog = { }
+        var ItemTypeHandler = { }
         var App = { isLoading: true,}
-        var BlogSingle = { }
         var Home = { }
 
-        Blog = Object.assign({}, state.Blog)
+        ItemTypeHandler = Object.assign({}, state.ItemTypeHandler)
         App = Object.assign({}, state.AsyncApp)
-        BlogSingle = Object.assign({}, state.BlogSingle)
         Home = Object.assign({}, state.Home)
 
     return {
-        Blog: Blog,
+        ItemTypeHandler: ItemTypeHandler,
         App:App,
-        BlogSingle:BlogSingle,
         Home:Home,
     }
 }

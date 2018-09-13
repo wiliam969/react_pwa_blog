@@ -19,6 +19,8 @@ import {
     STOP_LAZY_BLOG_SINGLE,
 } from './actions/blogSingleActions'
 
+import {projectData} from './ItemTypeData'
+
 
 function Blog(
     state = {
@@ -124,34 +126,47 @@ function Blog(
 }
 
 /**
+ * TODO compare both json throw the unnessecarz parts away and merge them  *
  * @param post
  * @param action
  * @returns {{}|blogsbySlug}
  */
 function prepareblogsbySlugs(post,action) {
 
+    const ItemType = action.ItemType
     let BlogObj = post.blogsbySlug
+
+    console.log(post)
+    console.log(action)
+
+    let project = projectData();
+    console.log(project)
 
     const defaultBlog = action.blogs.map(function (action) {
 
-        let objBlogs = action.slug
+        let mergeobj = { ...project.api_data, ...action }
+        console.log(mergeobj)
 
-        objBlogs = Object.create(action)
-
-        objBlogs.date=       action.date
-        objBlogs.slug  =    action.slug
-        objBlogs.title =     action.title.rendered
-        objBlogs.content=    action.content.rendered
-        objBlogs.excerpt=    action.excerpt.rendered
-        objBlogs.featured_media_id= action.featured_media
-
-        BlogObj[action.slug] = Object.assign(objBlogs)
+        // let objBlogs = action.slug
+        //
+        // objBlogs = Object.create(action)
+        //
+        // objBlogs.date=       action.date
+        // objBlogs.slug  =    action.slug
+        // objBlogs.title =     action.title.rendered
+        // objBlogs.content=    action.content.rendered
+        // if(ItemType !== "projects") objBlogs.excerpt =    action.excerpt.rendered
+        // objBlogs.featured_media_id= action.featured_media
+        //
+        // BlogObj[action.slug] = Object.assign(objBlogs)
 
         return action
     })
 
     return BlogObj
 }
+
+
 
 function prepareBlogsListOrder(post,action) {
     let BlogsIds = post.blogsListSlugs

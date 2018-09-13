@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import Blog from '../blog/blogRedurcer'
-import Quotations from '../blog/quotation/quotationsReducer'
+import Blog from '../item_type_handler/blogRedurcer'
+import Quotations from '../shared/quotation/quotationsReducer'
 import AsyncApp from '../app/appReducer'
 import Picture from '../shared/picture/pictureReducer'
 import Gallery from '../gallery/galleryReducer'

@@ -29,55 +29,63 @@ export default class BlogGrid extends Component {
     }
 
     render() {
-        var layouts = {
-            "desktop":  this.generateDesktopLayout(2),
-            "mobile":  this.generateTabletLayout(2),
-            "phone":  this.generateMobileLayout(2),
-        }
-
-        const blogs = this.props.blogsbySlug
-
-        return (
-            <div className="blog-grid-preview-container">
-            {this.props.blogsListSlugs.length > 0 &&
-            <ResponsiveReactGridLayout
-                className="layout"
-                layouts={layouts}
-                breakpoints={{desktop: 768, mobile: 480, phone:0}}
-                cols={{desktop: 12, mobile: 12, phone: 12}}
-                useCSSTransforms={true}
-                rowHeight={480}>
-
-                {this.props.blogsListSlugs.map((post,index) =>
-                    <div className="blog-grid-preview-item" key={index}>
-                        <div className="blog-grid-preview-fix">
-                            <div className="blog-grid-preview-pic-fix">
-                                <Link to={{pathname: '/type/blog/' + blogs[post].slug,}}>
-                                    <Picture
-                                        featured_media_id={blogs[post].featured_media_id}
-                                        is169={true}
-                                        type="medium_large"
-                                        backgroundsize="cover">
-                                    </Picture>
-                                </Link>
-                            </div>
-                            <div
-                                className="blog-grid-preview-date">{new Date(blogs[post].date).toLocaleDateString()}</div>
-                            <Link to={{pathname: '/type/blog/' + blogs[post].slug,}}
-                                  className="blog-grid-preview-prevent-a">
-                                <div className="blog-grid-preview-title">{blogs[post].title}</div>
-                            </Link>
-
-                            <div className="blog-grid-preview-text"
-                                 dangerouslySetInnerHTML={{__html: blogs[post].excerpt}}/>
-                            <Link to={{pathname: '/type/blog/' + blogs[post].slug,}}
-                                  className="blog-grid-preview-readmore">Weiterlesen...</Link>
-                        </div>
-                    </div>
-                )}
-            </ResponsiveReactGridLayout>
+        if(this.props.blogsListSlugs)  {
+            const layouts = {
+                "desktop":  this.generateDesktopLayout(2),
+                "mobile":  this.generateTabletLayout(2),
+                "phone":  this.generateMobileLayout(2),
             }
-            </div>
-        )
+
+            const blogs = this.props.blogsbySlug
+
+            return (
+                <div className="blog-grid-preview-container">
+                    { this.props.blogsListSlugs.length > 0 &&
+                    <ResponsiveReactGridLayout
+                        className="layout"
+                        layouts={layouts}
+                        breakpoints={{desktop: 768, mobile: 480, phone:0}}
+                        cols={{desktop: 12, mobile: 12, phone: 12}}
+                        useCSSTransforms={true}
+                        rowHeight={480}>
+
+                        {this.props.blogsListSlugs.map((post,index) =>
+                            <div className="blog-grid-preview-item" key={index}>
+                                <div className="blog-grid-preview-fix">
+                                    <div className="blog-grid-preview-pic-fix">
+                                        <Link to={{pathname: '/type/posts/' + blogs[post].slug,}}>
+                                            <Picture
+                                                featured_media_id={blogs[post].featured_media}
+                                                is169={true}
+                                                type="medium_large"
+                                                backgroundsize="cover">
+                                            </Picture>
+                                        </Link>
+                                    </div>
+                                    <div
+                                        className="blog-grid-preview-date">{new Date(blogs[post].date).toLocaleDateString()}</div>
+                                    <Link to={{pathname: '/type/posts/' + blogs[post].slug,}}
+                                          className="blog-grid-preview-prevent-a">
+                                        <div className="blog-grid-preview-title">{blogs[post].title.rendered}</div>
+                                    </Link>
+
+                                    <div className="blog-grid-preview-text"
+                                         dangerouslySetInnerHTML={{__html: blogs[post].excerpt.rendered}}/>
+                                    <Link to={{pathname: '/type/posts/' + blogs[post].slug,}}
+                                          className="blog-grid-preview-readmore">Read More...</Link>
+                                </div>
+                            </div>
+                        )}
+                    </ResponsiveReactGridLayout>
+                    }
+                </div>
+            )
+        }
+        else
+        {
+            return(
+                <div></div>
+            )
+        }
     }
 }

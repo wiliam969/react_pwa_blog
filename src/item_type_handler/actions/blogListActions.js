@@ -59,17 +59,15 @@ export const receiveAfterBlogPreview = (blogs) => {
  * @param blogs
  * @returns {Function}
  */
-export function fetchBlogPreviews(blogs) {
+export function fetchBlogPreviews(props) {
 
     return function(dispatch) {
 
-        console.log(blogs)
-
-        dispatch(isFetchingData(blogs))
+        dispatch(isFetchingData(props))
 
         const Args = { "per_page" : 3 }
 
-        const ItemType = blogs.match.params.type
+        const ItemType = props.match.params.type
 
         return Api.getPosts(ItemType,Args)
             .then((posts) => {
@@ -92,10 +90,13 @@ export function fetchBlogPreviews(blogs) {
  * @param page
  * @returns {Function}
  */
-export function fetchLazyBlogPreview(page) {
+export function fetchLazyBlogPreview(props) {
     return function (dispatch) {
 
         dispatch(requestLazyBlogPreview())
+
+        const ItemType = props.match.params.type
+        const page = props.Blog.LazyPage
 
         // since dexie works with promises we have to create
         // large promise statement to insure that it works
@@ -104,7 +105,7 @@ export function fetchLazyBlogPreview(page) {
 
                 const Args = { before : response.oldestDate, per_page : 3, page : page }
 
-                return Api.getPosts("posts", Args)
+                return Api.getPosts(ItemType, Args)
                     .then(ApiResponse => {
                         console.log(ApiResponse)
                         if(typeof ApiResponse.data !== "undefined") {
@@ -114,7 +115,7 @@ export function fetchLazyBlogPreview(page) {
                             return dispatch(stopLazyBlogPreview())
                         }
 
-                        return dispatch(receiveLazyBlogPreview(ApiResponse))
+                        return dispatch(receiveLazyBlogPreview(ApiResponse,ItemType))
                     })
                     .catch(error => {
                         dispatch(invalidateBlogPreview(error))

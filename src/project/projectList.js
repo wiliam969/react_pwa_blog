@@ -4,7 +4,7 @@ import {
     fetchNewProjectPreview,
     fetchLazyProjectPreview
 } from './actions/projectListActions'
-import ProjectGrid from './container/projectGrid'
+import ProjectGrid from '../item_type_handler/container/projectGrid'
 import './project.css'
 
 class ProjectList extends Component {

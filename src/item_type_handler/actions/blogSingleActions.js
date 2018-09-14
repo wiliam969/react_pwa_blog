@@ -12,11 +12,11 @@ export const requestLazyBlogSingle = (id) => { return { type: 'REQUEST_LAZY_BLOG
 export const invalidateBlogSingle = (blog,id) => { return { type:'INVALIDATE_BLOG_SINGLE', id } }
 export const stopLazyBlogSingle = (id,index) => { return { type: 'STOP_LAZY_BLOG_SINGLE', prev_id:id, index } }
 
-export const receiveBlogSingle = (blog,id) => {
+export const receiveBlogSingle = (blog,ItemType) => {
     return {
         type: 'RECEIVE_BLOG_SINGLE',
         blogs:blog,
-        id,
+        ItemType:ItemType,
         receivedAt: Date.now(),
     }
 }
@@ -33,17 +33,18 @@ export const receiveLazyBlogSingle = (blog,id) => {
 /*
     Gets the Slug of the URI and returns it to the specific handlers after that it returns an object if the slug was correct
  */
-export function fetchBlogSingle(blog = 1) {
-    const slug = blog.match.params.slug
+export function fetchBlogSingle(props) {
+    const slug = props.match.params.slug
+    const ItemType = props.match.params.type
 
     return function (dispatch) {
         dispatch(requestBlogSingle(slug))
 
         const Args = { slug : slug }
 
-        return Api.getPosts("posts", Args)
+        return Api.getPosts(ItemType, Args)
             .then(ApiResponse => {
-                return dispatch(receiveBlogSingle(ApiResponse,slug))
+                return dispatch(receiveBlogSingle(ApiResponse,ItemType))
             }).catch(error => {
                 return dispatch(invalidateBlogSingle(error,slug))
             })

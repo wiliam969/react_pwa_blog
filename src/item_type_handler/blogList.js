@@ -5,6 +5,8 @@ import {
     fetchLazyBlogPreview
 } from './actions/blogListActions'
 import BlogGrid from './container/blogGrid'
+import ProjectGrid from './container/projectGrid'
+import {getCurrentItemType} from "./ItemTypeData";
 import './blog.css'
 
 class BlogList extends Component {
@@ -35,6 +37,28 @@ class BlogList extends Component {
         this.props.getBlogList(this.props)
     }
 
+    renderSwitch() {
+
+        const CurrentType = this.props.match.params.type
+
+        switch(CurrentType) {
+            case "projects":
+                return <ProjectGrid
+                    projectsbySlug={this.props.blogsbySlug}
+                    projectsListSlugs={this.props.blogsListSlugs[CurrentType]}
+                    location={this.props.location}
+                    match={this.props.match}/>
+                break;
+            default:
+                return <BlogGrid
+                    blogsbySlug={this.props.blogsbySlug}
+                    blogsListSlugs={this.props.blogsListSlugs[CurrentType]}
+                    location={this.props.location}
+                    match={this.props.match}/>
+                break;
+        }
+    }
+
 
     /*
     Todo: Here we have a to the current state random error with the FetchNewBlogs function idk what its causing but it seems to be a 404 error
@@ -52,7 +76,7 @@ class BlogList extends Component {
                         {/*}*/}
                     {/*</div>*/}
                     <div className="blog-list-container">
-                        <BlogGrid blogsbySlug={this.props.blogsbySlug} blogsListSlugs={this.props.blogsListSlugs} location={this.props.location}></BlogGrid>
+                        {this.renderSwitch()}
 
                         {/*<LazyLoader type={this.fetchLazyPosts} fetch={this.props.Blog.isFetchingLazy} stop={this.props.Blog.stopLazyLoad} name="Blog"></LazyLoader>*/}
                     </div>

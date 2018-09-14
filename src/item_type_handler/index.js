@@ -42,12 +42,12 @@ class ItemTypeHandler extends Component {
         // this.props.Blog.blogsListSlugs.length === 0 && !this.props.match.params.slug && dispatch(fetchBlogPreviews(this.props))
     }
 
-    getLazyBlogList(page) {
-        this.props.getLazyBlogList(page)
+    getLazyBlogList(props) {
+        this.props.getLazyBlogList(props)
     }
 
     getBlogList() {
-        if(this.props.Blog.blogsListSlugs.length === 0 && !this.props.match.params.slug) {
+        if(!this.props.Blog.blogsListSlugs[this.state.type] && !this.props.match.params.slug) {
             this.props.getBlogList(this.props)
         }
     }
@@ -99,7 +99,7 @@ class ItemTypeHandler extends Component {
                                                   match={this.props.match}/>
                                         <LazyLoader
                                             type={() => {
-                                                this.getLazyBlogList(this.props.Blog.LazyPage)
+                                                this.getLazyBlogList(this.props)
                                             }}
                                             fetch={this.props.Blog.isFetchingLazy}
                                             stop={this.props.Blog.stopLazyLoad}

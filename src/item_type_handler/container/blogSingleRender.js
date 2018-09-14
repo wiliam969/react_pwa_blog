@@ -18,12 +18,12 @@ export default class BlogSingleRender extends Component {
                                 <title>{blogs[post].title + "- Blogs - " + process.env.REACT_APP_IDB_NAME}</title>
                                 <link rel="canonical" href={window.location.href}/>
                             </Helmet>
-                            <Picture featured_media_id={blogs[post].featured_media_id} type="full" height="50vh" width="100%" backgroundsize="cover"></Picture>
+                            <Picture featured_media_id={blogs[post].featured_media} type="full" height="50vh" width="100%" backgroundsize="cover"></Picture>
                             <div className="blog-single-content-wrapper container">
                                 <div className="blog-single-content-wrapper-fix">
                                     <p className="blog-single-date">{new Date(blogs[post].date).toLocaleDateString()}</p>
-                                    <div className="blog-single-title">{blogs[post].title}</div>
-                                    <div className="blog-single-text" dangerouslySetInnerHTML={{__html: blogs[post].content}}></div>
+                                    <div className="blog-single-title">{blogs[post].title.rendered}</div>
+                                    <div className="blog-single-text" dangerouslySetInnerHTML={{__html: blogs[post].content.rendered}}></div>
                                 </div>
                             </div>
                         </div>

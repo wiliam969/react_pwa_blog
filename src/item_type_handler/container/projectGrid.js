@@ -4,7 +4,7 @@ import Picture from '../../shared/picture/index'
 
 import {Responsive, WidthProvider} from 'react-grid-layout';
 
-import './projectgrid.css'
+import '../../project/container/projectgrid.css'
 
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
@@ -40,7 +40,7 @@ export default class ProjectGrid extends Component {
         if(!urlTrueFalse && project_url.length !== 0) {
             link = <a  href={project_url}>
                 <Picture
-                    featured_media_id={post.featured_media_id}
+                    featured_media_id={post.featured_media}
                     // is169={true}
                     type="medium_large"
                     backgroundsize="cover"
@@ -51,7 +51,7 @@ export default class ProjectGrid extends Component {
         } else if (!urlTrueFalse && github_url.length !== 0) {
             link = <a  href={github_url}>
                 <Picture
-                    featured_media_id={post.featured_media_id}
+                    featured_media_id={post.featured_media}
                     // is169={true}
                     type="medium_large"
                     backgroundsize="cover"
@@ -60,9 +60,9 @@ export default class ProjectGrid extends Component {
                 </Picture>
             </a>
         } else {
-            link = <Link to={{pathname: '/projects/' + post.slug,}}>
+            link = <Link to={{pathname: '/type/projects/' + post.slug,}}>
                 <Picture
-                    featured_media_id={post.featured_media_id}
+                    featured_media_id={post.featured_media}
                     // is169={true}
                     type="medium_large"
                     backgroundsize="cover"
@@ -76,33 +76,42 @@ export default class ProjectGrid extends Component {
     }
 
     render() {
-        var layouts = {
-            "desktop":  this.generateDesktopLayout(2),
-            "mobile":  this.generateTabletLayout(1.88),
-            "phone":  this.generateMobileLayout(1.5),
+        if(this.props.projectsListSlugs) {
+            var layouts = {
+                "desktop":  this.generateDesktopLayout(2),
+                "mobile":  this.generateTabletLayout(1.88),
+                "phone":  this.generateMobileLayout(1.5),
+            }
+
+            const projects = this.props.projectsbySlug
+
+            return (
+                <div className="project-grid-preview-container">
+                    {this.props.projectsListSlugs.length > 0 &&
+                    <ResponsiveReactGridLayout
+                        className="layout"
+                        layouts={layouts}
+                        breakpoints={{desktop: 768, mobile: 480, phone:0}}
+                        cols={{desktop: 12, mobile: 12, phone: 12}}
+                        useCSSTransforms={true}
+                        rowHeight={178}>
+
+                        {this.props.projectsListSlugs.map((post,index) =>
+                            <div className="project-grid-preview-item" key={index}>
+                                {this.getCorrectLink(projects[post])}
+                            </div>
+                        )}
+                    </ResponsiveReactGridLayout>
+                    }
+                </div>
+            )
+        }
+        else
+        {
+            return(
+                <div></div>
+            )
         }
 
-        const projects = this.props.projectsbySlug
-
-        return (
-            <div className="project-grid-preview-container">
-            {this.props.projectsListSlugs.length > 0 &&
-            <ResponsiveReactGridLayout
-                className="layout"
-                layouts={layouts}
-                breakpoints={{desktop: 768, mobile: 480, phone:0}}
-                cols={{desktop: 12, mobile: 12, phone: 12}}
-                useCSSTransforms={true}
-                rowHeight={178}>
-
-                {this.props.projectsListSlugs.map((post,index) =>
-                    <div className="project-grid-preview-item" key={index}>
-                        {this.getCorrectLink(projects[post])}
-                    </div>
-                )}
-            </ResponsiveReactGridLayout>
-            }
-            </div>
-        )
     }
 }

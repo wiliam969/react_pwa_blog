@@ -19,7 +19,7 @@ import {
     STOP_LAZY_BLOG_SINGLE,
 } from './actions/blogSingleActions'
 
-import {projectData} from './ItemTypeData'
+import {getCurrentItemType} from './ItemTypeData'
 
 
 function Blog(
@@ -30,7 +30,7 @@ function Blog(
         didInvalidate: false,
         stopLazyLoad:true,
         blogsbySlug: {},
-        blogsListSlugs: [],
+        blogsListSlugs: {},
         blogsSingleSlugs: [],
         receivedAt: "",
         LazyPage:1,
@@ -132,36 +132,20 @@ function Blog(
  * @returns {{}|blogsbySlug}
  */
 function prepareblogsbySlugs(post,action) {
-
-    const ItemType = action.ItemType
     let BlogObj = post.blogsbySlug
 
-    console.log(post)
-    console.log(action)
+    const ItemTypeData = getCurrentItemType(action.ItemType)
 
-    let project = projectData();
-    console.log(project)
-
-    const defaultBlog = action.blogs.map(function (action) {
-
-        let mergeobj = { ...project.api_data, ...action }
-        console.log(mergeobj)
-
-        // let objBlogs = action.slug
-        //
-        // objBlogs = Object.create(action)
-        //
-        // objBlogs.date=       action.date
-        // objBlogs.slug  =    action.slug
-        // objBlogs.title =     action.title.rendered
-        // objBlogs.content=    action.content.rendered
-        // if(ItemType !== "projects") objBlogs.excerpt =    action.excerpt.rendered
-        // objBlogs.featured_media_id= action.featured_media
-        //
-        // BlogObj[action.slug] = Object.assign(objBlogs)
-
-        return action
+    action.blogs.map(function (action) {
+        for( var i in action ) {
+            if(!ItemTypeData.api_data.hasOwnProperty(i)) {
+                delete action[i]
+            }
+        }
+        BlogObj[action.slug] = {...ItemTypeData.api_data,...action}
     })
+
+    console.log(BlogObj)
 
     return BlogObj
 }
@@ -171,12 +155,15 @@ function prepareblogsbySlugs(post,action) {
 function prepareBlogsListOrder(post,action) {
     let BlogsIds = post.blogsListSlugs
 
+    if(!BlogsIds[action.ItemType])
+        BlogsIds[action.ItemType] = []
+
     action.blogs.forEach(function(post) {
         let temp_id = post.slug
 
-        const checkifExists = BlogsIds.some(x => x === temp_id)
+        const checkifExists = BlogsIds[action.ItemType].some(x => x === temp_id)
 
-        !checkifExists ? BlogsIds.push(temp_id) : ""
+        !checkifExists ? BlogsIds[action.ItemType].push(temp_id) : ""
     })
 
     return BlogsIds

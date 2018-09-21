@@ -28,7 +28,7 @@ function Blog(
         isFetchingLazy: false,
         isFetchingNew: false,
         didInvalidate: false,
-        stopLazyLoad:true,
+        stopLazyLoad:false,
         blogsbySlug: {},
         blogsListSlugs: {},
         blogsSingleSlugs: [],
@@ -109,7 +109,7 @@ function Blog(
                 isFetching: false,
                 didInvalidateLazy: false,
                 isFetchingLazy:false,
-                stopLazyLoad:false,
+                stopLazyLoad:true,
             })
         case STOP_NEW_BLOG_LIST:
             return Object.assign({}, state, {

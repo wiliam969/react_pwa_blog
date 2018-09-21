@@ -35,7 +35,7 @@ class LazyLoader extends Component {
                     <Loading></Loading>
                     :
                     <div>
-                        {this.props.stop ?
+                        {!this.props.stop ?
                             <div className="lazyload-wrapper">
                                 {this.state.isBtn ?
                                     <button onClick={this.isBtnActive} className="lazyload-btn">Load

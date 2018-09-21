@@ -18,7 +18,8 @@ export default class AboutMe extends Component {
                 </div>
                 <h2>Hey, I'm Robin</h2>
                 <hr/>
-                <h3>Webdev - Appdev</h3>
+                <h3>I am a AI Programmer , experienced in C++, JS, PHP and Lua.</h3>
+                <h4>I am also strong at creating gameplay</h4>
                 <p>I write, maintain and support software for a living.</p>
                 <p>Playing computer games was one of my hobby's now I'm more interested to glimpse behind the scenes therefore,
                     I like to dabble with programs such as UE4, Blender.</p>

@@ -4,7 +4,7 @@ import Picture from '../../shared/picture/index'
 
 import {Responsive, WidthProvider} from 'react-grid-layout';
 
-import '../../project/container/projectgrid.css'
+import './projectgrid.css'
 
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 

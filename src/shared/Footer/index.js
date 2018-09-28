@@ -6,7 +6,7 @@ import {Col, Nav, Navbar, NavItem} from 'react-bootstrap'
 
 import mail from "./envelope-solid.svg"
 import github from "./github-brands.svg"
-// import linked from "./linkedin-in-brands.svg"
+import linked from "./linkedin-in-brands.svg"
 
 export default class Footer extends Component {
     render() {
@@ -21,14 +21,17 @@ export default class Footer extends Component {
                             <NavItem href="https://github.com/wiliam969"  target="_blank" rel="noopener noreferrer">
                                 <img src={github} alt="github"/>
                             </NavItem>
+                            <NavItem href="https://www.linkedin.com/in/robin-witte/"  target="_blank" rel="noopener noreferrer">
+                                <img src={linked} alt="linkedin"/>
+                            </NavItem>
                         </Nav>
                         <Col xs={12} xsHidden={true} smHidden={true} className="nav-footer-desktop">
                             <Nav pullRight={true}>
                                 <NavItem className="nav-items">
-                                    <NavLink to="/customsite/impressum">Impressum</NavLink>
+                                    <NavLink to="/customsite/impressum">Imprint</NavLink>
                                 </NavItem>
                                 <NavItem className="nav-items">
-                                    <NavLink to="/customsite/datenschutzerklaerung">Datenschutzerklärung</NavLink>
+                                    <NavLink to="/customsite/datenschutzerklaerung">Privacy</NavLink>
                                 </NavItem>
                             </Nav>
                         </Col>

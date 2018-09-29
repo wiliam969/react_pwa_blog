@@ -4,7 +4,7 @@ You can use it as a fixed Portfolio Template
 Set some params in the .env file and you can call a WP API. 
 With a little hassle it would be possible to integrate other API's.
 
-##TODO (beta brach)
+## TODO (beta brach)
 * ~~Generalize the API~~.
 
     Generalize it even more so you only have to edit the api class

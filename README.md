@@ -16,8 +16,8 @@ With a little hassle it would be possible to integrate other API's.
 * integrate category support for blog+projects+gallery
 * create more modules for 'home'
 * capsule modules and only call reference them in the respective url
-* create nice animation 
 * create global modul for the userinteraction e.g. fetching,loading etc. 
 * Use: https://github.com/Reactive-Extensions/RxJS
 * Use: https://github.com/craigcosmo/babel-plugin-react-css-modules (better css loading)
 * Use: https://github.com/trainline/react-skeletor (for better UX)
+* Use: https://github.com/juliangarnier/anime (create nice animation)

@@ -1,7 +1,7 @@
 # React PWA Blog
 This project is based on the create-react-app.
-You can use it as a fixed Portfolio Template 
-Set some params in the .env file and you can call a WP API. 
+You can use it as a fixed Portfolio Template.
+Just set some params in the .env file and you can call a WP API. 
 With a little hassle it would be possible to integrate other API's.
 
 ## TODO (beta brach)

@@ -7,6 +7,8 @@ import { withRouter } from 'react-router-dom'
 import {fetchBlogPreviews, fetchLazyBlogPreview} from './actions/blogListActions'
 import { fetchBlogSingle } from './actions/blogSingleActions'
 
+import { modifySiteStatus } from '../shared/Alert/alertActions'
+
 import Loading from '../shared/utilities/loading'
 import LazyLoader from '../shared/lazyloader/lazyloader'
 
@@ -40,6 +42,8 @@ class ItemTypeHandler extends Component {
         // const slug = this.props.match.params.slug
         // this.props.Blog.blogsbySlug[slug] !== slug && dispatch(fetchBlogSingle(this.props))
         // this.props.Blog.blogsListSlugs.length === 0 && !this.props.match.params.slug && dispatch(fetchBlogPreviews(this.props))
+
+        this.props.setSiteStatus(this.props, {lazyload: 1, haha: 2, fufu: 2});
     }
 
     getLazyBlogList(props) {
@@ -126,6 +130,7 @@ ItemTypeHandler.propTypes = {
     getBlogList: PropTypes.func.isRequired,
     getBlogSingle: PropTypes.func.isRequired,
     getLazyBlogList: PropTypes.func.isRequired,
+    setSiteStatus: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (state, ownProps) => {
@@ -143,6 +148,7 @@ const mapDispatchToProps = (dispatch) => {
         getBlogList: (props) => { dispatch(fetchBlogPreviews(props))},
         getBlogSingle: (props) => { dispatch(fetchBlogSingle(props))},
         getLazyBlogList: (props) => { dispatch(fetchLazyBlogPreview(props))},
+        setSiteStatus: (props,params) => { dispatch(modifySiteStatus(props,params))},
     }
 }
 
